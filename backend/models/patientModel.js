@@ -3,15 +3,15 @@ const medSchema = mongoose.Schema(
     {
         amount: {
             type: String,
-            required: true,
+            
         },
         med: {
             type: String,
-            required: true,
+            
         },
         when_freq: {
             type: String,
-            required: true,
+            
         }
     }
 );
@@ -73,7 +73,7 @@ const patientSchema = mongoose.Schema(
             type: [medSchema],
             required: true,
         },
-        rz_peak_flow_min: {
+        rz_peak_flow_max: {
             type: Number,
             required: true,
         },
