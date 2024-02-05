@@ -1,9 +1,11 @@
 import express from "express";
 import {PORT, mongoDBURL} from "./config.js";
 import mongoose from 'mongoose';
-import { PatientModel } from './models/patientModel.js';
+import { Patient} from './models/patientModel.js';
 
 const app = express();
+//middleware for parsing request body
+app.use(express.json());
 
 app.get('/', (request,response) =>{
     console.log(request);
@@ -40,6 +42,32 @@ app.post('/patients', async (request, response) => {
                 message: 'Enter all required fields'
             });
         }
+
+        const newPatient = {
+            age: request.body.age,
+            date: request.body.date,
+            ec_cell: request.body.ec_cell, 
+            ec_relationship: request.body.ec_relationship,
+            ec_work: request.body.ec_work,
+            emergency_contact: request.body.emergency_contact, 
+            gz_meds: request.body.gz_meds,
+            rgz_peak_flow_max: equest.body.gz_peak_flow_max, 
+            gz_peak_flow_min: request.body.gz_peak_flow_min,
+            name: request.body.name,
+            pr_peak_flow: request.body.pr_peak_flow,
+            provider: request.body.provider,
+            provider_phone: request.body.provider_phone,
+            rz_meds: request.body.rz_meds, 
+            rz_peak_flow_min: request.body.rz_peak_flow_min,
+            yz_comment: request.body.yz_comment,
+            yz_meds: request.body.yz_meds,
+            yz_peak_flow_max: request.body.yz_peak_flow_max,
+            yz_peak_flow_min: request.body.yz_peak_flow_min,
+        }
+
+        const patient = await Patient.create(newPatient);
+
+        return response.status(201).send(patient);
     } catch (error) {
         console.log(error.message);
         response.status(500).send({message: error.message});
