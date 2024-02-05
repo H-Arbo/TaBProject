@@ -74,6 +74,16 @@ app.post('/patients', async (request, response) => {
     }
 });
 
+// Route to get all patients from database
+app.get('/patients', async (request, response) => {
+    try {
+        const patients = await Patient.find({});
+        return response.status(200).json(patients);
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({message: error.message});
+    }
+});
 mongoose
     .connect(mongoDBURL)
     .then(() => {
