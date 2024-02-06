@@ -10,21 +10,19 @@ import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md'
 const App = () => {
     const [patients, setPatients] = useState([]);
     const [loadscreen, setLoading] = useState(false);
-    useEffect(
-        () => {
-            setLoading(true);
-            axios
-                .get('https://5555-harbo-tabproject-otdrclbnjh4.ws-us108.gitpod.io/')
-                .then((response) => {
-                    setPatients(response.data.data);
-                    setLoading(false);
-                })
-                .catch((error) => {
-                    console.log(error);
-                    setLoading(false);
-                });
-        }, []
-    );
+    useEffect(() => {
+        setLoading(true);
+        axios
+          .get('http://localhost:5555/patients')
+          .then((response) => {
+            setPatients(response.data.data);
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.log(error);
+            setLoading(false);
+          });
+      }, []);
     return (
         <div className='p-4'>
             <div className='flex justify-between items-center'>
@@ -33,7 +31,7 @@ const App = () => {
                     <MdOutlineAddBox className='text-sky-800 text-4x1' />
                 </Link>
             </div>
-            {Loading ? (
+            {Loading ?  (
                 <Loading />
             ) : (
                 <table className='w-full border-separate border-spacing-2'>

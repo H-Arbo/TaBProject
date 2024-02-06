@@ -1,7 +1,6 @@
 import express from "express";
 import {PORT, mongoDBURL} from "./config.js";
 import mongoose from 'mongoose';
-import { Patient} from './models/patientModel.js';
 import patientsRoute from './routes/patientsRoute.js';
 import cors from 'cors';
 
@@ -9,10 +8,14 @@ const app = express();
 //middleware for parsing request body
 app.use(express.json());
 
-app.use('/patients', patientsRoute)
-
 //cors
-app.use(cors());
+const corsOptions = {
+    origin: 'localhost:5174'
+};
+
+app.use(cors(corsOptions));
+
+app.use('/patients', patientsRoute);
 
 app.get('/', (request,response) =>{
     console.log(request);
