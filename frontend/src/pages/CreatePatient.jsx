@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 
 const CreatePatient = () => {
   return(
-    <div> CreatePatient </div>
+    <div> Create Patient </div>
   )
 }
 

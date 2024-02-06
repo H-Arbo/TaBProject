@@ -2,10 +2,14 @@ import express from "express";
 import {PORT, mongoDBURL} from "./config.js";
 import mongoose from 'mongoose';
 import { Patient} from './models/patientModel.js';
+import cors from 'cors';
 
 const app = express();
 //middleware for parsing request body
 app.use(express.json());
+
+//cors
+app.use(cors());
 
 app.get('/', (request,response) =>{
     console.log(request);
