@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { BsInfoCircle } from 'react-icons/bs'
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md'
 
 
-const App = () => {
+const Home = () => {
     const [patients, setPatients] = useState([]);
     const [loadscreen, setLoading] = useState(false);
     useEffect(() => {
@@ -31,7 +31,7 @@ const App = () => {
                     <MdOutlineAddBox className='text-sky-800 text-4x1' />
                 </Link>
             </div>
-            {Loading ?  (
+            {loadscreen ?  (
                 <Loading />
             ) : (
                 <table className='w-full border-separate border-spacing-2'>
@@ -54,10 +54,10 @@ const App = () => {
                                     {patient.name}
                                 </td>
                                 <td className='border border-slate-700 roundd-md text-center max-md:hidden'>
-                                    {patient.emergencyContact}
+                                    {patient.emergency_contact}
                                 </td>
                                 <td className='border border-slate-700 roundd-md text-center max-md:hidden'>
-                                    {patient.emergencyContactRelationship}
+                                    {patient.ec_relationship}
                                 </td>
                                 <td className='border border-slate-700 roundd-md text-center'>
                                     <div className='flex justify-center gap-x-4'>
@@ -81,4 +81,4 @@ const App = () => {
     );
 };
 
-export default App
+export default Home
