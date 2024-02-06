@@ -42,11 +42,13 @@ const Home = () => {
                             <th className='border border-slate-600 rounded-md max-md:hidden'> Emergency Contact </th>
                             <th className='border border-slate-600 rounded-md max-md:hidden'> Emergency Contact Relationship </th>
                             <th className='border border-slate-600 rounded-md'> Date </th>
+                            <th className='border border-slate-600 rounded-md'> Operations </th>
+
                         </tr>
                     </thead>
                     <tbody>
                         {patients.map((patient, index) => (
-                            <tr key={patient._id} className='h-8'>
+                            <tr key={patient.id} className='h-8'>
                                 <td className='border border-slate-700 roundd-md text-center'>
                                     {index + 1}
                                 </td>
@@ -61,13 +63,13 @@ const Home = () => {
                                 </td>
                                 <td className='border border-slate-700 roundd-md text-center'>
                                     <div className='flex justify-center gap-x-4'>
-                                        <Link to={'patients/details/${patient._id}'}>
+                                        <Link to={'/patients/details/${patient.id}'}>
                                             <BsInfoCircle className='text-2x1 text-green-800' />
                                         </Link>
-                                        <Link to={'patients/edit/${patient._id}'}>
+                                        <Link to={'/patients/edit/${patient.id}'}>
                                             <AiOutlineEdit className='text-2x1 text-yellow-600' />
                                         </Link>
-                                        <Link to={'patients/delete/${patient._id}'}>
+                                        <Link to={'/patients/delete/${patient.id}'}>
                                             <MdOutlineDelete className='text-2x1 text-red-600' />
                                         </Link>
                                     </div>
