@@ -10,4 +10,4 @@
     npm install
     mpn run dev -->
 
-<!-- ** for frontend/react, HG installed es7+ extension -->
+<!-- make sure you have done npm i -->
