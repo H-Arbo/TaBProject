@@ -12,14 +12,14 @@ app.use(express.json());
 // const corsOptions = {
 //     origin: 'localhost:5174'
 // };
-
-app.use(
-    cors({
-        origin: 'http://localhost:5555',
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        allowedHeaders: ['Content-Type'],
-    })
-);
+app.use(cors());
+// app.use(
+//     cors({
+//         origin: 'http://localhost:5555',
+//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//         allowedHeaders: ['Content-Type'],
+//     })
+// );
 
 app.use("/patients", patientsRoute);
 
