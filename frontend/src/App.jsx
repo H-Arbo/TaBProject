@@ -1,5 +1,6 @@
 //import React from 'react'
 import {Routes, Route} from 'react-router-dom'
+import Front from './pages/Front';
 import Home from './pages/Home';
 import CreatePatient from './pages/CreatePatient';
 import DeletePatient from './pages/DeletePatient';
@@ -14,9 +15,10 @@ const App = () => {
     <>
     <Navbar/>
     <Routes>
-      <Route path = '/' element = {<Home />} />
+      <Route path = '/' element = {<Front />} />
       <Route path = '/register' element = {<Register />} />
       <Route path = '/login' element = {<Login />} />
+      <Route path = '/patients/home' element = {<Home />} />
       <Route path = '/patients/create' element = {<CreatePatient/>} />
       <Route path = '/patients/delete/:id' element = {<DeletePatient/>} />
       <Route path = '/patients/edit/:id' element = {<EditPatient/>} />
