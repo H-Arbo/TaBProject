@@ -5,16 +5,24 @@ import CreatePatient from './pages/CreatePatient';
 import DeletePatient from './pages/DeletePatient';
 import EditPatient from './pages/EditPatient';
 import ShowPatient from './pages/ShowPatient';
+import Navbar from './components/Navbar';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const App = () => {
   return(
+    <>
+    <Navbar/>
     <Routes>
       <Route path = '/' element = {<Home />} />
+      <Route path = '/register' element = {<Register />} />
+      <Route path = '/login' element = {<Login />} />
       <Route path = '/patients/create' element = {<CreatePatient/>} />
       <Route path = '/patients/delete/:id' element = {<DeletePatient/>} />
       <Route path = '/patients/edit/:id' element = {<EditPatient/>} />
       <Route path = '/patients/info/:id' element = {<ShowPatient/>} />
     </Routes>
+    </>
   );
 };
 

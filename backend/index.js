@@ -8,18 +8,8 @@ const app = express();
 //middleware for parsing request body
 app.use(express.json());
 
-//cors
-// const corsOptions = {
-//     origin: 'localhost:5174'
-// };
+//cors middleware
 app.use(cors());
-// app.use(
-//     cors({
-//         origin: 'http://localhost:5555',
-//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//         allowedHeaders: ['Content-Type'],
-//     })
-// );
 
 app.use("/patients", patientsRoute);
 

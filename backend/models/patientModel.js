@@ -17,6 +17,14 @@ const medSchema = mongoose.Schema(
 );
 const patientSchema = mongoose.Schema(
     {
+        email: {
+            type: String,
+            unique: true
+        },
+        password: {
+            type: String,
+            required: true,
+        },
         age: {
             type: Number,
             required: true,
