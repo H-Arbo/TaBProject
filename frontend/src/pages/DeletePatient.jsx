@@ -1,22 +1,4 @@
-// import React from 'react'
-// import {Routes, Route} from 'react-router-dom'
-
-/////////////////////////////////////////////////////////////////
-//Please delete this section once below section is implemented.
-const DeletePatient = () => {
-    return(
-      <div> DeletePatient </div>
-    )
-  }  
-  export default DeletePatient
-/////////////////////////////////////////////////////////////////
-
-
-//Below is the full DeletePatient code. I think this will work fine.
-//I am leaving it commented out for now just in case. I don't want to mess anyone up.
-//Feel free to uncomment (and potentially edit) it when relevant. LMK if I need to fix anything.
-
-/*import React, { useState } from 'react'
+import React, { useState } from 'react'
 import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
 import axios from 'axios';
@@ -59,4 +41,4 @@ const DeletePatient = () => {
     )
 }
 
-export default DeletePatient*/
+export default DeletePatient
