@@ -61,10 +61,13 @@ const Home = () => {
                                 <td className='border border-slate-700 roundd-md text-center max-md:hidden'>
                                     {patient.ec_relationship}
                                 </td>
+                                <td className='border border-slate-700 roundd-md text-center max-md:hidden'>
+                                    {patient.date}
+                                </td>
                                 <td className='border border-slate-700 roundd-md text-center'>
                                     <div className='flex justify-center gap-x-4'>
                                         <Link to={'/patients/info/${patient._id}'}>
-                                            <button className='text-2x1 text-green-800'>Info</button>
+                                            <BsInfoCircle className='text-2x1 text-green-800'>Info</BsInfoCircle>
                                         </Link>
                                         <Link to={'/patients/edit/${patient._id}'}>
                                             <AiOutlineEdit className='text-2x1 text-yellow-600' />
