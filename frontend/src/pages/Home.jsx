@@ -63,8 +63,8 @@ const Home = () => {
                                 </td>
                                 <td className='border border-slate-700 roundd-md text-center'>
                                     <div className='flex justify-center gap-x-4'>
-                                        <Link to={'/patients/details/${patient._id}'}>
-                                            <BsInfoCircle className='text-2x1 text-green-800' />
+                                        <Link to={'/patients/info/${patient._id}'}>
+                                            <button className='text-2x1 text-green-800'>Info</button>
                                         </Link>
                                         <Link to={'/patients/edit/${patient._id}'}>
                                             <AiOutlineEdit className='text-2x1 text-yellow-600' />
