@@ -25,6 +25,7 @@ import Games from './pages/Games';
 import Surveys from './pages/Surveys';
 import Medsheet from './pages/Medsheet';
 import MessagePatient from './pages/MessagePatient';
+import DPinfo from './pages/DPinfo';
 import {Toaster } from 'react-hot-toast';
 const App = () => {
   return(
@@ -44,6 +45,8 @@ const App = () => {
       <Route path = '/patients/delete/:id' element = {<DeletePatient/>} />
       <Route path = '/patients/profile/:id' element = {<PProfile/>} />
       <Route path = '/doctor/profile/:id' element = {<DProfile/>} />
+      <Route path = '/doctor/patientInfo/:id' element = {<DPinfo/>} />
+      <Route path = '/doctor/patientInfo/changeMedication/:id' element = {<PMeds/>} />
       <Route path = '/patients/edit/:id' element = {<EditPatient/>} />
       <Route path = '/doctor/edit/:id' element = {<EditDoctor/>} />
       <Route path = '/patients/green/:id' element = {<GreenZone/>} />
@@ -53,7 +56,6 @@ const App = () => {
       <Route path = '/patients/games/:id' element = {<Games/>} />
       <Route path = '/patients/surveys/:id' element = {<Surveys/>} />
       <Route path = '/patients/medsheet/:id' element = {<Medsheet/>} />
-      <Route path = '/doctor/patientMed/:id' element = {<PMeds/>} />
       <Route path = '/doctor/message/:id' element = {<MessagePatient/>} />
     </Routes>
     </>

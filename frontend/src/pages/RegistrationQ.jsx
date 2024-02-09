@@ -9,9 +9,7 @@ import Button from '../components/Button';
 
 
 const RegistrationQ = () => {
-    const handleClick = () => {
-        alert('Button clicked!');
-    };
+    const handleClick = () => {};
     return (
 
         <div className='p-4'>

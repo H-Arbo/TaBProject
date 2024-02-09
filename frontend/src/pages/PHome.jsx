@@ -11,9 +11,7 @@ import Button from '../components/Button';
 const PHome = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
-    const handleClick = () => {
-        alert('Button clicked!');
-    };
+    const handleClick = () => {};
     useEffect(() => {
         setLoading(true);
         axios
@@ -70,9 +68,6 @@ const PHome = () => {
                                     <div className='flex justify-center gap-x-4'>
                                         <Link to={'/patients/profile/${patients._id}'}>
                                             <button className='text-2x1 text-green-800'>Patient Profile</button>
-                                        </Link>
-                                        <Link to={'/patients/edit/${patient._id}'}>
-                                            <AiOutlineEdit className='text-2x1 text-yellow-600' />
                                         </Link>
                                         <Link to={'/patients/delete/${patient._id}'}>
                                             <MdOutlineDelete className='text-2x1 text-red-600' />

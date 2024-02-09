@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
-import { AiOutlineEdit } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import Button from '../components/Button';
+import BackButton from '../components/BackButton';
+import { useParams } from 'react-router-dom';
+import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 
-const PProfile = () => {
+const DPinfo = () => {
+  const handleClick = () => {};
   const [patient, setPatient] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -28,7 +30,7 @@ const PProfile = () => {
   return (
     <div className='p-4'>
       <BackButton />
-      <h1 className='text-3xl my-4'>Patient Profile</h1>
+      <h1 className='text-3xl my-4'>Patient Info</h1>
       {loading ? (
         <Loading />
       ) : (
@@ -49,9 +51,8 @@ const PProfile = () => {
             <span className='text-xl mr-4 text-gray-500'>Emergency Contact</span>
             <span>{patient.ec}</span>
           </div>
-
-          <Link to={'/patients/edit/${patient._id}'}>
-            <AiOutlineEdit className='text-2x1 text-yellow-600' />
+          <Link to='/doctor/patientInfo/changeMedication/:id'>
+            <Button onClick={handleClick} color="darkblue">Change Medication</Button>
           </Link>
         </div>
       )}
@@ -59,4 +60,4 @@ const PProfile = () => {
   );
 };
 
-export default PProfile;
+export default DPinfo;
