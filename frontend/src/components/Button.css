@@ -1,0 +1,50 @@
+.rounded-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .rounded-button.blue {
+    background-color: #007bff;
+  }
+  
+  .rounded-button.blue:hover {
+    background-color: #0056b3;
+  }
+
+  .rounded-button.darkblue {
+    background-color: #155191;
+  }
+  
+  .rounded-button.darkblue:hover {
+    background-color: #38699d;
+  }
+  
+  .rounded-button.red {
+    background-color: #dc3545;
+  }
+  
+  .rounded-button.red:hover {
+    background-color: #af202e;
+  }
+  
+  .rounded-button.green {
+    background-color: #28a745;
+  }
+  
+  .rounded-button.green:hover {
+    background-color: #218838;
+  }
+
+  .rounded-button.yellow {
+    background-color: #d0be1d;
+  }
+  
+  .rounded-button.yellow:hover {
+    background-color: #a99a17;
+  }
+  

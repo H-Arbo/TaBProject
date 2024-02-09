@@ -5,38 +5,29 @@ import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
-// import logo from '../images/asthma_logo.png';
+import Button from '../components/Button';
 
 
 const RegistrationQ = () => {
-    return(
-        
+    const handleClick = () => {
+        alert('Button clicked!');
+    };
+    return (
+
         <div className='p-4'>
-            <div>Registering as Doctor or Patient?</div>
             <img src="/images/asthma_logo.png" style={{ width: '460px', height: '70px' }} />
-            <Link to="/patients/home"
-                className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit' style={{ marginLeft: "700px" }}>
-                    <button >
-                    Home
-                    </button>
+            <h1 className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>Registering as Doctor or Patient?</h1>
+
+            <div className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Link to="/patients/register">
+                    <Button onClick={handleClick} color="darkblue">Patient</Button>
                 </Link>
-            
-            <div className='flex justify-between items-center' style={{justifyContent: 'center', alignItems: 'center'}}>
-                <Link to="/patients/register"
-                className=' bg-sky-800 text-white px-20 py-20 rounded-lg w-fit'>
-                    <button>
-                        Patient
-                    </button>
-                </Link>
-                <Link to="/doctor/register"
-                className=' bg-sky-800 text-white px-20 py-20 rounded-lg w-fit'>
-                    <button>
-                        Doctor
-                    </button>
+                <Link to="/doctor/register">
+                    <Button onClick={handleClick} color="darkblue">Doctor</Button>
                 </Link>
             </div>
         </div>
     )
-  }
-  
-  export default RegistrationQ
+}
+
+export default RegistrationQ

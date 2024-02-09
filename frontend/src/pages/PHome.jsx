@@ -5,11 +5,15 @@ import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
+import Button from '../components/Button';
 
 
 const PHome = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
+    const handleClick = () => {
+        alert('Button clicked!');
+    };
     useEffect(() => {
         setLoading(true);
         axios
@@ -25,6 +29,9 @@ const PHome = () => {
     }, []);
     return (
         <div className='p-4'>
+            <div className='flex justify-between items-center'>
+                <h1 className='text-3x1 my-8'> Patient Home </h1>
+            </div>
 
             {loading ? (
                 <Loading />
@@ -78,46 +85,28 @@ const PHome = () => {
                 </table>
             )}
 
-            <div className='p-4'>
-                <div className='flex justify-between items-center'>
-                    <h1 className='text-3x1 my-8'> Patient Home </h1>
-                </div>
-            </div>
+
 
             <Link to='/patients/green/${patient._id}'>
-                <button type='submit' className='p-2 bg-sky-300 m-8'>
-                    Green Button
-                </button>
+                <Button onClick={handleClick} color="green">Green Zone</Button>
             </Link>
             <Link to='/patients/yellow/${patient._id}'>
-                <button type='submit' className='p-2 bg-sky-300 m-8'>
-                    Yellow Button
-                </button>
+                <Button onClick={handleClick} color="yellow">Yellow Zone</Button>
             </Link>
             <Link to='/patients/red/${patient._id}'>
-                <button type='submit' className='p-2 bg-sky-300 m-8'>
-                    Red Button
-                </button>
+                <Button onClick={handleClick} color="red">Red Zone</Button>
             </Link>
             <Link to='/patients/animations/${patient._id}'>
-                <button type='submit' className='p-2 bg-sky-300 m-8'>
-                    Animations
-                </button>
+                <Button onClick={handleClick} color="blue">Animations</Button>
             </Link>
             <Link to='/patients/games/${patient._id}'>
-                <button type='submit' className='p-2 bg-sky-300 m-8'>
-                    Games
-                </button>
+                <Button onClick={handleClick} color="blue">Games</Button>
             </Link>
             <Link to='/patients/surveys/${patient._id}'>
-                <button type='submit' className='p-2 bg-sky-300 m-8'>
-                    Surveys
-                </button>
+                <Button onClick={handleClick} color="blue">Surveys</Button>
             </Link>
             <Link to='/patients/medsheet/${patient._id}'>
-                <button type='submit' className='p-2 bg-sky-300 m-8'>
-                    Action Sheet
-                </button>
+                <Button onClick={handleClick} color="blue">Action Sheet</Button>
             </Link>
         </div>
     );
