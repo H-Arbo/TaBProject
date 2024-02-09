@@ -13,5 +13,5 @@
 <!-- make sure you have done npm i -->
 
 ## By Hayden Arbogast, Hunter Grace Fairfax, Caroline Johnson, Anna Graves, and Logan Shultz
-[For team bios, click here](link to about page)
+[For team bios, click here](aboutus.html)
 
