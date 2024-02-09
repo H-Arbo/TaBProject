@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import BackButton from '../components/BackButton';
-import { useState } from 'react'
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function Register() {
   const [data, setData] = useState({
@@ -8,9 +9,20 @@ export default function Register() {
     email: '',
     password: '',
   })
+  //TODO: put in a register/login doctor and patient
+  const registerUser = async (e) => {
+    e.preventDefault();
 
-  const registerUser = (e) => {
-    e.preventDefault()
+    const {name, email,password} = data;
+
+    try {
+      const {data} = await axios.post('/register', { //TODO '/register' is not a valid => change to docRegister & patRegister, respectively
+        name, email, password
+      })
+    } catch (error) {
+      console.log(error);
+    }
+
   }
   
 
