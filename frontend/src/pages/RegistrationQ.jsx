@@ -6,29 +6,26 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import Button from '../components/Button';
-// import logo from '../images/asthma_logo.png';
 
 
-const Front = () => {
+const RegistrationQ = () => {
     const handleClick = () => {};
     return (
+
         <div className='p-4'>
             <img src="/images/asthma_logo.png" style={{ width: '460px', height: '70px' }} />
+            <h1 className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>Registering as Doctor or Patient?</h1>
+
             <div className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Link to="/patients/home">
-                    <Button onClick={handleClick} color="darkblue">Patient Home</Button>
+                <Link to="/patients/register">
+                    <Button onClick={handleClick} color="darkblue">Patient</Button>
                 </Link>
-            </div>
-            <div className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Link to="/login">
-                    <Button onClick={handleClick} color="darkblue">Login</Button>
-                </Link>
-                <Link to="/register">
-                    <Button onClick={handleClick} color="darkblue">Regiser</Button>
+                <Link to="/doctor/register">
+                    <Button onClick={handleClick} color="darkblue">Doctor</Button>
                 </Link>
             </div>
         </div>
     )
 }
 
-export default Front
+export default RegistrationQ

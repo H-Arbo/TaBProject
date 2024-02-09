@@ -1,37 +1,41 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Button from '../components/Button';
 import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 
 
-const Home = () => {
+const DHome = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
         axios
-          .get('http://localhost:5555/patients')
-          .then((response) => {
-            setPatients(response.data.data);
-            setLoading(false);
-          })
-          .catch((error) => {
-            console.log(error);
-            setLoading(false);
-          });
-      }, []);
+            .get('http://localhost:5555/patients')
+            .then((response) => {
+                setPatients(response.data.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                setLoading(false);
+            });
+    }, []);
     return (
         <div className='p-4'>
             <div className='flex justify-between items-center'>
-                <h1 className='text-3x1 my-8'> Patients List </h1>
-                <Link to='/patients/create'>
+                <h1 className='text-3x1 my-8'> Patients List (Dr Home) </h1>
+                <Link to='/doctor/create'>
                     <MdOutlineAddBox className='text-sky-800 text-4x1' />
                 </Link>
+                <Link to='/doctor/profile/${patient._id}'>
+                    <button className='p-2 bg-sky-300 m-8'>
+                        Doctor Profile
+                    </button>
+                </Link>
             </div>
-            {loading ?  (
+            {loading ? (
                 <Loading />
             ) : (
                 <table className='w-full border-separate border-spacing-2'>
@@ -66,14 +70,11 @@ const Home = () => {
                                 </td>
                                 <td className='border border-slate-700 roundd-md text-center'>
                                     <div className='flex justify-center gap-x-4'>
-                                        <Link to={'/patients/info/${patient._id}'}>
-                                            <BsInfoCircle className='text-2x1 text-green-800'>Info</BsInfoCircle>
+                                        <Link to={'/doctor/patientInfo/${patient._id}'}>
+                                            <button className='text-2x1 text-green-800'>Patient Info</button>
                                         </Link>
-                                        <Link to={'/patients/edit/${patient._id}'}>
-                                            <AiOutlineEdit className='text-2x1 text-yellow-600' />
-                                        </Link>
-                                        <Link to={'/patients/delete/${patient._id}'}>
-                                            <MdOutlineDelete className='text-2x1 text-red-600' />
+                                        <Link to={'/doctor/message/${patient._id}'}>
+                                            <button className='text-2x1 text-red-600'> Message Patient</button>
                                         </Link>
                                     </div>
                                 </td>
@@ -86,4 +87,4 @@ const Home = () => {
     );
 };
 
-export default Home
+export default DHome
