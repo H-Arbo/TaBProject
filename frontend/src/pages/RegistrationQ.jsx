@@ -8,28 +8,30 @@ import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 // import logo from '../images/asthma_logo.png';
 
 
-const Front = () => {
+const RegistrationQ = () => {
     return(
+        
         <div className='p-4'>
+            <div>Registering as Doctor or Patient?</div>
             <img src="/images/asthma_logo.png" style={{ width: '460px', height: '70px' }} />
             <Link to="/patients/home"
                 className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit' style={{ marginLeft: "700px" }}>
                     <button >
-                    Patient Home
+                    Home
                     </button>
                 </Link>
             
             <div className='flex justify-between items-center' style={{justifyContent: 'center', alignItems: 'center'}}>
-                <Link to="/login"
+                <Link to="/patients/register"
                 className=' bg-sky-800 text-white px-20 py-20 rounded-lg w-fit'>
                     <button>
-                        Login
+                        Patient
                     </button>
                 </Link>
-                <Link to="/register"
+                <Link to="/doctor/register"
                 className=' bg-sky-800 text-white px-20 py-20 rounded-lg w-fit'>
                     <button>
-                        Register
+                        Doctor
                     </button>
                 </Link>
             </div>
@@ -37,4 +39,4 @@ const Front = () => {
     )
   }
   
-  export default Front
+  export default RegistrationQ

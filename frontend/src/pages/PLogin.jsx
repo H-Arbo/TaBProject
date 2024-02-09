@@ -1,8 +1,9 @@
 import React from 'react'
 import BackButton from '../components/BackButton';
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
-export default function Login() {
+export default function PLogin() {
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -17,7 +18,7 @@ export default function Login() {
       <BackButton />
       
       < div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
-        <h1 className='text-3xl my-4' >Login</h1>
+        <h1 className='text-3xl my-4' >Patient Login</h1>
         <form onSubmit={loginUser}>
           <label>Email</label>
           <input
@@ -36,8 +37,11 @@ export default function Login() {
             onChange={(e) => setData({...data, password: e.target.value})}
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
-          
-          <button type='submit' className='p-2 bg-sky-300 m-8'>Submit</button>
+          <Link to = '/patients/home'>
+            <button type='submit' className='p-2 bg-sky-300 m-8'>
+              Submit
+            </button>
+          </Link>
         </form>
       </div>
     </div>

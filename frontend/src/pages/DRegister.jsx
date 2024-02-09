@@ -2,8 +2,9 @@ import React from 'react';
 import BackButton from '../components/BackButton';
 import { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-export default function Register() {
+export default function DRegister() {
   const [data, setData] = useState({
     name: '',
     email: '',
@@ -31,7 +32,7 @@ export default function Register() {
       <BackButton />
       
       < div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
-        <h1 className='text-3xl my-4' >Register</h1>
+        <h1 className='text-3xl my-4' >Doctor Registration</h1>
         <form className='my-4' onSubmit={registerUser}>
           <label className='text-xl mr-4 text-gray-500'>Name</label>
           <input
@@ -59,8 +60,11 @@ export default function Register() {
             onChange={(e) => setData({...data, password: e.target.value})}
             className='border-2 border-gray-500 px-4 py-2 w-full'
           />
-          
-          <button type='submit' className='p-2 bg-sky-300 m-8'>Submit</button>
+          <Link to = '/doctor/login'>
+            <button type='submit' className='p-2 bg-sky-300 m-8'>
+              Submit
+            </button>
+          </Link>
         </form>
       </div>
     </div>

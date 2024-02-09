@@ -1,14 +1,30 @@
 //import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Front from './pages/Front';
-import Home from './pages/Home';
-import CreatePatient from './pages/CreatePatient';
+import RegistrationQ from './pages/RegistrationQ';
+import LoginQ from './pages/LoginQ';
+import PLogin from './pages/PLogin';
+import DLogin from './pages/DLogin';
+import DRegister from './pages/DRegister';
+import PRegister from './pages/PRegister';
+import DHome from './pages/DHome';
+import PHome from './pages/PHome';
+import CreatePatient from './pages/CreatePatient'
 import DeletePatient from './pages/DeletePatient';
 import EditPatient from './pages/EditPatient';
-import ShowPatient from './pages/ShowPatient';
+import EditDoctor from './pages/EditDoctor';
+import DProfile from './pages/DProfile';
+import PProfile from './pages/PProfile';
 import Navbar from './components/Navbar';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import PMeds from './pages/PMeds'
+import GreenZone from './pages/GreenZone';
+import YellowZone from './pages/YellowZone';
+import RedZone from './pages/RedZone';
+import Animations from './pages/Animations';
+import Games from './pages/Games';
+import Surveys from './pages/Surveys';
+import Medsheet from './pages/Medsheet';
+import MessagePatient from './pages/MessagePatient';
 import {Toaster } from 'react-hot-toast';
 const App = () => {
   return(
@@ -16,13 +32,29 @@ const App = () => {
     <Navbar/>
     <Routes>
       <Route path = '/' element = {<Front />} />
-      <Route path = '/register' element = {<Register />} />
-      <Route path = '/login' element = {<Login />} />
-      <Route path = '/patients/home' element = {<Home />} />
-      <Route path = '/patients/create' element = {<CreatePatient/>} />
+      <Route path = '/register' element = {<RegistrationQ />} />
+      <Route path = '/login' element = {<LoginQ />} />
+      <Route path = '/patients/login' element = {<PLogin />} />
+      <Route path = '/doctor/login' element = {<DLogin />} />
+      <Route path = '/patients/register' element = {<PRegister />} />
+      <Route path = '/doctor/register' element = {<DRegister />} />
+      <Route path = '/patients/home' element = {<PHome />} />
+      <Route path = '/doctor/home' element = {<DHome/>} />
+      <Route path = '/doctor/create' element = {<CreatePatient/>} />
       <Route path = '/patients/delete/:id' element = {<DeletePatient/>} />
+      <Route path = '/patients/profile/:id' element = {<PProfile/>} />
+      <Route path = '/doctor/profile/:id' element = {<DProfile/>} />
       <Route path = '/patients/edit/:id' element = {<EditPatient/>} />
-      <Route path = '/patients/info/:id' element = {<ShowPatient/>} />
+      <Route path = '/doctor/edit/:id' element = {<EditDoctor/>} />
+      <Route path = '/patients/green/:id' element = {<GreenZone/>} />
+      <Route path = '/patients/yellow/:id' element = {<YellowZone/>} />
+      <Route path = '/patients/red/:id' element = {<RedZone/>} />
+      <Route path = '/patients/animations/:id' element = {<Animations/>} />
+      <Route path = '/patients/games/:id' element = {<Games/>} />
+      <Route path = '/patients/surveys/:id' element = {<Surveys/>} />
+      <Route path = '/patients/medsheet/:id' element = {<Medsheet/>} />
+      <Route path = '/doctor/patientMed/:id' element = {<PMeds/>} />
+      <Route path = '/doctor/message/:id' element = {<MessagePatient/>} />
     </Routes>
     </>
   );
