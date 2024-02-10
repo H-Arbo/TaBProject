@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
+import BackButton from '../components/BackButton';
 
 
 const DHome = () => {
@@ -24,6 +25,8 @@ const DHome = () => {
     }, []);
     return (
         <div className='p-4'>
+            <BackButton/>
+            
             <div className='flex justify-between items-center'>
                 <h1 className='text-3x1 my-8'> Patients List (Dr Home) </h1>
                 <Link to='/doctor/create'>

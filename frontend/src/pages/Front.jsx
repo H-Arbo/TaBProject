@@ -24,7 +24,7 @@ const Front = () => {
                     <Button onClick={handleClick} color="darkblue">Login</Button>
                 </Link>
                 <Link to="/register">
-                    <Button onClick={handleClick} color="darkblue">Regiser</Button>
+                    <Button onClick={handleClick} color="darkblue">Register</Button>
                 </Link>
             </div>
         </div>

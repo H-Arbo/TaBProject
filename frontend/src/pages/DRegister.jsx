@@ -30,7 +30,7 @@ export default function DRegister() {
   return (
     <div className='p-4'>
       <BackButton />
-      
+  
       < div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
         <h1 className='text-3xl my-4' >Doctor Registration</h1>
         <form className='my-4' onSubmit={registerUser}>

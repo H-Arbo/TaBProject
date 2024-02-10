@@ -28,6 +28,7 @@ const PProfile = () => {
   return (
     <div className='p-4'>
       <BackButton />
+      
       <h1 className='text-3xl my-4'>Patient Profile</h1>
       {loading ? (
         <Loading />

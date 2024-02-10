@@ -6,6 +6,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import Button from '../components/Button';
+import BackButton from '../components/BackButton';
 
 
 const PHome = () => {
@@ -25,8 +26,10 @@ const PHome = () => {
                 setLoading(false);
             });
     }, []);
-    return (
-        <div className='p-4'>
+    return ( 
+        <div className='p-4'>        
+        <BackButton/>
+        
             <div className='flex justify-between items-center'>
                 <h1 className='text-3x1 my-8'> Patient Home </h1>
             </div>

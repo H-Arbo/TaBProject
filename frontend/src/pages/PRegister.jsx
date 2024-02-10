@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 export default function PRegister() {
   return (
     <div className='p-4'>
+      <BackButton/>
+      
       <div>Patient Registration</div>
 
       <Link to='/patients/login'>

@@ -6,6 +6,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import Button from '../components/Button';
+import BackButton from '../components/BackButton';
 
 
 const RegistrationQ = () => {
@@ -14,6 +15,9 @@ const RegistrationQ = () => {
 
         <div className='p-4'>
             <img src="/images/asthma_logo.png" style={{ width: '460px', height: '70px' }} />
+            
+            <BackButton/>
+
             <h1 className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>Registering as Doctor or Patient?</h1>
 
             <div className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>

@@ -48,6 +48,7 @@ const EditPatients = () => {
   return (
     <div className='p-4'>
       <BackButton />
+      
       <h1 className='text-3xl my-4'>Edit Patient</h1>
       {loading ? <Loading /> : ''}
       <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>

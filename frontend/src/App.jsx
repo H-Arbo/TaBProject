@@ -26,7 +26,7 @@ import Surveys from './pages/Surveys';
 import Medsheet from './pages/Medsheet';
 import MessagePatient from './pages/MessagePatient';
 import DPinfo from './pages/DPinfo';
-import {Toaster } from 'react-hot-toast';
+//import {Toaster } from 'react-hot-toast';
 const App = () => {
   return(
     <>

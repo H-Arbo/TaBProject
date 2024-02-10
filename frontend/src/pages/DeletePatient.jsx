@@ -25,6 +25,7 @@ const DeletePatient = () => {
     return (
         <div className= 'p-4'>
             <BackButton />
+            
             <h1 className= 'text-3x1 my-4'>Delete Patient</h1>
             {loading ? <Loading /> : ''}
             <div className= 'flex flex-col items-center border-2 border-sky-400 rounded-x1 w-[600px] p-8 mx-auto'>
