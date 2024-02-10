@@ -26,11 +26,16 @@ import Surveys from './pages/Surveys';
 import Medsheet from './pages/Medsheet';
 import MessagePatient from './pages/MessagePatient';
 import DPinfo from './pages/DPinfo';
-//import {Toaster } from 'react-hot-toast';
+import {Toaster } from 'react-hot-toast';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:5555';
+axios.defaults.withCredentials = false;
 const App = () => {
   return(
     <>
     <Navbar/>
+    <Toaster position ='top-right' toastOptions={{duration: 2500}} />
     <Routes>
       <Route path = '/' element = {<Front />} />
       <Route path = '/register' element = {<RegistrationQ />} />

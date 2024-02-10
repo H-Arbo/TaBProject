@@ -104,4 +104,5 @@ const patientSchema = mongoose.Schema(
     }
 );
 
+export default patientSchema;
 export const Patient = mongoose.model('sample_patients', patientSchema);

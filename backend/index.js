@@ -2,6 +2,7 @@ import express from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import patientsRoute from "./routes/patientsRoute.js";
+import dAuthRoutes from "./routes/dAuthRoutes.js";
 import cors from "cors";
 
 const app = express();
@@ -9,7 +10,12 @@ const app = express();
 app.use(express.json());
 
 //cors middleware
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:5173'
+}));
+
+app.use("/doctor/register", dAuthRoutes);
 
 app.use("/patients", patientsRoute);
 

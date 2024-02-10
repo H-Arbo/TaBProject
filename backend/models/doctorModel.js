@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import patientSchema from '../models/patientModel'
+import patientSchema from '../models/patientModel.js'
 
 const doctorSchema = mongoose.Schema(
     {
@@ -25,5 +25,5 @@ const doctorSchema = mongoose.Schema(
         }
     }
 );
-
+export default doctorSchema;
 export const Doctor = mongoose.model('doctors', doctorSchema);

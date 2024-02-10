@@ -1,4 +1,4 @@
-import Doctor from '../models/doctorModel.js'
+import {Doctor} from '../models/doctorModel.js'
 
 
 
@@ -39,8 +39,5 @@ const registerDoc = async (request, response) => {
     }
 }
 
-export default {
-    
-    registerDoc, 
+export default registerDoc;
 
-}
