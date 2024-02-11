@@ -1,4 +1,3 @@
-import React from 'react';
 import BackButton from '../components/BackButton';
 import { useState } from 'react';
 import axios from 'axios';
