@@ -1,6 +1,9 @@
+import express from 'express'
 import {Doctor} from '../models/doctorModel.js'
 
-
+export const test = async (request, response) => {
+    response.status(234).send("dAuthRoutes connected");
+}
 
 export const registerDoc = async (request, response) => {
     try {

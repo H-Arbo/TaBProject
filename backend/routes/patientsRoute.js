@@ -1,7 +1,7 @@
 import express from 'express';
 import { Patient} from '../models/patientModel.js';
 
-const router = express.Router();
+ const router = express.Router();
 
 // Route to save a new patient
 

@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
-import patientSchema from '../models/patientModel.js'
+import {patientSchema} from '../models/patientModel.js'
 
 const doctorSchema = mongoose.Schema(
     {
         email: {
             type: String,
-            unique: true
+            unique: true,
+            required: true,
         },
         password: {
             type: String,
@@ -17,7 +18,7 @@ const doctorSchema = mongoose.Schema(
         },
         phone:  {
             type: String,
-            required: true,
+            //required: true,
         },
         patient_list:  {
             type: [patientSchema],

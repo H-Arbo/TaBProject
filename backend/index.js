@@ -25,8 +25,9 @@ app.get("/", (request, response) => {
   return response.status(234).send("Welcome to TaB to Stop");
 });
 
+//database connection
 mongoose
-  .connect(mongoDBURL)
+  .connect(process.env.MONGDB_URL)
   .then(() => {
     console.log("App connected to database");
     app.listen(PORT, () => {

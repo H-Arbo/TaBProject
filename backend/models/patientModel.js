@@ -15,11 +15,12 @@ const medSchema = mongoose.Schema(
         }
     }
 );
-const patientSchema = mongoose.Schema(
+export const patientSchema = mongoose.Schema(
     {
         email: {
             type: String,
-            unique: true
+            unique: true,     
+            required: true,
         },
         password: {
             type: String,
@@ -104,5 +105,5 @@ const patientSchema = mongoose.Schema(
     }
 );
 
-export default patientSchema;
+
 export const Patient = mongoose.model('sample_patients', patientSchema);
