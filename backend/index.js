@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import patientsRoute from "./routes/patientsRoute.js";
 import dAuthRoutes from "./routes/dAuthRoutes.js";
 import cors from "cors";
+import dotenv from "dotenv/config.js"
 
 const app = express();
 //middleware for parsing request body

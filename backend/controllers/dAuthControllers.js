@@ -2,7 +2,7 @@ import {Doctor} from '../models/doctorModel.js'
 
 
 
-const registerDoc = async (request, response) => {
+export const registerDoc = async (request, response) => {
     try {
         const {name, email, password} = request.body;
         // check name
@@ -39,5 +39,5 @@ const registerDoc = async (request, response) => {
     }
 }
 
-export default registerDoc;
+
 
