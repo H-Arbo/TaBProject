@@ -1,7 +1,7 @@
 import BackButton from '../components/BackButton';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 export default function DLogin() {
 
   const [data, setData] = useState({
@@ -10,7 +10,7 @@ export default function DLogin() {
   })
   const docLogin = (e) => {
     e.preventDefault();
-
+    axios.get('/doctor/login')
   }
 
   return (

@@ -30,7 +30,7 @@ import {Toaster } from 'react-hot-toast';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:5555';
-axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
 const App = () => {
   return(
     <>
