@@ -1,16 +1,34 @@
 import BackButton from '../components/BackButton';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-export default function DLogin() {
+import toast from 'react-hot-toast'
 
+
+export default function DLogin() {
+  const nav = useNavigate();
   const [data, setData] = useState({
     email: '',
     password: '',
   })
-  const docLogin = (e) => {
+  const docLogin = async (e) => {
     e.preventDefault();
-    axios.get('/doctor/login')
+    const {email, password} = data
+    try {
+      const {data} = await axios.post('/doctor/login', {
+        email,
+        password
+      });
+
+      if(data.error){
+        toast.error(data.error);
+      }else{
+        setData({})
+        nav('/doctor/home');
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

@@ -1,5 +1,6 @@
 import express from 'express'
 import {Doctor} from '../models/doctorModel.js'
+import { hashPassword, comparePassword } from '../helpers/auth.js';
 
 export const test = async (request, response) => {
     response.status(234).send("dAuthRoutes connected");
@@ -28,11 +29,12 @@ export const registerDoc = async (request, response) => {
                 error: 'account already exists for this email'
             })
         }
+        const hashedPass = await hashPassword(password);
 
         const newDoctor = await Doctor.create({
             email,
             name,
-            password
+            password: hashedPass,
         })
         return response.json(newDoctor);
 
@@ -42,5 +44,25 @@ export const registerDoc = async (request, response) => {
     }
 }
 
+export const loginDoc = async (request, response) =>{
+    try {
+        const {email, password} = request.body;
 
+        //check for user existence
+        const doc = await Doctor.findOne({email});
+        if(!doc){
+            return response.json({
+                error: 'No doctor found'
+            })
+        }
+
+        //check password
+        const passCheck = await comparePassword(password, doc.password);
+        if(passCheck){
+            return response.json("password compare successful");
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
 

@@ -16,7 +16,7 @@ app.use(cors({
   origin: 'http://localhost:5173'
 }));
 
-app.use("/doctor/register", dAuthRoutes);
+app.use("/doctor/", dAuthRoutes);
 
 app.use("/patients", patientsRoute);
 
