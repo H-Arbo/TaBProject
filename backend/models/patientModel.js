@@ -30,10 +30,10 @@ export const patientSchema = mongoose.Schema(
             type: Number,
             required: true,
         },
-        date: {
-            type: String,
-            required: true,
-        },
+        // date: {
+        //     type: String,
+        //     required: true,
+        // },
         ec_cell: {
             type: String,
             required: true,
