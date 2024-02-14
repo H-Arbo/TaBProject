@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Button from './Button'
 
 export default function Navbar() {
+  const handleClick = () => { };
   return (
     <nav>
       <div className='flex'>
@@ -14,6 +16,8 @@ export default function Navbar() {
         <Link to={'/doctor/register'} className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit'>Doctor Registration</Link>
         <Link to={'/patients/home'} className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit'>Patient Home</Link>
         <Link to={'/doctor/home'} className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit'>Doctor Home</Link>
+        
+        <Link to='/resources'> <Button onClick={handleClick} color="darkblue">Resources</Button> </Link>
       </div>
     </nav>
   )

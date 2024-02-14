@@ -7,13 +7,26 @@ import { Link } from 'react-router-dom';
 
 const Resources = () => {
     return (
-        <div>
-        <Link to="https://nursing.ua.edu/"
-                className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit' style={{ marginLeft: "700px" }}>
+        <div className='p-4'>
+            <h1>Click the links below to learn more!</h1>
+            <div className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Link to="https://nursing.ua.edu/"
+                    className='px-4 py-1 rounded-lg w-fit'>
+                    <img src="/images/asthma_logo.png" style={{ width: '550px', height: '100px' }}></img>
                     <button >
-                    Capstone College of Nursing
+                        American Academy of Allergy Asthma & Immunology
                     </button>
-                </Link>    
+                </Link>
+
+
+                <Link to="https://nursing.ua.edu/"
+                    className='px-4 py-1 rounded-lg w-fit'>
+                    <img src="/images/nursing_logo.jpg" style={{ width: '460px', height: '200px' }} />
+                    <button >
+                        Capstone College of Nursing
+                    </button>
+                </Link>
+            </div>
         </div>
     )
 }
