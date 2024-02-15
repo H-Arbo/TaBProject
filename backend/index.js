@@ -5,6 +5,7 @@ import patientsRoute from "./routes/patientsRoute.js";
 import dAuthRoutes from "./routes/dAuthRoutes.js";
 import pAuthRoutes from "./routes/pAuthRoutes.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv/config.js"
 
 const app = express();
@@ -17,6 +18,9 @@ app.use(cors({
   origin: 'http://localhost:5173'
 }));
 
+app.use(cookieParser());
+
+app.use(express.urlencoded({extended: false}))
 app.use("/doctor/", dAuthRoutes);
 
 app.use("/patient/", pAuthRoutes);
