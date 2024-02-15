@@ -52,7 +52,7 @@ export const loginDoc = async (request, response) =>{
         const doc = await Doctor.findOne({email});
         if(!doc){
             return response.json({
-                error: 'No doctor found'
+                error: "Incorrect email or password"
             })
         }
 
@@ -61,6 +61,12 @@ export const loginDoc = async (request, response) =>{
         if(passCheck){
             return response.json("password compare successful");
         }
+        if(!passCheck){
+            return response.json({
+                error: "Incorrect email or password"
+            })
+        }
+        // return response.json("something's wrong " + doc.password);
     } catch (error) {
         console.log(error)
     }

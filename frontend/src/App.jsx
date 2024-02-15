@@ -38,7 +38,7 @@ const App = () => {
   return(
     <>
     <Navbar/>
-    <Toaster position ='top-right' toastOptions={{duration: 2500}} />
+    <Toaster position = 'bottom-center' toastOptions={{duration: 2500}} />
     <Routes>
       <Route path = '/' element = {<Front />} />
       <Route path = '/register' element = {<RegistrationQ />} />
