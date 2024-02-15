@@ -21,7 +21,7 @@ app.use("/doctor/", dAuthRoutes);
 
 app.use("/patient/", pAuthRoutes);
 
-// app.use("/patients", patientsRoute);
+app.use("/patients", patientsRoute);
 
 app.get("/", (request, response) => {
   console.log(request);

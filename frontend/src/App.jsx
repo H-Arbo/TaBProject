@@ -29,6 +29,7 @@ import DPinfo from './pages/DPinfo';
 import {Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import Resources from './pages/Resources';
+import DAlerts from './pages/DAlerts';
 
 
 axios.defaults.baseURL = 'http://localhost:5555';
@@ -66,6 +67,7 @@ const App = () => {
       <Route path = '/patients/medsheet/:id' element = {<Medsheet/>} />
       <Route path = '/doctor/message/:id' element = {<MessagePatient/>} />
       <Route path = '/resources' element = {<Resources/>} />
+      <Route path = '/doctor/alerts/:id' element = {<DAlerts/>} />
     </Routes>
     </>
   );
