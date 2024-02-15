@@ -12,7 +12,7 @@ const Front = () => {
         <div className='p-4'>
             
             <div className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Link to="/patients/home">
+                {/* <Link to="/patients/home">
                     <Button onClick={handleClick} color="darkblue">Patient Home</Button>
                     <Link to="/patients/home"
                         className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit' style={{ marginLeft: "700px" }}>
@@ -20,7 +20,7 @@ const Front = () => {
                             Home
                         </button>
                     </Link>
-                </Link>
+                </Link> */}
             </div>
             <div className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <div className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>

@@ -6,20 +6,22 @@ import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
 
 const DProfile = () => {
-  const [patient, setPatients] = useState([]);
+  const [doctor, setDoctor] = useState({});
   const [loading, setLoading] = useState(false);
+  const { id } = useParams();
+
   useEffect(() => {
-      setLoading(true);
-      axios
-          .get('http://localhost:5555/patients')
-          .then((response) => {
-              setPatients(response.data.data);
-              setLoading(false);
-          })
-          .catch((error) => {
-              console.log(error);
-              setLoading(false);
-          });
+    setLoading(true);
+    axios
+      .get(`http://localhost:5555/doctor/${id}`)
+      .then((response) => {
+        setDoctor(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   }, []);
 
   return (
