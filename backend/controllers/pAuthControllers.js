@@ -1,5 +1,5 @@
 import express from 'express'
-import {Patient} from '../models/patientModel.js.js'
+import {Patient} from '../models/patientModel.js'
 import { hashPassword, comparePassword } from '../helpers/auth.js';
 
 export const test = async (request, response) => {
@@ -8,7 +8,7 @@ export const test = async (request, response) => {
 
 export const registerPatient = async (request, response) => {
     try {
-        const {name, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email} = request.body;
+        const {name, age, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email} = request.body;
         // check name
         if(!name){
             return response.json({
@@ -30,6 +30,54 @@ export const registerPatient = async (request, response) => {
             })
         }
         const hashedPass = await hashPassword(password);
+
+        if(!age){
+            return response.json({
+                error: 'Age required'
+            })
+        };
+
+        if(!prim_emergency_contact){
+            return response.json({
+                error: 'Primary Caregiver required'
+            })
+        };
+
+        if(!prim_ec_cell){
+            return response.json({
+                error: 'Primary Caregiver Cell Number required'
+            })
+        };
+
+        if(!prim_ec_relationship){
+            return response.json({
+                error: 'Primary Caregiver Relation required'
+            })
+        };
+
+        if(!sec_emergency_contact){
+            return response.json({
+                error: 'Secondary Caregiver required'
+            })
+        };
+
+        if(!sec_ec_cell){
+            return response.json({
+                error: 'Secondary Caregiver Cell Number required'
+            })
+        };
+
+        if(!sec_ec_relationship){
+            return response.json({
+                error: 'Secondary Caregiver Relation required'
+            })
+        };
+
+        if(!provider_email){
+            return response.json({
+                error: 'Provider Email required'
+            })
+        };
 
         const newPatient = await Patient.create({
             email,

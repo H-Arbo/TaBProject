@@ -28,7 +28,7 @@ export const patientSchema = mongoose.Schema(
         },
         age: {
             type: Number,
-            required: true,
+            // required: true,
         },
         prim_ec_cell: {
             type: String,
@@ -40,7 +40,7 @@ export const patientSchema = mongoose.Schema(
         },
         prim_ec_work: {
             type: String,
-            required: true,
+            // required: true,
         },
         prim_emergency_contact: {
             type: String,
@@ -56,7 +56,7 @@ export const patientSchema = mongoose.Schema(
         },
         sec_ec_work: {
             type: String,
-            required: true,
+            // required: true,
         },
         sec_emergency_contact: {
             type: String,
@@ -64,15 +64,15 @@ export const patientSchema = mongoose.Schema(
         },
         gz_meds: {
             type: [medSchema],
-            required: true,
+            // required: true,
         },
         gz_peak_flow_max: {
             type: Number,
-            required: true,
+            // required: true,
         },
         gz_peak_flow_min: {
             type: Number,
-            reuired: true,
+            // reuired: true,
         },
         name: {
             type: String,
@@ -80,15 +80,15 @@ export const patientSchema = mongoose.Schema(
         },
         pr_peak_flow: {
             type: Number,
-            required: true,
+            // required: true,
         },
         provider:  {
             type: String,
-            required: true,
+            // required: true,
         },
         provider_phone:  {
             type: String,
-            required: true,
+            // required: true,
         },
         provider_email:  {
             type: String,
@@ -96,27 +96,27 @@ export const patientSchema = mongoose.Schema(
         },
         rz_meds:  {
             type: [medSchema],
-            required: true,
+            // required: true,
         },
         rz_peak_flow_max: {
             type: Number,
-            required: true,
+            // required: true,
         },
         yz_comment:  {
             type: String,
-            required: true,
+            // required: true,
         },
         yz_meds:  {
             type: [medSchema],
-            required: true,
+            // required: true,
         },
         yz_peak_flow_max:  {
             type: Number,
-            required: true,
+            // required: true,
         },
         yz_peak_flow_min:  {
             type: Number,
-            required: true,
+            // required: true,
         }
     }
 );

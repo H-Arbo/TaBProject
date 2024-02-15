@@ -1,5 +1,5 @@
 import express from 'express';
-import {registerPatient,loginPatient, test} from '../controllers/pAuthControllers';
+import {registerPatient,loginPatient, test} from '../controllers/pAuthControllers.js';
 import cors from 'cors';
 
 const router = express.Router();

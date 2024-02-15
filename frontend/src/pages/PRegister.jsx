@@ -2,12 +2,13 @@ import BackButton from '../components/BackButton';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import {toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
 export default function PRegister() {
   const nav = useNavigate();
   const [data, setData] = useState({
     name: '',
+    age: '',
     email: '',
     password: '',
     prim_emergency_contact: '',
@@ -24,11 +25,11 @@ export default function PRegister() {
   const patientRegister = async (e) => {
     e.preventDefault();
 
-    const { name, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email } = data;
+    const { name, age, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email } = data;
 
     try {
-      const {data} = await axios.post('/patients/register', { //TODO '/register' is not a valid => change to docRegister & patRegister, respectively
-        name, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email
+      const { data } = await axios.post('/patient/register', { //TODO '/register' is not a valid => change to docRegister & patRegister, respectively
+        name, age, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email
       })
 
       if (data.error) {
@@ -56,9 +57,18 @@ export default function PRegister() {
           <label className='text-xl mr-4 text-gray-500'>Patient Name</label>
           <input
             type='text'
-            placeholder='Enter name'
+            placeholder='Enter Name'
             value={data.name}
             onChange={(e) => setData({ ...data, name: e.target.value })}
+            className='border-2 border-gray-500 px-4 py-2 w-full'
+          />
+
+          <label className='text-xl mr-4 text-gray-500'>Patient Age</label>
+          <input
+            type='text'
+            placeholder='Enter Age'
+            value={data.age}
+            onChange={(e) => setData({ ...data, age: e.target.value })}
             className='border-2 border-gray-500 px-4 py-2 w-full'
           />
 
@@ -149,6 +159,15 @@ export default function PRegister() {
             placeholder='Enter Relation'
             value={data.sec_ec_relationship}
             onChange={(e) => setData({ ...data, sec_ec_relationship: e.target.value })}
+            className='border-2 border-gray-500 px-4 py-2 w-full'
+          />
+
+          <label className='text-xl mr-4 text-gray-500'>Provider Email</label>
+          <input
+            type='email'
+            placeholder='Enter email'
+            value={data.provider_email}
+            onChange={(e) => setData({ ...data, provider_email: e.target.value })}
             className='border-2 border-gray-500 px-4 py-2 w-full'
           />
 
