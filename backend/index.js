@@ -3,6 +3,7 @@ import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import patientsRoute from "./routes/patientsRoute.js";
 import dAuthRoutes from "./routes/dAuthRoutes.js";
+import pAuthRoutes from "./routes/pAuthRoutes.js";
 import cors from "cors";
 import dotenv from "dotenv/config.js"
 
@@ -18,7 +19,9 @@ app.use(cors({
 
 app.use("/doctor/", dAuthRoutes);
 
-app.use("/patients", patientsRoute);
+app.use("/patient/", pAuthRoutes);
+
+// app.use("/patients", patientsRoute);
 
 app.get("/", (request, response) => {
   console.log(request);

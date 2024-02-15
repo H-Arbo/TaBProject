@@ -30,23 +30,35 @@ export const patientSchema = mongoose.Schema(
             type: Number,
             required: true,
         },
-        // date: {
-        //     type: String,
-        //     required: true,
-        // },
-        ec_cell: {
+        prim_ec_cell: {
             type: String,
             required: true,
         },
-        ec_relationship: {
+        prim_ec_relationship: {
             type: String,
             required: true,
         },
-        ec_work: {
+        prim_ec_work: {
             type: String,
             required: true,
         },
-        emergency_contact: {
+        prim_emergency_contact: {
+            type: String,
+            required: true,
+        },
+        sec_ec_cell: {
+            type: String,
+            required: true,
+        },
+        sec_ec_relationship: {
+            type: String,
+            required: true,
+        },
+        sec_ec_work: {
+            type: String,
+            required: true,
+        },
+        sec_emergency_contact: {
             type: String,
             required: true,
         },
@@ -75,6 +87,10 @@ export const patientSchema = mongoose.Schema(
             required: true,
         },
         provider_phone:  {
+            type: String,
+            required: true,
+        },
+        provider_email:  {
             type: String,
             required: true,
         },

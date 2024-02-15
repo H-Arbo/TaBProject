@@ -13,16 +13,16 @@ export default function DLogin() {
   })
   const docLogin = async (e) => {
     e.preventDefault();
-    const {email, password} = data
+    const { email, password } = data
     try {
-      const {data} = await axios.post('/doctor/login', {
+      const { data } = await axios.post('/doctor/login', {
         email,
         password
       });
 
-      if(data.error){
+      if (data.error) {
         toast.error(data.error);
-      }else{
+      } else {
         setData({})
         nav('/doctor/home');
       }
@@ -35,21 +35,25 @@ export default function DLogin() {
     <div className='p-4'>
       <BackButton />
 
-      {/* <div>Doctor Login</div>
-          <Link to = '/doctor/home'>
-            <button type='submit' className='p-2 bg-sky-300 m-8'>
-              Submit
-            </button>
-          </Link> */}
-      <form onSubmit={docLogin}>
-        <label>Email</label>
-        <input type='email' placeholder='Enter email' value={data.email}
-          onChange={(e) => setData({ ...data, email: e.target.value })} />
-        <label>Password</label>
-        <input type='password' placeholder='Enter password' value = {data.password}
-            onChange={(e) => setData({...data, password: e.target.value})} />
-        <button type='submit'>Login</button>
-      </form>
+      < div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
+        <h1 className='text-3xl my-4' >Doctor Login</h1>
+        <form onSubmit={docLogin}>
+          <label>Email</label>
+          <input type='email' placeholder='Enter email' value={data.email}
+            onChange={(e) => setData({ ...data, email: e.target.value })}
+            className='border-2 border-gray-500 px-4 py-2  w-full ' />
+
+
+          <label>Password</label>
+          <input type='password' placeholder='Enter password' value={data.password}
+            onChange={(e) => setData({ ...data, password: e.target.value })}
+            className='border-2 border-gray-500 px-4 py-2  w-full ' />
+
+          <button type='submit' className='p-2 bg-sky-300 m-8'>
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
