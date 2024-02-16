@@ -30,13 +30,13 @@ import {Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import Resources from './pages/Resources';
 import DAlerts from './pages/DAlerts';
-
+import { UserContextProvider } from '../context/userContext';
 
 axios.defaults.baseURL = 'http://localhost:5555';
 axios.defaults.withCredentials = true;
 const App = () => {
   return(
-    <>
+    <UserContextProvider>
     <Navbar/>
     <Toaster position = 'bottom-center' toastOptions={{duration: 2500}} />
     <Routes>
@@ -69,7 +69,7 @@ const App = () => {
       <Route path = '/resources' element = {<Resources/>} />
       <Route path = '/doctor/alerts/:id' element = {<DAlerts/>} />
     </Routes>
-    </>
+    </UserContextProvider>
   );
 };
 export default App
