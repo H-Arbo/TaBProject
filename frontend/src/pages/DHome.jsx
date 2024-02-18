@@ -82,6 +82,9 @@ const DHome = () => {
                                         <Link to={'/doctor/message/${patient._id}'}>
                                             <button className='text-2x1 text-red-600'> Message Patient</button>
                                         </Link>
+                                        <Link to={'/patients/delete/${patient._id}'}>
+                                            <MdOutlineDelete className='text-2x1 text-red-600' />
+                                        </Link>
                                     </div>
                                 </td>
                             </tr>

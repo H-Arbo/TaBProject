@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { BsInfoCircle } from 'react-icons/bs';
-import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import Button from '../components/Button';
 import BackButton from '../components/BackButton';
 
@@ -72,9 +69,7 @@ const PHome = () => {
                                         <Link to={'/patients/profile/${patients._id}'}>
                                             <button className='text-2x1 text-green-800'>Patient Profile</button>
                                         </Link>
-                                        <Link to={'/patients/delete/${patient._id}'}>
-                                            <MdOutlineDelete className='text-2x1 text-red-600' />
-                                        </Link>
+                                        
                                     </div>
                                 </td>
                             </tr>
