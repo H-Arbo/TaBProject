@@ -9,7 +9,7 @@ import BackButton from '../components/BackButton';
 const PHome = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
-    const handleClick = () => {};
+    const handleClick = () => { };
     useEffect(() => {
         setLoading(true);
         axios
@@ -23,10 +23,10 @@ const PHome = () => {
                 setLoading(false);
             });
     }, []);
-    return ( 
-        <div className='p-4'>        
-        <BackButton/>
-        
+    return (
+        <div className='p-4'>
+            <BackButton />
+
             <div className='flex justify-between items-center'>
                 <h1 className='text-3x1 my-8'> Patient Home </h1>
             </div>
@@ -69,7 +69,7 @@ const PHome = () => {
                                         <Link to={'/patients/profile/${patients._id}'}>
                                             <button className='text-2x1 text-green-800'>Patient Profile</button>
                                         </Link>
-                                        
+
                                     </div>
                                 </td>
                             </tr>
@@ -79,28 +79,52 @@ const PHome = () => {
             )}
 
 
+            <div className='flex justify-between items-center'>
 
-            <Link to='/patients/green/${patient._id}'>
-                <Button onClick={handleClick} color="green">Green Zone</Button>
-            </Link>
-            <Link to='/patients/yellow/${patient._id}'>
-                <Button onClick={handleClick} color="yellow">Yellow Zone</Button>
-            </Link>
-            <Link to='/patients/red/${patient._id}'>
-                <Button onClick={handleClick} color="red">Red Zone</Button>
-            </Link>
-            <Link to='/patients/animations/${patient._id}'>
-                <Button onClick={handleClick} color="blue">Animations</Button>
-            </Link>
-            <Link to='/patients/games/${patient._id}'>
-                <Button onClick={handleClick} color="blue">Games</Button>
-            </Link>
-            <Link to='/patients/surveys/${patient._id}'>
-                <Button onClick={handleClick} color="blue">Surveys</Button>
-            </Link>
-            <Link to='/patients/medsheet/${patient._id}'>
-                <Button onClick={handleClick} color="blue">Action Sheet</Button>
-            </Link>
+                <Link to='/patients/green/${patient._id}'>
+                    <Button onClick={handleClick} color="green">
+                        Green Zone - Doing Well
+                        No coughing, wheezing, chest tightness, or difficulty breathing.
+                        Can work, play, exercise, perform usual activities without symptoms.
+                        OR
+                        Peak flow x to y (80% to 100% of personal best).
+                    </Button>
+                </Link>
+                <Link to='/patients/yellow/${patient._id}'>
+                    <Button onClick={handleClick} color="yellow">
+                        Yellow Zone - Caution/Getting Worse
+                        Coughing, wheezing, chest tightness, or difficulty breathing.
+                        Symptoms with daily activities, work, play, and exercise.
+                        Nighttime awakenings with sympotoms.
+                        OR
+                        Peak flow x to y (50% to 80% of personal best).
+                    </Button>
+                </Link>
+                <Link to='/patients/red/${patient._id}'>
+                    <Button onClick={handleClick} color="red">
+                        Red Zone - Alert
+                        Difficulty with breathing, coughing, wheezing, not helping with medications.
+                        Trouble waling or talking due to asthma symptoms.
+                        Not responding to quick relief medications
+                        OR 
+                        Peak flow is less than x (50% of personal best).
+                    </Button>
+                </Link>
+            </div>
+            <div className='flex justify-between items-center'>
+                <Link to='/patients/animations/${patient._id}'>
+                    <Button onClick={handleClick} color="blue">Animations</Button>
+                </Link>
+                <Link to='/patients/games/${patient._id}'>
+                    <Button onClick={handleClick} color="blue">Games</Button>
+                </Link>
+                <Link to='/patients/surveys/${patient._id}'>
+                    <Button onClick={handleClick} color="blue">Surveys</Button>
+                </Link>
+                <Link to='/patients/medsheet/${patient._id}'>
+                    <Button onClick={handleClick} color="blue">Action Sheet</Button>
+                </Link>
+            </div>
         </div>
     );
 

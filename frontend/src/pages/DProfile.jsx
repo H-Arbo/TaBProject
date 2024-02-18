@@ -35,19 +35,19 @@ const DProfile = () => {
         <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Id</span>
-            <span>{patient._id}</span>
+            <span>{doctor._id}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Name</span>
-            <span>{patient.name}</span>
+            <span>{doctor.name}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Age</span>
-            <span>{patient.age}</span>
+            <span>{doctor.age}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Emergency Contact</span>
-            <span>{patient.ec}</span>
+            <span>{doctor.ec}</span>
           </div>
 
           <Link to={'/doctor/edit/${patient._id}'}>

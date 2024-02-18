@@ -25,7 +25,10 @@ export const test = async (request, response) => {
 
 
 export const registerDoc = async (request, response) => {
-  try {
+  const containsNumberRegex = /\d/;
+    const containsCapitalRegex = /[A-Z]/;
+    const containsEmojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
+    try {
     const { name, email, password } = request.body;
     // check name
     if (!name) {
@@ -34,11 +37,31 @@ export const registerDoc = async (request, response) => {
       });
     }
     //check password: no password or password length is < 8 characters
-    if (!password || password.length < 8) {
+    if (!password) {
       return response.json({
-        error: "password required (min 8 characters)",
-      });
+        error: 'Password required (Must be at least 8 characters, contain no emojis, and include at least one number and one uppercase letter.)'
+      })
     }
+    else if (password.length < 8) {
+      return response.json({
+        error: 'Password must be at least 8 characters.'
+      })
+    }
+    else if (!containsNumberRegex.test(password)) {
+      return response.json({
+        error: 'Password must include at least one number.'
+      })
+    }
+    else if (!containsCapitalRegex.test(password)) {
+      return response.json({
+        error: 'Password must contain at least one uppercase letter.'
+      })
+    }
+    else if (containsEmojiRegex.test(password)) {
+      return response.json({
+        error: 'Password may not contain emojis.'
+      })
+    };
     //check if email is new
     const existEmail = await Doctor.findOne({ email });
 
@@ -79,15 +102,15 @@ export const loginDoc = async (request, response) => {
       //return response.json("password compare successful");
       jwt.sign({ email: doc.email, id: doc._id, name: doc.name }, process.env.JWT_STRING, {}, (error, token) => {
         if (error) {
-            throw error;
+          throw error;
         }
-          response.cookie("token", token).json(doc);
+        response.cookie("token", token).json(doc);
 
 
       })
-        
-    
-      
+
+
+
     }
     if (!passCheck) {
       return response.json({
