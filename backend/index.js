@@ -7,6 +7,7 @@ import pAuthRoutes from "./routes/pAuthRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv/config.js"
+import jwt from "jsonwebtoken";
 
 const app = express();
 //middleware for parsing request body
@@ -15,7 +16,7 @@ app.use(express.json());
 //cors middleware
 app.use(cors({
   credentials: true,
-  origin: 'https://localhost:5173'
+  origin: 'http://localhost:5173'
 }));
 
 app.use(cookieParser());
@@ -26,6 +27,20 @@ app.use("/doctor/", dAuthRoutes);
 app.use("/patient/", pAuthRoutes);
 
 app.use("/patients", patientsRoute);
+app.get( "/profile", (request, response) => {
+  const {token} = request.cookies
+
+  if(token){
+    jwt.verify(token, process.env.JWT_STRING, {}, (error, user) => {
+      if(error) throw error;
+      response.json(user);
+    })
+  }else{
+    response.json(null);
+  }
+});
+
+
 
 app.get("/", (request, response) => {
   console.log(request);

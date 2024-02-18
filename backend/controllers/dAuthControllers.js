@@ -2,9 +2,27 @@ import express from "express";
 import { Doctor } from "../models/doctorModel.js";
 import { hashPassword, comparePassword } from "../helpers/auth.js";
 import jwt from "jsonwebtoken";
+
+
+
 export const test = async (request, response) => {
   response.status(234).send("dAuthRoutes connected");
 };
+
+export const getDoc = async (request, response) => {
+  const {token} = request.cookie
+
+  if(token){
+    jwt.verify(token, process.env.JWT_STRING, {}, (error, user) => {
+      if(error) throw error;
+      response.json(user);
+    })
+  }else{
+    response.json(null);
+  }
+}
+
+
 
 export const registerDoc = async (request, response) => {
   try {
