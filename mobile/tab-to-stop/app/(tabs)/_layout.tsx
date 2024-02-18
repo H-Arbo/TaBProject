@@ -29,7 +29,17 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          //Change header style
           title: 'Tab to Stop 1',
+          headerStyle: {
+            backgroundColor: '#D2EBDE',
+          },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+
+          //Bottom tab bar and icon options
+          tabBarStyle: { backgroundColor: '#D2EBDE' },
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -50,8 +60,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="two"
         options={{
-          title: 'Tab to Stop 2',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerShown: false
         }}
       />
     </Tabs>

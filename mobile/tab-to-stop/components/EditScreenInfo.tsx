@@ -49,7 +49,8 @@ export default function EditScreenInfo({ path }: { path: string }) {
 const styles = StyleSheet.create({
   getStartedContainer: {
     alignItems: 'center',
-    marginHorizontal: 50,
+    marginHorizontal: 0,
+    backgroundColor: '#38A3A5',
   },
   homeScreenFilename: {
     marginVertical: 7,

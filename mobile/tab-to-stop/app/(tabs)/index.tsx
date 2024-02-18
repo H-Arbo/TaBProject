@@ -10,16 +10,29 @@ const imageHeight = dimensions.height;
 export default function TabOneScreen() {
   return (
     <ScrollView>
+      
+      
+
       <View style={styles.container}>
-        <Image
-        style={{height: imageHeight, width: imageWidth}}
-        resizeMode="contain"
-        source={require('/workspace/TaBProject/mobile/tab-to-stop/assets/images/nursing_logo.jpg')}
+
+
+        <Image style={ styles.logo } 
+          resizeMode="contain"
+          source={require('/workspace/TaBProject/mobile/tab-to-stop/assets/images/tab.png')}
         />
-        <Text style={styles.title}>Tab 1</Text>
+
+        <View style={styles.text}>
+          <Text style={styles.title}>Tab 1</Text>
+        </View>
+
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+
         <EditScreenInfo path="app/(tabs)/index.tsx" />
+
       </View>
+    
+    
+    
     </ScrollView>
   );
 }
@@ -28,22 +41,31 @@ export default function TabOneScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    padding: 20,
+    backgroundColor: '#38A3A5'
+  },
+  contentContainer: {
+    flex: 1
+  },
+  text: {
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#38A3A5'
   },
   title: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 10,
     height: 1,
-    width: '80%',
+    width: '100%',
   },
   logo: {
-    width: 400,
-    height: 200,
+    height: imageHeight,
+    width: imageWidth,
+    alignSelf: 'center',
+    top: -300,
   },
   row: {
     flexDirection: 'row',
