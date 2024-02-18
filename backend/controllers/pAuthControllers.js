@@ -137,12 +137,24 @@ export const loginPatient = async (request, response) => {
         }
 
         //check password
-        const passCheck = await comparePassword(password, patient.password);
-        if (passCheck) {
-            return response.json("password compare successful");
+    const passCheck = await comparePassword(password, patient.password);
+    if (passCheck) {
+      //return response.json("password compare successful");
+      jwt.sign({ email: patient.email, id: patient._id, name: patient.name }, process.env.JWT_STRING, {}, (error, token) => {
+        if (error) {
+          throw error;
         }
-    } catch (error) {
-        console.log(error)
+        response.cookie("token", token).json(doc);
+      })
     }
+    if (!passCheck) {
+      return response.json({
+        error: "Incorrect email or password",
+      });
+    }
+    // return response.json("something's wrong " + doc.password);
+  } catch (error) {
+    console.log(error);
+  }
 }
 

@@ -111,7 +111,7 @@ const PHome = () => {
                     </Button>
                 </Link>
             </div>
-            <div className='flex justify-between items-center'>
+            <div className='flex justify-between items-center p-4'>
                 <Link to='/patients/animations/${patient._id}'>
                     <Button onClick={handleClick} color="blue">Animations</Button>
                 </Link>
