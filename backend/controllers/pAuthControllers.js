@@ -19,9 +19,14 @@ export const registerPatient = async (request, response) => {
             })
         };
         //check password: no password or password length is < 8 characters
-        if (!password || password.length < 8) {
+        if (!password) {
             return response.json({
                 error: 'Password required (Must be at least 8 characters, contain no emojis, and include at least one number and one uppercase letter.)'
+            })
+        }
+        else if (password.length < 8) {
+            return response.json({
+                error: 'Password must be at least 8 characters.'
             })
         }
         else if (!containsNumberRegex.test(password)) {
