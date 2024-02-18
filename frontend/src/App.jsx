@@ -32,7 +32,7 @@ import Resources from './pages/Resources';
 import DAlerts from './pages/DAlerts';
 import { UserContextProvider } from '../context/userContext';
 
-axios.defaults.baseURL = 'http://localhost:5555';
+axios.defaults.baseURL = 'https://localhost:5555';
 axios.defaults.withCredentials = true;
 const App = () => {
   return(

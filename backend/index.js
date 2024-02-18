@@ -15,7 +15,7 @@ app.use(express.json());
 //cors middleware
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:5173'
+  origin: 'https://localhost:5173'
 }));
 
 app.use(cookieParser());
