@@ -3,37 +3,38 @@ import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { response } from 'express';
 
-const EditPatients = () => {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-  const [emergency_contact, setEmergencyContact] = useState('');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+function EditPatients () {
+  const [data, setData] = useState({
+    id: id,
+    name: '',
+    age: '',
+    emergency_contact: ''
+  })
+
   const {id} = useParams();
+
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5555/patients/${id}`)
-    .then((response) => {
-      setAge(response.data.age);
-      setEmergencyContact(response.data.emergency_contact)
-      setName(response.data.name)
+    axios.get(`http://localhost:5555/patients/` + id)
+    .then(response => {
+      setData({...data, name: response.data.name, age: response.data.age, emergency_contact: response.data.emergency_contact})
       setLoading(false);
-    }).catch((error) => {
+    })
+    .catch((error) => {
       setLoading(false);
       alert('Error occured.');
       console.log(error);
     });
   }, [])
-  const handleEditPatient = () => {
-    const data = {
-      name,
-      age,
-      emergency_contact,
-    };
+
+  const navigate = useNavigate()
+
+  const handleEditPatient = (e) => {
+    e.preventDefault();
     setLoading(true);
-    axios
-      .put(`http://localhost:5555/patients/${id}`, data)
+    axios.put(`http://localhost:5555/patients/` + id, data)
       .then(() => {
         setLoading(false);
         navigate('/');
@@ -56,8 +57,8 @@ const EditPatients = () => {
           <label className='text-xl mr-4 text-gray-500'>Name</label>
           <input
             type='text'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={data.name}
+            onChange={(e) => setData({...data, name: e.target.value})}
             className='border-2 border-gray-500 px-4 py-2 w-full'
           />
         </div>
@@ -65,8 +66,8 @@ const EditPatients = () => {
           <label className='text-xl mr-4 text-gray-500'>Age</label>
           <input
             type='number'
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
+            value={data.age}
+            onChange={(e) => setData({...data, age: e.target.value})}
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
         </div>
@@ -74,8 +75,8 @@ const EditPatients = () => {
           <label className='text-xl mr-4 text-gray-500'>Emergency Contact</label>
           <input
             type='text'
-            value={emergency_contact}
-            onChange={(e) => setEmergencyContact(e.target.value)}
+            value={data.emergency_contact}
+            onChange={(e) => setData({...data, emergency_contact: e.target.value})}
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
         </div>
