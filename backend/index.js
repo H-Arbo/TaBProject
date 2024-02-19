@@ -36,7 +36,7 @@ app.get( "/profile", (request, response) => {
       response.json(user);
     })
   }else{
-    response.json(null);
+    response.json("no token");
   }
 });
 

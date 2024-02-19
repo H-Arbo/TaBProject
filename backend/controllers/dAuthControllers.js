@@ -104,7 +104,7 @@ export const loginDoc = async (request, response) => {
         if (error) {
           throw error;
         }
-        response.cookie("token", token).json(doc);
+        return response.cookie("token", token).json(doc);
       })
     }
     if (!passCheck) {

@@ -1,6 +1,7 @@
 import express from 'express'
 import { Patient } from '../models/patientModel.js'
 import { hashPassword, comparePassword } from '../helpers/auth.js';
+import jwt from "jsonwebtoken";
 
 export const test = async (request, response) => {
     response.status(234).send("pAuthRoutes connected");
@@ -144,7 +145,7 @@ export const loginPatient = async (request, response) => {
         if (error) {
           throw error;
         }
-        response.cookie("token", token).json(doc);
+        return response.cookie("token", token).json(patient);
       })
     }
     if (!passCheck) {
@@ -152,7 +153,6 @@ export const loginPatient = async (request, response) => {
         error: "Incorrect email or password",
       });
     }
-    // return response.json("something's wrong " + doc.password);
   } catch (error) {
     console.log(error);
   }
