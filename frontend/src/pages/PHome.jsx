@@ -9,7 +9,7 @@ import BackButton from '../components/BackButton';
 const PHome = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
-    const handleClick = () => { };
+    //const handleClick = () => { null};
     useEffect(() => {
         setLoading(true);
         axios
@@ -82,7 +82,8 @@ const PHome = () => {
             <div className='flex justify-between items-center'>
 
                 <Link to='/patients/green/${patient._id}'>
-                    <Button onClick={handleClick} color="green">
+                    <Button  color="green"> 
+                    {/* {onClick={handleClick}} */}
                         Green Zone - Doing Well
                         No coughing, wheezing, chest tightness, or difficulty breathing.
                         Can work, play, exercise, perform usual activities without symptoms.
@@ -91,7 +92,8 @@ const PHome = () => {
                     </Button>
                 </Link>
                 <Link to='/patients/yellow/${patient._id}'>
-                    <Button onClick={handleClick} color="yellow">
+                    <Button  color="yellow">
+                    {/* onClick={handleClick} */}
                         Yellow Zone - Caution/Getting Worse
                         Coughing, wheezing, chest tightness, or difficulty breathing.
                         Symptoms with daily activities, work, play, and exercise.
@@ -101,7 +103,8 @@ const PHome = () => {
                     </Button>
                 </Link>
                 <Link to='/patients/red/${patient._id}'>
-                    <Button onClick={handleClick} color="red">
+                    <Button  color="red">
+                    {/* onClick={handleClick} */}
                         Red Zone - Alert
                         Difficulty with breathing, coughing, wheezing, not helping with medications.
                         Trouble waling or talking due to asthma symptoms.
@@ -113,16 +116,20 @@ const PHome = () => {
             </div>
             <div className='flex justify-between items-center p-4'>
                 <Link to='/patients/animations/${patient._id}'>
-                    <Button onClick={handleClick} color="blue">Animations</Button>
+                    <Button  color="blue">Animations</Button>
+                    {/* onClick={handleClick} */}
                 </Link>
                 <Link to='/patients/games/${patient._id}'>
-                    <Button onClick={handleClick} color="blue">Games</Button>
+                    <Button  color="blue">Games</Button>
+                    {/* onClick={handleClick} */}
                 </Link>
                 <Link to='/patients/surveys/${patient._id}'>
-                    <Button onClick={handleClick} color="blue">Surveys</Button>
+                    <Button  color="blue">Surveys</Button>
+                    {/* onClick={handleClick} */}
                 </Link>
                 <Link to='/patients/medsheet/${patient._id}'>
-                    <Button onClick={handleClick} color="blue">Action Sheet</Button>
+                    <Button color="blue">Action Sheet</Button>
+                    {/* onClick={handleClick} */}
                 </Link>
             </div>
         </div>

@@ -24,9 +24,9 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended: false}))
 app.use("/doctor/", dAuthRoutes);
 
-app.use("/patient/", pAuthRoutes);
+app.use("/patients/", pAuthRoutes);
 
-app.use("/patients", patientsRoute);
+//app.use("/patients", patientsRoute);
 app.get( "/profile", (request, response) => {
   const {token} = request.cookies
 
