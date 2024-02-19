@@ -3,23 +3,116 @@
   <head>
     <meta charset="utf-8">
     <title>About Us</title>
+  <style>
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+  </style>
+
+    
   </head>
   <body>
     <h1>About Us</h1>
-<p>Project Sponsor: Dr. Aylin Sumengen</p>
 
-    <br>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="drSumengen.jpg" style="width:100%">
+      <div class="container">
+        <h2>Dr. Aylin Sumengen</h2>
+        <p class="title">Project Sponsor</p>
+        <p>Dr. Akca Sumengen is an Assistant Professor at the Capstone College of Nursing (CCN) at the University of Alabama (UA).
+        She obtained her BSN in 2013, MSC in Psychiatric Nursing in 2016, and PhD in Pediatric Nursing in 2020 from Koc University in Turkey.
+        She is focused on the integration of technology into patient care, having established a research and development company aimed at creating a symptom-detection sensor for pediatric asthma patients.</p>
+      </div>
+    </div>
+  </div>
 
-<p>Hayden Arbogast: Hayden Arbogast is a senior in computer science at The University of Alabama. He likes dogs.</p>
+  <div class="column">
+    <div class="card">
+      <img src="" style="width:100%">
+      <div class="container">
+        <h2>Hayden Arbogast</h2>
+        <p class="title">Title</p>
+        <p>Hayden Arbogast is a senior in computer science at The University of Alabama. He likes dogs.</p>
+      </div>
+    </div>
+  </div>
 
-<p>Hunter Grace Fairfax: Hunter Grace Fairfax is a senior in computer science at The University of Alabama. She is also pursuing a Master’s in Business Administration through the STEM Path to the MBA program at Alabama.</p>
+  <div class="column">
+    <div class="card">
+      <img src="/docs/assets/HGFheadshot.JPG" style="width:100%">
+      <div class="container">
+        <h2>Hunter Grace Fairfax</h2>
+        <p class="title">Scrum Leader</p>
+        <p>Hunter Grace Fairfax is a senior in computer science at The University of Alabama. She is also pursuing a Master’s in Business Administration through the STEM Path to the MBA program at Alabama.</p>
+      </div>
+    </div>
+  </div>
 
-<p>Caroline Johnson: Caroline Johnson is a senior in Computer Science at The University of Alabama. She plans to pursue Computer Animation after graduating.</p>
+    <div class="column">
+    <div class="card">
+      <img src="" style="width:100%">
+      <div class="container">
+        <h2>Caroline Johnson</h2>
+        <p class="title">Animation Designer</p>
+        <p>Caroline Johnson is a senior in Computer Science at The University of Alabama. She plans to pursue Computer Animation after graduating.</p>
+      </div>
+    </div>
+  </div>
 
-<p>Anna Graves: Anna Graves is a senior in computer science at The University of Alabama. She is a Blount Scholar and Cyber Criminology minor, and she is pursuing a Master's in Computer Science through the AMP program at Alabama.</p>
+    <div class="column">
+    <div class="card">
+      <img src="/docs/assets/AGheadshot.jpg" style="width:100%">
+      <div class="container">
+        <h2>Anna Graves</h2>
+        <p class="title">Title</p>
+        <p>Anna Graves is a senior in computer science at The University of Alabama. She is a Blount Scholar and Cyber Criminology minor, and she is pursuing a Master's in Computer Science through the AMP program.</p>
+      </div>
+    </div>
+  </div>
 
-<p>Logan Shultz: Logan Shultz is a senior in computer science at The University of Alabama. He will be graduating with a Bachelor's in Computer Science.</p>
+    <div class="column">
+    <div class="card">
+      <img src="" style="width:100%">
+      <div class="container">
+        <h2>Logan Shultz</h2>
+        <p class="title">Title</p>
+        <p>Logan Shultz is a senior in computer science at The University of Alabama. He will be graduating with a Bachelor's in Computer Science.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    
   </body>
 </html>
