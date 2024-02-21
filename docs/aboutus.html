@@ -5,6 +5,10 @@
     <title>About Us</title>
   <style>
 
+title {
+  text-align: center;
+}
+    
 .column {
   float: left;
   width: 33.3%;
@@ -30,6 +34,13 @@
   color: grey;
 }
 
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
   </style>
 
     
@@ -50,9 +61,7 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="row">
   <div class="column">
     <div class="card">
       <img src="assets/css/HAheadshot.jpg" style="width:100%">
@@ -66,7 +75,7 @@
 
   <div class="column">
     <div class="card">
-      <img src="assets/css/HGFheadshot2.JPG" style="width:100%">
+      <img src="assets/css/HGFheadshot2.jpg" style="width:100%">
       <div class="container">
         <h2>Hunter Grace Fairfax</h2>
         <p class="title">SCRUM Master</p>
