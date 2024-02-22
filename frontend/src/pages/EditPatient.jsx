@@ -3,7 +3,7 @@ import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { response } from 'express';
+
 
 function EditPatients () {
   const [data, setData] = useState({
