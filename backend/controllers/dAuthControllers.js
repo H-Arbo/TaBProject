@@ -5,8 +5,22 @@ import jwt from "jsonwebtoken";
 
 
 
-export const test = async (request, response) => {
-  response.status(234).send("dAuthRoutes connected");
+export const getPatients = async (request, response) => {
+    try {
+        const patients = await Patient.find({});
+        // have reponse be a json object with each document
+        //return response.status(200).json(patients);
+
+        //incoporate different object
+        return response.status(200).json({
+            count: patients.length,
+            data: patients,
+        });
+
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({message: error.message});
+    }
 };
 
 // export const getDoc = async (request, response) => {
