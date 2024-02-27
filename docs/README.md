@@ -15,5 +15,3 @@
 ## By Hayden Arbogast, Hunter Grace Fairfax, Caroline Johnson, Anna Graves, and Logan Shultz
 [For team bios, click here](aboutus.html)
 
-Test
-
