@@ -30,7 +30,7 @@ export default function TabLayout() {
         name="index"
         options={{
           //Change header style
-          title: 'Tab to Stop 1',
+          title: 'Home screen',
           headerStyle: {
             backgroundColor: '#D2EBDE',
           },
@@ -41,6 +41,8 @@ export default function TabLayout() {
           //Bottom tab bar and icon options
           tabBarStyle: { backgroundColor: '#D2EBDE' },
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+
+          //Modal: info circle top right
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -58,9 +60,72 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="login"
         options={{
-          headerShown: false
+          //Change header style
+          title: 'Login',
+          headerStyle: {
+            backgroundColor: '#D2EBDE',
+          },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+
+          //Bottom tab bar and icon options
+          tabBarStyle: { backgroundColor: '#D2EBDE' },
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+
+        }}
+      />
+      <Tabs.Screen
+        name="register"
+        options={{
+          //Change header style
+          title: 'Register',
+          headerStyle: {
+            backgroundColor: '#D2EBDE',
+          },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+
+          //Bottom tab bar and icon options
+          tabBarStyle: { backgroundColor: '#D2EBDE' },
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+
+        }}
+      />
+      <Tabs.Screen
+        name="phome"
+        options={{
+          //Change header style
+          title: 'Patient Home',
+          headerStyle: {
+            backgroundColor: '#D2EBDE',
+          },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+
+          //Bottom tab bar and icon options
+          tabBarStyle: { backgroundColor: '#D2EBDE' },
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+
+          //Modal: Info circle top left
+          headerRight: () => (
+            <Link href="/profile_menu" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="info-circle"
+                    size={25}
+                    color={Colors[colorScheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
         }}
       />
     </Tabs>

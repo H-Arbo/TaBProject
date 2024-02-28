@@ -47,7 +47,7 @@ const PHome = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {patients.map((patient, index) => (
+                        {patients?.map((patient, index) => (
                             <tr key={patient._id} className='h-8'>
                                 <td className='border border-slate-700 roundd-md text-center'>
                                     {index + 1}
