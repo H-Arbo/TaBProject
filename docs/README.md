@@ -15,3 +15,8 @@
 ## By Hayden Arbogast, Hunter Grace Fairfax, Caroline Johnson, Anna Graves, and Logan Shultz
 [For team bios, click here](aboutus.html)
 
+### Our Project Goals Are:
+- Educate pediatric asthmatic patients and their caregivers about how to manage asthma and identify severity of asthma attacks
+- bettering knowledge, control, quality of life, fewer hospitalizations
+
+[For sprint videos, click here](videos.html)
