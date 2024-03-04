@@ -128,6 +128,39 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="dhome"
+        options={{
+          //Change header style
+          title: 'Doctor Home',
+          headerStyle: {
+            backgroundColor: '#D2EBDE',
+          },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+
+          //Bottom tab bar and icon options
+          tabBarStyle: { backgroundColor: '#D2EBDE' },
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+
+          //Modal: Info circle top left
+          headerRight: () => (
+            <Link href="/profile_menu" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="info-circle"
+                    size={25}
+                    color={Colors[colorScheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }}
+      />
     </Tabs>
   );
 }

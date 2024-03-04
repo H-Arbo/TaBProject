@@ -4,8 +4,8 @@ import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
 const dimensions = Dimensions.get('window');
-const imageWidth = dimensions.width;
-const imageHeight = dimensions.height;
+const imageWidth = dimensions.width * 0.50;
+const imageHeight = dimensions.height * 0.30;
 
 export default function TabOneScreen() {
   return (
@@ -20,7 +20,7 @@ export default function TabOneScreen() {
           resizeMode="contain"
           source={require('/workspace/TaBProject/mobile/tab-to-stop/assets/images/tab.png')}
         />
-
+  
         <View style={styles.text}>
           <Text style={styles.title}>Tab 1</Text>
         </View>
@@ -42,7 +42,7 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#38A3A5'
+    backgroundColor: '#ffffff'
   },
   contentContainer: {
     flex: 1
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   text: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#38A3A5'
+    backgroundColor: '#ffffff'
   },
   title: {
     fontSize: 30,
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     height: imageHeight,
     width: imageWidth,
     alignSelf: 'center',
-    top: -300,
   },
   row: {
     flexDirection: 'row',
