@@ -52,8 +52,8 @@ const App = () => {
       <Route path = '/doctor/create' element = {<CreatePatient/>} />
       <Route path = '/patients/create' element = {<CreatePatient/>} />
       <Route path = '/patients/delete/:id' element = {<DeletePatient/>} />
-      <Route path = '/patients/profile/:id' element = {<PProfile/>} />
-      <Route path = '/doctor/profile/:id' element = {<DProfile/>} />
+      <Route path = '/patients/profile' element = {<PProfile/>} />
+      <Route path = '/doctor/profile' element = {<DProfile/>} />
       <Route path = '/doctor/patientInfo/:id' element = {<DPinfo/>} />
       <Route path = '/doctor/patientInfo/changeMedication/:id' element = {<PMeds/>} />
       <Route path = '/patients/edit/:id' element = {<EditPatient/>} />

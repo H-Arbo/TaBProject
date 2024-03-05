@@ -28,7 +28,7 @@ export default function PRegister() {
     const { name, age, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email } = data;
 
     try {
-      const { data } = await axios.post('/patient/register', { //TODO '/register' is not a valid => change to docRegister & patRegister, respectively
+      const { data } = await axios.post('/patients/register', { //TODO '/register' is not a valid => change to docRegister & patRegister, respectively
         name, age, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email
       })
 

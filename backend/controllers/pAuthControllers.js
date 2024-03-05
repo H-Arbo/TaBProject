@@ -21,6 +21,22 @@ export const getPatients = async (request, response) => {
     }
 }
 
+export const getPatient = async (request, response) => {
+    try {
+        const { id } = request.params; // Extract patient ID from request parameters
+        const patient = await Patient.findById(id); // Find patient by ID
+        if (!patient) {
+            return response.status(404).json({ message: 'Patient not found' });
+        }
+        // Return the patient data
+        return response.status(200).json(patient);
+    } catch (error) {
+        console.log(error.message);
+        return response.status(500).json({ message: error.message });
+    }
+};
+
+
 export const registerPatient = async (request, response) => {
     const containsNumberRegex = /\d/;
     const containsCapitalRegex = /[A-Z]/;
@@ -120,6 +136,7 @@ export const registerPatient = async (request, response) => {
         const newPatient = await Patient.create({
             email,
             name,
+            age,
             password: hashedPass,
             prim_emergency_contact,
             prim_ec_cell,
@@ -155,7 +172,7 @@ export const loginPatient = async (request, response) => {
     const passCheck = await comparePassword(password, patient.password);
     if (passCheck) {
       //return response.json("password compare successful");
-      jwt.sign({ email: patient.email, id: patient._id, name: patient.name }, process.env.JWT_STRING, {}, (error, token) => {
+      jwt.sign({ email: patient.email, id: patient._id, name: patient.name, age: patient.age, prim_emergency_contact: patient.prim_emergency_contact }, process.env.JWT_STRING, {}, (error, token) => {
         if (error) {
           throw error;
         }

@@ -27,8 +27,8 @@ export const patientSchema = mongoose.Schema(
             required: true,
         },
         age: {
-            type: Number,
-            // required: true,
+            type: String,
+            required: true,
         },
         prim_ec_cell: {
             type: String,
