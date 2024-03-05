@@ -20,3 +20,5 @@
 - bettering knowledge, control, quality of life, fewer hospitalizations
 
 [For sprint videos, click here](videos.html)
+
+[Our Github](https://github.com/H-Arbo/TaBProject)
