@@ -1,6 +1,7 @@
 import express from 'express';
-import {registerPatient,loginPatient, getPatients, getPatient} from '../controllers/pAuthControllers.js';
+import {registerPatient,loginPatient, getPatients, editPatient} from '../controllers/pAuthControllers.js';
 import cors from 'cors';
+import EditPatients from '../../frontend/src/pages/EditPatient.jsx';
 
 const router = express.Router();
 
@@ -12,6 +13,9 @@ router.use(cors({
 router.get("/", getPatients);
 router.post("/register", registerPatient);
 router.post("/login", loginPatient);
-router.get('/patients/:id', getPatient);
+// router.get('/patients/:id', getPatient);
+
+router.put("/editProfile", editPatient);
+
 
 export default router;
