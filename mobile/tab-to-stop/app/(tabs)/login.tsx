@@ -17,12 +17,9 @@ export default function TabLoginScreen() {
       <Link href="/register" asChild>
         <Pressable>
           {({ pressed }) => (
-            <FontAwesome
-              name="info-circle"
-              size={25}
-              color={Colors[colorScheme ?? 'light'].text}
-              style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-            />
+            <Text style={styles.register_option}>
+              New user? Click here to register  
+            </Text>
           )}
         </Pressable>
       </Link>
@@ -46,5 +43,8 @@ const styles = StyleSheet.create({
     width: '80%',
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  register_option: {
+    paddingTop: 10,
   },
 });
