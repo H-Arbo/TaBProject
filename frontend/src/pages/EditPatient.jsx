@@ -5,7 +5,10 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
-function EditPatients () {
+const EditPatient = ()  =>  {
+  const {id} = useParams();
+  const [loading, setLoading] = useState(false);
+
   const [data, setData] = useState({
     id: id,
     name: '',
@@ -13,7 +16,7 @@ function EditPatients () {
     emergency_contact: ''
   })
 
-  const {id} = useParams();
+  
 
   useEffect(() => {
     setLoading(true);
@@ -88,4 +91,4 @@ function EditPatients () {
   );
 }
 
-export default EditPatients
+export default EditPatient
