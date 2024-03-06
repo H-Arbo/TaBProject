@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
 import axios from 'axios';
@@ -30,14 +30,14 @@ const EditPatient = ()  =>  {
       alert('Error occured.');
       console.log(error);
     });
-  }, [])
+  }, [id, data])
 
   const navigate = useNavigate()
 
   const handleEditPatient = (e) => {
     e.preventDefault();
     setLoading(true);
-    axios.put(`http://localhost:5555/patients/` + id, data)
+    axios.put(`http://localhost:5555/patients/editProfile/` + id, data)
       .then(() => {
         setLoading(false);
         navigate('/');
