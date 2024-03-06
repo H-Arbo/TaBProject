@@ -4,7 +4,7 @@ import Front from '../pages/Front';
 
 const LogoutButton = () => {
     const handleLogout = () => {
-        localStorage.removeItem('accessToken');
+        document.cookie = "token=; path=/;"
 
         window.location.href = '/login';
     }
