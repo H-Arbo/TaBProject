@@ -1,8 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { BsArrowLeft } from 'react-icons/bs';
-import Front from '../pages/Front';
+import { UserContext } from '../../context/userContext';
+import { useContext } from 'react';
 
 const LogoutButton = () => {
+
+    const { logout } = useContext(UserContext);
+
     const handleLogout = () => {
         document.cookie = "token=; path=/;"
 
