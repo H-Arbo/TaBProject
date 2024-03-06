@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import BackButton from '../components/BackButton';
 import { FaBell } from "react-icons/fa6";
+import LogoutButton from '../components/LogoutButton';
 
 const DHome = () => {
     const [patients, setPatients] = useState([]);
@@ -26,6 +27,8 @@ const DHome = () => {
     return (
         <div className='p-4'>
             <BackButton />
+
+            <LogoutButton />
 
             <div className='flex justify-between items-center'>
                 <h1 className='text-3x1 my-8'> Patients List (Dr Home) </h1>

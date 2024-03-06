@@ -4,6 +4,7 @@ import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import BackButton from '../components/BackButton';
+import LogoutButton from '../components/LogoutButton';
 
 
 const PHome = () => {
@@ -26,6 +27,8 @@ const PHome = () => {
     return (
         <div className='p-4'>
             <BackButton />
+
+            <LogoutButton />
 
             <div className='flex justify-between items-center'>
                 <h1 className='text-3x1 my-8'> Patient Home </h1>
