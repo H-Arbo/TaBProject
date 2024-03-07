@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-import { BsArrowLeft } from 'react-icons/bs';
 import { UserContext } from '../../context/userContext';
 import { useContext } from 'react';
 
@@ -14,7 +12,7 @@ const LogoutButton = () => {
     }
     return (
         <div className='flex'>
-            <button className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit' onClick={handleLogout}><BsArrowLeft className='text-2x1' />Logout</button>
+            <button className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit' onClick={handleLogout}>Logout</button>
         </div>
     )
 }
