@@ -25,19 +25,19 @@ export const getPatients = async (request, response) => {
 
 export const getDoc = async (request, response) => {
   try {
-      const doc = await Doctor.find({});
-      // have reponse be a json object with each document
-      //return response.status(200).json(patients);
+    const doc = await Doctor.find({});
+    // have reponse be a json object with each document
+    //return response.status(200).json(patients);
 
-      //incoporate different object
-      return response.status(200).json({
-          count: doc.length,
-          data: doc,
-      });
+    //incoporate different object
+    return response.status(200).json({
+      count: doc.length,
+      data: doc,
+    });
 
   } catch (error) {
-      console.log(error.message);
-      response.status(500).send({message: error.message});
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
   }
 }
 
@@ -116,6 +116,9 @@ export const registerDoc = async (request, response) => {
   }
 };
 
+let loginAttempts = {};
+
+
 export const loginDoc = async (request, response) => {
   try {
     const { email, password } = request.body;
@@ -128,9 +131,28 @@ export const loginDoc = async (request, response) => {
       });
     }
 
+    // Check if the user is locked out
+    if (loginAttempts[email] && loginAttempts[email].attempts >= 5) {
+      const lockoutTime = loginAttempts[email].lockoutTime;
+      if (Date.now() < lockoutTime) {
+        // Return error message indicating lockout period
+        return response.json({
+          error: "Too many login attempts. Please try again later.",
+          lockoutTime: lockoutTime,
+        });
+      } else {
+        // Reset login attempts if the lockout period has passed
+        loginAttempts[email].attempts = 0;
+        delete loginAttempts[email].lockoutTime;
+      }
+    }
+
     //check password
     const passCheck = await comparePassword(password, doc.password);
     if (passCheck) {
+
+      delete loginAttempts[email];
+
       //return response.json("password compare successful");
       jwt.sign({ email: doc.email, id: doc._id, name: doc.name }, process.env.JWT_STRING, {}, (error, token) => {
         if (error) {
@@ -138,8 +160,23 @@ export const loginDoc = async (request, response) => {
         }
         return response.cookie("token", token).json(doc);
       })
+
     }
     if (!passCheck) {
+
+      if (!loginAttempts[email]) {
+        loginAttempts[email] = { attempts: 1 };
+      }
+      else {
+        loginAttempts[email].attempts++;
+      }
+
+
+      //check if maximum attempts reached
+      if (loginAttempts[email].attempts >= 5) {
+        loginAttempts[email].lockoutTime = Date.now() + 120000; //lockout for 2 mins
+      }
+
       return response.json({
         error: "Incorrect email or password",
       });

@@ -17,7 +17,7 @@ export const getPatients = async (request, response) => {
 
     } catch (error) {
         console.log(error.message);
-        response.status(500).send({message: error.message});
+        response.status(500).send({ message: error.message });
     }
 }
 
@@ -65,12 +65,12 @@ export const registerPatient = async (request, response) => {
                 error: 'Password must include at least one number.'
             })
         }
-        else if (!containsCapitalRegex.test(password)){
+        else if (!containsCapitalRegex.test(password)) {
             return response.json({
                 error: 'Password must contain at least one uppercase letter.'
             })
         }
-        else if (containsEmojiRegex.test(password)){
+        else if (containsEmojiRegex.test(password)) {
             return response.json({
                 error: 'Password may not contain emojis.'
             })
@@ -156,6 +156,8 @@ export const registerPatient = async (request, response) => {
     }
 }
 
+let loginAttempts = {};
+
 export const loginPatient = async (request, response) => {
     try {
         const { email, password } = request.body;
@@ -168,25 +170,55 @@ export const loginPatient = async (request, response) => {
             })
         }
 
-        //check password
-    const passCheck = await comparePassword(password, patient.password);
-    if (passCheck) {
-      //return response.json("password compare successful");
-      jwt.sign({ email: patient.email, id: patient._id, name: patient.name, age: patient.age, prim_emergency_contact: patient.prim_emergency_contact, email: patient.email, prim_ec_cell: patient.prim_ec_cell, prim_ec_work: patient.prim_ec_work, prim_ec_relationship: patient.prim_ec_relationship, sec_emergency_contact: patient.sec_emergency_contact, sec_ec_cell: patient.sec_ec_cell, sec_ec_work: patient.sec_ec_work, sec_ec_relationship: patient.sec_ec_relationship, provider_email: patient.provider_email}, process.env.JWT_STRING, {}, (error, token) => {
-        if (error) {
-          throw error;
+        // Check if the user is locked out
+        if (loginAttempts[email] && loginAttempts[email].attempts >= 5) {
+            const lockoutTime = loginAttempts[email].lockoutTime;
+            if (Date.now() < lockoutTime) {
+                // Return error message indicating lockout period
+                return response.json({
+                    error: "Too many login attempts. Please try again later.",
+                    lockoutTime: lockoutTime,
+                });
+            } else {
+                // Reset login attempts if the lockout period has passed
+                loginAttempts[email].attempts = 0;
+                delete loginAttempts[email].lockoutTime;
+            }
         }
-        return response.cookie("token", token).json(patient);
-      })
+
+        //check password
+        const passCheck = await comparePassword(password, patient.password);
+        if (passCheck) {
+            //return response.json("password compare successful");
+            jwt.sign({ email: patient.email, id: patient._id, name: patient.name, age: patient.age, prim_emergency_contact: patient.prim_emergency_contact, email: patient.email, prim_ec_cell: patient.prim_ec_cell, prim_ec_work: patient.prim_ec_work, prim_ec_relationship: patient.prim_ec_relationship, sec_emergency_contact: patient.sec_emergency_contact, sec_ec_cell: patient.sec_ec_cell, sec_ec_work: patient.sec_ec_work, sec_ec_relationship: patient.sec_ec_relationship, provider_email: patient.provider_email }, process.env.JWT_STRING, {}, (error, token) => {
+                if (error) {
+                    throw error;
+                }
+                return response.cookie("token", token).json(patient);
+            })
+        }
+        if (!passCheck) {
+
+            if (!loginAttempts[email]) {
+                loginAttempts[email] = { attempts: 1 };
+            }
+            else {
+                loginAttempts[email].attempts++;
+            }
+
+
+            //check if maximum attempts reached
+            if (loginAttempts[email].attempts >= 5) {
+                loginAttempts[email].lockoutTime = Date.now() + 120000; //lockout for 2 mins
+            }
+
+            return response.json({
+                error: "Incorrect email or password",
+            });
+        }
+    } catch (error) {
+        console.log(error);
     }
-    if (!passCheck) {
-      return response.json({
-        error: "Incorrect email or password",
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 export const editPatient = async (request, response) => {
@@ -217,12 +249,12 @@ export const editPatient = async (request, response) => {
                 error: 'Password must include at least one number.'
             })
         }
-        else if (!containsCapitalRegex.test(password)){
+        else if (!containsCapitalRegex.test(password)) {
             return response.json({
                 error: 'Password must contain at least one uppercase letter.'
             })
         }
-        else if (containsEmojiRegex.test(password)){
+        else if (containsEmojiRegex.test(password)) {
             return response.json({
                 error: 'Password may not contain emojis.'
             })
