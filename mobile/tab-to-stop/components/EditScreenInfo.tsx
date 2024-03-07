@@ -17,45 +17,23 @@ export default function EditScreenInfo({ path }: { path: string }) {
           darkColor="rgba(255,255,255,0.8)">
           Click the links below to learn more!
         </Text>
-
-        {/* <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
-          <MonoText>{path}</MonoText>
-        </View>
-
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Change any of the text, save the file, and your app will automatically update.
-        </Text> */}
       </View>
 
       <View style={ styles.helpContainer }>
-      <TouchableOpacity 
-        activeOpacity={ 0.75 }
+        <TouchableOpacity 
+          activeOpacity={ 0.75 }
           style={ styles.item }
-      >
-        <ExternalLink
-          style={styles.helpLink}
-          href="https://nursing.ua.edu/">
-          <Image style={ styles.image } 
-            resizeMode='contain'
-            source={require('/workspace/TaBProject/mobile/tab-to-stop/assets/images/nursing_logo.jpg')}
-          />
-        </ExternalLink>
+        >
+          <ExternalLink
+            style={styles.helpLink}
+            href="https://nursing.ua.edu/">
+            <Image style={ styles.image } 
+              resizeMode='contain'
+              source={require('/workspace/TaBProject/mobile/tab-to-stop/assets/images/nursing_logo.jpg')}
+            />
+          </ExternalLink>
         
-      </TouchableOpacity>
-        
-        {/* <ExternalLink
-          style={styles.helpLink}
-          href="http://localhost:5173/">
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            Tap here to open website
-          </Text>
-        </ExternalLink> */}
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet, Pressable } from 'react-native';
+import { Link, Tabs } from 'expo-router';
 import { ExternalLink } from './ExternalLink';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
@@ -13,49 +13,62 @@ export default function RegisterQ({ path }: { path: string }) {
   return (
     <View>
 
-      <View style={styles.getStartedContainer}>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Register as Patient
-        </Text>
-      
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
-          <MonoText>{path}</MonoText>
-        </View>
-      </View>
+      <Link href="/pregister" asChild>
+        <Pressable>
+          {({ pressed }) => (
+            <View style={{
+              opacity: pressed ? 0.5 : 1,
+              alignItems: 'center',
+              marginHorizontal: 0,
+              backgroundColor: '#38A3A5',
+              padding: 20,
+              paddingHorizontal:70,
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+              borderWidth: 5,
+            }}>
+              <Text
+                style={styles.getStartedText}
+                lightColor="rgba(0,0,0,0.8)"
+                darkColor="rgba(255,255,255,0.8)">
+                Register as Patient
+              </Text>
+            </View>
+          )}
+        </Pressable>
+      </Link>
 
       <Separator />
 
-      <View style={styles.getStartedContainer}>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Register as Doctor
-        </Text>
+      <Link href="/dregister" asChild>
+        <Pressable>
+          {({ pressed }) => (
+            <View style={{
+              opacity: pressed ? 0.5 : 1,
+              alignItems: 'center',
+              marginHorizontal: 0,
+              backgroundColor: '#38A3A5',
+              padding: 20,
+              paddingHorizontal:70,
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+              borderWidth: 5,
+            }}>
+              <Text
+                style={styles.getStartedText}
+                lightColor="rgba(0,0,0,0.8)"
+                darkColor="rgba(255,255,255,0.8)">
+                Register as Doctor
+              </Text>
+            </View>
+          )}
+        </Pressable>
+      </Link>
 
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
-          <MonoText>{path}</MonoText>
-        </View>
-      </View>
-
-      {/* <View style={styles.helpContainer}>
-        <ExternalLink
-          style={styles.helpLink}
-          href="http://localhost:5173/">
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            Tap here to open website
-          </Text>
-        </ExternalLink>
-      </View> */}
     </View>
   );
 }

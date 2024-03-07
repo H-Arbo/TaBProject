@@ -11,18 +11,9 @@ export default function TabLoginScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Patient Register</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <LoginQ path="app/(tabs)/login.tsx" />
-      <Link href="/register" asChild>
-        <Pressable>
-          {({ pressed }) => (
-            <Text style={{ paddingTop: 5, opacity: pressed ? 0.5 : 1}}>
-              New user? Click here to register  
-            </Text>
-          )}
-        </Pressable>
-      </Link>
+      
     </View>
   );
 }
@@ -43,8 +34,5 @@ const styles = StyleSheet.create({
     width: '80%',
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  register_option: {
-    paddingTop: 10,
   },
 });

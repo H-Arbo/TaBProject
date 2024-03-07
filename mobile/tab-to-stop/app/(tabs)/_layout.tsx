@@ -161,6 +161,51 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="plogin"
+        options={{
+          //Change header style
+          headerShown: false,
+
+          //Bottom tab bar and icon options
+          tabBarStyle: { backgroundColor: '#D2EBDE' },
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="dlogin"
+        options={{
+          //Change header style
+          headerShown: false,
+
+          //Bottom tab bar and icon options
+          tabBarStyle: { backgroundColor: '#D2EBDE' },
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="pregister"
+        options={{
+          //Change header style
+          headerShown: false,
+
+          //Bottom tab bar and icon options
+          tabBarStyle: { backgroundColor: '#D2EBDE' },
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="dregister"
+        options={{
+          //Change header style
+          headerShown: false,
+
+          //Bottom tab bar and icon options
+          tabBarStyle: { backgroundColor: '#D2EBDE' },
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
     </Tabs>
+    
   );
 }
