@@ -34,7 +34,34 @@ const PatientProfile = () => {
             <span className='text-xl mr-4 text-gray-500'>Age: {patient.age}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Emergency Contact: {patient.prim_emergency_contact}</span>
+            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact: {patient.prim_emergency_contact}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact Email: {patient.email}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact Cell Phone Number: {patient.prim_ec_cell}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact Work Phone Number: {patient.prim_ec_work}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact Relation to Patient: {patient.prim_ec_relationship}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Secondary Emergency Contact: {patient.sec_emergency_contact}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Secondary Emergency Contact Cell Phone Number: {patient.sec_ec_cell}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Secondary Emergency Contact Work Phone Number: {patient.sec_ec_work}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Secondary Emergency Contact Relation to Patient: {patient.sec_ec_relationship}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Provider Email: {patient.provider_email}</span>
           </div>
         </div>
 
