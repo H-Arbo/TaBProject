@@ -6,22 +6,40 @@ import jwt from "jsonwebtoken";
 
 
 export const getPatients = async (request, response) => {
-    try {
-        const patients = await Patient.find({});
-        // have reponse be a json object with each document
-        //return response.status(200).json(patients);
+  try {
+    const patients = await Patient.find({});
+    // have reponse be a json object with each document
+    //return response.status(200).json(patients);
 
-        //incoporate different object
-        return response.status(200).json({
-            count: patients.length,
-            data: patients,
-        });
+    //incoporate different object
+    return response.status(200).json({
+      count: patients.length,
+      data: patients,
+    });
 
-    } catch (error) {
-        console.log(error.message);
-        response.status(500).send({message: error.message});
-    }
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
 };
+
+export const getDoc = async (request, response) => {
+  try {
+      const doc = await Doctor.find({});
+      // have reponse be a json object with each document
+      //return response.status(200).json(patients);
+
+      //incoporate different object
+      return response.status(200).json({
+          count: doc.length,
+          data: doc,
+      });
+
+  } catch (error) {
+      console.log(error.message);
+      response.status(500).send({message: error.message});
+  }
+}
 
 // export const getDoc = async (request, response) => {
 //   const {token} = request.cookie
@@ -40,9 +58,9 @@ export const getPatients = async (request, response) => {
 
 export const registerDoc = async (request, response) => {
   const containsNumberRegex = /\d/;
-    const containsCapitalRegex = /[A-Z]/;
-    const containsEmojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
-    try {
+  const containsCapitalRegex = /[A-Z]/;
+  const containsEmojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
+  try {
     const { name, email, password } = request.body;
     // check name
     if (!name) {
@@ -126,7 +144,6 @@ export const loginDoc = async (request, response) => {
         error: "Incorrect email or password",
       });
     }
-    // return response.json("something's wrong " + doc.password);
   } catch (error) {
     console.log(error);
   }

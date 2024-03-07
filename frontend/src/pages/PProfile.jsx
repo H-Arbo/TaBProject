@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import BackButton from '../components/BackButton';
 import { Link } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 const PatientProfile = () => {
   const [patient, setPatient] = useState(null);
@@ -21,10 +23,12 @@ const PatientProfile = () => {
   }, []);
 
   return (
-    <div>
+    <div className='p-4'>
+    <BackButton />
+
       <h1>Patient Profile</h1>
       {loading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : patient ? (
         <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
           <div className='my-4'>

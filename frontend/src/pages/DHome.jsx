@@ -35,7 +35,7 @@ const DHome = () => {
                 <Link to='/doctor/create'>
                     <MdOutlineAddBox className='text-sky-800 text-4x1' />
                 </Link>
-                <Link to='/doctor/profile/${doctor._id}'>
+                <Link to='/doctor/profile'>
                     <button className='p-2 bg-sky-300 m-8'>
                         Doctor Profile
                     </button>

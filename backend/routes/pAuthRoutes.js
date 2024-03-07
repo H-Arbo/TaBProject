@@ -12,7 +12,6 @@ router.use(cors({
 router.get("/", getPatients);
 router.post("/register", registerPatient);
 router.post("/login", loginPatient);
-router.get('/:id', getPatient);
 
 router.put("/editProfile/:id", editPatient);
 

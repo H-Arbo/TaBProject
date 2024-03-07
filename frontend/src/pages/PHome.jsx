@@ -40,24 +40,6 @@ const PHome = () => {
                 <Link to={`/patients/profile`}>
                     <button className='text-2x1 text-green-800'>Patient Profile</button>
                 </Link>
-                // <table className='w-full border-separate border-spacing-2'>
-                //     <thead>
-                //     </thead>
-                //     <tbody>
-                //         {patients.map((patient, index) => (
-                //             <tr key={patient._id} className='h-8'>
-                //                 <td className='border border-slate-700 roundd-md text-center'>
-                //                     <div className='flex justify-center gap-x-4'>
-                //                         <Link to={'/patients/profile/${patients._id}'}>
-                //                             <button className='text-2x1 text-green-800'>Patient Profile</button>
-                //                         </Link>
-
-                //                     </div>
-                //                 </td>
-                //             </tr>
-                //         ))}
-                //     </tbody>
-                // </table>
             )}
 
 
