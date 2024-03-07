@@ -65,7 +65,7 @@ const PatientProfile = () => {
             <span className='text-xl mr-4 text-gray-500'>Secondary Emergency Contact Relation to Patient: {patient.sec_ec_relationship}</span>
           </div>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Provider Email: {patient.provider_email}</span>
+            <span className='text-xl mr-4 text-gray-500'>Provider Email: {patient.provider_email}</span> 
           </div>
         </div>
 

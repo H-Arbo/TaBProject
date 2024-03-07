@@ -18,7 +18,7 @@ const DProfile = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error('Error fetching patient profile:', error);
+        console.error('Error fetching doctor profile:', error);
         setLoading(false);
       });
   }, []);

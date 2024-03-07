@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-//import Button from '../components/Button';
 import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
@@ -11,23 +10,45 @@ import LogoutButton from '../components/LogoutButton';
 const DHome = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [searchText, setSearchText] = useState('');
+    const [doctor, setDoctor] = useState(null);
+
     useEffect(() => {
         setLoading(true);
-        axios
-            .get('http://localhost:5555/patients')
-            .then((response) => {
-                setPatients(response.data.data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.log(error);
-                setLoading(false);
-            });
+    
+        Promise.all([
+            axios.get('http://localhost:5555/patients'),
+            axios.get('http://localhost:5555/profile', { withCredentials: true })
+        ])
+        .then(([patientsResponse, profileResponse]) => {
+            setPatients(patientsResponse.data.data);
+            setDoctor(profileResponse.data);
+            setLoading(false);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            setLoading(false);
+        });
     }, []);
+    
+
+    const filteredPatients = patients.filter(patient => {
+        if (patient.provider_email && typeof patient.provider_email === 'string') {
+            
+            const targetEmail = doctor.email;
+            return patient.provider_email.includes(targetEmail);
+        }
+        return false;
+    });
+
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
     return (
+
         <div className='p-4'>
             <BackButton />
-
             <LogoutButton />
 
             <div className='flex justify-between items-center'>
@@ -44,23 +65,27 @@ const DHome = () => {
                     <FaBell />
                 </Link>
             </div>
+
+            <input
+                value={searchText}
+                onChange={handleSearchChange}
+            />
+
             {loading ? (
                 <Loading />
             ) : (
                 <table className='w-full border-separate border-spacing-2'>
                     <thead>
                         <tr>
-                            <th className='border border-slate-600 rounded-md'> No </th>
+                            <th className='border border-slate-600 rounded-md'> No. </th>
                             <th className='border border-slate-600 rounded-md'> Name </th>
                             <th className='border border-slate-600 rounded-md max-md:hidden'> Emergency Contact </th>
-                            <th className='border border-slate-600 rounded-md max-md:hidden'> Emergency Contact Relationship </th>
-                            <th className='border border-slate-600 rounded-md'> Date </th>
+                            <th className='border border-slate-600 rounded-md max-md:hidden'> Provider Email </th>
                             <th className='border border-slate-600 rounded-md'> Operations </th>
-
                         </tr>
                     </thead>
                     <tbody>
-                        {patients.map((patient, index) => (
+                        {filteredPatients.map((patient, index) => (
                             <tr key={patient._id} className='h-8'>
                                 <td className='border border-slate-700 roundd-md text-center'>
                                     {index + 1}
@@ -69,13 +94,10 @@ const DHome = () => {
                                     {patient.name}
                                 </td>
                                 <td className='border border-slate-700 roundd-md text-center max-md:hidden'>
-                                    {patient.emergency_contact}
+                                    {patient.prim_emergency_contact}
                                 </td>
                                 <td className='border border-slate-700 roundd-md text-center max-md:hidden'>
-                                    {patient.ec_relationship}
-                                </td>
-                                <td className='border border-slate-700 roundd-md text-center max-md:hidden'>
-                                    {patient.date}
+                                    {patient.provider_email}
                                 </td>
                                 <td className='border border-slate-700 roundd-md text-center'>
                                     <div className='flex justify-center gap-x-4'>
