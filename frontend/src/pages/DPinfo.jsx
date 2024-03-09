@@ -51,129 +51,141 @@ function DPinfo() {
   };
 
   return (
-    <div className='p-4'>
+    <>
       <BackButton />
 
-      {/* <div>{location.state.email}</div> */}
+      <div className='container mx-auto'>
 
-      <h1 className='text-3xl my-4'>Patient Info</h1>
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <div className='flex justify-between items-center'>
-            <table className='w-full border-separate border-spacing-1'>
-              <thead>
-                <tr>
-                  <th className='border border-slate-600 rounded-md'> Name </th>
-                  <th className='border border-slate-600 rounded-md'> Age </th>
-                  <th className='border border-slate-600 rounded-md'> Best Peak Flow </th>
-                  <th className='rounded-md'>  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredPatients.map((patient, index) => (
-                  <tr key={patient._id} className='h-8'>
-                    <td className=' roundd-md text-center'>
-                      {patient.name}
-                    </td>
-                    <td className=' roundd-md text-center'>
-                      {patient.age}
-                    </td>
-                    <td className=' roundd-md text-center'>
-                      {patient.pr_peak_flow}
-                    </td>
-                    <td className=' roundd-md text-center'>
-                      <Link to='/doctor/patientInfo/changeMedication/:id'>
-                        <Button onClick={handleClick} color="darkblue">Change Medication</Button>
-                      </Link>
-                    </td>
+
+        <h1 className='text-3xl my-4'>Patient Info</h1>
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className='flex justify-between items-center'>
+              <table className='w-full'>
+                <thead>
+                  <tr classname='bg-gray-200'>
+                    <th className='p-3 border border-gray-300'> Name </th>
+                    <th className='p-3 border border-gray-300'> Age </th>
+                    <th className='p-3 border border-gray-300'> Best Peak Flow </th>
+                    <th className='p-3 border border-gray-300'> Operations </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {filteredPatients.map((patient, index) => (
+                    <tr key={patient._id} className='h-8'>
+                      <td className='p-3 border border-gray-300 text-center'>
+                        {patient.name}
+                      </td>
+                      <td className='p-3 border border-gray-300 text-center'>
+                        {patient.age}
+                      </td>
+                      <td className='p-3 border border-gray-300 text-center'>
+                        {patient.pr_peak_flow}
+                      </td>
+                      <td className='p-3 border border-gray-300 text-center'>
+                        <Link to='/doctor/patientInfo/changeMedication/:id'>
+                          <Button onClick={handleClick} color="darkblue">Change Medication</Button>
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-          <div className='flex justify-between items-center'>
-            <table className='w-full border-separate border-spacing-1'>
-              <thead>
-                <tr>
-                  <th className='border border-slate-600 rounded-md'> Green Zone Peak Flow Max </th>
-                  <th className='border border-slate-600 rounded-md'> Green Zone Peak Flow Min </th>
-                  <th className='border border-slate-600 rounded-md'> Green Zone Medication </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredPatients.map((patient, index) => (
+            <div className="mb-3"></div>
 
-                  <tr key={patient._id} className='h-8'>
-                    <td className=' roundd-md text-center'>
-                      {patient.gz_peak_flow_max}
-                    </td>
-                    <td className=' roundd-md text-center'>
-                      {patient.gz_peak_flow_min}
-                    </td>
-                    <td className=' roundd-md text-center'>
-                      {patient.name}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className='flex justify-between items-center'>
+              <div className='border border-green-600 rounded-md'>
+                <table className='w-full'>
+                  <thead>
+                    <tr className='bg-green-200'>
+                      <th className='p-3 border border-green-600'> Green Zone Peak Flow Max </th>
+                      <th className='p-3 border border-green-600'> Green Zone Peak Flow Min </th>
+                      <th className='p-3 border border-green-600'> Green Zone Medication </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredPatients.map((patient, index) => (
 
+                      <tr key={patient._id} className='h-8'>
+                        <td className='p-3 border border-green-600 text-center'>
+                          {patient.gz_peak_flow_max}
+                        </td>
+                        <td className='p-3 border border-green-600 text-center'>
+                          {patient.gz_peak_flow_min}
+                        </td>
+                        <td className='p-3 border border-green-600 text-center'>
+                          {patient.name}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
+              <div className="mr-2"></div>
 
-            <table className='w-full border-separate border-spacing-1'>
-              <thead>
-                <tr>
-                  <th className='border border-slate-600 rounded-md'> Yellow Zone Peak Flow Max </th>
-                  <th className='border border-slate-600 rounded-md'> Yellow Zone Peak Flow Min </th>
-                  <th className='border border-slate-600 rounded-md'> Yellow Zone Medication </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredPatients.map((patient, index) => (
+              <div className='border border-yellow-600 rounded-md'>
+                <table className='w-full'>
+                  <thead>
+                    <tr className='bg-yellow-200'>
+                      <th className='p-3 border border-yellow-600'> Yellow Zone Peak Flow Max </th>
+                      <th className='p-3 border border-yellow-600'> Yellow Zone Peak Flow Min </th>
+                      <th className='p-3 border border-yellow-600'> Yellow Zone Medication </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredPatients.map((patient, index) => (
 
-                  <tr key={patient._id} className='h-8'>
-                    <td className=' roundd-md text-center'>
-                      {patient.yz_peak_flow_max}
-                    </td>
-                    <td className=' roundd-md text-center'>
-                      {patient.yz_peak_flow_min}
-                    </td>
-                    <td className=' roundd-md text-center'>
-                      {patient.name}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                      <tr key={patient._id} className='h-8'>
+                        <td className='p-3 border border-yellow-600 text-center'>
+                          {patient.yz_peak_flow_max}
+                        </td>
+                        <td className='p-3 border border-yellow-600 text-center'>
+                          {patient.yz_peak_flow_min}
+                        </td>
+                        <td className='p-3 border border-yellow-600 text-center'>
+                          {patient.name}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
-            <table className='w-full border-separate border-spacing-1'>
-              <thead>
-                <tr>
-                  <th className='border border-slate-600 rounded-md'> Red Zone Peak Flow Max </th>
-                  <th className='border border-slate-600 rounded-md'> Red Zone Medication </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredPatients.map((patient, index) => (
+              <div className="mr-2"></div>
 
-                  <tr key={patient._id} className='h-8'>
-                    <td className=' roundd-md text-center'>
-                      {patient.rz_peak_flow_max}
-                    </td>
-                    <td className=' roundd-md text-center'>
-                      {patient.name}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
-    </div>
+              <div className='border border-red-600 rounded-md'>
+                <table className='w-full'>
+                  <thead>
+                    <tr className='bg-red-200'>
+                      <th className='p-3 border border-red-600'> Red Zone Peak Flow Max </th>
+                      <th className='p-3 border border-red-600'> Red Zone Medication </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredPatients.map((patient, index) => (
+
+                      <tr key={patient._id} className='h-8'>
+                        <td className='p-3 border border-red-600 text-center'>
+                          {patient.rz_peak_flow_max}
+                        </td>
+                        <td className='p-3 border border-red-600 text-center'>
+                          {patient.name}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   )
 }
 
