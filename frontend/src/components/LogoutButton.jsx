@@ -12,7 +12,7 @@ const LogoutButton = () => {
     }
     return (
         <div className='flex'>
-            <button className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit' onClick={handleLogout}>Logout</button>
+            <button className=' bg-blue-500 text-white px-4 py-1 rounded-lg w-fit' onClick={handleLogout}>Logout</button>
         </div>
     )
 }

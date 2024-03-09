@@ -1,30 +1,22 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { BsInfoCircle } from 'react-icons/bs';
-import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
-import Button from '../components/Button';
 import BackButton from '../components/BackButton';
 
-
 const RegistrationQ = () => {
-    const handleClick = () => {};
     return (
+        <div className='p-8'>
+            <BackButton />
 
-        <div className='p-4'>
-            
-            <BackButton/>
-
-            <h1 className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>Registering as Doctor or Patient?</h1>
-
-            <div className='flex justify-between items-center' style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <h1 className='text-3xl font-bold text-center mb-6'>Are you registering as a Doctor or a Patient?</h1>
+            <div className='flex justify-center items-center space-x-4'>
                 <Link to="/patients/register">
-                    <Button onClick={handleClick} color="darkblue">Patient</Button>
+                    <button className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md transition duration-300'>
+                        Patient
+                    </button>
                 </Link>
                 <Link to="/doctor/register">
-                    <Button onClick={handleClick} color="darkblue">Doctor</Button>
+                    <button className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md transition duration-300'>
+                        Doctor
+                    </button>
                 </Link>
             </div>
         </div>

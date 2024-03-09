@@ -51,7 +51,7 @@ function DPinfo() {
   };
 
   return (
-    <>
+    <div className='p-4'>
       <BackButton />
 
       <div className='container mx-auto'>
@@ -185,7 +185,7 @@ function DPinfo() {
           </>
         )}
       </div>
-    </>
+    </div>
   )
 }
 
