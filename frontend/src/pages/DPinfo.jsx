@@ -14,7 +14,7 @@ function DPinfo() {
   const [searchText, setSearchText] = useState('');
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
-  const handleClick = () => { null};
+  const handleClick = () => { null };
 
   useEffect(() => {
     setLoading(true);
@@ -60,31 +60,118 @@ function DPinfo() {
       {loading ? (
         <Loading />
       ) : (
-        <table className='w-full border-separate border-spacing-2'>
-          <thead>
-            <tr>
-              <th className='border border-slate-600 rounded-md'> Name </th>
-              <th className='border border-slate-600 rounded-md'> Operations </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredPatients.map((patient, index) => (
+        <>
+          <div className='flex justify-between items-center'>
+            <table className='w-full border-separate border-spacing-1'>
+              <thead>
+                <tr>
+                  <th className='border border-slate-600 rounded-md'> Name </th>
+                  <th className='border border-slate-600 rounded-md'> Age </th>
+                  <th className='border border-slate-600 rounded-md'> Best Peak Flow </th>
+                  <th className='rounded-md'>  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredPatients.map((patient, index) => (
+                  <tr key={patient._id} className='h-8'>
+                    <td className=' roundd-md text-center'>
+                      {patient.name}
+                    </td>
+                    <td className=' roundd-md text-center'>
+                      {patient.age}
+                    </td>
+                    <td className=' roundd-md text-center'>
+                      {patient.pr_peak_flow}
+                    </td>
+                    <td className=' roundd-md text-center'>
+                      <Link to='/doctor/patientInfo/changeMedication/:id'>
+                        <Button onClick={handleClick} color="darkblue">Change Medication</Button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-              <tr key={patient._id} className='h-8'>
-                <td className='border border-slate-700 roundd-md text-center'>
-                  {patient.name}
-                </td>
-                <td className='border border-slate-700 roundd-md text-center'>
-                  <div className='flex justify-center gap-x-4'>
-                    <Link to='/doctor/patientInfo/changeMedication/:id'>
-                      <Button onClick={handleClick} color="darkblue">Change Medication</Button>
-                    </Link>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <div className='flex justify-between items-center'>
+            <table className='w-full border-separate border-spacing-1'>
+              <thead>
+                <tr>
+                  <th className='border border-slate-600 rounded-md'> Green Zone Peak Flow Max </th>
+                  <th className='border border-slate-600 rounded-md'> Green Zone Peak Flow Min </th>
+                  <th className='border border-slate-600 rounded-md'> Green Zone Medication </th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredPatients.map((patient, index) => (
+
+                  <tr key={patient._id} className='h-8'>
+                    <td className=' roundd-md text-center'>
+                      {patient.gz_peak_flow_max}
+                    </td>
+                    <td className=' roundd-md text-center'>
+                      {patient.gz_peak_flow_min}
+                    </td>
+                    <td className=' roundd-md text-center'>
+                      {patient.name}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+
+
+            <table className='w-full border-separate border-spacing-1'>
+              <thead>
+                <tr>
+                  <th className='border border-slate-600 rounded-md'> Yellow Zone Peak Flow Max </th>
+                  <th className='border border-slate-600 rounded-md'> Yellow Zone Peak Flow Min </th>
+                  <th className='border border-slate-600 rounded-md'> Yellow Zone Medication </th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredPatients.map((patient, index) => (
+
+                  <tr key={patient._id} className='h-8'>
+                    <td className=' roundd-md text-center'>
+                      {patient.yz_peak_flow_max}
+                    </td>
+                    <td className=' roundd-md text-center'>
+                      {patient.yz_peak_flow_min}
+                    </td>
+                    <td className=' roundd-md text-center'>
+                      {patient.name}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <table className='w-full border-separate border-spacing-1'>
+              <thead>
+                <tr>
+                  <th className='border border-slate-600 rounded-md'> Red Zone Peak Flow Max </th>
+                  <th className='border border-slate-600 rounded-md'> Red Zone Medication </th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredPatients.map((patient, index) => (
+
+                  <tr key={patient._id} className='h-8'>
+                    <td className=' roundd-md text-center'>
+                      {patient.rz_peak_flow_max}
+                    </td>
+                    <td className=' roundd-md text-center'>
+                      {patient.name}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
     </div>
   )

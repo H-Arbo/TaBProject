@@ -190,7 +190,14 @@ export const loginPatient = async (request, response) => {
         const passCheck = await comparePassword(password, patient.password);
         if (passCheck) {
             //return response.json("password compare successful");
-            jwt.sign({ email: patient.email, id: patient._id, name: patient.name, age: patient.age, prim_emergency_contact: patient.prim_emergency_contact, email: patient.email, prim_ec_cell: patient.prim_ec_cell, prim_ec_work: patient.prim_ec_work, prim_ec_relationship: patient.prim_ec_relationship, sec_emergency_contact: patient.sec_emergency_contact, sec_ec_cell: patient.sec_ec_cell, sec_ec_work: patient.sec_ec_work, sec_ec_relationship: patient.sec_ec_relationship, provider_email: patient.provider_email }, process.env.JWT_STRING, {}, (error, token) => {
+            jwt.sign({ email: patient.email, id: patient._id, name: patient.name, age: patient.age,
+                prim_emergency_contact: patient.prim_emergency_contact, email: patient.email,
+                prim_ec_cell: patient.prim_ec_cell, prim_ec_work: patient.prim_ec_work, prim_ec_relationship: patient.prim_ec_relationship,
+                sec_emergency_contact: patient.sec_emergency_contact, sec_ec_cell: patient.sec_ec_cell,
+                sec_ec_work: patient.sec_ec_work, sec_ec_relationship: patient.sec_ec_relationship,
+                provider_email: patient.provider_email, pr_peak_flow: patient.pr_peak_flow, gz_peak_flow_max: patient.gz_peak_flow_max,
+                gz_peak_flow_min: patient.gz_peak_flow_min, rz_peak_flow_max: patient.rz_peak_flow_max,
+                yz_peak_flow_max: patient.yz_peak_flow_max, yz_peak_flow_min: patient.yz_peak_flow_min}, process.env.JWT_STRING, {}, (error, token) => {
                 if (error) {
                     throw error;
                 }
