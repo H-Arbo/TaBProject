@@ -54,7 +54,7 @@ const App = () => {
       <Route path = '/patients/delete/:id' element = {<DeletePatient/>} />
       <Route path = '/patients/profile' element = {<PProfile/>} />
       <Route path = '/doctor/profile' element = {<DProfile/>} />
-      <Route path = '/doctor/patientInfo/:id' element = {<DPinfo/>} />
+      <Route path = "/doctor/patientInfo" element={<DPinfo />} />
       <Route path = '/doctor/patientInfo/changeMedication/:id' element = {<PMeds/>} />
       <Route path = '/patients/edit/:id' element = {<EditPatient/>} />
       <Route path = '/doctor/edit/:id' element = {<EditDoctor/>} />

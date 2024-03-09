@@ -14,7 +14,6 @@ const RegistrationQ = () => {
     return (
 
         <div className='p-4'>
-            <img src="/images/asthma_logo.png" style={{ width: '460px', height: '70px' }} />
             
             <BackButton/>
 

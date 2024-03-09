@@ -31,7 +31,6 @@ const DHome = () => {
             });
     }, []);
 
-
     const filteredPatients = patients.filter(patient => {
         if (patient.provider_email && typeof patient.provider_email === 'string') {
 
@@ -88,6 +87,7 @@ const DHome = () => {
                         </thead>
                         <tbody>
                             {filteredPatients.map((patient, index) => (
+
                                 <tr key={patient._id} className='h-8'>
                                     <td className='border border-slate-700 roundd-md text-center'>
                                         {index + 1}
@@ -103,9 +103,11 @@ const DHome = () => {
                                     </td>
                                     <td className='border border-slate-700 roundd-md text-center'>
                                         <div className='flex justify-center gap-x-4'>
-                                            <Link to={'/doctor/patientInfo/${patient._id}'}>
-                                                <button className='text-2x1 text-green-800'>Patient Info</button>
-                                            </Link>
+                                            <Link
+                                                to="/doctor/patientInfo"
+                                                state={{ id:1, email: patient.email }}
+                                            > Patient Info </Link>
+
                                             <Link to={'/doctor/message/${patient._id}'}>
                                                 <button className='text-2x1 text-red-600'> Message Patient</button>
                                             </Link>

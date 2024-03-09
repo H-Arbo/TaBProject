@@ -1,64 +1,93 @@
+import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import BackButton from '../components/BackButton';
-import { useParams } from 'react-router-dom';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
+import BackButton from '../components/BackButton';
+import { FaBell } from "react-icons/fa6";
+import LogoutButton from '../components/LogoutButton';
 
-const DPinfo = () => {
-  const handleClick = () => {};
-  const [patient, setPatient] = useState({});
-  const [loading, setLoading] = useState(false);
-  const { id } = useParams();
+function DPinfo() {
+  const [patients, setPatients] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const [doctor, setDoctor] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const handleClick = () => { null};
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`http://localhost:5555/patients/${id}`)
-      .then((response) => {
-        setPatient(response.data);
+
+    Promise.all([
+      axios.get('http://localhost:5555/patients'),
+      axios.get('http://localhost:5555/profile', { withCredentials: true })
+    ])
+      .then(([patientsResponse, profileResponse]) => {
+        setPatients(patientsResponse.data.data);
+        setDoctor(profileResponse.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error('Error:', error);
         setLoading(false);
       });
   }, []);
 
+
+  const location = useLocation();
+
+  const filteredPatients = patients.filter(patient => {
+    if (patient.provider_email && typeof patient.provider_email === 'string') {
+
+      const targetEmail = doctor.email;
+      return patient.provider_email.includes(targetEmail) && patient.email.includes(location.state.email);
+    }
+    return false;
+  });
+
+  const handleSearchChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
   return (
     <div className='p-4'>
       <BackButton />
-      
+
+      {/* <div>{location.state.email}</div> */}
+
       <h1 className='text-3xl my-4'>Patient Info</h1>
       {loading ? (
         <Loading />
       ) : (
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Id</span>
-            <span>{patient._id}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Name</span>
-            <span>{patient.name}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Age</span>
-            <span>{patient.age}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Emergency Contact</span>
-            <span>{patient.ec}</span>
-          </div>
-          <Link to='/doctor/patientInfo/changeMedication/:id'>
-            <Button onClick={handleClick} color="darkblue">Change Medication</Button>
-          </Link>
-        </div>
+        <table className='w-full border-separate border-spacing-2'>
+          <thead>
+            <tr>
+              <th className='border border-slate-600 rounded-md'> Name </th>
+              <th className='border border-slate-600 rounded-md'> Operations </th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredPatients.map((patient, index) => (
+
+              <tr key={patient._id} className='h-8'>
+                <td className='border border-slate-700 roundd-md text-center'>
+                  {patient.name}
+                </td>
+                <td className='border border-slate-700 roundd-md text-center'>
+                  <div className='flex justify-center gap-x-4'>
+                    <Link to='/doctor/patientInfo/changeMedication/:id'>
+                      <Button onClick={handleClick} color="darkblue">Change Medication</Button>
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
-  );
-};
+  )
+}
 
 export default DPinfo;
