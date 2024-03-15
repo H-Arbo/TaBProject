@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import BackButton from '../components/BackButton';
@@ -10,17 +9,18 @@ const LoginQ = () => {
             <BackButton />
             <h1 className='text-3xl font-bold text-center mb-6'>Are you logging in as a Doctor or a Patient?</h1>
 
-            <div className='flex justify-center items-center space-x-4'>
-                <Link to="/patients/login">
-                    <button className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md transition duration-300'>
-                        Patient
-                    </button>
-                </Link>
-                <Link to='/doctor/login'>
-                    <button className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md transition duration-300'>
-                        Doctor
-                    </button>
-                </Link>
+            <div className='flex justify-center items-center border-4 rounded-xl w-[600px] p-4 mx-auto'
+                style={{border: '4px solid #D2EBDE'}}>
+                    <Link to="/patients/login" className="mr-4">
+                        <Button color='blue'>
+                            Patient
+                        </Button>
+                    </Link>
+                    <Link to='/doctor/login'>
+                        <Button color = 'blue'>
+                            Doctor
+                        </Button>
+                    </Link>
             </div>
         </div>
 
