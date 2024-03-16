@@ -3,16 +3,20 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
+import Pat_Navbar from '../components/Pat_Navbar';
 
 const Animations = () => {
 
   return (
-    <div className='p-4'>
-      <BackButton />
-      
-      <h1 className='text-3xl my-4'>Animations!</h1>
-      
-    </div>
+    <>
+      <Pat_Navbar />
+      <div className='p-4'>
+        <BackButton />
+
+        <h1 className='text-3xl my-4'>Animations!</h1>
+
+      </div>
+    </>
   );
 };
 

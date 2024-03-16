@@ -1,23 +1,29 @@
-import { Link } from 'react-router-dom'
-import Button from './Button'
-import { MdOutlineAddBox, MdOutlineDelete, MdOutlinePerson } from 'react-icons/md';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { MdOutlineAddBox, MdOutlinePerson, MdHome } from 'react-icons/md';
+import { FaBell } from 'react-icons/fa6';
 import LogoutButton from '../components/LogoutButton';
+import Button from './Button';
+import BackButton from '../components/BackButton';
 
 const Pat_Navbar = () => {
   const handleClick = () => { };
 
   return (
-    <nav>
-      <div className='flex justify-between items-center p-4 rounded-md mb-4'>
-        <div className="flex items-center">
-          <Link to={'/patients/home'} className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit'>Patient Home</Link>
-
+    <nav className="bg-gray-100 shadow-md">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6">
+        <h1 className="text-3xl">Patient Portal</h1>
+        <div className="flex items-center space-x-2">
+          <BackButton />
+          <Link to="/patients/home" className="text-sky-800">
+            <MdHome className="text-4xl" />
+          </Link>
           <Link to={`/patients/profile`} className="text-sky-800 mr-4">
             <MdOutlinePerson className='text-4xl' />
           </Link>
-          <LogoutButton />
           <Link to='/resources'> <Button onClick={handleClick} color="darkblue">Resources</Button> </Link>
           <Link to='/aboutUs'> <Button onClick={handleClick} color="darkblue">About Us</Button> </Link>
+          <LogoutButton />
         </div>
       </div>
     </nav>

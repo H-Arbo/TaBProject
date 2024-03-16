@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
+import Dr_Navbar from '../components/Dr_Navbar';
 import Button from '../components/Button';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import BackButton from '../components/BackButton';
@@ -51,13 +52,12 @@ function DPinfo() {
   };
 
   return (
-    <div className='p-4'>
-      <BackButton />
+    <>
+      <Dr_Navbar />
+      <div className='p-9'>
+        <BackButton />
 
-      <div className='container mx-auto'>
-
-
-        <h1 className='text-3xl my-4'>Patient Info</h1>
+        <h1 className='text-3xl my-4 text-center'>Patient Info</h1>
         {loading ? (
           <Loading />
         ) : (
@@ -65,7 +65,7 @@ function DPinfo() {
             <div className='flex justify-between items-center'>
               <table className='w-full'>
                 <thead>
-                  <tr classname='bg-gray-200'>
+                  <tr className='bg-gray-200'>
                     <th className='p-3 border border-gray-300'> Name </th>
                     <th className='p-3 border border-gray-300'> Age </th>
                     <th className='p-3 border border-gray-300'> Best Peak Flow </th>
@@ -74,7 +74,7 @@ function DPinfo() {
                 </thead>
                 <tbody>
                   {filteredPatients.map((patient, index) => (
-                    <tr key={patient._id} className='h-8'>
+                    <tr key={patient._id}>
                       <td className='p-3 border border-gray-300 text-center'>
                         {patient.name}
                       </td>
@@ -95,88 +95,119 @@ function DPinfo() {
               </table>
             </div>
 
-            <div className="mb-3"></div>
+            <div className="mb-4"></div>
 
-            <div className='flex justify-between items-center'>
+            <div className='flex justify-between items-start'>
               <div className='border border-green-600 rounded-md'>
+                <h2 className='flex justify-center items-center bg-green-200 h-10'>
+                  <b className='text-center'>Green Zone</b>
+                </h2>
+
+                <table className='w-full'>
+                  <tbody>
+                    {filteredPatients.map((patient, index) => (
+                      <tr key={patient._id}>
+                        <td className='p-3 border-t border-r border-b border-green-600 text-center'> Peak Flow Max: {patient.gz_peak_flow_max}</td>
+                        <td className='p-3 border-t border-b border-green-600 text-center'> Peak Flow Min: {patient.gz_peak_flow_min}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
                 <table className='w-full'>
                   <thead>
                     <tr className='bg-green-200'>
-                      <th className='p-3 border border-green-600'> Green Zone Peak Flow Max </th>
-                      <th className='p-3 border border-green-600'> Green Zone Peak Flow Min </th>
-                      <th className='p-3 border border-green-600'> Green Zone Medication </th>
+                      <th className='p-3 border-r border-green-600'>Medication</th>
+                      <th className='p-3 border-r border-green-600'>Amount</th>
+                      <th className='p-3'>Frequency</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredPatients.map((patient, index) => (
-
-                      <tr key={patient._id} className='h-8'>
-                        <td className='p-3 border border-green-600 text-center'>
-                          {patient.gz_peak_flow_max}
-                        </td>
-                        <td className='p-3 border border-green-600 text-center'>
-                          {patient.gz_peak_flow_min}
-                        </td>
-                        <td className='p-3 border border-green-600 text-center'>
-                          {patient.name}
-                        </td>
-                      </tr>
+                    {filteredPatients.map((patient) => (
+                      patient.gz_meds.map((medication, index) => (
+                        <tr key={index}>
+                          <td className='p-3 border-r border-t border-green-600'>{medication.med}</td>
+                          <td className='p-3 border-r border-t border-green-600'>{medication.amount}</td>
+                          <td className='p-3 border-t border-green-600'>{medication.when_freq}</td>
+                        </tr>
+                      ))
                     ))}
                   </tbody>
                 </table>
               </div>
 
-              <div className="mr-2"></div>
+              <div className="mr-4"></div>
 
               <div className='border border-yellow-600 rounded-md'>
+                <h2 className='flex justify-center items-center bg-yellow-200 h-10'>
+                  <b className='text-center'>Yellow Zone</b>
+                </h2>
+
+                <table className='w-full'>
+                  <tbody>
+                    {filteredPatients.map((patient, index) => (
+                      <tr key={patient._id}>
+                        <td className='p-3 border-t border-r border-b border-yellow-600 text-center'> Peak Flow Max: {patient.yz_peak_flow_max}</td>
+                        <td className='p-3 border-t border-b border-yellow-600 text-center'> Peak Flow Min: {patient.yz_peak_flow_min}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
                 <table className='w-full'>
                   <thead>
                     <tr className='bg-yellow-200'>
-                      <th className='p-3 border border-yellow-600'> Yellow Zone Peak Flow Max </th>
-                      <th className='p-3 border border-yellow-600'> Yellow Zone Peak Flow Min </th>
-                      <th className='p-3 border border-yellow-600'> Yellow Zone Medication </th>
+                      <th className='p-3 border-r border-yellow-600'>Medication</th>
+                      <th className='p-3 border-r border-yellow-600'>Amount</th>
+                      <th className='p-3'>Frequency</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredPatients.map((patient, index) => (
-
-                      <tr key={patient._id} className='h-8'>
-                        <td className='p-3 border border-yellow-600 text-center'>
-                          {patient.yz_peak_flow_max}
-                        </td>
-                        <td className='p-3 border border-yellow-600 text-center'>
-                          {patient.yz_peak_flow_min}
-                        </td>
-                        <td className='p-3 border border-yellow-600 text-center'>
-                          {patient.name}
-                        </td>
-                      </tr>
+                    {filteredPatients.map((patient) => (
+                      patient.yz_meds.map((medication, index) => (
+                        <tr key={index}>
+                          <td className='p-3 border-r border-t border-yellow-600'>{medication.med}</td>
+                          <td className='p-3 border-r border-t border-yellow-600'>{medication.amount}</td>
+                          <td className='p-3 border-t border-yellow-600'>{medication.when_freq}</td>
+                        </tr>
+                      ))
                     ))}
                   </tbody>
                 </table>
               </div>
 
-              <div className="mr-2"></div>
+              <div className="mr-4"></div>
 
               <div className='border border-red-600 rounded-md'>
+                <h2 className='flex justify-center items-center bg-red-200 h-10'>
+                  <b className='text-center'>Red Zone</b>
+                </h2>
+
+                <table className='w-full'>
+                  <tbody>
+                    {filteredPatients.map((patient, index) => (
+                      <tr key={patient._id}>
+                        <td className='p-3 border-t border-r border-b border-red-600 text-center'> Peak Flow Max: {patient.rz_peak_flow_max}</td>
+                        <td className='p-3 border-t border-b border-red-600 text-center'> Peak Flow Min: {patient.rz_peak_flow_min}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
                 <table className='w-full'>
                   <thead>
                     <tr className='bg-red-200'>
-                      <th className='p-3 border border-red-600'> Red Zone Peak Flow Max </th>
-                      <th className='p-3 border border-red-600'> Red Zone Medication </th>
+                      <th className='p-3 border-r border-red-600'>Medication</th>
+                      <th className='p-3 border-r border-red-600'>Amount</th>
+                      <th className='p-3'>Frequency</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredPatients.map((patient, index) => (
-
-                      <tr key={patient._id} className='h-8'>
-                        <td className='p-3 border border-red-600 text-center'>
-                          {patient.rz_peak_flow_max}
-                        </td>
-                        <td className='p-3 border border-red-600 text-center'>
-                          {patient.name}
-                        </td>
-                      </tr>
+                    {filteredPatients.map((patient) => (
+                      patient.rz_meds.map((medication, index) => (
+                        <tr key={index}>
+                          <td className='p-3 border-r border-t border-red-600'>{medication.med}</td>
+                          <td className='p-3 border-r border-t border-red-600'>{medication.amount}</td>
+                          <td className='p-3 border-t border-red-600'>{medication.when_freq}</td>
+                        </tr>
+                      ))
                     ))}
                   </tbody>
                 </table>
@@ -185,7 +216,7 @@ function DPinfo() {
           </>
         )}
       </div>
-    </div>
+    </>
   )
 }
 

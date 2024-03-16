@@ -42,7 +42,7 @@ export const registerPatient = async (request, response) => {
     const containsCapitalRegex = /[A-Z]/;
     const containsEmojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
     try {
-        const { name, age, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email, provider, provider_phone } = request.body;
+        const { name, age, email, password, prim_emergency_contact, prim_ec_cell, prim_ec_relationship, prim_ec_work, sec_emergency_contact, sec_ec_cell, sec_ec_relationship, sec_ec_work, provider_email, provider, provider_phone, rz_meds, yz_meds, gz_meds } = request.body;
         // check name
         if (!name) {
             return response.json({
@@ -148,7 +148,10 @@ export const registerPatient = async (request, response) => {
             sec_ec_work,
             provider_email,
             provider,
-            provider_phone
+            provider_phone,
+            rz_meds,
+            yz_meds,
+            gz_meds
         })
         return response.json(newPatient);
 
@@ -199,7 +202,8 @@ export const loginPatient = async (request, response) => {
                 sec_ec_work: patient.sec_ec_work, sec_ec_relationship: patient.sec_ec_relationship, provider: patient.provider, provider_phone: patient.provider_phone,
                 provider_email: patient.provider_email, pr_peak_flow: patient.pr_peak_flow, gz_peak_flow_max: patient.gz_peak_flow_max,
                 gz_peak_flow_min: patient.gz_peak_flow_min, rz_peak_flow_max: patient.rz_peak_flow_max,
-                yz_peak_flow_max: patient.yz_peak_flow_max, yz_peak_flow_min: patient.yz_peak_flow_min}, process.env.JWT_STRING, {}, (error, token) => {
+                yz_peak_flow_max: patient.yz_peak_flow_max, yz_peak_flow_min: patient.yz_peak_flow_min,
+                rz_meds: patient.rz_meds, yz_meds: patient.yz_meds, gz_meds: patient.gz_meds}, process.env.JWT_STRING, {}, (error, token) => {
                 if (error) {
                     throw error;
                 }

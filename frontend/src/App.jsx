@@ -69,7 +69,7 @@ const App = () => {
       <Route path = '/patients/medsheet/:id' element = {<Medsheet/>} />
       <Route path = '/doctor/message/:id' element = {<MessagePatient/>} />
       <Route path = '/resources' element = {<Resources/>} />
-      <Route path = '/doctor/alerts/:id' element = {<DAlerts/>} />
+      <Route path = '/doctor/alerts' element = {<DAlerts/>} />
     </Routes>
     </UserContextProvider>
   );

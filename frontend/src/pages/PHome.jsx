@@ -34,19 +34,8 @@ const PHome = () => {
                 <BackButton />
 
                 <div className='p-4'>
-                    <h1 className='text-3xl font-bold my-8 text-center'>Patient Home</h1>
+                    <h1 className='text-3xl font-bold my-4 text-center'>Patient Home</h1>
 
-                    <div className='flex justify-between items-center p-4 rounded-md mb-4'>
-                        {loading ? (
-                            <Loading />
-                        ) : (
-                            <Link to={`/patients/profile`} className="text-sky-800 mr-4">
-                                <MdOutlinePerson className='text-4xl' />
-                            </Link>
-
-                        )}
-                        <LogoutButton />
-                    </div>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                         <Link to='/patients/green/${patient._id}'>
                             <Button color="green">

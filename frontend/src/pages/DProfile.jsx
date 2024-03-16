@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
+import Dr_Navbar from '../components/Dr_Navbar';
 
 const DProfile = () => {
   const [doctor, setDoctor] = useState(null);
@@ -24,27 +25,30 @@ const DProfile = () => {
   }, []);
 
   return (
-    <div className='p-4'>
-      <BackButton />
-      <h1>Doctor Profile</h1>
-      {loading ? (
-        <Loading />
-      ) : doctor ? (
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Doctor Name: {doctor.name}</span>
+    <>
+      <Dr_Navbar />
+      <div className='p-4'>
+        <BackButton />
+        <h1>Doctor Profile</h1>
+        {loading ? (
+          <Loading />
+        ) : doctor ? (
+          <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
+            <div className='my-4'>
+              <span className='text-xl mr-4 text-gray-500'>Doctor Name: {doctor.name}</span>
+            </div>
+            <div className='my-4'>
+              <span className='text-xl mr-4 text-gray-500'>Email: {doctor.email}</span>
+            </div>
+            <Link to={'/doctor/edit/${patient._id}'}>
+              <button className='text-2x1 text-yellow-600'>Edit Profile</button>
+            </Link>
           </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Email: {doctor.email}</span>
-          </div>
-          <Link to={'/doctor/edit/${patient._id}'}>
-            <button className='text-2x1 text-yellow-600'>Edit Profile</button>
-          </Link>
-        </div>
-      ) : (
-        <p>No doctor profile found</p>
-      )}
-    </div>
+        ) : (
+          <p>No doctor profile found</p>
+        )}
+      </div>
+    </>
   );
 };
 
