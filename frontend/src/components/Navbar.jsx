@@ -16,6 +16,7 @@ export default function Navbar() {
         <Link to={'/register'} className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit'>Registration Question</Link>
         <Link to={'/login'} className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit'>Login Question</Link>
         <Link to='/resources'> <Button onClick={handleClick} color="darkblue">Resources</Button> </Link>
+        <Link to='/aboutUs'> <Button onClick={handleClick} color="darkblue">About Us</Button> </Link>
         <Link to={'/doctor/home'} className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit'>Doctor Home</Link>
         <Link to={'/patients/home'} className=' bg-sky-800 text-white px-4 py-1 rounded-lg w-fit'>Patient Home</Link>
       </div>

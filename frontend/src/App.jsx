@@ -1,6 +1,7 @@
 //import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Front from './pages/Front';
+import AboutUs from './pages/AboutUs';
 import RegistrationQ from './pages/RegistrationQ';
 import LoginQ from './pages/LoginQ';
 import PLogin from './pages/PLogin';
@@ -43,6 +44,7 @@ const App = () => {
       <Route path = '/' element = {<Front />} />
       <Route path = '/register' element = {<RegistrationQ />} />
       <Route path = '/login' element = {<LoginQ />} />
+      <Route path = '/aboutUs' element = {<AboutUs />} />
       <Route path = '/patients/login' element = {<PLogin />} />
       <Route path = '/doctor/login' element = {<DLogin />} />
       <Route path = '/patients/register' element = {<PRegister />} />

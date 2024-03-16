@@ -23,57 +23,96 @@ const PatientProfile = () => {
   }, []);
 
   return (
-    <div className='p-4'>
-    <BackButton />
+    <div className='p-9'>
+      <BackButton />
 
-      <h1>Patient Profile</h1>
+      <h1 className='text-3xl my-4 text-center'>Patient Profile</h1>
+
       {loading ? (
         <Loading />
       ) : patient ? (
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Patient Name: {patient.name}</span>
+        <div className='pb-4 '>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 pb-4'>
+            <div className='border border-green-600 rounded-md'>
+              <h2 className='bg-green-200 text-gray-800 text-lg font-semibold p-3 text-center'>Green Zone</h2>
+              <table className='w-full'>
+                <tbody>
+                  <tr>
+                    <td className='p-3 border border-green-600 text-center'>Peak Flow Max: {patient.gz_peak_flow_max}</td>
+                    <td className='p-3 border border-green-600 text-center'>Peak Flow Min: {patient.gz_peak_flow_min}</td>
+                    <td className='p-3 border border-green-600 text-center'>Medication: {patient.gz_medication}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className='border border-yellow-600 rounded-md'>
+              <h2 className='bg-yellow-200 text-gray-800 text-lg font-semibold p-3 text-center'>Yellow Zone</h2>
+              <table className='w-full'>
+                <tbody>
+                  <tr>
+                    <td className='p-3 border border-yellow-600 text-center'>Peak Flow Max: {patient.yz_peak_flow_max}</td>
+                    <td className='p-3 border border-yellow-600 text-center'>Peak Flow Min: {patient.yz_peak_flow_min}</td>
+                    <td className='p-3 border border-yellow-600 text-center'>Medication: {patient.yz_medication}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className='border border-red-600 rounded-md'>
+              <h2 className='bg-red-200 text-gray-800 text-lg font-semibold p-3 text-center'>Red Zone</h2>
+              <table className='w-full'>
+                <tbody>
+                  <tr>
+                    <td className='p-3 border border-red-600 text-center'>Peak Flow Max: {patient.rz_peak_flow_max}</td>
+                    <td className='p-3 border border-red-600 text-center'>Medication: {patient.rz_medication}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Age: {patient.age}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact: {patient.prim_emergency_contact}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact Email: {patient.email}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact Cell Phone Number: {patient.prim_ec_cell}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact Work Phone Number: {patient.prim_ec_work}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Primary Emergency Contact Relation to Patient: {patient.prim_ec_relationship}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Secondary Emergency Contact: {patient.sec_emergency_contact}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Secondary Emergency Contact Cell Phone Number: {patient.sec_ec_cell}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Secondary Emergency Contact Work Phone Number: {patient.sec_ec_work}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Secondary Emergency Contact Relation to Patient: {patient.sec_ec_relationship}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Provider Email: {patient.provider_email}</span> 
+
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+            <div className='border border-sky-400 rounded-xl p-4'>
+              <h2 className='text-xl text-gray-700 mb-4'>Basic Information</h2>
+              <div className='space-y-2'>
+                <p><span className='font-semibold'>Patient Name:</span> {patient.name}</p>
+                <p><span className='font-semibold'>Age:</span> {patient.age}</p>
+                <p><span className='font-semibold'>Best Peak Flow:</span> {patient.pr_peak_flow}</p>
+              </div>
+            </div>
+
+            <div className='border border-sky-400 rounded-xl p-4'>
+              <h2 className='text-xl text-gray-700 mb-4'>Primary Emergency Contact</h2>
+              <div className='space-y-2'>
+                <p><span className='font-semibold'>Primary Contact:</span> {patient.prim_emergency_contact}</p>
+                <p><span className='font-semibold'>Email:</span> {patient.email}</p>
+                <p><span className='font-semibold'>Cell Phone:</span> {patient.prim_ec_cell}</p>
+                <p><span className='font-semibold'>Work Phone:</span> {patient.prim_ec_work}</p>
+                <p><span className='font-semibold'>Relation:</span> {patient.prim_ec_relationship}</p>
+              </div>
+            </div>
+
+            <div className='border border-sky-400 rounded-xl p-4'>
+              <h2 className='text-xl text-gray-700 mb-4'>Secondary Emergency Contact</h2>
+              <div className='space-y-2'>
+                <p><span className='font-semibold'>Name:</span> {patient.sec_emergency_contact}</p>
+                <p><span className='font-semibold'>Cell Phone:</span> {patient.sec_ec_cell}</p>
+                <p><span className='font-semibold'>Work Phone:</span> {patient.sec_ec_work}</p>
+                <p><span className='font-semibold'>Relation:</span> {patient.sec_ec_relationship}</p>
+              </div>
+            </div>
+
+            <div className='border border-sky-400 rounded-xl p-4'>
+              <h2 className='text-xl text-gray-700 mb-4'>Provider Info</h2>
+              <p><span className='font-semibold'>Provider:</span> {patient.provider}</p>
+              <p><span className='font-semibold'>Email:</span> {patient.provider_email}</p>
+              <p><span className='font-semibold'>Phone:</span> {patient.provider_phone}</p>
+            </div>
           </div>
         </div>
-
-
-
-
       ) : (
-        <p>No patient profile found</p>
+        <p className="text-center text-gray-600">No patient profile found</p>
       )}
     </div>
   );

@@ -32,6 +32,9 @@ const Front = () => {
                 <Link to='/resources' style={{ margin: '10px' }}>
                     <Button color={'blue'}>Resources</Button>
                 </Link>
+                <Link to='/aboutUs' style={{ margin: '10px' }}>
+                    <Button color={'blue'}>About Us</Button>
+                </Link>
             </div>
         </div>
     );
