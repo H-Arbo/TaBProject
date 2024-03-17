@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">TaB-to-Stop</string>
+    <string name="title_activity_main">TaB-to-Stop</string>
+    <string name="package_name">com.TaBtoStop.app</string>
+    <string name="custom_url_scheme">com.TaBtoStop.app</string>
+</resources>

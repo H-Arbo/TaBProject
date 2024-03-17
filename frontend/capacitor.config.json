@@ -1,0 +1,8 @@
+{
+  "appId": "com.TaBtoStop.app",
+  "appName": "TaB-to-Stop",
+  "webDir": "build",
+  "server": {
+    "androidScheme": "https"
+  }
+}
