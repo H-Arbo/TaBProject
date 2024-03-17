@@ -22,12 +22,14 @@ export default function PLogin() {
 
       if (data.error) {
         toast.error(data.error);
+        setData({ ...data, password: '' });
       } else {
         setData({});
         nav("/patients/home");
       }
     } catch (error) {
       console.log(error);
+      
     }
   };
 

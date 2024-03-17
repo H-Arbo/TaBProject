@@ -15,13 +15,16 @@ export default function DLogin() {
     e.preventDefault();
     const { email, password } = data
     try {
+      
       const { data } = await axios.post('/doctor/login', {
         email,
         password
       });
 
+      
       if (data.error) {
         toast.error(data.error);
+        setData({ ...data, password: '' });
       } else {
         setData({})
         nav('/doctor/home');
