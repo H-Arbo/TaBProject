@@ -4,10 +4,16 @@ import BackButton from '../components/BackButton';
 import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import Pat_Navbar from '../components/Pat_Navbar';
+import { MdHistoryEdu } from "react-icons/md";
 
 const PatientProfile = () => {
   const [patient, setPatient] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+
+  const changeToFalse = () => {
+    setEditMode(false);
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -31,11 +37,26 @@ const PatientProfile = () => {
 
         <h1 className='text-3xl my-4 text-center'>Patient Profile</h1>
 
-        {loading ? (
+        { loading ? (
           <Loading />
+        ) : editMode ? (
+          <div>
+
+            <Link to={`/patients/profile/edit`} 
+              changeToFalse={changeToFalse} >
+            </Link>
+            <h2>Edit Profile</h2>
+            
+          </div>
         ) : patient ? (
           <div>
+                
             <div className='pb-4'>
+
+              <div className='fixed bottom-3 right-2 text-sky-800' style={{ cursor: "pointer" }} onClick={() => setEditMode(true)}>
+                <MdHistoryEdu className="text-4x1 h-6 w-6" />
+              </div>
+              
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                 <div className='border border-sky-400 rounded-xl p-4'>
                   <h2 className='text-xl text-gray-700 mb-4'>Basic Information</h2>
