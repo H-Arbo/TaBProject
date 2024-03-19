@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import BackButton from '../components/BackButton';
 import Pat_Navbar from '../components/Pat_Navbar';
-import { MdOutlineAddBox, MdOutlineDelete, MdOutlinePerson } from 'react-icons/md';
-import LogoutButton from '../components/LogoutButton';
 
 
 const PHome = () => {
@@ -77,7 +74,7 @@ const PHome = () => {
                         <Link to='/patients/surveys/${patient._id}'>
                             <Button color="blue">Surveys</Button>
                         </Link>
-                        <Link to='/patients/medsheet/${patient._id}'>
+                        <Link to='/patients/ActionSheet'>
                             <Button color="blue">Action Sheet</Button>
                         </Link>
                     </div>

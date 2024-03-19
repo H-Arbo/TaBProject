@@ -24,7 +24,7 @@ import RedZone from './pages/RedZone';
 import Animations from './pages/Animations';
 import Games from './pages/Games';
 import Surveys from './pages/Surveys';
-import Medsheet from './pages/Medsheet';
+import ActionSheet from './pages/ActionSheet';
 import MessagePatient from './pages/MessagePatient';
 import DPinfo from './pages/DPinfo';
 import {Toaster } from 'react-hot-toast';
@@ -66,7 +66,7 @@ const App = () => {
       <Route path = '/patients/animations/:id' element = {<Animations/>} />
       <Route path = '/patients/games/:id' element = {<Games/>} />
       <Route path = '/patients/surveys/:id' element = {<Surveys/>} />
-      <Route path = '/patients/medsheet/:id' element = {<Medsheet/>} />
+      <Route path = '/patients/actionSheet' element = {<ActionSheet/>} />
       <Route path = '/doctor/message/:id' element = {<MessagePatient/>} />
       <Route path = '/resources' element = {<Resources/>} />
       <Route path = '/doctor/alerts' element = {<DAlerts/>} />
