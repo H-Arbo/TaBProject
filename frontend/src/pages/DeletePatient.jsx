@@ -27,7 +27,6 @@ const DeletePatient = () => {
         <>
             <Dr_Navbar />
             <div className='p-4'>
-                <BackButton />
 
                 <h1 className='text-3x1 my-4'>Archive Patient</h1>
                 {loading ? <Loading /> : ''}

@@ -12,9 +12,10 @@ const Pat_Navbar = () => {
   return (
     <nav className="bg-gray-100 shadow-md">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
+        <BackButton />
         <h1 className="text-3xl">Patient Portal</h1>
         <div className="flex items-center space-x-2">
-          <BackButton />
+          
           <Link to="/patients/home" className="text-sky-800">
             <MdHome className="text-4xl" />
           </Link>

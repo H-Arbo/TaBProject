@@ -14,7 +14,6 @@ const GreenZone = () => {
         <>
             <Pat_Navbar />
             <div className='p-4'>
-                <BackButton/>
                 
                 <div className='flex justify-between items-center'>
                     <h1 className='text-3x1 my-8'> Green Zone Info </h1>

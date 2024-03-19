@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '/images/tab.png';
+import logo from '/images/tab_clear.png';
 import Button from '../components/Button';
 
 const Front = () => {

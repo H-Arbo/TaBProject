@@ -11,7 +11,6 @@ const Animations = () => {
     <>
       <Pat_Navbar />
       <div className='p-4'>
-        <BackButton />
 
         <h1 className='text-3xl my-4'>Animations!</h1>
 

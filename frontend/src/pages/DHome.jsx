@@ -45,7 +45,6 @@ const DHome = () => {
             <Dr_Navbar />
 
             <div className='p-4'>
-                <BackButton className='mb-2'/>
 
                 {loading ? (
                     <Loading />

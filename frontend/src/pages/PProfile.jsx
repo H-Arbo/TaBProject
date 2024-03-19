@@ -33,7 +33,6 @@ const PatientProfile = () => {
     <>
       <Pat_Navbar />
       <div className='p-9'>
-        <BackButton />
 
         <h1 className='text-3xl my-4 text-center'>Patient Profile</h1>
 

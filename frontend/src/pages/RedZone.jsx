@@ -14,7 +14,6 @@ const RedZone = () => {
         <>
             <Pat_Navbar />
             <div className='p-4'>
-                <BackButton/>
                 
                 <div className='flex justify-between items-center'>
                     <h1 className='text-3x1 my-8'> Red Zone Info </h1>

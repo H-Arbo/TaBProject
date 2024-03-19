@@ -36,7 +36,6 @@ const CreatePatients = () => {
     <>
       <Dr_Navbar />
       <div className='p-4'>
-        <BackButton />
 
         <h1 className='text-3xl my-4'>Add Patient</h1>
         {loading ? <Loading /> : ''}

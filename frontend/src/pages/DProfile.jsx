@@ -28,7 +28,6 @@ const DProfile = () => {
     <>
       <Dr_Navbar />
       <div className='p-4'>
-        <BackButton />
         <h1>Doctor Profile</h1>
         {loading ? (
           <Loading />

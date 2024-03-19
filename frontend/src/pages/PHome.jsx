@@ -28,7 +28,6 @@ const PHome = () => {
         <>
             <Pat_Navbar />
             <div className='p-8'>
-                <BackButton />
 
                 <div className='p-4'>
                     <h1 className='text-3xl font-bold my-4 text-center'>Patient Home</h1>
