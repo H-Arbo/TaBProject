@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   TextInput,
   Button,
+  TouchableOpacity,
 } from "react-native";
 import { Link, Tabs } from "expo-router";
 import LoginQ from "@/components/LoginQ";
@@ -14,8 +15,9 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import axios from "axios";
 import Toast from "react-native-toast-message";
+import { FullWindowOverlay } from 'react-native-screens';
 
-export default function TabLoginScreen() {
+export default function PatientLoginScreen() {
   const colorScheme = useColorScheme();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -23,7 +25,7 @@ export default function TabLoginScreen() {
   const loginPatient = async () => {
     //const { email, password } = data;
     try {
-      const { data } = await axios.post("/patients/login", {
+      const { data } = await axios.post("/plogin", {
         email,
         password,
       });
@@ -52,39 +54,98 @@ export default function TabLoginScreen() {
   //   pasesword: "",
   // });
   return (
-    <SafeAreaView style={styles.container}>
-      <TextInput
-        style={styles.input}
-        keyboardType="email-address"
-        onChangeText={setEmail}
-        value={email}
-        placeholder="email"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={setPassword}
-        value={password}
-        placeholder="password"
-        secureTextEntry={true}
-      />
-      <Button title="Login" onPress={loginPatient} />
-      {/* <Text style={styles.title}>Patient Login</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-       */}
+
+    // Title and form
+    <View style={styles.container}>
+      
+      {/* Title */}
+      <View style={styles.title}>
+        <Text style={styles.text}>
+          Patient Login
+        </Text>
+      </View>
+
+      {/* Form */}
+      <View style={styles.form}>
+
+        {/* Email field */}
+        <View style={styles.field}>
+          <TextInput
+            style={styles.input}
+            keyboardType="email-address"
+            onChangeText={setEmail}
+            value={email}
+            placeholder="email"
+            placeholderTextColor={'gray'}
+          />
+        </View>
+
+        {/* Password field */}
+        <View style={styles.field}>
+          <TextInput
+            style={styles.input}
+            onChangeText={setPassword}
+            value={password}
+            placeholder="password"
+            placeholderTextColor={'gray'}
+            secureTextEntry={true}
+          />
+        </View>
+
+        {/* Login Field */}
+        <TouchableOpacity style={styles.loginbutton} onPress={loginPatient}>
+          <Text style={styles.text}>
+            Login
+          </Text>
+        </TouchableOpacity>
+
+      </View>
       <Toast />
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    justifyContent: 'center',
+    paddingTop: 40,
+    paddingBottom: 10,
+    alignItems: 'center',
   },
   title: {
+    marginBottom: 20,
+  },
+  text: {
+    fontWeight: 'bold',
+    letterSpacing: 1,
     fontSize: 20,
-    fontWeight: "bold",
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+  form: {
+    alignItems: 'center',
+    marginHorizontal: 4,
+    marginVertical: 4,
+    width: '90%',
+  },
+  field: {
+    backgroundColor: 'rgba(0, 0, 0, 0.05)', 
+    padding: 4,
+    borderRadius: 8, 
+    width: '90%',
+    marginBottom: 8,
+  },
+  loginbutton: {
+    alignItems: 'center',
+    width: '50%',
+    backgroundColor: '#4FD1C5', 
+    padding: 12, 
+    borderRadius: 20, 
   },
   separator: {
     marginVertical: 30,
@@ -93,10 +154,5 @@ const styles = StyleSheet.create({
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
 });
+  
