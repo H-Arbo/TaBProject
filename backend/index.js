@@ -6,40 +6,52 @@ import dAuthRoutes from "./routes/dAuthRoutes.js";
 import pAuthRoutes from "./routes/pAuthRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import dotenv from "dotenv/config.js"
+import dotenv from "dotenv/config.js";
 import jwt from "jsonwebtoken";
 
 const app = express();
 //middleware for parsing request body
 app.use(express.json());
-
+var allowedOrigins = ["http://localhost:8081", "http://localhost:5173"];
 //cors middleware
-app.use(cors({
-  credentials: true,
-  origin: 'http://localhost:5173'
-}));
+app.use(
+  cors({
+    credentials: true,
+    origin: function (origin, callback) {
+      // allow requests with no origin
+      // (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        var msg =
+          "The CORS policy for this site does not " +
+          "allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
 
 app.use(cookieParser());
 
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }));
 app.use("/doctor/", dAuthRoutes);
 
 app.use("/patients/", pAuthRoutes);
 
 //app.use("/patients", patientsRoute);
-app.get( "/profile", (request, response) => {
-  const {token} = request.cookies
+app.get("/profile", (request, response) => {
+  const { token } = request.cookies;
 
-  if(token){
+  if (token) {
     jwt.verify(token, process.env.JWT_STRING, {}, (error, user) => {
-      if(error) throw error;
+      if (error) throw error;
       response.json(user);
-    })
-  }else{
+    });
+  } else {
     response.json("no token");
   }
 });
-
 
 app.get("/", (request, response) => {
   console.log(request);
