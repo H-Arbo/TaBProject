@@ -15,6 +15,11 @@ const Surveys = () => {
 
         <h1 className='text-3xl my-4'>Surveys</h1>
       </div>
+
+      <p>Click on the links below to take the surveys</p>
+      <Link to="https://universityofalabama.az1.qualtrics.com/jfe/form/SV_dbtqoTw1Y4PFXeu">Survey 1</Link>
+      <Link to="https://universityofalabama.az1.qualtrics.com/jfe/form/SV_bvd8RUBgUmtEp8O">Survey 2</Link>
+      <Link to="https://universityofalabama.az1.qualtrics.com/jfe/form/SV_0BMt49QCFttBY0u">Survey 3</Link>
     </>
   );
 }
