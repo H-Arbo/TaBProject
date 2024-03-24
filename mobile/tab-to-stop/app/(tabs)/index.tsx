@@ -12,37 +12,36 @@ const imageHeight = dimensions.height * 0.3;
 axios.defaults.baseURL = "http://localhost:5555";
 axios.defaults.withCredentials = true;
 
-function HomeScreen() {
-  return console.log("Hello");
-  // <ScrollView>
-  //   <View style={styles.container}>
-  //     <Image
-  //       style={styles.logo}
-  //       resizeMode="contain"
-  //       source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/tab.png")}
-  //     />
+// function HomeScreen() {
+//   return (
+//     <ScrollView>
+//       <View style={styles.container}>
+//         <Image
+//           style={styles.logo}
+//           resizeMode="contain"
+//           source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/tab.png")}
+//         />
 
-  //     <View style={styles.text}>
-  //       <Text style={styles.title}>Tab 1</Text>
-  //     </View>
+//         <View style={styles.text}>
+//           <Text style={styles.title}>Tab 1</Text>
+//         </View>
 
-  //     <View
-  //       style={styles.separator}
-  //       lightColor="#eee"
-  //       darkColor="rgba(255,255,255,0.1)"
-  //     />
+//         <View
+//           style={styles.separator}
+//           lightColor="#eee"
+//           darkColor="rgba(255,255,255,0.1)"
+//         />
 
-  //     {/* <EditScreenInfo path="app/(tabs)/index.tsx" /> */}
-  //   </View>
-  // </ScrollView>
-}
+//         <EditScreenInfo path="app/(tabs)/index.tsx" />
+//       </View>
+//     </ScrollView>
+//   );
+// }
 
 //const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    // <NavigationContainer>
-    // </NavigationContainer>
     // <NavigationContainer>
     //   <Stack.Navigator>
     //     <Stack.Screen name="Home" component={HomeScreen} />
