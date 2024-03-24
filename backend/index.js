@@ -11,7 +11,6 @@ import jwt from "jsonwebtoken";
 
 const app = express();
 app.disable("x-powered-by");
-// app.set('x-powered-by', false);
 //middleware for parsing request body
 app.use(express.json());
 var allowedOrigins = ["http://localhost:8081", "http://localhost:5173"];
