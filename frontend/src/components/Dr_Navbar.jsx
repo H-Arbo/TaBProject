@@ -19,9 +19,6 @@ export default function Dr_Navbar() {
           <Link to="/doctor/home" className="text-sky-800">
             <MdHome className="text-4xl" />
           </Link>
-          <Link to="/doctor/create" className="text-sky-800">
-            <MdOutlineAddBox className="text-4xl" />
-          </Link>
           <Link to="/doctor/profile" className="text-sky-800">
             <MdOutlinePerson className="text-4xl" />
           </Link>

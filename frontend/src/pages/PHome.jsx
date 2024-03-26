@@ -33,7 +33,7 @@ const PHome = () => {
                     <h1 className='text-3xl font-bold my-4 text-center'>Patient Home</h1>
 
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-                        <Link to='/patients/green/${patient._id}'>
+                        <Link to='/patients/green'>
                             <Button color="green">
                                 Green Zone - Doing Well
                                 No coughing, wheezing, chest tightness, or difficulty breathing.
@@ -42,7 +42,7 @@ const PHome = () => {
                                 Peak flow x to y (80% to 100% of personal best).
                             </Button>
                         </Link>
-                        <Link to='/patients/yellow/${patient._id}'>
+                        <Link to='/patients/yellow'>
                             <Button color="yellow">
                                 Yellow Zone - Caution/Getting Worse
                                 Coughing, wheezing, chest tightness, or difficulty breathing.
@@ -52,7 +52,7 @@ const PHome = () => {
                                 Peak flow x to y (50% to 80% of personal best).
                             </Button>
                         </Link>
-                        <Link to='/patients/red/${patient._id}'>
+                        <Link to='/patients/red'>
                             <Button color="red">
                                 Red Zone - Alert
                                 Difficulty with breathing, coughing, wheezing, not helping with medications.
@@ -64,11 +64,8 @@ const PHome = () => {
                         </Link>
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-8'>
-                        <Link to='/patients/animations/${patient._id}'>
+                        <Link to='/patients/animations'>
                             <Button color="blue">Animations</Button>
-                        </Link>
-                        <Link to='/patients/games/${patient._id}'>
-                            <Button color="blue">Games</Button>
                         </Link>
                         <Link to='/patients/surveys'>
                             <Button color="blue">Surveys</Button>

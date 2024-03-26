@@ -5,7 +5,7 @@ import jsPDF from 'jspdf';
 import BackButton from '../components/BackButton';
 import Pat_Navbar from '../components/Pat_Navbar';
 import Loading from '../components/Loading';
-import asthma_logo from '/images/asthma_logo.png';
+import asthma_logo from '/images/AAAAI_logo.png';
 
 const ActionSheet = () => {
   const [patient, setPatient] = useState(null);

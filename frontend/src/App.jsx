@@ -10,19 +10,16 @@ import DRegister from './pages/DRegister';
 import PRegister from './pages/PRegister';
 import DHome from './pages/DHome';
 import PHome from './pages/PHome';
-import CreatePatient from './pages/CreatePatient';
 import DeletePatient from './pages/DeletePatient';
 import EditPatient from './pages/EditPatient';
 import EditDoctor from './pages/EditDoctor';
 import DProfile from './pages/DProfile';
 import PProfile from './pages/PProfile';
-import Navbar from './components/Navbar';
 import PMeds from './pages/PMeds'
 import GreenZone from './pages/GreenZone';
 import YellowZone from './pages/YellowZone';
 import RedZone from './pages/RedZone';
 import Animations from './pages/Animations';
-import Games from './pages/Games';
 import Surveys from './pages/Surveys';
 import ActionSheet from './pages/ActionSheet';
 import MessagePatient from './pages/MessagePatient';
@@ -38,7 +35,6 @@ axios.defaults.withCredentials = true;
 const App = () => {
   return(
     <UserContextProvider>
-    <Navbar/>
     <Toaster position = 'bottom-center' toastOptions={{duration: 2500}} />
     <Routes>
       <Route path = '/' element = {<Front />} />
@@ -51,23 +47,20 @@ const App = () => {
       <Route path = '/doctor/register' element = {<DRegister />} />
       <Route path = '/patients/home' element = {<PHome />} />
       <Route path = '/doctor/home' element = {<DHome/>} />
-      <Route path = '/doctor/create' element = {<CreatePatient/>} />
-      <Route path = '/patients/create' element = {<CreatePatient/>} />
-      <Route path = '/patients/delete/:id' element = {<DeletePatient/>} />
+      <Route path = '/patients/delete' element = {<DeletePatient/>} />
       <Route path = '/patients/profile' element = {<PProfile/>} />
       <Route path = '/doctor/profile' element = {<DProfile/>} />
       <Route path = "/doctor/patientInfo" element={<DPinfo />} />
-      <Route path = '/doctor/patientInfo/changeMedication/:id' element = {<PMeds/>} />
+      <Route path = '/doctor/patientInfo/changeMedication' element = {<PMeds/>} />
       <Route path = '/patients/profile' element = {<EditPatient/>} />
-      <Route path = '/doctor/edit/:id' element = {<EditDoctor/>} />
-      <Route path = '/patients/green/:id' element = {<GreenZone/>} />
-      <Route path = '/patients/yellow/:id' element = {<YellowZone/>} />
-      <Route path = '/patients/red/:id' element = {<RedZone/>} />
-      <Route path = '/patients/animations/:id' element = {<Animations/>} />
-      <Route path = '/patients/games/:id' element = {<Games/>} />
+      <Route path = '/doctor/edit' element = {<EditDoctor/>} />
+      <Route path = '/patients/green' element = {<GreenZone/>} />
+      <Route path = '/patients/yellow' element = {<YellowZone/>} />
+      <Route path = '/patients/red' element = {<RedZone/>} />
+      <Route path = '/patients/animations' element = {<Animations/>} />
       <Route path = '/patients/surveys' element = {<Surveys/>} />
       <Route path = '/patients/actionSheet' element = {<ActionSheet/>} />
-      <Route path = '/doctor/message/:id' element = {<MessagePatient/>} />
+      <Route path = '/doctor/message' element = {<MessagePatient/>} />
       <Route path = '/resources' element = {<Resources/>} />
       <Route path = '/doctor/alerts' element = {<DAlerts/>} />
     </Routes>

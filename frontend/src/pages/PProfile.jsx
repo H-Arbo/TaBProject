@@ -168,7 +168,6 @@ const PatientProfile = () => {
                         <tbody>
                           <tr>
                             <td className='p-3 border-b border-r border-t border-red-600 text-center'>Peak Flow Max: {patient.rz_peak_flow_max}</td>
-                            <td className='p-3 border-b border-t border-red-600 text-center'>Peak Flow Min: {patient.rz_peak_flow_min}</td>
                           </tr>
                         </tbody>
                       </table>
