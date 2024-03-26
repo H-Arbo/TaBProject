@@ -8,7 +8,7 @@ const LogoutButton = () => {
     const handleLogout = () => {
         document.cookie = "token=; path=/;"
         
-        window.location.href = '/login';
+        window.location.href = '/';
     }
 
     return (

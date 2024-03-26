@@ -41,18 +41,6 @@ export const getDoc = async (request, response) => {
   }
 }
 
-// export const getDoc = async (request, response) => {
-//   const {token} = request.cookie
-
-//   if(token){
-//     jwt.verify(token, process.env.JWT_STRING, {}, (error, user) => {
-//       if(error) throw error;
-//       response.json(user);
-//     })
-//   }else{
-//     response.json(null);
-//   }
-// }
 
 
 
@@ -61,7 +49,7 @@ export const registerDoc = async (request, response) => {
   const containsCapitalRegex = /[A-Z]/;
   const containsEmojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
   try {
-    const { name, email, password } = request.body;
+    const { name, email, password, phone } = request.body;
     // check name
     if (!name) {
       return response.json({
@@ -108,6 +96,7 @@ export const registerDoc = async (request, response) => {
       email,
       name,
       password: hashedPass,
+      phone,
     });
     return response.json(newDoctor);
   } catch (error) {
@@ -154,7 +143,7 @@ export const loginDoc = async (request, response) => {
       delete loginAttempts[email];
 
       //return response.json("password compare successful");
-      jwt.sign({ email: doc.email, id: doc._id, name: doc.name }, process.env.JWT_STRING, {}, (error, token) => {
+      jwt.sign({ email: doc.email, id: doc._id, name: doc.name, phone: doc.phone }, process.env.JWT_STRING, {}, (error, token) => {
         if (error) {
           throw error;
         }
