@@ -70,7 +70,7 @@ const PHome = () => {
                         <Link to='/patients/games/${patient._id}'>
                             <Button color="blue">Games</Button>
                         </Link>
-                        <Link to='/patients/surveys/${patient._id}'>
+                        <Link to='/patients/surveys'>
                             <Button color="blue">Surveys</Button>
                         </Link>
                         <Link to='/patients/ActionSheet'>
