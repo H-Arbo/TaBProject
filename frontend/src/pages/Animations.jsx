@@ -12,7 +12,7 @@ const Animations = () => {
       <div className="p-4">
         <h1 className="text-3xl my-4">Animations!</h1>
         <iframe
-          src="https://www.youtube.com/embed/E7wJTI-1dvQ"
+          src="https://www.youtube.com/embed/oHPj2jA3s8g"
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowfullscreen
