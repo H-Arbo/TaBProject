@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '/images/tab_clear.png';
 import Button from '../components/Button';
+import './css/front_characters.css'
 
 const Front = () => {
     return (
@@ -9,6 +10,11 @@ const Front = () => {
             height: '100vh',
             background: '#63C196',
         }}>
+            <img src='/images/Charlotte-Waving.png' alt="/images/Charlotte-Waving.png" style={{
+                maxHeight: '40%',
+                width: 'auto',
+                paddingRight: '25px',
+            }} className='character' />
             <div className='flex justify-center items-center' style={{
                 flexDirection: 'column',
                 padding: '20px',
@@ -36,6 +42,11 @@ const Front = () => {
                     <Button color={'blue'}>About Us</Button>
                 </Link>
             </div>
+            <img src='/images/Dr.Breeze-Confident.png' alt="/images/Dr.Breeze-Confident.png" style={{
+                maxHeight: '50%',
+                width: 'auto',
+                paddingLeft: '25px',
+            }} className='character' />
         </div>
     );
 };

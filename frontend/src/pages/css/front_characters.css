@@ -1,0 +1,7 @@
+/* styles.css */
+
+@media (max-width: 700px) {
+    .character {
+      display: none;
+    }
+  }
