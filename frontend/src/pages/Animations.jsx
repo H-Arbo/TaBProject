@@ -15,7 +15,7 @@ const Animations = () => {
           src="https://www.youtube.com/embed/oHPj2jA3s8g"
           frameBorder="0"
           allow="autoplay; encrypted-media"
-          allowfullscreen
+          allowfullscreen="true"
           title="video"
         />
       </div>
