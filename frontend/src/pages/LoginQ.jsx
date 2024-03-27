@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import BackButton from '../components/BackButton';
-import './css/loginQ_characters.css'
+import './css/characters.css'
 
 const LoginQ = () => {
     const handleClick = () => { };
@@ -9,6 +9,11 @@ const LoginQ = () => {
         <div className='p-8'>
             <BackButton />
             <div className='p-8 flex justify-center'>
+                <img src='/images/Laila-ActionPlanGreen.png' alt="/images/Laila-ActionPlanGreen.png" style={{
+                    maxWidth: '10%',
+                    height: 'auto',
+                    paddingRight: '25px',
+                }} className='loginQ' />
                 <div className='pr-4' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <h1 className='text-3xl font-bold text-center mb-6'>Are you logging in as a Doctor or a Patient?</h1>
 
@@ -27,11 +32,7 @@ const LoginQ = () => {
                         </div>
                     </div>
                 </div>
-                <img src='/images/Laila-ActionPlanGreen.png' alt="/images/Laila-ActionPlanGreen.png" style={{
-                    maxWidth: '10%',
-                    height: 'auto',
-                    paddingRight: '25px',
-                }} className='character' />
+
             </div>
         </div >
 

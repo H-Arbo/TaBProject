@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '/images/tab_clear.png';
 import Button from '../components/Button';
-import './css/front_characters.css'
+import './css/characters.css'
 
 const Front = () => {
     return (
@@ -14,7 +14,7 @@ const Front = () => {
                 maxHeight: '40%',
                 width: 'auto',
                 paddingRight: '25px',
-            }} className='character' />
+            }} className='front' />
             <div className='flex justify-center items-center' style={{
                 flexDirection: 'column',
                 padding: '20px',
@@ -46,7 +46,7 @@ const Front = () => {
                 maxHeight: '50%',
                 width: 'auto',
                 paddingLeft: '25px',
-            }} className='character' />
+            }} className='front' />
         </div>
     );
 };

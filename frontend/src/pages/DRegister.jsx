@@ -2,9 +2,8 @@ import BackButton from '../components/BackButton';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import {toast } from 'react-hot-toast';
-
-
+import { toast } from 'react-hot-toast';
+import './css/characters.css'
 
 export default function DRegister() {
   const nav = useNavigate();
@@ -13,21 +12,21 @@ export default function DRegister() {
     email: '',
     password: '',
   })
-  //TODO: put in a register/login doctor and patient
+
   const docRegister = async (e) => {
     e.preventDefault();
 
-    const {name, email,password} = data;
+    const { name, email, password } = data;
 
     try {
-      const {data} = await axios.post('/doctor/register', { //TODO '/register' is not a valid => change to docRegister & patRegister, respectively
+      const { data } = await axios.post('/doctor/register', {
         name, email, password
       })
 
-      if( data.error){
+      if (data.error) {
         toast.error(data.error);
 
-      }else{
+      } else {
         setData({})
         toast.success('Registration Successful!')
         nav('/doctor/login');
@@ -37,47 +36,53 @@ export default function DRegister() {
     }
 
   }
-  
+
 
   return (
     <div className='p-4'>
       <BackButton />
-  
-      < div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
-        <h1 className='text-3xl my-4' >Doctor Registration</h1>
-        <form className='my-4' onSubmit={docRegister}>
-          <label className='text-xl mr-4 text-gray-500'>Name</label>
-          <input
-            type='text'
-            placeholder='Enter name'
-            value = {data.name}
-            onChange={(e) => setData({...data, name: e.target.value})}
-            className='border-2 border-gray-500 px-4 py-2 w-full'
+
+      <div className='flex justify-center items-center'>
+        <div className='flex flex-col justify-center border-2 border-sky-400 rounded-xl p-4 max-w-[600px]'>
+          <h1 className='text-3xl my-4'>Doctor Registration</h1>
+          <form className='my-4' onSubmit={docRegister}>
+            <label className='text-xl mr-4 text-gray-500'>Name</label>
+            <input
+              type='text'
+              placeholder='Enter name'
+              value={data.name}
+              onChange={(e) => setData({ ...data, name: e.target.value })}
+              className='border-2 border-gray-500 px-4 py-2 w-full'
             />
-          
-          <label className='text-xl mr-4 text-gray-500'>Email</label>
-          <input
-            type='email'
-            placeholder='Enter email'
-            value = {data.email}
-            onChange={(e) => setData({...data, email: e.target.value})}
-            className='border-2 border-gray-500 px-4 py-2 w-full'
-          />
-          
-          <label className='text-xl mr-4 text-gray-500'>Password</label>
-          <input
-            type='password'
-            placeholder='Enter password'
-            value = {data.password}
-            onChange={(e) => setData({...data, password: e.target.value})}
-            className='border-2 border-gray-500 px-4 py-2 w-full'
-          />
-          {/* <Link to = '/doctor/login'> */}
+
+            <label className='text-xl mr-4 text-gray-500'>Email</label>
+            <input
+              type='email'
+              placeholder='Enter email'
+              value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
+              className='border-2 border-gray-500 px-4 py-2 w-full'
+            />
+
+            <label className='text-xl mr-4 text-gray-500'>Password</label>
+            <input
+              type='password'
+              placeholder='Enter password'
+              value={data.password}
+              onChange={(e) => setData({ ...data, password: e.target.value })}
+              className='border-2 border-gray-500 px-4 py-2 w-full'
+            />
             <button type='submit' className='p-2 bg-sky-300 m-8'>
               Submit
             </button>
-          {/* </Link> */}
-        </form>
+          </form>
+        </div>
+
+        <img src='/images/Charlotte-Waving.png' alt="/images/Charlotte-Waving.png" style={{
+          height: 'auto',
+          width: '15%',
+          paddingLeft: '25px',
+        }} className='front' />
       </div>
     </div>
   )

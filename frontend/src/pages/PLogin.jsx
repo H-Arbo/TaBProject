@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import './css/characters.css'
 
 export default function PLogin() {
   const nav = useNavigate();
@@ -29,7 +30,7 @@ export default function PLogin() {
       }
     } catch (error) {
       console.log(error);
-      
+
     }
   };
 
@@ -37,7 +38,8 @@ export default function PLogin() {
     <div className="p-4">
       <BackButton />
 
-      <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
+
+      <div className="flex flex-col border-2 border-sky-400 rounded-xl max-w-[600px] p-4 mx-auto">
         <h1 className="text-3xl my-4">Patient Login</h1>
         <form onSubmit={loginPatient}>
           <label>Email</label>
@@ -61,7 +63,16 @@ export default function PLogin() {
           <button type="submit" className="p-2 bg-sky-300 m-8">
             Submit
           </button>
+
         </form>
+
+      </div>
+      <div className='p-8 flex justify-center'>
+        <img src='/images/Laila-Path.png' alt="/images/Laila-Path.png" style={{
+          maxWidth: '50%',
+          height: 'auto',
+          paddingLeft: '25px',
+        }} className='front' />
       </div>
     </div>
   );

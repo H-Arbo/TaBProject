@@ -1,0 +1,18 @@
+@media (max-width: 850px) {
+  .front {
+    display: none;
+  }
+}
+
+
+@media (max-width: 1450px) {
+  .loginQ {
+    display: none;
+  }
+}
+
+@media (max-width: 1450px) {
+  .registrationQ {
+    display: none;
+  }
+}
