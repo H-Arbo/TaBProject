@@ -17,7 +17,16 @@ const Animations = () => {
           allow="autoplay; encrypted-media"
           allowfullscreen="true"
           title="video"
+          rel="0"
         />
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube-nocookie.com/embed/oHPj2jA3s8g?si=GY4y_AMq3MKYwPnD&amp;controls=1rel=0"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
       </div>
     </>
   );
