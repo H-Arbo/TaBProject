@@ -33,7 +33,7 @@ const Pat_Navbar = () => {
             className="menu"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}>
-            <MdInfoOutline className="text-sky-800 text-xl"/>
+            <MdInfoOutline className="text-sky-800 text-3xl"/>
             {isDropdownVisible && <Info />}
           </div>
           <LogoutButton />
