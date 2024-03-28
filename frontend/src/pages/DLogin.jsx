@@ -39,7 +39,8 @@ export default function DLogin() {
     <div className='p-4'>
       <BackButton />
 
-      <div className="flex flex-col border-2 border-sky-400 rounded-xl max-w-[600px] p-4 mx-auto">
+      <div className='flex justify-center items-center pt-2'>
+      <div className="flex-col border-2 border-sky-400 rounded-xl max-w-[600px] p-4 mx-auto">
         <h1 className='text-3xl my-4' >Doctor Login</h1>
         <form onSubmit={docLogin}>
           <label>Email</label>
@@ -57,6 +58,7 @@ export default function DLogin() {
             Login
           </button>
         </form>
+      </div>
       </div>
       <div className='p-8 flex justify-center'>
         <img src='/images/Laila-Path.png' alt="/images/Laila-Path.png" style={{

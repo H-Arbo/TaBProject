@@ -42,8 +42,8 @@ export default function DRegister() {
     <div className='p-4'>
       <BackButton />
 
-      <div className='flex justify-center items-center'>
-        <div className='flex flex-col justify-center border-2 border-sky-400 rounded-xl p-4 max-w-[600px]'>
+      <div className='flex justify-center items-center pt-2'>
+        <div className='flex flex-wrap flex-col justify-center border-2 border-sky-400 rounded-xl p-4 max-w-[600px]'>
           <h1 className='text-3xl my-4'>Doctor Registration</h1>
           <form className='my-4' onSubmit={docRegister}>
             <label className='text-xl mr-4 text-gray-500'>Name</label>

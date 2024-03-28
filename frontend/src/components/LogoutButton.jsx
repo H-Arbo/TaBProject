@@ -13,7 +13,7 @@ const LogoutButton = () => {
 
     return (
         <div className='flex'>
-            <MdLogout className='text-4xl text-sky-800 cursor-pointer' onClick={handleLogout}>
+            <MdLogout className='text-3xl text-sky-800 cursor-pointer' onClick={handleLogout}>
                 Logout
             </MdLogout>
         </div>
