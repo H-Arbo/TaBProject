@@ -6,27 +6,222 @@ import { Link } from 'react-router-dom';
 
 
 export default ({ changeToFalse }) => {
+  const [patientInfo, setPatientInfo] = useState({
+    name: "",
+    age: "",
+    email: "",
+    prim_emergency_contact: "",
+    prim_ec_cell: "",
+    prim_ec_relationship: "",
+    prim_ec_work: "",
+    sec_emergency_contact: "",
+    sec_ec_cell: "",
+    sec_ec_relationship: "",
+    sec_ec_work: "",
+  });
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPatientInfo();
+  }, []);
+
+  const fetchPatientInfo = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('http://localhost:5555/profile', { withCredentials: true });
+      setPatientInfo({
+        name: response.data.name,
+        age: response.data.age,
+        email: response.data.email,
+        pr_peak_flow: response.data.pr_peak_flow,
+        prim_emergency_contact: response.data.prim_emergency_contact,
+        prim_ec_cell: response.data.prim_ec_cell,
+        prim_ec_relationship: response.data.prim_ec_relationship,
+        prim_ec_work: response.data.prim_ec_work,
+        sec_emergency_contact: response.data.sec_emergency_contact,
+        sec_ec_cell: response.data.sec_ec_cell,
+        sec_ec_relationship: response.data.sec_ec_relationship,
+        sec_ec_work: response.data.sec_ec_work,
+      });
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching patient profile:', error);
+      setLoading(false);
+    }
+  };
+
+  const handleInputChange = async (e) => {
+    const { name, value } = e.target;
+    setPatientInfo(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const savePatient = async () => {
+    try {
+      await axios.put('http://localhost:5555/profile/edit', patientInfo);
+      console.log('Patient info saved successfully');
+    } catch (error) {
+      console.error('Error saving patient info:', error);
+    }
+  };
+
+  // Assuming you have a Loading component
+  if (loading) return <Loading />; 
 
   return (
     <div>
-      <div className='p-4'>
+
+      <div className='pb-4'>
+
+        <div onClick={() => changeToFalse()}>
+          Cancel
+        </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
           <div className='border border-sky-400 rounded-xl p-4'>
-            <h2 className='text-xl text-gray-700 mb-4'>Secondary Emergency Contact</h2>
-              <div className='space-y-2'>
-                <p><span className='font-semibold'>Name:</span></p>
-                <p><span className='font-semibold'>Cell Phone:</span></p>
-                <p><span className='font-semibold'>Work Phone:</span></p>
-                <p><span className='font-semibold'>Relation:</span></p>
-              </div>
+            <h2 className='text-xl text-gray-700 mb-4'>Basic Information</h2>
+            <div className='space-y-2'>
+              <p><span className='font-semibold'>Patient Name:</span> 
+                <input 
+                  type="text"
+                  placeholder="Enter name"
+                  value={patientInfo.name}
+                  onChange={handleInputChange}
+                  name="name"
+                /> 
+              </p>
+              <p><span className='font-semibold'>Age:</span> 
+                <input
+                  type="text"
+                  placeholder="Enter age"
+                  value={patientInfo.age}
+                  onChange={handleInputChange}
+                  name="age"
+                /> 
+              </p>
+              <p><span className='font-semibold'>Best Peak Flow:</span> 
+                <input
+                  type="text"
+                  placeholder="Enter peak flow"
+                  value={patientInfo.pr_peak_flow}
+                  onChange={handleInputChange}
+                  name="pr_peak_flow"
+                /> 
+              </p>
+            </div>
           </div>
 
           <div className='border border-sky-400 rounded-xl p-4'>
+            <h2 className='text-xl text-gray-700 mb-4'>Primary Emergency Contact</h2>
+            <div className='space-y-2'>
+              <p><span className='font-semibold'>Primary Contact:</span> 
+                <input 
+                  type="text"
+                  placeholder="Enter name"
+                  value={patientInfo.prim_emergency_contact}
+                  onChange={handleInputChange}
+                  name="prim_emergency_contact"
+                /> 
+              </p>
+              <p><span className='font-semibold'>Email:</span> 
+                <input 
+                  type="text"
+                  placeholder="Enter email"
+                  value={patientInfo.email}
+                  onChange={handleInputChange}
+                  name="email"
+                />
+              </p>
+              <p><span className='font-semibold'>Cell Phone:</span> 
+                <input 
+                  type="text"
+                  placeholder="Enter Phone Number"
+                  value={patientInfo.prim_ec_cell}
+                  onChange={handleInputChange}
+                  name="prim_ec_cell"
+                /> 
+              </p>
+              <p><span className='font-semibold'>Work Phone:</span> 
+                <input
+                  type="text" 
+                  placeholder="Enter Phone Number"
+                  value={patientInfo.prim_ec_work}
+                  onChange={handleInputChange}
+                  name="prim_ec_work"
+                /> 
+              </p>
+              <p><span className='font-semibold'>Relation:</span> 
+                <input 
+                  type="text"
+                  placeholder="Enter relation"
+                  value={patientInfo.prim_ec_relationship}
+                  onChange={handleInputChange}
+                  name="prim_ec_relationship"
+                /> 
+              </p>
+            </div>
+          </div>
+
+          <div className='border border-sky-400 rounded-xl p-4'>
+            <h2 className='text-xl text-gray-700 mb-4'>Secondary Emergency Contact</h2>
+            <div className='space-y-2'>
+              <p><span className='font-semibold'>Name:</span> 
+                <input 
+                  type="text"
+                  placeholder="Enter name"
+                  value={patientInfo.sec_emergency_contact}
+                  onChange={handleInputChange}
+                  name="sec_emergency_contract"
+                /> 
+              </p>
+              <p><span className='font-semibold'>Cell Phone:</span> 
+                <input 
+                  type="text"
+                  placeholder="Enter Phone Number"
+                  value={patientInfo.sec_ec_cell}
+                  onChange={handleInputChange}
+                  name="sec_ec_cell"
+                /> 
+              </p>
+              <p><span className='font-semibold'>Work Phone:</span> 
+                <input 
+                  type="text"
+                  placeholder="Enter Phone Number"
+                  value={patientInfo.sec_ec_work}
+                  onChange={handleInputChange} 
+                  name="sec_ec_work"
+                /> 
+              </p>
+              <p><span className='font-semibold'>Relation:</span> 
+                <input 
+                  type="text"
+                  placeholder="Enter relation"
+                  value={patientInfo.sec_ec_relationship}
+                  onChange={handleInputChange}
+                  name="sec_ec_relationship"
+                /> 
+              </p>
+            </div>
+          </div>
+
+          {/* <div className='border border-sky-400 rounded-xl p-4'>
             <h2 className='text-xl text-gray-700 mb-4'>Provider Info</h2>
               <p><span className='font-semibold'>Provider:</span></p>
               <p><span className='font-semibold'>Email:</span></p>
               <p><span className='font-semibold'>Phone:</span></p>
-          </div>
+          </div> */}
+        </div>
       </div>
+
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}> 
+        <div className=' text-sky-800' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={savePatient}>
+          Save
+        </div>
+      </div>
+
     </div>
   );
 }
