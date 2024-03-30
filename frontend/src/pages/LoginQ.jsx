@@ -19,12 +19,12 @@ const LoginQ = () => {
 
                     <div className='border-4 rounded-xl max-w-[600px] w-full p-4 mx-auto' style={{ border: '4px solid #D2EBDE' }}>
                         <div className='flex flex-wrap justify-center items-center'>
-                            <Link to='/patients/login' className="mr-4 mb-4">
+                            <Link to='/patients/login' className="p-2">
                                 <Button color='blue'>
                                     Patient
                                 </Button>
                             </Link>
-                            <Link to='/doctor/login' className="mr-4 mb-4">
+                            <Link to='/doctor/login' className="p-2">
                                 <Button color='blue'>
                                     Doctor
                                 </Button>

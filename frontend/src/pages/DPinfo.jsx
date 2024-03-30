@@ -56,12 +56,12 @@ function DPinfo() {
       <Dr_Navbar />
       <div className='p-9'>
 
-        <h1 className='text-3xl my-4 text-center'>Patient Info</h1>
+        <h1 className='flex flex-wrap text-3xl my-4 text-center'>Patient Info</h1>
         {loading ? (
           <Loading />
         ) : (
           <>
-            <div className='flex justify-between items-center'>
+            <div className='flex flex-wrap justify-between items-center'>
               <table className='w-full'>
                 <thead>
                   <tr className='bg-gray-200'>
@@ -96,7 +96,7 @@ function DPinfo() {
 
             <div className="mb-4"></div>
 
-            <div className='flex justify-between items-start'>
+            <div className='flex flex-wrap justify-between items-start'>
               <div className='border border-green-600 rounded-md'>
                 <h2 className='flex justify-center items-center bg-green-200 h-10'>
                   <b className='text-center'>Green Zone</b>
