@@ -1,0 +1,25 @@
+.changeMeds-container {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.changeMeds {
+    border-radius: 5px;
+    padding: 2rem;
+    background-color: white;
+    width: 25em;
+    overflow: auto;
+}
+
+.h1 {
+    font-weight: bold;
+}
