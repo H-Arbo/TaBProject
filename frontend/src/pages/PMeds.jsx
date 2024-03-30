@@ -5,7 +5,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Dr_Navbar from "../components/Dr_Navbar";
 import { ChangeMeds } from "../components/ChangeMeds";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdOutlineCreate, MdDelete } from "react-icons/md";
 import Button from "../components/Button";
 import EasyEdit, { Types } from "react-easy-edit";
 import "../components/ChangeMeds.css";
@@ -44,7 +44,6 @@ const PMeds = () => {
                         saveButtonLabel="Save"
                         cancelButtonLabel="Cancel"
                         attributes={{ name: "awesome-input", id: 1 }}
-
                       />
                     </td>
                     <td className="p-3 border-t border-b border-green-600 text-center">
@@ -86,7 +85,10 @@ const PMeds = () => {
                         {medication.when_freq}
                       </td>
                       <td className="p-3 border-r border-t border-green-600">
-                        {medication.amount}
+                        <div className="flex justify-center items-center gap-x-4">
+                          <MdOutlineCreate color="blue" />
+                          <MdDelete color="red" />
+                        </div>
                       </td>
                     </tr>
                   ))
@@ -94,7 +96,6 @@ const PMeds = () => {
               </tbody>
             </table>
           </div>
-          
         </div>
         <div className="p-3 text-left darkblue">
           <Button color="darkblue" onClick={() => setModalOpen(true)}>

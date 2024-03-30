@@ -2,8 +2,6 @@
 import React from "react";
 import "./ChangeMeds.css";
 
-
-
 export const ChangeMeds = ({ closeModal }) => {
   return (
     <div
@@ -13,7 +11,16 @@ export const ChangeMeds = ({ closeModal }) => {
       }}
     >
       <div className="changeMeds">
-        
+        <form>
+          <label className="text-xl mr-4 text-gray-500">Medication</label>
+          <input type="text" placeholder="New Medication"></input>
+
+          <label className="text-xl mr-4 text-gray-500">Amount</label>
+          <input type="text" placeholder="New Amount"></input>
+
+          <label className="text-xl mr-4 text-gray-500">Frequency</label>
+          <input type="text" placeholder="New Frequency"></input>
+        </form>
       </div>
     </div>
   );
