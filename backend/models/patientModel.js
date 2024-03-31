@@ -24,19 +24,19 @@ export const patientSchema = mongoose.Schema(
         },
         password: {
             type: String,
-            required: true,
+            //required: true,
         },
         age: {
             type: String,
-            required: true,
+            //required: true,
         },
         prim_ec_cell: {
             type: String,
-            required: true,
+            //required: true,
         },
         prim_ec_relationship: {
             type: String,
-            required: true,
+            //required: true,
         },
         prim_ec_work: {
             type: String,
@@ -44,15 +44,15 @@ export const patientSchema = mongoose.Schema(
         },
         prim_emergency_contact: {
             type: String,
-            required: true,
+            //required: true,
         },
         sec_ec_cell: {
             type: String,
-            required: true,
+            //required: true,
         },
         sec_ec_relationship: {
             type: String,
-            required: true,
+            //required: true,
         },
         sec_ec_work: {
             type: String,
@@ -60,7 +60,7 @@ export const patientSchema = mongoose.Schema(
         },
         sec_emergency_contact: {
             type: String,
-            required: true,
+            //required: true,
         },
         gz_meds: {
             type: [medSchema],
@@ -92,7 +92,7 @@ export const patientSchema = mongoose.Schema(
         },
         provider_email:  {
             type: String,
-            required: true,
+            //required: true,
         },
         rz_meds:  {
             type: [medSchema],

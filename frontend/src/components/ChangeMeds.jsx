@@ -5,33 +5,40 @@ import axios from "axios";
 import "./ChangeMeds.css";
 import { toast } from "react-hot-toast";
 
-export const ChangeMeds = ({ closeModal }) => {
+export const ChangeMeds = ({ closeModal , _id, zone}) => {
   const [data, setData] = useState({
+    // _id: _id,
+    // zone: z,
     medication: "",
     amount: "",
-    freq: "",
+    when_freq: "",
   });
+  console.log(_id);
+  console.log(zone);
   const addMedication = async (e) => {
     e.preventDefault();
     console.log("entered addMedication");
 
     const {
-      medication,
+      med,
       amount,
-      freq,
+      when_freq,
     } = data;
+
     try {
       
-      const {data } = await axios.post("/patients/register", {
-        medication,
+      const {data } = await axios.patch("/patients/editMed", {
+        _id: _id,
+        zone: zone,
+        med,
         amount,
-        freq,
+        when_freq,
   
       });
 
       if (data.error) {
         setData({});
-        toast.error("Sorry, medication not added. Try again later.");
+        toast.error(data.error);
       } else {
         setData({});
         toast.success("Medication Added!");
@@ -56,8 +63,8 @@ export const ChangeMeds = ({ closeModal }) => {
             type="text"
             placeholder="New Medication"
             className="border-2 border-gray-500 px-4 py-2 w-full"
-            value={data.medication}
-            onChange={(e) => setData({ ...data, medication: e.target.value })}
+            value={data.med}
+            onChange={(e) => setData({ ...data, med: e.target.value })}
           ></input>
 
           <label className="text-xl mr-4 text-gray-500">Amount</label>
@@ -74,8 +81,8 @@ export const ChangeMeds = ({ closeModal }) => {
             type="text"
             placeholder="New Frequency"
             className="border-2 border-gray-500 px-4 py-2 w-full"
-            value={data.freq}
-            onChange={(e) => setData({ ...data, freq: e.target.value })}
+            value={data.when_freq}
+            onChange={(e) => setData({ ...data, when_freq: e.target.value })}
           ></input>
           <button type="submit" className="p-2 bg-sky-300 m-8">
             Submit

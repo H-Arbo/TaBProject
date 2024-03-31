@@ -21,6 +21,7 @@ const PMeds = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const location = useLocation();
   const { pInfo } = location.state;
+  console.log(pInfo);
   return (
     <>
       <Dr_Navbar />
@@ -105,7 +106,11 @@ const PMeds = () => {
             <ChangeMeds
               closeModal={() => {
                 setModalOpen(false);
-              }}
+              }
+              
+            }
+            _id= {pInfo.at(0)._id}
+            zone = "green"
             />
           )}
         </div>
