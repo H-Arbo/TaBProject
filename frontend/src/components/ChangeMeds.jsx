@@ -7,8 +7,6 @@ import { toast } from "react-hot-toast";
 
 export const ChangeMeds = ({ closeModal , _id, zone}) => {
   const [data, setData] = useState({
-    // _id: _id,
-    // zone: z,
     medication: "",
     amount: "",
     when_freq: "",

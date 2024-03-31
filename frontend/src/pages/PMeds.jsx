@@ -5,10 +5,12 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Dr_Navbar from "../components/Dr_Navbar";
 import { ChangeMeds } from "../components/ChangeMeds";
+import { DeleteMeds } from "../components/DeleteMeds";
 import { MdAdd, MdOutlineCreate, MdDelete } from "react-icons/md";
 import Button from "../components/Button";
 import EasyEdit, { Types } from "react-easy-edit";
 import "../components/ChangeMeds.css";
+import { EditMeds } from "../components/EditMeds";
 
 const PMeds = () => {
   const save = (value, field) => {
@@ -18,7 +20,11 @@ const PMeds = () => {
   const cancel = () => {
     alert("Cancelled");
   };
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState({
+    changeMeds: false,
+    deleteMeds: false,
+    editMeds: false,
+  });
   const location = useLocation();
   const { pInfo } = location.state;
   console.log(pInfo);
@@ -87,8 +93,40 @@ const PMeds = () => {
                       </td>
                       <td className="p-3 border-r border-t border-green-600">
                         <div className="flex justify-center items-center gap-x-4">
-                          <MdOutlineCreate color="blue" />
-                          <MdDelete color="red" />
+                        <button
+                            onClick={() =>
+                              setModalOpen({ ...modalOpen, editMeds: true })
+                            }
+                          >
+                           <MdOutlineCreate color="blue" />
+                          </button>
+                          {modalOpen.editMeds == true && (
+                            <EditMeds
+                              closeModal={() => {
+                                setModalOpen({
+                                  ...modalOpen,
+                                  editMeds: false,
+                                });
+                              }}
+                            />
+                          )}
+                          <button
+                            onClick={() =>
+                              setModalOpen({ ...modalOpen, deleteMeds: true })
+                            }
+                          >
+                            <MdDelete color="red" />
+                          </button>
+                          {modalOpen.deleteMeds == true && (
+                            <DeleteMeds
+                              closeModal={() => {
+                                setModalOpen({
+                                  ...modalOpen,
+                                  deleteMeds: false,
+                                });
+                              }}
+                            />
+                          )}
                         </div>
                       </td>
                     </tr>
@@ -99,18 +137,19 @@ const PMeds = () => {
           </div>
         </div>
         <div className="p-3 text-left darkblue">
-          <Button color="darkblue" onClick={() => setModalOpen(true)}>
+          <Button
+            color="darkblue"
+            onClick={() => setModalOpen({ ...modalOpen, changeMeds: true })}
+          >
             <MdAdd />
           </Button>
-          {modalOpen && (
+          {modalOpen.changeMeds == true && (
             <ChangeMeds
               closeModal={() => {
-                setModalOpen(false);
-              }
-              
-            }
-            _id= {pInfo.at(0)._id}
-            zone = "green"
+                setModalOpen({ ...modalOpen, changeMeds: false });
+              }}
+              _id={pInfo.at(0)._id}
+              zone="green"
             />
           )}
         </div>
