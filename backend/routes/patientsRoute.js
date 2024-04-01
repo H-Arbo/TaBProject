@@ -104,48 +104,28 @@ router.get('/:id', async (request, response) => {
 });
 
 //Route to update patient
-router.put('/:id', async (request,response) => {
+router.put('/profile/edit', async (request, response) => {
     try {
-        if(
-            !request.body.age ||
-            !request.body.date ||
-            !request.body.ec_cell ||
-            !request.body.ec_relationship ||
-            !request.body.ec_work ||
-            !request.body.emergency_contact ||
-            !request.body.gz_meds ||
-            !request.body.gz_peak_flow_max ||
-            !request.body.gz_peak_flow_min ||
-            !request.body.name ||
-            !request.body.pr_peak_flow ||
-            !request.body.provider ||
-            !request.body.provider_phone ||
-            !request.body.rz_meds ||
-            !request.body.rz_peak_flow_max ||
-            !request.body.yz_comment ||
-            !request.body.yz_meds ||
-            !request.body.yz_peak_flow_max ||
-            !request.body.yz_peak_flow_min ||
-            !request.body.yz_comment
-
-        ){
-            return response.status(400).send({
-                message: 'Enter all required fields'
-            });
+        const requiredFields = ['name', 'age', 'email', 'pr_peak_flow', 'prim_emergency_contact', 'prim_ec_cell', 'prim_ec_relationship', 'prim_ec_work', 'sec_emergency_contact', 'sec_ec_cell', 'sec_ec_relationship', 'sec_ec_work'];
+        for (const field of requiredFields) {
+            if (!request.body[field]) {
+                return response.status(400).json({ message: `Missing required field: ${field}` });
+            }
         }
-        const {id} = request.params;
 
-        const result = await Patient.findByIdAndUpdate(id, request.body);
+        const { email } = request.body;
 
-        if(!result){
-            return response.status(404).json({message: 'patient not found'});
+        const updatedPatient = await Patient.findOneAndUpdate({ email }, request.body, { new: true });
+
+        if (!updatedPatient) {
+            return response.status(404).json({ message: 'Patient not found' });
         }
-        return response.status(200).send({message: 'Patient updated successfully'});
+
+        return response.status(200).json({ message: 'Patient updated successfully', updatedPatient });
     } catch (error) {
-        console.log(error.message);
-        response.status(500).send({message: error.message});
+        console.error(error);
+        return response.status(500).json({ message: 'Internal Server Error' });
     }
-
 });
 
 //Route to remove patient

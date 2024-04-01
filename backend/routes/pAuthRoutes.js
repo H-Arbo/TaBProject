@@ -20,6 +20,6 @@ router.get("/", getPatients);
 router.post("/register", registerPatient);
 router.post("/login", loginPatient);
 router.patch("/editMed", editMedication);
-router.put("/editProfile/:id", editPatient);
+router.put("/profile/edit", editPatient);
 
 export default router;
