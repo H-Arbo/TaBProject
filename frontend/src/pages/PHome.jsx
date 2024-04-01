@@ -64,14 +64,14 @@ const PHome = () => {
                         </Link>
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-8'>
+                        <Link to='/patients/ActionSheet'>
+                            <Button color="blue">Action Sheet</Button>
+                        </Link>
                         <Link to='/patients/animations'>
                             <Button color="blue">Animations</Button>
                         </Link>
                         <Link to='/patients/surveys'>
                             <Button color="blue">Surveys</Button>
-                        </Link>
-                        <Link to='/patients/ActionSheet'>
-                            <Button color="blue">Action Sheet</Button>
                         </Link>
                     </div>
                 </div>

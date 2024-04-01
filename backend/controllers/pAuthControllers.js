@@ -88,6 +88,7 @@ export const registerPatient = async (request, response) => {
       rz_meds,
       yz_meds,
       gz_meds,
+      yz_comment,
     } = request.body;
     // check name
     if (!name) {
@@ -195,6 +196,7 @@ export const registerPatient = async (request, response) => {
       rz_meds,
       yz_meds,
       gz_meds,
+      yz_comment,
     });
     return response.json(newPatient);
   } catch (error) {
@@ -264,6 +266,7 @@ export const loginPatient = async (request, response) => {
           rz_meds: patient.rz_meds,
           yz_meds: patient.yz_meds,
           gz_meds: patient.gz_meds,
+          yz_comment: patient.yz_comment,
         },
         process.env.JWT_STRING,
         {},
@@ -316,6 +319,7 @@ export const editPatient = async (request, response) => {
       sec_ec_relationship,
       sec_ec_work,
       provider_email,
+      yz_comment,
     } = request.body;
     // check name
     if (!name) {
@@ -418,6 +422,7 @@ export const editPatient = async (request, response) => {
       sec_ec_relationship,
       sec_ec_work,
       provider_email,
+      yz_comment,
     });
     return response.json(newPatient);
   } catch (error) {

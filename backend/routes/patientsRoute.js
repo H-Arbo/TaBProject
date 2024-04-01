@@ -26,7 +26,8 @@ router.post('/', async (request, response) => {
             !request.body.yz_comment ||
             !request.body.yz_meds ||
             !request.body.yz_peak_flow_max ||
-            !request.body.yz_peak_flow_min
+            !request.body.yz_peak_flow_min ||
+            !request.body.yz_comment
 
         ){
             return response.status(400).send({
@@ -54,6 +55,7 @@ router.post('/', async (request, response) => {
             yz_meds: request.body.yz_meds,
             yz_peak_flow_max: request.body.yz_peak_flow_max,
             yz_peak_flow_min: request.body.yz_peak_flow_min,
+            yz_comment: request.body.yz_comment,
         };
 
         const patient = await Patient.create(newPatient);
@@ -123,7 +125,8 @@ router.put('/:id', async (request,response) => {
             !request.body.yz_comment ||
             !request.body.yz_meds ||
             !request.body.yz_peak_flow_max ||
-            !request.body.yz_peak_flow_min
+            !request.body.yz_peak_flow_min ||
+            !request.body.yz_comment
 
         ){
             return response.status(400).send({
