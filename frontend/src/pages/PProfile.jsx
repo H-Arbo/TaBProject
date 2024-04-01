@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BackButton from '../components/BackButton';
-import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import Pat_Navbar from '../components/Pat_Navbar';
 import { MdHistoryEdu } from "react-icons/md";
