@@ -22,3 +22,5 @@
 [For sprint videos, click here](videos.html)
 
 [Our Github](https://github.com/H-Arbo/TaBProject)
+
+[Documentation](documetation.html)
