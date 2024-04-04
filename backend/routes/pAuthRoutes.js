@@ -5,7 +5,8 @@ import {
   getPatients,
   getPatient,
   editPatient,
-  editMedication,
+  addMedication,
+  deleteMedication
 } from "../controllers/pAuthControllers.js";
 import cors from "cors";
 
@@ -19,7 +20,8 @@ const router = express.Router();
 router.get("/", getPatients);
 router.post("/register", registerPatient);
 router.post("/login", loginPatient);
-router.patch("/editMed", editMedication);
+router.patch("/addMed", addMedication);
+router.delete("/deleteMed", deleteMedication);
 router.put("/editProfile/:id", editPatient);
 
 export default router;

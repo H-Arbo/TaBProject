@@ -4,7 +4,7 @@ import Loading from "../components/Loading";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Dr_Navbar from "../components/Dr_Navbar";
-import { ChangeMeds } from "../components/ChangeMeds";
+import { AddMeds } from "../components/AddMeds";
 import { DeleteMeds } from "../components/DeleteMeds";
 import { MdAdd, MdOutlineCreate, MdDelete } from "react-icons/md";
 import Button from "../components/Button";
@@ -25,9 +25,19 @@ const PMeds = () => {
     deleteMeds: false,
     editMeds: false,
   });
+
   const location = useLocation();
   const { pInfo } = location.state;
+  const [rows, setRows] = useState(pInfo.at(0).gz_meds);
+  const [medToDelete, setMedToDelete] = useState(null)
+  console.log(rows);
   console.log(pInfo);
+  const getDeleteRow = (targetIndex) => {
+    setMedToDelete(rows.filter((_, idx) => idx === targetIndex));
+  };
+  const removeRow = (targetIndex) => {
+    setRows(rows.filter((_, idx) => idx !== targetIndex));
+  }
   return (
     <>
       <Dr_Navbar />
@@ -79,6 +89,68 @@ const PMeds = () => {
                 </tr>
               </thead>
               <tbody>
+                {rows.map((row, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className="p-3 border-r border-t border-green-600">
+                        {row.med}
+                      </td>
+                      <td className="p-3 border-r border-t border-green-600">
+                        {row.amount}
+                      </td>
+                      <td className="p-3 border-r border-t border-green-600">
+                        {row.when_freq}
+                      </td>
+                      <td className="p-3 border-r border-t border-green-600">
+                        <div className="flex justify-center items-center gap-x-4">
+                          <button
+                            onClick={() =>
+                              setModalOpen({ ...modalOpen, editMeds: true })
+                            }
+                          >
+                            <MdOutlineCreate color="blue" />
+                          </button>
+                          {modalOpen.editMeds == true && (
+                            <EditMeds
+                              closeModal={() => {
+                                setModalOpen({
+                                  ...modalOpen,
+                                  editMeds: false,
+                                });
+                              }}
+                            />
+                          )}
+                          <button //onClick={() => getDeleteRow(index)}
+                            onClick={() =>
+                              setModalOpen({ ...modalOpen, deleteMeds: true })
+                              
+                            }
+                          >
+                            <MdDelete color="red"  onClick={() => getDeleteRow(index)}/>
+                          </button>
+                          {modalOpen.deleteMeds == true && (
+                            <DeleteMeds
+                              closeModal={() => {
+                                setModalOpen({
+                                  ...modalOpen,
+                                  deleteMeds: false,
+                                });
+                              }}
+                              _id={pInfo.at(0)._id}
+                              zone="green"
+                              med={medToDelete}
+                              removeRow = {() => {
+                                setRows(rows.filter((_, idx) => idx !== index));
+                              }}
+                            />
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+              {/* <tbody>
                 {pInfo.map((patient) =>
                   patient.gz_meds.map((medication, index) => (
                     <tr key={index}>
@@ -125,6 +197,11 @@ const PMeds = () => {
                                   deleteMeds: false,
                                 });
                               }}
+                              _id= {pInfo.at(0)._id}
+                              zone = "green"
+                              med = {
+                                patient.gz_meds.filter((_, idx) => idx === index)
+                              }
                             />
                           )}
                         </div>
@@ -132,7 +209,7 @@ const PMeds = () => {
                     </tr>
                   ))
                 )}
-              </tbody>
+              </tbody> */}
             </table>
           </div>
         </div>
@@ -144,7 +221,7 @@ const PMeds = () => {
             <MdAdd />
           </Button>
           {modalOpen.changeMeds == true && (
-            <ChangeMeds
+            <AddMeds
               closeModal={() => {
                 setModalOpen({ ...modalOpen, changeMeds: false });
               }}

@@ -5,7 +5,7 @@ import axios from "axios";
 import "./ChangeMeds.css";
 import { toast } from "react-hot-toast";
 
-export const ChangeMeds = ({ closeModal , _id, zone}) => {
+export const AddMeds = ({ closeModal , _id, zone}) => {
   const [data, setData] = useState({
     medication: "",
     amount: "",
@@ -25,7 +25,7 @@ export const ChangeMeds = ({ closeModal , _id, zone}) => {
 
     try {
       
-      const {data } = await axios.patch("/patients/editMed", {
+      const {data } = await axios.patch("/patients/addMed", {
         _id: _id,
         zone: zone,
         med,

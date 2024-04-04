@@ -9,7 +9,6 @@ import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import BackButton from "../components/BackButton";
 import { FaBell } from "react-icons/fa6";
 import LogoutButton from "../components/LogoutButton";
-import { ChangeMeds } from "../components/ChangeMeds";
 
 function DPinfo() {
   const [patients, setPatients] = useState([]);

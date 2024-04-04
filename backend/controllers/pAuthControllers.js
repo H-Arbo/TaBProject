@@ -1,5 +1,5 @@
 import express from "express";
-import { Patient, } from "../models/patientModel.js";
+import { Patient } from "../models/patientModel.js";
 import { hashPassword, comparePassword } from "../helpers/auth.js";
 import jwt from "jsonwebtoken";
 
@@ -19,7 +19,7 @@ export const getPatients = async (request, response) => {
     response.status(500).send({ message: error.message });
   }
 };
-export const editMedication = async (request, response) => {
+export const addMedication = async (request, response) => {
   try {
     const { _id, zone, med, amount, when_freq } = request.body;
     console.log(request.body);
@@ -29,17 +29,17 @@ export const editMedication = async (request, response) => {
       return response.status(404).json({ message: "Patient not found" });
     }
 
-    if( zone == "green"){
-        patient.gz_meds.push({med:med, amount:amount, when_freq:when_freq});
-        await patient.save();
+    if (zone == "green") {
+      patient.gz_meds.push({ med: med, amount: amount, when_freq: when_freq });
+      await patient.save();
     }
-    if( zone == "yellow"){
-        patient.yz_meds.push({med:med, amount:amount, when_freq:when_freq});
-        await patient.save();
+    if (zone == "yellow") {
+      patient.yz_meds.push({ med: med, amount: amount, when_freq: when_freq });
+      await patient.save();
     }
-    if( zone == "red"){
-        patient.rz_meds.push({med:med, amount:amount, when_freq:when_freq});
-        await patient.save();
+    if (zone == "red") {
+      patient.rz_meds.push({ med: med, amount: amount, when_freq: when_freq });
+      await patient.save();
     }
     // Return the patient data
     return response.status(200).json("patient updated");
@@ -48,6 +48,30 @@ export const editMedication = async (request, response) => {
     return response.status(500).json({ message: error.message });
   }
 };
+export const deleteMedication = async (request, response) => {
+  try {
+    const { _id, zone, med_id } = request.body;
+    console.log(request.body);
+    const patient = await Patient.findById(_id);
+    console.log(patient);
+    if (!patient) {
+      return response.status(404).json({ message: "Patient not found" });
+    }
+    // Return the patient data
+    
+    if (zone == "green") {
+      console.log("green zone");
+      console.log(med_id);
+      patient.gz_meds.pull({ _id: med_id });
+      await patient.save();
+    }
+    return response.status(200).json(patient);
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({ message: error.message });
+  }
+};
+
 export const getPatient = async (request, response) => {
   try {
     const { id } = request.body; // Extract patient ID from request parameters
