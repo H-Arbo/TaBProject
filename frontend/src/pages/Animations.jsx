@@ -12,14 +12,6 @@ const Animations = () => {
       <div className="p-4">
         <h1 className="text-3xl my-4">Animations!</h1>
         <iframe
-          src="https://www.youtube.com/embed/oHPj2jA3s8g"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen="true"
-          title="video"
-          rel="0"
-        />
-        <iframe
           width="560"
           height="315"
           src="https://www.youtube-nocookie.com/embed/oHPj2jA3s8g?si=GY4y_AMq3MKYwPnD&amp;controls=1rel=0"
