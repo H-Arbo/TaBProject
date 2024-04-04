@@ -5,7 +5,7 @@ import axios from "axios";
 import "./ChangeMeds.css";
 import { toast } from "react-hot-toast";
 
-export const AddMeds = ({ closeModal , _id, zone}) => {
+export const AddMeds = ({ closeModal , _id, zone, addRow}) => {
   const [data, setData] = useState({
     medication: "",
     amount: "",
@@ -33,12 +33,13 @@ export const AddMeds = ({ closeModal , _id, zone}) => {
         when_freq,
   
       });
-
+      console.log(data);
       if (data.error) {
         setData({});
         toast.error(data.error);
       } else {
         setData({});
+        addRow(data);
         toast.success("Medication Added!");
       }
     } catch (error) {

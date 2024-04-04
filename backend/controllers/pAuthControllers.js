@@ -24,7 +24,7 @@ export const addMedication = async (request, response) => {
     const { _id, zone, med, amount, when_freq } = request.body;
     console.log(request.body);
     const patient = await Patient.findById(_id);
-    console.log(patient);
+    
     if (!patient) {
       return response.status(404).json({ message: "Patient not found" });
     }
@@ -41,8 +41,9 @@ export const addMedication = async (request, response) => {
       patient.rz_meds.push({ med: med, amount: amount, when_freq: when_freq });
       await patient.save();
     }
+    console.log(patient);
     // Return the patient data
-    return response.status(200).json("patient updated");
+    return response.status(200).json(patient.gz_meds);
   } catch (error) {
     console.log(error.message);
     return response.status(500).json({ message: error.message });
@@ -65,7 +66,19 @@ export const deleteMedication = async (request, response) => {
       patient.gz_meds.pull({ _id: med_id });
       await patient.save();
     }
-    return response.status(200).json(patient);
+    if (zone == "yellow") {
+      console.log("green zone");
+      console.log(med_id);
+      patient.yz_meds.pull({ _id: med_id });
+      await patient.save();
+    }
+    if (zone == "red") {
+      console.log("green zone");
+      console.log(med_id);
+      patient.rz_meds.pull({ _id: med_id });
+      await patient.save();
+    }
+    return response.status(200).json(patient.gz_meds);
   } catch (error) {
     console.log(error.message);
     return response.status(500).json({ message: error.message });

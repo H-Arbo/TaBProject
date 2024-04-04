@@ -7,7 +7,8 @@ import { toast } from "react-hot-toast";
 import Button from "./Button";
 
 export const DeleteMeds = ({ closeModal, _id, zone, med, removeRow }) => {
-  console.log(med.at(0)._id);
+  const row_id = med.at(0)._id;
+  console.log(row_id);
   const deleteMedication = async (e) => {
     e.preventDefault();
     console.log("entered deleteMedication");
@@ -26,7 +27,8 @@ export const DeleteMeds = ({ closeModal, _id, zone, med, removeRow }) => {
       } else {
         
         toast.success("Medication Deleted");
-        removeRow(med.at(0)._id);
+        removeRow(data);
+        console.log("removeRow executed");
       }
     } catch (error) {
       console.log(error);
