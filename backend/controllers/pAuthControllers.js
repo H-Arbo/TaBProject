@@ -112,6 +112,7 @@ export const registerPatient = async (request, response) => {
       rz_meds,
       yz_meds,
       gz_meds,
+      yz_comment,
     } = request.body;
     // check name
     if (!name) {
@@ -219,6 +220,7 @@ export const registerPatient = async (request, response) => {
       rz_meds,
       yz_meds,
       gz_meds,
+      yz_comment,
     });
     return response.json(newPatient);
   } catch (error) {
@@ -288,6 +290,7 @@ export const loginPatient = async (request, response) => {
           rz_meds: patient.rz_meds,
           yz_meds: patient.yz_meds,
           gz_meds: patient.gz_meds,
+          yz_comment: patient.yz_comment,
         },
         process.env.JWT_STRING,
         {},
@@ -321,131 +324,60 @@ export const loginPatient = async (request, response) => {
 };
 
 export const editPatient = async (request, response) => {
-  const containsNumberRegex = /\d/;
-  const containsCapitalRegex = /[A-Z]/;
-  const containsEmojiRegex =
-    /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
-  try {
-    const {
-      name,
-      age,
-      email,
-      password,
-      prim_emergency_contact,
-      prim_ec_cell,
-      prim_ec_relationship,
-      prim_ec_work,
-      sec_emergency_contact,
-      sec_ec_cell,
-      sec_ec_relationship,
-      sec_ec_work,
-      provider_email,
-    } = request.body;
-    // check name
-    if (!name) {
-      return response.json({
-        error: "name required",
-      });
-    }
-    //check password: no password or password length is < 8 characters
-    if (!password) {
-      return response.json({
-        error:
-          "Password required (Must be at least 8 characters, contain no emojis, and include at least one number and one uppercase letter.)",
-      });
-    } else if (password.length < 8) {
-      return response.json({
-        error: "Password must be at least 8 characters.",
-      });
-    } else if (!containsNumberRegex.test(password)) {
-      return response.json({
-        error: "Password must include at least one number.",
-      });
-    } else if (!containsCapitalRegex.test(password)) {
-      return response.json({
-        error: "Password must contain at least one uppercase letter.",
-      });
-    } else if (containsEmojiRegex.test(password)) {
-      return response.json({
-        error: "Password may not contain emojis.",
-      });
-    }
-    //check if email is new
-    const existEmail = await Patient.findOne({ email });
+    try {
+        const { 
+            name, 
+            age, 
+            email, 
+            pr_peak_flow,
+            prim_emergency_contact, 
+            prim_ec_cell, 
+            prim_ec_relationship, 
+            prim_ec_work, 
+            sec_emergency_contact, 
+            sec_ec_cell, 
+            sec_ec_relationship, 
+            sec_ec_work 
+        } = request.body;
+        
+        if (!name || !age || !email || !pr_peak_flow ||
+            !prim_emergency_contact || !prim_ec_cell || !prim_ec_relationship || 
+            !prim_ec_work || !sec_emergency_contact || !sec_ec_cell || 
+            !sec_ec_relationship || !sec_ec_work) {
+            return response.status(400).json({
+                error: 'Please provide all required fields.'
+            });
+        }
 
-    if (existEmail) {
-      return response.json({
-        error: "account already exists for this email",
-      });
-    }
-    const hashedPass = await hashPassword(password);
+        // Find patient by email
+        const existingPatient = await Patient.findOne({ email });
+        if (!existingPatient) {
+            return response.status(404).json({
+                error: 'Patient not found.'
+            });
+        }
 
-    if (!age) {
-      return response.json({
-        error: "Age required",
-      });
-    }
+        // Update patient fields
+        existingPatient.name = name;
+        existingPatient.age = age;
+        existingPatient.pr_peak_flow = pr_peak_flow;
+        existingPatient.prim_emergency_contact = prim_emergency_contact;
+        existingPatient.prim_ec_cell = prim_ec_cell;
+        existingPatient.prim_ec_relationship = prim_ec_relationship;
+        existingPatient.prim_ec_work = prim_ec_work;
+        existingPatient.sec_emergency_contact = sec_emergency_contact;
+        existingPatient.sec_ec_cell = sec_ec_cell;
+        existingPatient.sec_ec_relationship = sec_ec_relationship;
+        existingPatient.sec_ec_work = sec_ec_work;
 
-    if (!prim_emergency_contact) {
-      return response.json({
-        error: "Primary Caregiver required",
-      });
-    }
+        // Save updated patient
+        const updatedPatient = await existingPatient.save();
 
-    if (!prim_ec_cell) {
-      return response.json({
-        error: "Primary Caregiver Cell Number required",
-      });
+        return response.json(updatedPatient);
+    } catch (error) {
+        console.error(error.message);
+        return response.status(500).json({
+            error: 'Server Error'
+        });
     }
-
-    if (!prim_ec_relationship) {
-      return response.json({
-        error: "Primary Caregiver Relation required",
-      });
-    }
-
-    if (!sec_emergency_contact) {
-      return response.json({
-        error: "Secondary Caregiver required",
-      });
-    }
-
-    if (!sec_ec_cell) {
-      return response.json({
-        error: "Secondary Caregiver Cell Number required",
-      });
-    }
-
-    if (!sec_ec_relationship) {
-      return response.json({
-        error: "Secondary Caregiver Relation required",
-      });
-    }
-
-    if (!provider_email) {
-      return response.json({
-        error: "Provider Email required",
-      });
-    }
-
-    const newPatient = await Patient.create({
-      email,
-      name,
-      age,
-      password: hashedPass,
-      prim_emergency_contact,
-      prim_ec_cell,
-      prim_ec_relationship,
-      prim_ec_work,
-      sec_emergency_contact,
-      sec_ec_cell,
-      sec_ec_relationship,
-      sec_ec_work,
-      provider_email,
-    });
-    return response.json(newPatient);
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
-  }
 };

@@ -26,29 +26,33 @@ const ActionSheet = () => {
   }, []);
 
   const pdfRef = useRef();
+
   const downloadPDF = () => {
     const input = pdfRef.current;
-    html2canvas(input).then((canvas) => {
+
+    const pdfWidth = 8.5;
+    const pdfHeight = 11;
+
+    html2canvas(input, { scrollX: 0, scrollY: -window.scrollY }).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4', 'true');
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = pdfWidth;
-      const imgHeight = (canvas.height * pdfWidth) / canvas.width;
-      const imgX = 0;
-      const imgY = 0;
-      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth, imgHeight);
+      const contentWidth = canvas.width / 96;
+      const contentHeight = canvas.height / 96;
+
+      const pdf = new jsPDF('portrait', 'in', [pdfWidth, pdfHeight]);
+
+      const scaleFactor = Math.min(pdfWidth / contentWidth, pdfHeight / contentHeight);
+
+      pdf.addImage(imgData, 'PNG', 0, 0, contentWidth * scaleFactor, contentHeight * scaleFactor);
       pdf.save('ActionSheet.pdf');
     });
-  };
-  
+  };  
 
   return (
     <>
       <Pat_Navbar />
       <div className='p-4 items-center justify-center'>
         <div className="flex justify-end">
-          <button className="border border-gray-400 rounded-xl p-4" onClick={downloadPDF}>
+          <button style={{ border: '1px solid #ccc', padding: '8px 16px', borderRadius: '8px' }} onClick={downloadPDF}>
             Download Action Sheet
           </button>
         </div>
@@ -92,7 +96,8 @@ const ActionSheet = () => {
                     </div>
                   </div>
 
-                  <div className='bg-green-100 justify-center mx-auto' style={{ width: '85%', display: 'flex', flexDirection: 'row' }}>
+                  <div className='bg-green-100 justify-center mx-auto p-2' style={{ maxWidth: '90%', display: 'flex', flexDirection: 'row', overflowX: 'auto' }}>
+
                     <div className='p-2'>
                       <h1 style={{ fontSize: '20px' }}><strong>Green Zone:</strong></h1>
                       <h2 className='font-semibold'>Doing well</h2>
@@ -110,7 +115,7 @@ const ActionSheet = () => {
                     <div className='p-3'>
                       <h1 className='p-2'>Take these medications every day for control and maintenance:</h1>
                       {patient.gz_meds && patient.gz_meds.length > 0 && (
-                        <div className='border border-green-600' style={{ display: 'inline-block' }}>
+                        <div className='border border-green-600 overflow-x-auto'>
                           <table className='w-full'>
                             <thead>
                               <tr className='bg-green-300'>
@@ -135,13 +140,14 @@ const ActionSheet = () => {
                   </div>
 
 
-                  <div className='bg-yellow-100 p-2 justify-center mx-auto' style={{ width: '85%', display: 'flex', flexDirection: 'row' }}>
+
+                  <div className='bg-yellow-100 p-2 mx-auto' style={{ maxWidth: '90%', display: 'flex', flexDirection: 'row', overflowX: 'auto' }}>
                     <div className='p-2'>
                       <h1 style={{ fontSize: '20px' }}><strong>Yellow Zone:</strong></h1>
                       <h2 className='font-semibold'>Caution/Getting Worse</h2>
                       <ul>
                         <li>Coughing, wheezing, chest tightness, or difficulty breathing</li>
-                        <li>Symptoms with daily activites, work, play, and exercise</li>
+                        <li>Symptoms with daily activities, work, play, and exercise</li>
                         <li>Nighttime awakenings with symptoms</li>
                       </ul>
                       <i className='font-semibold'>OR</i>
@@ -152,9 +158,9 @@ const ActionSheet = () => {
                     </div>
 
                     <div className='p-3'>
-                      <h1 className='p-2'>CONTINUE your Green Zone medications PLUS take these quick relief medaications:</h1>
+                      <h1 className='p-2'>CONTINUE your Green Zone medications PLUS take these quick relief medications:</h1>
                       {patient.yz_meds && patient.yz_meds.length > 0 && (
-                        <div className='border border-yellow-600' style={{ display: 'inline-block' }}>
+                        <div className='border border-yellow-600 overflow-x-auto'>
                           <table className='w-full'>
                             <thead>
                               <tr className='bg-yellow-300'>
@@ -180,7 +186,8 @@ const ActionSheet = () => {
                     </div>
                   </div>
 
-                  <div className='bg-red-100 p-2 justify-center mx-auto' style={{ width: '85%', display: 'flex', flexDirection: 'row' }}>
+
+                  <div className='bg-red-100 p-2 mx-auto' style={{ maxWidth: '90%', display: 'flex', flexDirection: 'row', overflowX: 'auto' }}>
                     <div className='p-2'>
                       <h1 style={{ fontSize: '20px' }}><strong>Red Zone:</strong></h1>
                       <h2 className='font-semibold'>Alert!</h2>
@@ -200,7 +207,7 @@ const ActionSheet = () => {
                       <h1><strong>FOR EXTREME TROUBLE BREATHING/SHORTNESS OF BREATH GET IMMEDIATE HELP!</strong></h1>
                       <h1 className='p-2'>Take these quick relief medications:</h1>
                       {patient.rz_meds && patient.rz_meds.length > 0 && (
-                        <div className='border border-red-600' style={{ display: 'inline-block' }}>
+                        <div className='border border-red-600 overflow-x-auto'>
                           <table className='w-full'>
                             <thead>
                               <tr className='bg-red-300'>
@@ -219,14 +226,13 @@ const ActionSheet = () => {
                               ))}
                             </tbody>
                           </table>
-
                         </div>
-
                       )}
                       <h1 className='flex items-center justify-center'><strong>CALL your doctor NOW.</strong></h1>
                       <h1 className='flex items-center justify-center'><strong>GO to the hospital/emergency department or CALL for an ambulance NOW!</strong></h1>
                     </div>
                   </div>
+
 
                 </div>
               </>
