@@ -1,5 +1,5 @@
 import express from 'express';
-import { Patient} from '../models/patientModel.js';
+import { Patient } from '../models/patientModel.js';
 
  const router = express.Router();
 
@@ -104,7 +104,7 @@ router.get('/:id', async (request, response) => {
 });
 
 //Route to update patient
-router.put('/profile/edit', async (request, response) => {
+router.put('/pprofile/edit', async (request, response) => {
     try {
         const requiredFields = ['name', 'age', 'email', 'pr_peak_flow', 'prim_emergency_contact', 'prim_ec_cell', 'prim_ec_relationship', 'prim_ec_work', 'sec_emergency_contact', 'sec_ec_cell', 'sec_ec_relationship', 'sec_ec_work'];
         for (const field of requiredFields) {
@@ -122,6 +122,31 @@ router.put('/profile/edit', async (request, response) => {
         }
 
         return response.status(200).json({ message: 'Patient updated successfully', updatedPatient });
+    } catch (error) {
+        console.error(error);
+        return response.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+//Route to update doc
+router.put('/dprofile/edit', async (request, response) => {
+    try {
+        const requiredFields = ['name', 'email', 'phone'];
+        for (const field of requiredFields) {
+            if (!request.body[field]) {
+                return response.status(400).json({ message: `Missing required field: ${field}` });
+            }
+        }
+
+        const { email } = request.body;
+
+        const updatedDoctor = await Doctor.findOneAndUpdate({ email }, request.body, { new: true });
+
+        if (!updatedDoctor) {
+            return response.status(404).json({ message: 'Doctor not found' });
+        }
+
+        return response.status(200).json({ message: 'Doctor updated successfully', updatedDoctor });
     } catch (error) {
         console.error(error);
         return response.status(500).json({ message: 'Internal Server Error' });

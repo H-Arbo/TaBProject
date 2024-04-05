@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 
@@ -47,7 +45,7 @@ export default ({ changeToFalse }) => {
       });
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching patient profile:', error);
+      toast.error('Error fetching patient profile:', error);
       setLoading(false);
     }
   };
@@ -62,10 +60,12 @@ export default ({ changeToFalse }) => {
 
   const savePatient = async () => {
     try {
-      await axios.put('http://localhost:5555/patients/profile/edit', patientInfo);
-      console.log('Patient info saved successfully');
+      await axios.put('http://localhost:5555/patients/pprofile/edit', patientInfo);
+      toast.success('Patient info saved successfully');
+      window.location.reload();
+      changeToFalse();
     } catch (error) {
-      console.error('Error saving patient info:', error);
+      toast.error('Error saving patient info:', error);
     }
   };
 
@@ -76,7 +76,7 @@ export default ({ changeToFalse }) => {
 
       <div className='pb-4'>
 
-        <div onClick={() => changeToFalse()}>
+        <div className=' text-sky-800' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => changeToFalse()}>
           Cancel
         </div>
 
@@ -84,8 +84,7 @@ export default ({ changeToFalse }) => {
           <div className='border border-sky-400 rounded-xl p-4'>
             <h2 className='text-xl text-gray-700 mb-4'>Basic Information</h2>
             <div className='space-y-2'>
-              <p><span className='font-semibold'>Patient Name:</span> 
-                <input 
+              <p><span className='font-semibold'>Patient Name:</span> <input 
                   type="text"
                   placeholder="Enter name"
                   value={patientInfo.name}
@@ -93,8 +92,7 @@ export default ({ changeToFalse }) => {
                   name="name"
                 /> 
               </p>
-              <p><span className='font-semibold'>Age:</span> 
-                <input
+              <p><span className='font-semibold'>Age:</span> <input
                   type="text"
                   placeholder="Enter age"
                   value={patientInfo.age}
@@ -102,8 +100,7 @@ export default ({ changeToFalse }) => {
                   name="age"
                 /> 
               </p>
-              <p><span className='font-semibold'>Best Peak Flow:</span> 
-                <input
+              <p><span className='font-semibold'>Best Peak Flow:</span> <input
                   type="text"
                   placeholder="Enter peak flow"
                   value={patientInfo.pr_peak_flow}
@@ -117,8 +114,7 @@ export default ({ changeToFalse }) => {
           <div className='border border-sky-400 rounded-xl p-4'>
             <h2 className='text-xl text-gray-700 mb-4'>Primary Emergency Contact</h2>
             <div className='space-y-2'>
-              <p><span className='font-semibold'>Primary Contact:</span> 
-                <input 
+              <p><span className='font-semibold'>Primary Contact:</span> <input 
                   type="text"
                   placeholder="Enter name"
                   value={patientInfo.prim_emergency_contact}
@@ -126,8 +122,7 @@ export default ({ changeToFalse }) => {
                   name="prim_emergency_contact"
                 /> 
               </p>
-              <p><span className='font-semibold'>Email:</span> 
-                <input 
+              <p><span className='font-semibold'>Email:</span> <input 
                   type="text"
                   placeholder="Enter email"
                   value={patientInfo.email}
@@ -135,8 +130,7 @@ export default ({ changeToFalse }) => {
                   name="email"
                 />
               </p>
-              <p><span className='font-semibold'>Cell Phone:</span> 
-                <input 
+              <p><span className='font-semibold'>Cell Phone:</span> <input 
                   type="text"
                   placeholder="Enter Phone Number"
                   value={patientInfo.prim_ec_cell}
@@ -144,8 +138,7 @@ export default ({ changeToFalse }) => {
                   name="prim_ec_cell"
                 /> 
               </p>
-              <p><span className='font-semibold'>Work Phone:</span> 
-                <input
+              <p><span className='font-semibold'>Work Phone:</span> <input
                   type="text" 
                   placeholder="Enter Phone Number"
                   value={patientInfo.prim_ec_work}
@@ -153,8 +146,7 @@ export default ({ changeToFalse }) => {
                   name="prim_ec_work"
                 /> 
               </p>
-              <p><span className='font-semibold'>Relation:</span> 
-                <input 
+              <p><span className='font-semibold'>Relation:</span> <input 
                   type="text"
                   placeholder="Enter relation"
                   value={patientInfo.prim_ec_relationship}
@@ -168,8 +160,7 @@ export default ({ changeToFalse }) => {
           <div className='border border-sky-400 rounded-xl p-4'>
             <h2 className='text-xl text-gray-700 mb-4'>Secondary Emergency Contact</h2>
             <div className='space-y-2'>
-              <p><span className='font-semibold'>Name:</span> 
-                <input 
+              <p><span className='font-semibold'>Name:</span> <input 
                   type="text"
                   placeholder="Enter name"
                   value={patientInfo.sec_emergency_contact}
@@ -177,8 +168,7 @@ export default ({ changeToFalse }) => {
                   name="sec_emergency_contract"
                 /> 
               </p>
-              <p><span className='font-semibold'>Cell Phone:</span> 
-                <input 
+              <p><span className='font-semibold'>Cell Phone:</span> <input 
                   type="text"
                   placeholder="Enter Phone Number"
                   value={patientInfo.sec_ec_cell}
@@ -186,8 +176,7 @@ export default ({ changeToFalse }) => {
                   name="sec_ec_cell"
                 /> 
               </p>
-              <p><span className='font-semibold'>Work Phone:</span> 
-                <input 
+              <p><span className='font-semibold'>Work Phone:</span> <input 
                   type="text"
                   placeholder="Enter Phone Number"
                   value={patientInfo.sec_ec_work}
@@ -195,8 +184,7 @@ export default ({ changeToFalse }) => {
                   name="sec_ec_work"
                 /> 
               </p>
-              <p><span className='font-semibold'>Relation:</span> 
-                <input 
+              <p><span className='font-semibold'>Relation:</span> <input 
                   type="text"
                   placeholder="Enter relation"
                   value={patientInfo.sec_ec_relationship}

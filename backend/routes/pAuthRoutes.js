@@ -22,6 +22,6 @@ router.post("/register", registerPatient);
 router.post("/login", loginPatient);
 router.patch("/addMed", addMedication);
 router.delete("/deleteMed", deleteMedication);
-router.put("/profile/edit", editPatient);
+router.put("/pprofile/edit", editPatient);
 
 export default router;
