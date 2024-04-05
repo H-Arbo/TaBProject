@@ -121,10 +121,10 @@ const PMeds = () => {
                               }}
                               _id={pInfo.at(0)._id}
                               zone="green"
-                              editRow={(newTable) => {
+                              rerenderRow={(newTable) => {
                                 setRows(newTable);
                               }}
-                              oldRow={medToDelete}
+                              med={medToDelete}
                             />
                           )}
                           <button //onClick={() => getDeleteRow(index)}

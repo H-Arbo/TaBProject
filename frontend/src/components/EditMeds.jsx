@@ -6,8 +6,33 @@ import "./ChangeMeds.css";
 import { toast } from "react-hot-toast";
 import EasyEdit, { Types } from "react-easy-edit";
 
-export const EditMeds = ({ closeModal, _id, zone, editRow, oldRow }) => {
-  const save = (value, field) => {
+export const EditMeds = ({ closeModal, _id, zone, rerenderRow, med }) => {
+  const saveMed = async (value, field) => {
+
+    try {
+      console.log(med.at(0)._id, _id,zone )
+      const {data } = await axios.patch("/patients/editMed", {
+        _id: _id,
+        zone: "green",
+        med_id: med.at(0)._id,
+        new_med: value,
+  
+      });
+
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        
+        toast.success("Medication Changed");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const saveAmount = (value, field) => {
+    alert(value);
+  };
+  const saveFreq = (value, field) => {
     alert(value);
   };
 
@@ -20,8 +45,9 @@ export const EditMeds = ({ closeModal, _id, zone, editRow, oldRow }) => {
     when_freq: "",
   });
 
-  const editMedication = async (e) => {
-    e.preventDefault();
+  const endProcess = () => {
+    //reset rows to reflect change
+    //close modal
   };
 
   return (
@@ -36,45 +62,37 @@ export const EditMeds = ({ closeModal, _id, zone, editRow, oldRow }) => {
         <div className="border-2 border-gray-500 px-4 py-2 w-full">
           <EasyEdit
             type={Types.TEXT}
-            onSave={save}
-            onCancel={cancel}
-            placeholder={oldRow.med}
+            onSave={saveMed}
+            placeholder="Change Medication"
             saveButtonLabel="Save"
             cancelButtonLabel="Cancel"
             attributes={{ name: "awesome-input", id: 1 }}
           />
         </div>
-        <form onSubmit={editMedication}>
-          <label className="text-xl mr-4 text-gray-500">Medication</label>
-          <input
-            type="text"
-            placeholder={oldRow.med}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
-            value={data.med}
-            onChange={(e) => setData({ ...data, med: e.target.value })}
-          ></input>
-
-          <label className="text-xl mr-4 text-gray-500">Amount</label>
-          <input
-            type="text"
-            placeholder={oldRow.amount}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
-            value={data.amount}
-            onChange={(e) => setData({ ...data, amount: e.target.value })}
-          ></input>
-
-          <label className="text-xl mr-4 text-gray-500">Frequency</label>
-          <input
-            type="text"
-            placeholder={oldRow.when_freq}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
-            value={data.when_freq}
-            onChange={(e) => setData({ ...data, when_freq: e.target.value })}
-          ></input>
-          <button type="submit" className="p-2 bg-sky-300 m-8">
-            Submit
-          </button>
-        </form>
+        <label className="text-xl mr-4 text-gray-500">Amount</label>
+        <div className="border-2 border-gray-500 px-4 py-2 w-full">
+          <EasyEdit
+            type={Types.TEXT}
+            onSave={saveAmount}
+            onCancel={cancel}
+            placeholder="Change Amount"
+            saveButtonLabel="Save"
+            cancelButtonLabel="Cancel"
+            attributes={{ name: "awesome-input", id: 1 }}
+          />
+        </div><label className="text-xl mr-4 text-gray-500">Frequency</label>
+        <div className="border-2 border-gray-500 px-4 py-2 w-full">
+          <EasyEdit
+            type={Types.TEXT}
+            onSave={saveFreq}
+            onCancel={cancel}
+            placeholder="Change Frequency"
+            saveButtonLabel="Save"
+            cancelButtonLabel="Cancel"
+            attributes={{ name: "awesome-input", id: 1 }}
+          />
+        </div>
+        <button className="p-2 bg-sky-300 m-8" onClick={endProcess}>Finish</button>
       </div>
     </div>
   );

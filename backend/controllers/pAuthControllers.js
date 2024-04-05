@@ -49,6 +49,44 @@ export const addMedication = async (request, response) => {
     return response.status(500).json({ message: error.message });
   }
 };
+
+export const editMedication = async (request, response) => {
+  try {
+    const { _id, zone, med_id, new_med } = request.body;
+    console.log(request.body);
+    //const patient = await Patient.findById(_id);
+    const patient = await Patient.updateOne({ _id: _id, "gz_meds._id": med_id },
+      { $set: { "gz_meds.$.med" :  new_med} });
+    console.log(patient);
+    if (!patient) {
+      return response.status(404).json({ message: "Patient not found" });
+    }
+    // Return the patient data
+    
+    // if (zone == "green") {
+    //   console.log("green zone");
+    //   console.log(med_id);
+    //   patient.gz_meds.find(med_id).set({med: new_med});
+    //   await patient.save();
+    // }
+    // if (zone == "yellow") {
+    //   console.log("green zone");
+    //   console.log(med_id);
+    //   patient.yz_meds.pull({ _id: med_id });
+    //   await patient.save();
+    // }
+    // if (zone == "red") {
+    //   console.log("green zone");
+    //   console.log(med_id);
+    //   patient.rz_meds.pull({ _id: med_id });
+    //   await patient.save();
+    // }
+    return response.status(200).json(patient.gz_meds);
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({ message: error.message });
+  }
+};
 export const deleteMedication = async (request, response) => {
   try {
     const { _id, zone, med_id } = request.body;

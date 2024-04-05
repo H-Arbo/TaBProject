@@ -6,6 +6,7 @@ import {
   getPatient,
   editPatient,
   addMedication,
+  editMedication,
   deleteMedication
 } from "../controllers/pAuthControllers.js";
 import cors from "cors";
@@ -21,6 +22,7 @@ router.get("/", getPatients);
 router.post("/register", registerPatient);
 router.post("/login", loginPatient);
 router.patch("/addMed", addMedication);
+router.patch("/editMed", editMedication);
 router.delete("/deleteMed", deleteMedication);
 router.put("/profile/edit", editPatient);
 
