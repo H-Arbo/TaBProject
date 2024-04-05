@@ -424,7 +424,39 @@ export const editPatient = async (request, response) => {
         // Save updated patient
         const updatedPatient = await existingPatient.save();
 
-        return response.json(updatedPatient);
+        const token = jwt.sign(
+          {
+              email: updatedPatient.email,
+              id: updatedPatient._id,
+              name: updatedPatient.name,
+              age: updatedPatient.age,
+              prim_emergency_contact: updatedPatient.prim_emergency_contact,
+              prim_ec_cell: updatedPatient.prim_ec_cell,
+              prim_ec_work: updatedPatient.prim_ec_work,
+              prim_ec_relationship: updatedPatient.prim_ec_relationship,
+              sec_emergency_contact: updatedPatient.sec_emergency_contact,
+              sec_ec_cell: updatedPatient.sec_ec_cell,
+              sec_ec_work: updatedPatient.sec_ec_work,
+              sec_ec_relationship: updatedPatient.sec_ec_relationship,
+              provider: updatedPatient.provider,
+              provider_phone: updatedPatient.provider_phone,
+              provider_email: updatedPatient.provider_email,
+              pr_peak_flow: updatedPatient.pr_peak_flow,
+              gz_peak_flow_max: updatedPatient.gz_peak_flow_max,
+              gz_peak_flow_min: updatedPatient.gz_peak_flow_min,
+              rz_peak_flow_max: updatedPatient.rz_peak_flow_max,
+              yz_peak_flow_max: updatedPatient.yz_peak_flow_max,
+              yz_peak_flow_min: updatedPatient.yz_peak_flow_min,
+              rz_meds: updatedPatient.rz_meds,
+              yz_meds: updatedPatient.yz_meds,
+              gz_meds: updatedPatient.gz_meds,
+              yz_comment: updatedPatient.yz_comment,
+          },
+          process.env.JWT_STRING,
+          {}
+      );
+      
+      return response.cookie("token", token).json(updatedPatient);
     } catch (error) {
         console.error(error.message);
         return response.status(500).json({
