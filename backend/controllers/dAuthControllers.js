@@ -174,3 +174,53 @@ export const loginDoc = async (request, response) => {
     console.log(error);
   }
 };
+
+export const editDoc = async (request, response) => {
+  try {
+      const { 
+          name,  
+          email, 
+          phone,
+      } = request.body;
+      
+      if (!name || !email || !phone) {
+          return response.status(400).json({
+              error: 'Please provide all required fields.'
+          });
+      }
+
+      // Find doctor by email
+      const existingDoctor = await Doctor.findOne({ email });
+      if (!existingDoctor) {
+          return response.status(404).json({
+              error: 'Doctor not found.'
+          });
+      }
+
+      // Update patient fields
+      existingDoctor.name = name;
+      existingDoctor.phone = phone;
+
+      // Save updated patient
+      const updatedDoctor = await existingDoctor.save();
+
+      const token = jwt.sign(
+        {
+            email: updatedDoctor.email, 
+            id: updatedDoctor._id, 
+            name: updatedDoctor.name, 
+            phone: updatedDoctor.phone
+        },
+        process.env.JWT_STRING,
+        {}
+    );
+    
+    return response.cookie("token", token).json(updatedDoctor);
+  } catch (error) {
+      console.error(error.message);
+      return response.status(500).json({
+          error: 'Server Error'
+      });
+  }
+};
+

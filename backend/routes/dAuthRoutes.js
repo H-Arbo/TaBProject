@@ -1,5 +1,5 @@
 import express from 'express';
-import {registerDoc,loginDoc, getPatients, getDoc} from '../controllers/dAuthControllers.js';
+import {registerDoc,loginDoc, getPatients, getDoc, editDoc} from '../controllers/dAuthControllers.js';
 import cors from 'cors';
 
 const router = express.Router();
@@ -13,6 +13,7 @@ router.get("/", getPatients);
 router.post("/register", registerDoc);
 router.post("/login", loginDoc);
 router.get("/", getDoc);
+router.put("/dprofile/edit", editDoc);
 
 
 
