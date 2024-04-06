@@ -89,7 +89,7 @@ function DPinfo() {
                         {patient.age}
                       </td>
                       <td className="p-3 border border-gray-300 text-center">
-                        {patient.pr_peak_flow}
+                        {patient.gz_peak_flow_max}
                       </td>
                       <td className="p-3 border border-gray-300 text-center">
                         <Link

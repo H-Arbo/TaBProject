@@ -7,7 +7,9 @@ import {
   editPatient,
   addMedication,
   editMedication,
-  deleteMedication
+  deleteMedication,
+  editMinFlow,
+  editMaxFlow
 } from "../controllers/pAuthControllers.js";
 import cors from "cors";
 
@@ -23,6 +25,9 @@ router.post("/register", registerPatient);
 router.post("/login", loginPatient);
 router.patch("/addMed", addMedication);
 router.patch("/editMed", editMedication);
+router.patch("/editMinFlow", editMinFlow);
+router.patch("/editMaxFlow", editMaxFlow);
+
 router.delete("/deleteMed", deleteMedication);
 router.put("/pprofile/edit", editPatient);
 

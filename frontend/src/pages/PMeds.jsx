@@ -14,28 +14,48 @@ import { EditMeds } from "../components/EditMeds";
 import { toast } from "react-hot-toast";
 
 const PMeds = () => {
-  const saveMin = async (value, field) => {
+  const saveMin = async (value, zone) => {
     console.log(zone);
-    alert(pInfo.at(0)._id + value);
-    // try {
-    //   console.log(pInfo.at(0)._id,zone )
-    //   const {data } = await axios.patch("/patients/editMinFlow", {
-    //     _id: pInfo.at(0)._id,
-    //     zone: zone,
-    //     new_min: value
+    //alert(pInfo.at(0)._id + value);
+    try {
+        console.log(pInfo.at(0)._id,zone )
+        const {data } = await axios.patch("/patients/editMinFlow", {
+          _id: pInfo.at(0)._id,
+          zone: zone,
+          new_min: value
 
-    //   });
+        });
 
-    //   if (data.error) {
-    //     toast.error(data.error);
-    //   } else {
-    //     toast.success("Medication Changed");
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
+        if (data.error) {
+          toast.error(data.error);
+        } else {
+          toast.success("Min Flow Rate Changed");
+        }
+    } catch (error) {
+      console.log(error);
+    }
   };
+  const saveMax = async (value, zone) => {
+    console.log(zone);
+    //alert(pInfo.at(0)._id + value);
+    try {
+        console.log(pInfo.at(0)._id,zone )
+        const {data } = await axios.patch("/patients/editMaxFlow", {
+          _id: pInfo.at(0)._id,
+          zone: zone,
+          new_max: value
 
+        });
+
+        if (data.error) {
+          toast.error(data.error);
+        } else {
+          toast.success("Max Flow Rate Changed");
+        }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const cancel = () => {
     alert("Cancelled");
   };
@@ -49,7 +69,7 @@ const PMeds = () => {
   const { pInfo } = location.state;
   const [rows, setRows] = useState(pInfo.at(0).gz_meds);
   const [medToDelete, setMedToDelete] = useState(null);
-  const [zone, setZone] = useState("");
+  
 
   console.log(rows);
   console.log(pInfo);
@@ -60,13 +80,6 @@ const PMeds = () => {
     console.log(targetIndex);
     setRows(rows.filter((_, idx) => idx != targetIndex));
   };
-
-  const changeZone = (newZone) =>{
-    console.log("in changeZone");
-    console.log(newZone);
-    setZone(newZone);
-    console.log("zone: "+ zone);
-  }
   return (
     <>
       <Dr_Navbar />
@@ -85,11 +98,10 @@ const PMeds = () => {
                       <EasyEdit
                         type={Types.TEXT}
                         onSave={(value) => {
-                          changeZone("green");
                           console.log("onSave");
-                          saveMin(value);
+                          saveMax(value, "green");
                         }}
-                        onCancel={cancel}
+            
                         placeholder="Change Peak Flow Max"
                         saveButtonLabel="Save"
                         cancelButtonLabel="Cancel"
@@ -100,7 +112,10 @@ const PMeds = () => {
                       {" "}
                       <EasyEdit
                         type={Types.TEXT}
-                        onSave={saveMin}
+                        onSave={(value) => {
+                          console.log("onSave");
+                          saveMin(value, "green");
+                        }}
                         onCancel={cancel}
                         placeholder="Change Peak Flow Min"
                         saveButtonLabel="Save"

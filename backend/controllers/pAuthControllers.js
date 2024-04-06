@@ -19,6 +19,110 @@ export const getPatients = async (request, response) => {
     response.status(500).send({ message: error.message });
   }
 };
+
+export const editMinFlow = async (request, response) => {
+  try {
+    const { _id, zone, new_min } = request.body;
+    if(zone == "green"){
+
+      const patient = await Patient.updateOne(
+        { _id: _id },
+        {
+          $set: {
+            "gz_peak_flow_min": new_min,
+          },
+        });
+      if(patient.matchedCount == 0){
+        return response.status(404).json({ message: "No match found" });
+      }
+      return response.status(200).json("min flow updated");
+    }
+    if(zone == "yellow"){
+
+      const patient = await Patient.updateOne(
+        { _id: _id },
+        {
+          $set: {
+            "yz_peak_flow_min": new_min,
+          },
+        });
+      if(patient.matchedCount == 0){
+        return response.status(404).json({ message: "No match found" });
+      }
+      return response.status(200).json("min flow updated");
+    }
+    if(zone == "red"){
+
+      const patient = await Patient.updateOne(
+        { _id: _id },
+        {
+          $set: {
+            "rz_peak_flow_min": new_min,
+          },
+        });
+      if(patient.matchedCount == 0){
+        return response.status(404).json({ message: "No match found" });
+      }
+      return response.status(200).json("min flow updated");
+    }
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({ message: error.message });
+  }
+
+};
+
+export const editMaxFlow = async (request, response) => {
+  try {
+    const { _id, zone, new_max } = request.body;
+    if(zone == "green"){
+
+      const patient = await Patient.updateOne(
+        { _id: _id },
+        {
+          $set: {
+            "gz_peak_flow_max": new_max,
+          },
+        });
+      if(patient.matchedCount == 0){
+        return response.status(404).json({ message: "No match found" });
+      }
+      return response.status(200).json("max flow updated");
+    }
+    if(zone == "yellow"){
+
+      const patient = await Patient.updateOne(
+        { _id: _id },
+        {
+          $set: {
+            "yz_peak_flow_max": new_max,
+          },
+        });
+      if(patient.matchedCount == 0){
+        return response.status(404).json({ message: "No match found" });
+      }
+      return response.status(200).json("max flow updated");
+    }
+    if(zone == "red"){
+
+      const patient = await Patient.updateOne(
+        { _id: _id },
+        {
+          $set: {
+            "rz_peak_flow_max": new_max,
+          },
+        });
+      if(patient.matchedCount == 0){
+        return response.status(404).json({ message: "No match found" });
+      }
+      return response.status(200).json("max flow updated");
+    }
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({ message: error.message });
+  }
+};
+
 export const addMedication = async (request, response) => {
   try {
     const { _id, zone, med, amount, when_freq } = request.body;
