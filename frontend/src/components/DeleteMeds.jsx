@@ -28,6 +28,7 @@ export const DeleteMeds = ({ closeModal, _id, zone, med, removeRow }) => {
         
         toast.success("Medication Deleted");
         removeRow(data);
+        closeModal();
         console.log("removeRow executed");
       }
     } catch (error) {

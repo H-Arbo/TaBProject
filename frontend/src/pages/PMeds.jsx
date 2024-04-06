@@ -11,10 +11,29 @@ import Button from "../components/Button";
 import EasyEdit, { Types } from "react-easy-edit";
 import "../components/ChangeMeds.css";
 import { EditMeds } from "../components/EditMeds";
+import { toast } from "react-hot-toast";
 
 const PMeds = () => {
-  const save = (value, field) => {
-    alert(value);
+  const saveMin = async (value, field) => {
+    console.log(zone);
+    alert(pInfo.at(0)._id + value);
+    // try {
+    //   console.log(pInfo.at(0)._id,zone )
+    //   const {data } = await axios.patch("/patients/editMinFlow", {
+    //     _id: pInfo.at(0)._id,
+    //     zone: zone,
+    //     new_min: value
+
+    //   });
+
+    //   if (data.error) {
+    //     toast.error(data.error);
+    //   } else {
+    //     toast.success("Medication Changed");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   const cancel = () => {
@@ -30,6 +49,8 @@ const PMeds = () => {
   const { pInfo } = location.state;
   const [rows, setRows] = useState(pInfo.at(0).gz_meds);
   const [medToDelete, setMedToDelete] = useState(null);
+  const [zone, setZone] = useState("");
+
   console.log(rows);
   console.log(pInfo);
   const getDeleteRow = (targetIndex) => {
@@ -39,6 +60,13 @@ const PMeds = () => {
     console.log(targetIndex);
     setRows(rows.filter((_, idx) => idx != targetIndex));
   };
+
+  const changeZone = (newZone) =>{
+    console.log("in changeZone");
+    console.log(newZone);
+    setZone(newZone);
+    console.log("zone: "+ zone);
+  }
   return (
     <>
       <Dr_Navbar />
@@ -56,7 +84,11 @@ const PMeds = () => {
                       {" "}
                       <EasyEdit
                         type={Types.TEXT}
-                        onSave={save}
+                        onSave={(value) => {
+                          changeZone("green");
+                          console.log("onSave");
+                          saveMin(value);
+                        }}
                         onCancel={cancel}
                         placeholder="Change Peak Flow Max"
                         saveButtonLabel="Save"
@@ -68,11 +100,11 @@ const PMeds = () => {
                       {" "}
                       <EasyEdit
                         type={Types.TEXT}
-                        onSave={save}
+                        onSave={saveMin}
                         onCancel={cancel}
                         placeholder="Change Peak Flow Min"
-                        saveButtonLabel="Save Me"
-                        cancelButtonLabel="Cancel Me"
+                        saveButtonLabel="Save"
+                        cancelButtonLabel="Cancel"
                         attributes={{ name: "awesome-input", id: 1 }}
                       />
                     </td>
@@ -109,7 +141,10 @@ const PMeds = () => {
                               setModalOpen({ ...modalOpen, editMeds: true })
                             }
                           >
-                            <MdOutlineCreate color="blue" onClick={() => getDeleteRow(index)}/>
+                            <MdOutlineCreate
+                              color="blue"
+                              onClick={() => getDeleteRow(index)}
+                            />
                           </button>
                           {modalOpen.editMeds == true && (
                             <EditMeds
@@ -120,11 +155,11 @@ const PMeds = () => {
                                 });
                               }}
                               _id={pInfo.at(0)._id}
-                              zone="green"
+                              inputZone="green"
                               rerenderRow={(newTable) => {
                                 setRows(newTable);
                               }}
-                              med={medToDelete}
+                              oldMed={medToDelete}
                             />
                           )}
                           <button //onClick={() => getDeleteRow(index)}
@@ -182,26 +217,6 @@ const PMeds = () => {
             />
           )}
         </div>
-        {/* <EasyEdit
-          type={Types.TEXT}
-          onSave={save}
-          onCancel={cancel}
-          placeholder="Peak Flow Max"
-          saveButtonLabel="Save Me"
-          cancelButtonLabel="Cancel Me"
-          attributes={{ name: "awesome-input", id: 1 }}
-          instructions="Star this repo!"
-        />
-        <EasyEdit
-          type={Types.TEXT}
-          onSave={save}
-          onCancel={cancel}
-          placeholder="Peak Flow Min"
-          saveButtonLabel="Save Me"
-          cancelButtonLabel="Cancel Me"
-          attributes={{ name: "awesome-input", id: 1 }}
-          instructions="Star this repo!"
-        /> */}
 
         <h1 className="text-3xl my-4">Yellow Zone</h1>
         <h1 className="text-3xl my-4">Red Zone</h1>

@@ -24,7 +24,7 @@ export const addMedication = async (request, response) => {
     const { _id, zone, med, amount, when_freq } = request.body;
     console.log(request.body);
     const patient = await Patient.findById(_id);
-    
+
     if (!patient) {
       return response.status(404).json({ message: "Patient not found" });
     }
@@ -32,18 +32,21 @@ export const addMedication = async (request, response) => {
     if (zone == "green") {
       patient.gz_meds.push({ med: med, amount: amount, when_freq: when_freq });
       await patient.save();
+      return response.status(200).json(patient.gz_meds);
     }
     if (zone == "yellow") {
       patient.yz_meds.push({ med: med, amount: amount, when_freq: when_freq });
       await patient.save();
+      return response.status(200).json(patient.yz_meds);
     }
     if (zone == "red") {
       patient.rz_meds.push({ med: med, amount: amount, when_freq: when_freq });
       await patient.save();
+      return response.status(200).json(patient.rz_meds);
     }
     console.log(patient);
     // Return the patient data
-    return response.status(200).json(patient.gz_meds);
+    
   } catch (error) {
     console.log(error.message);
     return response.status(500).json({ message: error.message });
@@ -52,36 +55,80 @@ export const addMedication = async (request, response) => {
 
 export const editMedication = async (request, response) => {
   try {
-    const { _id, zone, med_id, new_med } = request.body;
+    const { _id, zone, med_id, new_info } = request.body;
     console.log(request.body);
-    //const patient = await Patient.findById(_id);
-    const patient = await Patient.updateOne({ _id: _id, "gz_meds._id": med_id },
-      { $set: { "gz_meds.$.med" :  new_med} });
-    console.log(patient);
-    if (!patient) {
-      return response.status(404).json({ message: "Patient not found" });
+
+    if (zone == "green") {
+      console.log("green zone");
+      console.log(med_id);
+      const patient = await Patient.updateOne(
+        { _id: _id, "gz_meds._id": med_id },
+        {
+          $set: {
+            "gz_meds.$.med": new_info.med,
+            "gz_meds.$.amount": new_info.amount,
+            "gz_meds.$.when_freq": new_info.when_freq,
+          },
+        }
+      );
+      const updatedPatient = await Patient.findById(_id);
+      console.log(updatedPatient);
+      if (!updatedPatient) {
+        return response.status(404).json({ message: "Patient not found" });
+      }
+
+      return response.status(200).json(updatedPatient.gz_meds);
     }
-    // Return the patient data
-    
-    // if (zone == "green") {
-    //   console.log("green zone");
-    //   console.log(med_id);
-    //   patient.gz_meds.find(med_id).set({med: new_med});
-    //   await patient.save();
+    if (zone == "yellow") {
+      console.log("yellow zone");
+      console.log(med_id);
+      const patient = await Patient.updateOne(
+        { _id: _id, "yz_meds._id": med_id },
+        {
+          $set: {
+            "yz_meds.$.med": new_info.med,
+            "yz_meds.$.amount": new_info.amount,
+            "yz_meds.$.when_freq": new_info.when_freq,
+          },
+        }
+      );
+      const updatedPatient = await Patient.findById(_id);
+      console.log(updatedPatient);
+      if (!updatedPatient) {
+        return response.status(404).json({ message: "Patient not found" });
+      }
+
+      return response.status(200).json(updatedPatient.yz_meds);
+    }
+    if (zone == "red") {
+      console.log("red zone");
+      console.log(med_id);
+      const patient = await Patient.updateOne(
+        { _id: _id, "rz_meds._id": med_id },
+        {
+          $set: {
+            "rz_meds.$.med": new_info.med,
+            "rz_meds.$.amount": new_info.amount,
+            "rz_meds.$.when_freq": new_info.when_freq,
+          },
+        }
+      );
+      const updatedPatient = await Patient.findById(_id);
+      console.log(updatedPatient);
+      if (!updatedPatient) {
+        return response.status(404).json({ message: "Patient not found" });
+      }
+
+      return response.status(200).json(updatedPatient.rz_meds);
+    }
+
+    // const updatedPatient = await Patient.findById(_id);
+    // console.log(updatedPatient);
+    // if (!updatedPatient) {
+    //   return response.status(404).json({ message: "Patient not found" });
     // }
-    // if (zone == "yellow") {
-    //   console.log("green zone");
-    //   console.log(med_id);
-    //   patient.yz_meds.pull({ _id: med_id });
-    //   await patient.save();
-    // }
-    // if (zone == "red") {
-    //   console.log("green zone");
-    //   console.log(med_id);
-    //   patient.rz_meds.pull({ _id: med_id });
-    //   await patient.save();
-    // }
-    return response.status(200).json(patient.gz_meds);
+
+    // return response.status(200).json(updatedPatient.gz_meds);
   } catch (error) {
     console.log(error.message);
     return response.status(500).json({ message: error.message });
@@ -97,26 +144,29 @@ export const deleteMedication = async (request, response) => {
       return response.status(404).json({ message: "Patient not found" });
     }
     // Return the patient data
-    
+
     if (zone == "green") {
       console.log("green zone");
       console.log(med_id);
       patient.gz_meds.pull({ _id: med_id });
       await patient.save();
+      return response.status(200).json(patient.gz_meds);
     }
     if (zone == "yellow") {
-      console.log("green zone");
+      console.log("yellow zone");
       console.log(med_id);
       patient.yz_meds.pull({ _id: med_id });
       await patient.save();
+      return response.status(200).json(patient.yz_meds);
     }
     if (zone == "red") {
-      console.log("green zone");
+      console.log("red zone");
       console.log(med_id);
       patient.rz_meds.pull({ _id: med_id });
       await patient.save();
+      return response.status(200).json(patient.rz_meds);
     }
-    return response.status(200).json(patient.gz_meds);
+    
   } catch (error) {
     console.log(error.message);
     return response.status(500).json({ message: error.message });
@@ -375,92 +425,102 @@ export const loginPatient = async (request, response) => {
 };
 
 export const editPatient = async (request, response) => {
-    try {
-        const { 
-            name, 
-            age, 
-            email, 
-            pr_peak_flow,
-            prim_emergency_contact, 
-            prim_ec_cell, 
-            prim_ec_relationship, 
-            prim_ec_work, 
-            sec_emergency_contact, 
-            sec_ec_cell, 
-            sec_ec_relationship, 
-            sec_ec_work 
-        } = request.body;
-        
-        if (!name || !age || !email || !pr_peak_flow ||
-            !prim_emergency_contact || !prim_ec_cell || !prim_ec_relationship || 
-            !prim_ec_work || !sec_emergency_contact || !sec_ec_cell || 
-            !sec_ec_relationship || !sec_ec_work) {
-            return response.status(400).json({
-                error: 'Please provide all required fields.'
-            });
-        }
+  try {
+    const {
+      name,
+      age,
+      email,
+      pr_peak_flow,
+      prim_emergency_contact,
+      prim_ec_cell,
+      prim_ec_relationship,
+      prim_ec_work,
+      sec_emergency_contact,
+      sec_ec_cell,
+      sec_ec_relationship,
+      sec_ec_work,
+    } = request.body;
 
-        // Find patient by email
-        const existingPatient = await Patient.findOne({ email });
-        if (!existingPatient) {
-            return response.status(404).json({
-                error: 'Patient not found.'
-            });
-        }
-
-        // Update patient fields
-        existingPatient.name = name;
-        existingPatient.age = age;
-        existingPatient.pr_peak_flow = pr_peak_flow;
-        existingPatient.prim_emergency_contact = prim_emergency_contact;
-        existingPatient.prim_ec_cell = prim_ec_cell;
-        existingPatient.prim_ec_relationship = prim_ec_relationship;
-        existingPatient.prim_ec_work = prim_ec_work;
-        existingPatient.sec_emergency_contact = sec_emergency_contact;
-        existingPatient.sec_ec_cell = sec_ec_cell;
-        existingPatient.sec_ec_relationship = sec_ec_relationship;
-        existingPatient.sec_ec_work = sec_ec_work;
-
-        // Save updated patient
-        const updatedPatient = await existingPatient.save();
-
-        const token = jwt.sign(
-          {
-              email: updatedPatient.email,
-              id: updatedPatient._id,
-              name: updatedPatient.name,
-              age: updatedPatient.age,
-              prim_emergency_contact: updatedPatient.prim_emergency_contact,
-              prim_ec_cell: updatedPatient.prim_ec_cell,
-              prim_ec_work: updatedPatient.prim_ec_work,
-              prim_ec_relationship: updatedPatient.prim_ec_relationship,
-              sec_emergency_contact: updatedPatient.sec_emergency_contact,
-              sec_ec_cell: updatedPatient.sec_ec_cell,
-              sec_ec_work: updatedPatient.sec_ec_work,
-              sec_ec_relationship: updatedPatient.sec_ec_relationship,
-              provider: updatedPatient.provider,
-              provider_phone: updatedPatient.provider_phone,
-              provider_email: updatedPatient.provider_email,
-              pr_peak_flow: updatedPatient.pr_peak_flow,
-              gz_peak_flow_max: updatedPatient.gz_peak_flow_max,
-              gz_peak_flow_min: updatedPatient.gz_peak_flow_min,
-              rz_peak_flow_max: updatedPatient.rz_peak_flow_max,
-              yz_peak_flow_max: updatedPatient.yz_peak_flow_max,
-              yz_peak_flow_min: updatedPatient.yz_peak_flow_min,
-              rz_meds: updatedPatient.rz_meds,
-              yz_meds: updatedPatient.yz_meds,
-              gz_meds: updatedPatient.gz_meds,
-              yz_comment: updatedPatient.yz_comment,
-          },
-          process.env.JWT_STRING,
-          {}
-      );
-      
-      return response.cookie("token", token).json(updatedPatient);
-    } catch (error) {
-        console.error(error.message);
-        return response.status(500).json({
-            error: 'Server Error'
-        });
+    if (
+      !name ||
+      !age ||
+      !email ||
+      !pr_peak_flow ||
+      !prim_emergency_contact ||
+      !prim_ec_cell ||
+      !prim_ec_relationship ||
+      !prim_ec_work ||
+      !sec_emergency_contact ||
+      !sec_ec_cell ||
+      !sec_ec_relationship ||
+      !sec_ec_work
+    ) {
+      return response.status(400).json({
+        error: "Please provide all required fields.",
+      });
     }
+
+    // Find patient by email
+    const existingPatient = await Patient.findOne({ email });
+    if (!existingPatient) {
+      return response.status(404).json({
+        error: "Patient not found.",
+      });
+    }
+
+    // Update patient fields
+    existingPatient.name = name;
+    existingPatient.age = age;
+    existingPatient.pr_peak_flow = pr_peak_flow;
+    existingPatient.prim_emergency_contact = prim_emergency_contact;
+    existingPatient.prim_ec_cell = prim_ec_cell;
+    existingPatient.prim_ec_relationship = prim_ec_relationship;
+    existingPatient.prim_ec_work = prim_ec_work;
+    existingPatient.sec_emergency_contact = sec_emergency_contact;
+    existingPatient.sec_ec_cell = sec_ec_cell;
+    existingPatient.sec_ec_relationship = sec_ec_relationship;
+    existingPatient.sec_ec_work = sec_ec_work;
+
+    // Save updated patient
+    const updatedPatient = await existingPatient.save();
+
+    const token = jwt.sign(
+      {
+        email: updatedPatient.email,
+        id: updatedPatient._id,
+        name: updatedPatient.name,
+        age: updatedPatient.age,
+        prim_emergency_contact: updatedPatient.prim_emergency_contact,
+        prim_ec_cell: updatedPatient.prim_ec_cell,
+        prim_ec_work: updatedPatient.prim_ec_work,
+        prim_ec_relationship: updatedPatient.prim_ec_relationship,
+        sec_emergency_contact: updatedPatient.sec_emergency_contact,
+        sec_ec_cell: updatedPatient.sec_ec_cell,
+        sec_ec_work: updatedPatient.sec_ec_work,
+        sec_ec_relationship: updatedPatient.sec_ec_relationship,
+        provider: updatedPatient.provider,
+        provider_phone: updatedPatient.provider_phone,
+        provider_email: updatedPatient.provider_email,
+        pr_peak_flow: updatedPatient.pr_peak_flow,
+        gz_peak_flow_max: updatedPatient.gz_peak_flow_max,
+        gz_peak_flow_min: updatedPatient.gz_peak_flow_min,
+        rz_peak_flow_max: updatedPatient.rz_peak_flow_max,
+        yz_peak_flow_max: updatedPatient.yz_peak_flow_max,
+        yz_peak_flow_min: updatedPatient.yz_peak_flow_min,
+        rz_meds: updatedPatient.rz_meds,
+        yz_meds: updatedPatient.yz_meds,
+        gz_meds: updatedPatient.gz_meds,
+        yz_comment: updatedPatient.yz_comment,
+      },
+      process.env.JWT_STRING,
+      {}
+    );
+
+    return response.cookie("token", token).json(updatedPatient);
+  } catch (error) {
+    console.error(error.message);
+    return response.status(500).json({
+      error: "Server Error",
+    });
+  }
 };

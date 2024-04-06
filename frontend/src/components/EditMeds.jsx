@@ -6,38 +6,86 @@ import "./ChangeMeds.css";
 import { toast } from "react-hot-toast";
 import EasyEdit, { Types } from "react-easy-edit";
 
-export const EditMeds = ({ closeModal, _id, zone, rerenderRow, med }) => {
+export const EditMeds = ({ closeModal, _id, inputZone, rerenderRow, oldMed }) => {
   const saveMed = async (value, field) => {
 
     try {
-      console.log(med.at(0)._id, _id,zone )
+      console.log(oldMed.at(0)._id, _id,inputZone )
       const {data } = await axios.patch("/patients/editMed", {
         _id: _id,
-        zone: "green",
-        med_id: med.at(0)._id,
-        new_med: value,
+        zone: inputZone,
+        med_id: oldMed.at(0)._id,
+        new_info: {
+          med: value,
+          amount: oldMed.amount,
+          when_freq: oldMed.when_freq,
+        },
   
       });
 
       if (data.error) {
         toast.error(data.error);
       } else {
-        
+        rerenderRow(data)
         toast.success("Medication Changed");
       }
     } catch (error) {
       console.log(error);
     }
   };
-  const saveAmount = (value, field) => {
-    alert(value);
+  const saveAmount = async (value, field) => {
+    try {
+      console.log(oldMed.at(0)._id, _id,inputZone )
+      const {data } = await axios.patch("/patients/editMed", {
+        _id: _id,
+        zone: inputZone,
+        med_id: oldMed.at(0)._id,
+        new_info: {
+          med: oldMed.med,
+          amount: value,
+          when_freq: oldMed.when_freq,
+        },
+  
+      });
+
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        rerenderRow(data)
+        toast.success("Medication Changed");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const saveFreq = (value, field) => {
-    alert(value);
+  const saveFreq = async (value, field) => {
+    try {
+      console.log(oldMed.at(0)._id, _id,inputZone )
+      const {data } = await axios.patch("/patients/editMed", {
+        _id: _id,
+        zone: inputZone,
+        med_id: oldMed.at(0)._id,
+        new_info: {
+          med: oldMed.med,
+          amount: oldMed.amount,
+          when_freq: value,
+        },
+  
+      });
+
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        rerenderRow(data)
+        toast.success("Medication Changed");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const cancel = () => {
-    alert("Cancelled");
+    toast.error("cancelled")
   };
   const [data, setData] = useState({
     medication: "",
@@ -45,10 +93,12 @@ export const EditMeds = ({ closeModal, _id, zone, rerenderRow, med }) => {
     when_freq: "",
   });
 
-  const endProcess = () => {
-    //reset rows to reflect change
-    //close modal
-  };
+  // const endProcess = () => {
+  //   rerenderRow()
+  //   closeModal()
+  //   //reset rows to reflect change
+  //   //close modal
+  // };
 
   return (
     <div
@@ -92,7 +142,7 @@ export const EditMeds = ({ closeModal, _id, zone, rerenderRow, med }) => {
             attributes={{ name: "awesome-input", id: 1 }}
           />
         </div>
-        <button className="p-2 bg-sky-300 m-8" onClick={endProcess}>Finish</button>
+        <button className="p-2 bg-sky-300 m-8" onClick={closeModal}>Finish</button>
       </div>
     </div>
   );
