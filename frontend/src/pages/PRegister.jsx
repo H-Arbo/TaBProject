@@ -105,7 +105,7 @@ export default function PRegister() {
               type="email"
               placeholder="Enter email"
               value={data.email}
-              onChange={(e) => setData({ ...data, email: e.target.value })}
+              onChange={(e) => setData({ ...data, email: e.target.value.toLowerCase() })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
 
@@ -220,7 +220,7 @@ export default function PRegister() {
               placeholder="Enter email"
               value={data.provider_email}
               onChange={(e) =>
-                setData({ ...data, provider_email: e.target.value })
+                setData({ ...data, provider_email: e.target.value.toLowerCase() })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />

@@ -40,25 +40,25 @@ export default function DLogin() {
       <BackButton />
 
       <div className='flex justify-center items-center pt-2'>
-      <div className="flex-col border-2 border-sky-400 rounded-xl max-w-[600px] p-4 mx-auto">
-        <h1 className='text-3xl my-4' >Doctor Login</h1>
-        <form onSubmit={docLogin}>
-          <label>Email</label>
-          <input type='email' placeholder='Enter email' value={data.email}
-            onChange={(e) => setData({ ...data, email: e.target.value })}
-            className='border-2 border-gray-500 px-4 py-2  w-full ' />
+        <div className="flex-col border-2 border-sky-400 rounded-xl max-w-[600px] p-4 mx-auto">
+          <h1 className='text-3xl my-4' >Doctor Login</h1>
+          <form onSubmit={docLogin}>
+            <label>Email</label>
+            <input type='email' placeholder='Enter email' value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value.toLowerCase() })}
+              className='border-2 border-gray-500 px-4 py-2  w-full ' />
 
 
-          <label>Password</label>
-          <input type='password' placeholder='Enter password' value={data.password}
-            onChange={(e) => setData({ ...data, password: e.target.value })}
-            className='border-2 border-gray-500 px-4 py-2  w-full ' />
+            <label>Password</label>
+            <input type='password' placeholder='Enter password' value={data.password}
+              onChange={(e) => setData({ ...data, password: e.target.value })}
+              className='border-2 border-gray-500 px-4 py-2  w-full ' />
 
-          <button type='submit' className='p-2 bg-sky-300 m-8'>
-            Login
-          </button>
-        </form>
-      </div>
+            <button type='submit' className='p-2 bg-sky-300 m-8'>
+              Login
+            </button>
+          </form>
+        </div>
       </div>
       <div className='p-8 flex justify-center'>
         <img src='/images/Laila-Path.png' alt="/images/Laila-Path.png" style={{

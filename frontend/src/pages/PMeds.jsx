@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import BackButton from "../components/BackButton";
-import Loading from "../components/Loading";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Dr_Navbar from "../components/Dr_Navbar";

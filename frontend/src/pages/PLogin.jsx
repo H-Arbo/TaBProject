@@ -47,10 +47,9 @@ export default function PLogin() {
               type="email"
               placeholder="Enter email"
               value={data.email}
-              onChange={(e) => setData({ ...data, email: e.target.value })}
-              className="border-2 border-gray-500 px-4 py-2  w-full "
+              onChange={(e) => setData({ ...data, email: e.target.value.toLowerCase() })}
+              className="border-2 border-gray-500 px-4 py-2 w-full"
             />
-
             <label>Password</label>
             <input
               type="password"
