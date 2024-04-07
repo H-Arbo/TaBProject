@@ -4,9 +4,6 @@ import Loading from '../components/Loading';
 import Dr_Navbar from '../components/Dr_Navbar';
 import { Link } from 'react-router-dom';
 import { MdOutlineDelete, MdOutlinePerson } from 'react-icons/md';
-import BackButton from '../components/BackButton';
-import { FaBell } from "react-icons/fa6";
-import LogoutButton from '../components/LogoutButton';
 
 const DHome = () => {
     const [patients, setPatients] = useState([]);
