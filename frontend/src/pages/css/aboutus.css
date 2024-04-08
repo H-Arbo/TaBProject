@@ -1,0 +1,36 @@
+.p-9 {
+    background-color: #23577A;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    background-color: #D2EBDE;
+    /* Light gray background color */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
+}
+
+.member-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.team-member img {
+    width: 100%;
+    /* Ensure images are responsive within their containers */
+    border-radius: 8px;
+    /* Rounded corners for images */
+}
+
+.team-member p {
+    line-height: 1.6;
+    /* Improve readability with slightly increased line height */
+}
