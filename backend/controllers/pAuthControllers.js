@@ -628,3 +628,27 @@ export const editPatient = async (request, response) => {
     });
   }
 };
+
+export const archivePatient = async (request, response) => {
+  try {
+    const { _id, new_prov } = request.body;
+
+    const patient = await Patient.updateOne(
+      { _id: _id },
+      {
+        $set: {
+          "provider_email": new_prov,
+        },
+      }
+    );
+
+    if (patient.matchedCount === 0) {
+      return response.status(404).json({ error: "No matching patient found" });
+    }
+
+    return response.status(204).send(); // No content to return after successful update
+  } catch (error) {
+    console.error(error.message);
+    return response.status(500).json({ error: "Internal server error" });
+  }
+};

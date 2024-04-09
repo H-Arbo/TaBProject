@@ -61,7 +61,7 @@ export default function DRegister() {
               type='email'
               placeholder='Enter email'
               value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              onChange={(e) => setForm({ ...form, email: e.target.value.toLowerCase() })}
               className='border-2 border-gray-500 px-4 py-2 w-full'
             />
 

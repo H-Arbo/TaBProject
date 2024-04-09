@@ -1,0 +1,51 @@
+.p-9 {
+    background-color: #23577A;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Center align items */
+    gap: 20px;
+    /* Adjust the gap between items */
+}
+
+.team-member {
+    background-color: #D2EBDE;
+    /* Light gray background color */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
+    width: 300px;
+    /* Set a fixed width for each team member card */
+    margin: 10px;
+    /* Adjust margin as needed */
+    text-align: center;
+    /* Center align content */
+}
+
+.member-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.team-member img {
+    width: 100%;
+    /* Ensure images are responsive within their containers */
+    border-radius: 8px;
+    /* Rounded corners for images */
+}
+
+.team-member p {
+    line-height: 1.6;
+    /* Improve readability with slightly increased line height */
+}
+
+br {
+    display: block;
+    content: "";
+    margin-top: 50px;
+}

@@ -5,16 +5,10 @@ import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
 import Dr_Navbar from "../components/Dr_Navbar";
 import Button from "../components/Button";
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import BackButton from "../components/BackButton";
-import { FaBell } from "react-icons/fa6";
-import LogoutButton from "../components/LogoutButton";
 
 function DPinfo() {
   const [patients, setPatients] = useState([]);
-  const [searchText, setSearchText] = useState("");
   const [doctor, setDoctor] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const handleClick = () => {
     null;
@@ -50,10 +44,6 @@ function DPinfo() {
     }
     return false;
   });
-
-  const handleSearchChange = (event) => {
-    setSearchText(event.target.value);
-  };
 
   return (
     <>
@@ -94,9 +84,7 @@ function DPinfo() {
                       <td className="p-3 border border-gray-300 text-center">
                         <Link
                           to= "/doctor/patientInfo/changeMedication/"
-                          state= {{pInfo: filteredPatients}}
-                        
-                        >
+                          state= {{pInfo: filteredPatients}}>
                           <Button onClick={handleClick} color="darkblue">
                             Change Medication
                           </Button>

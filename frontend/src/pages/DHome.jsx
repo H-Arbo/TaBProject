@@ -4,9 +4,6 @@ import Loading from '../components/Loading';
 import Dr_Navbar from '../components/Dr_Navbar';
 import { Link } from 'react-router-dom';
 import { MdOutlineDelete, MdOutlinePerson } from 'react-icons/md';
-import BackButton from '../components/BackButton';
-import { FaBell } from "react-icons/fa6";
-import LogoutButton from '../components/LogoutButton';
 
 const DHome = () => {
     const [patients, setPatients] = useState([]);
@@ -77,8 +74,8 @@ const DHome = () => {
                                     <td className='border border-gray-300 px-4 py-2'>
                                         <div className='flex justify-center items-center gap-x-4'>
                                             <Link to="/doctor/patientInfo" state={{ id: 1, email: patient.email }} className="text-blue-600 hover:underline">Patient Info</Link>
-                                            <Link to={`/doctor/message/${patient._id}`} className="text-green-600 hover:underline">Message Patient</Link>
-                                            <Link to={`/patients/delete/${patient._id}`} className="text-red-600 hover:underline">
+                                            <Link to={`/doctor/message`} className="text-green-600 hover:underline">Message Patient</Link>
+                                            <Link to={'/patients/delete'} state={{ id: 1, email: patient.email }} className="text-red-600 hover:underline">
                                                 <MdOutlineDelete className='text-red-600' />
                                             </Link>
                                         </div>
