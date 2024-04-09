@@ -30,6 +30,7 @@ const AboutUs = () => {
                 </div>
                 <div className='team-member'>
                     <h1 className='member-name'>Sarah Phillips, MD</h1>
+                    <br></br>
                     <img src="/images/sara.jpg" alt='Sara Phillips'></img>
                     <p>Dr. Sara Phillips is an assistant professor of Pediatrics at the College of Community Health Sciences.
                         Phillips is from Boaz, Alabama, and she received her bachelor’s degree from The University of Alabama in biology.
