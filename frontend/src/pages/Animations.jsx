@@ -11,14 +11,13 @@ const Animations = () => {
       <Pat_Navbar />
       <div className="p-4">
         <h1 className="text-3xl my-4">Animations!</h1>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube-nocookie.com/embed/oHPj2jA3s8g?si=GY4y_AMq3MKYwPnD&amp;controls=1rel=0"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+        <h2>Animation 4</h2>
+        <iframe src="https://drive.google.com/file/d/1IBHCtlmqgmgj4ZW3g-eo_2u-P8ugPk11/preview" width="640" height="480"></iframe>
+
+        <h2>Animation 5</h2>
+        <iframe src="https://drive.google.com/file/d/1dwJ3rt5Dkd0WQxIU5W4CtkPewPobrQ3O/preview" width="640" height="480"></iframe>
+
+
       </div>
     </>
   );
