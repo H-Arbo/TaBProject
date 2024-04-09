@@ -7,7 +7,7 @@ import './css/characters.css'
 
 export default function DRegister() {
   const nav = useNavigate();
-  const [data, setData] = useState({
+  const [form, setForm] = useState({
     name: '',
     email: '',
     password: '',
@@ -16,7 +16,7 @@ export default function DRegister() {
   const docRegister = async (e) => {
     e.preventDefault();
 
-    const { name, email, password } = data;
+    const { name, email, password } = form;
 
     try {
       const { data } = await axios.post('/doctor/register', {
@@ -24,10 +24,11 @@ export default function DRegister() {
       })
 
       if (data.error) {
+        setForm({ ...form, password: "" });
         toast.error(data.error);
 
       } else {
-        setData({})
+        setForm({})
         toast.success('Registration Successful!')
         nav('/doctor/login');
       }
@@ -50,8 +51,8 @@ export default function DRegister() {
             <input
               type='text'
               placeholder='Enter name'
-              value={data.name}
-              onChange={(e) => setData({ ...data, name: e.target.value })}
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
               className='border-2 border-gray-500 px-4 py-2 w-full'
             />
 
@@ -59,8 +60,8 @@ export default function DRegister() {
             <input
               type='email'
               placeholder='Enter email'
-              value={data.email}
-              onChange={(e) => setData({ ...data, email: e.target.value })}
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               className='border-2 border-gray-500 px-4 py-2 w-full'
             />
 
@@ -68,8 +69,8 @@ export default function DRegister() {
             <input
               type='password'
               placeholder='Enter password'
-              value={data.password}
-              onChange={(e) => setData({ ...data, password: e.target.value })}
+              value={form.password}
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
               className='border-2 border-gray-500 px-4 py-2 w-full'
             />
             <button type='submit' className='p-2 bg-sky-300 m-8'>

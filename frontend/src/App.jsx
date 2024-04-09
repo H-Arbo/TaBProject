@@ -29,6 +29,7 @@ import axios from 'axios';
 import Resources from './pages/Resources';
 import DAlerts from './pages/DAlerts';
 import { UserContextProvider } from '../context/userContext';
+import { ProtectedRoute } from './components/ProtectedRoutes';
 
 axios.defaults.baseURL = 'http://localhost:5555';
 axios.defaults.withCredentials = true;
@@ -45,24 +46,24 @@ const App = () => {
       <Route path = '/doctor/login' element = {<DLogin />} />
       <Route path = '/patients/register' element = {<PRegister />} />
       <Route path = '/doctor/register' element = {<DRegister />} />
-      <Route path = '/patients/home' element = {<PHome />} />
-      <Route path = '/doctor/home' element = {<DHome/>} />
-      <Route path = '/patients/delete' element = {<DeletePatient/>} />
-      <Route path = '/patients/profile' element = {<PProfile/>} />
-      <Route path = '/doctor/profile' element = {<DProfile/>} />
-      <Route path = "/doctor/patientInfo" element={<DPinfo />} />
-      <Route path = '/doctor/patientInfo/changeMedication' element = {<PMeds/>} />
-      <Route path = '/patients/profile' element = {<EditPatient/>} />
-      <Route path = '/doctor/edit' element = {<EditDoctor/>} />
-      <Route path = '/patients/green' element = {<GreenZone/>} />
-      <Route path = '/patients/yellow' element = {<YellowZone/>} />
-      <Route path = '/patients/red' element = {<RedZone/>} />
-      <Route path = '/patients/animations' element = {<Animations/>} />
-      <Route path = '/patients/surveys' element = {<Surveys/>} />
-      <Route path = '/patients/actionSheet' element = {<ActionSheet/>} />
-      <Route path = '/doctor/message' element = {<MessagePatient/>} />
+      <Route path = '/patients/home' element = {<ProtectedRoute><PHome /></ProtectedRoute>} />
+      <Route path = '/doctor/home' element = {<ProtectedRoute><DHome/></ProtectedRoute>} />
+      <Route path = '/patients/delete' element = {<ProtectedRoute><DeletePatient/></ProtectedRoute>} />
+      <Route path = '/patients/profile' element = {<ProtectedRoute><PProfile/></ProtectedRoute>} />
+      <Route path = '/doctor/profile' element = {<ProtectedRoute><DProfile/></ProtectedRoute>} />
+      <Route path = "/doctor/patientInfo" element={<ProtectedRoute><DPinfo /></ProtectedRoute>} />
+      <Route path = '/doctor/patientInfo/changeMedication' element = {<ProtectedRoute><PMeds/></ProtectedRoute>} />
+      <Route path = '/patients/profile' element = {<ProtectedRoute><EditPatient/></ProtectedRoute>} />
+      <Route path = '/doctor/edit' element = {<ProtectedRoute><EditDoctor/></ProtectedRoute>} />
+      <Route path = '/patients/green' element = {<ProtectedRoute><GreenZone/></ProtectedRoute>} />
+      <Route path = '/patients/yellow' element = {<ProtectedRoute><YellowZone/></ProtectedRoute>} />
+      <Route path = '/patients/red' element = {<ProtectedRoute><RedZone/></ProtectedRoute>} />
+      <Route path = '/patients/animations' element = {<ProtectedRoute><Animations/></ProtectedRoute>} />
+      <Route path = '/patients/surveys' element = {<ProtectedRoute><Surveys/></ProtectedRoute>} />
+      <Route path = '/patients/actionSheet' element = {<ProtectedRoute><ActionSheet/></ProtectedRoute>} />
+      <Route path = '/doctor/message' element = {<ProtectedRoute><MessagePatient/></ProtectedRoute>} />
       <Route path = '/resources' element = {<Resources/>} />
-      <Route path = '/doctor/alerts' element = {<DAlerts/>} />
+      <Route path = '/doctor/alerts' element = {<ProtectedRoute><DAlerts/></ProtectedRoute>} />
     </Routes>
     </UserContextProvider>
   );

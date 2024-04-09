@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 
 export default function PRegister() {
   const nav = useNavigate();
-  const [data, setData] = useState({
+  const [form, setForm] = useState({
     name: "",
     age: "",
     email: "",
@@ -39,7 +39,7 @@ export default function PRegister() {
       sec_ec_relationship,
       sec_ec_work,
       provider_email,
-    } = data;
+    } = form;
 
     try {
       const { data } = await axios.post("/patients/register", {
@@ -60,10 +60,10 @@ export default function PRegister() {
       });
 
       if (data.error) {
-        setData({ ...data, password: "" });
+        setForm({ ...form, password: "" });
         toast.error(data.error);
       } else {
-        setData({});
+        setForm({});
         toast.success("Registration Successful!");
         nav("/patients/login");
       }
@@ -84,8 +84,8 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter Name"
-              value={data.name}
-              onChange={(e) => setData({ ...data, name: e.target.value })}
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
 
@@ -93,8 +93,8 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter Age"
-              value={data.age}
-              onChange={(e) => setData({ ...data, age: e.target.value })}
+              value={form.age}
+              onChange={(e) => setForm({ ...form, age: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
 
@@ -104,8 +104,8 @@ export default function PRegister() {
             <input
               type="email"
               placeholder="Enter email"
-              value={data.email}
-              onChange={(e) => setData({ ...data, email: e.target.value })}
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
 
@@ -113,8 +113,8 @@ export default function PRegister() {
             <input
               type="password"
               placeholder="Enter password"
-              value={data.password}
-              onChange={(e) => setData({ ...data, password: e.target.value })}
+              value={form.password}
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
 
@@ -124,9 +124,9 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter name"
-              value={data.prim_emergency_contact}
+              value={form.prim_emergency_contact}
               onChange={(e) =>
-                setData({ ...data, prim_emergency_contact: e.target.value })
+                setForm({ ...form, prim_emergency_contact: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
@@ -137,8 +137,8 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter Phone Number"
-              value={data.prim_ec_cell}
-              onChange={(e) => setData({ ...data, prim_ec_cell: e.target.value })}
+              value={form.prim_ec_cell}
+              onChange={(e) => setForm({ ...form, prim_ec_cell: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
 
@@ -148,8 +148,8 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter Phone Number"
-              value={data.prim_ec_work}
-              onChange={(e) => setData({ ...data, prim_ec_work: e.target.value })}
+              value={form.prim_ec_work}
+              onChange={(e) => setForm({ ...form, prim_ec_work: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
 
@@ -159,9 +159,9 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter Relation"
-              value={data.prim_ec_relationship}
+              value={form.prim_ec_relationship}
               onChange={(e) =>
-                setData({ ...data, prim_ec_relationship: e.target.value })
+                setForm({ ...form, prim_ec_relationship: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
@@ -172,9 +172,9 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter Name"
-              value={data.sec_emergency_contact}
+              value={form.sec_emergency_contact}
               onChange={(e) =>
-                setData({ ...data, sec_emergency_contact: e.target.value })
+                setForm({ ...form, sec_emergency_contact: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
@@ -185,8 +185,8 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter Phone Number"
-              value={data.sec_ec_cell}
-              onChange={(e) => setData({ ...data, sec_ec_cell: e.target.value })}
+              value={form.sec_ec_cell}
+              onChange={(e) => setForm({ ...form, sec_ec_cell: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
 
@@ -196,8 +196,8 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter Phone Number"
-              value={data.sec_ec_work}
-              onChange={(e) => setData({ ...data, sec_ec_work: e.target.value })}
+              value={form.sec_ec_work}
+              onChange={(e) => setForm({ ...form, sec_ec_work: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
 
@@ -207,9 +207,9 @@ export default function PRegister() {
             <input
               type="text"
               placeholder="Enter Relation"
-              value={data.sec_ec_relationship}
+              value={form.sec_ec_relationship}
               onChange={(e) =>
-                setData({ ...data, sec_ec_relationship: e.target.value })
+                setForm({ ...form, sec_ec_relationship: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
@@ -218,9 +218,9 @@ export default function PRegister() {
             <input
               type="email"
               placeholder="Enter email"
-              value={data.provider_email}
+              value={form.provider_email}
               onChange={(e) =>
-                setData({ ...data, provider_email: e.target.value })
+                setForm({ ...form, provider_email: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
             />
