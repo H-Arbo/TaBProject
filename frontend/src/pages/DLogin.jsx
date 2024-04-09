@@ -46,13 +46,15 @@ export default function DLogin() {
             <label>Email</label>
             <input type='email' placeholder='Enter email' value={data.email}
               onChange={(e) => setData({ ...data, email: e.target.value.toLowerCase() })}
-              className='border-2 border-gray-500 px-4 py-2  w-full ' />
+              className='border-2 border-gray-500 px-4 py-2  w-full ' 
+              maxLength={30}/>
 
 
             <label>Password</label>
             <input type='password' placeholder='Enter password' value={data.password}
               onChange={(e) => setData({ ...data, password: e.target.value })}
-              className='border-2 border-gray-500 px-4 py-2  w-full ' />
+              className='border-2 border-gray-500 px-4 py-2  w-full '
+              maxLength={15}/>
 
             <button type='submit' className='p-2 bg-sky-300 m-8'>
               Login

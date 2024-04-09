@@ -87,6 +87,7 @@ export default function PRegister() {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={50}
             />
 
             <label className="text-xl mr-4 text-gray-500">Patient Age</label>
@@ -96,6 +97,7 @@ export default function PRegister() {
               value={form.age}
               onChange={(e) => setForm({ ...form, age: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={2}
             />
 
             <label className="text-xl mr-4 text-gray-500">
@@ -107,6 +109,7 @@ export default function PRegister() {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value.toLowerCase() })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={30}
             />
 
             <label className="text-xl mr-4 text-gray-500">Password</label>
@@ -116,6 +119,7 @@ export default function PRegister() {
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={15}
             />
 
             <label className="text-xl mr-4 text-gray-500">
@@ -129,6 +133,7 @@ export default function PRegister() {
                 setForm({ ...form, prim_emergency_contact: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={50}
             />
 
             <label className="text-xl mr-4 text-gray-500">
@@ -140,6 +145,7 @@ export default function PRegister() {
               value={form.prim_ec_cell}
               onChange={(e) => setForm({ ...form, prim_ec_cell: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={11}
             />
 
             <label className="text-xl mr-4 text-gray-500">
@@ -151,6 +157,7 @@ export default function PRegister() {
               value={form.prim_ec_work}
               onChange={(e) => setForm({ ...form, prim_ec_work: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={11}
             />
 
             <label className="text-xl mr-4 text-gray-500">
@@ -164,6 +171,7 @@ export default function PRegister() {
                 setForm({ ...form, prim_ec_relationship: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={50}
             />
 
             <label className="text-xl mr-4 text-gray-500">
@@ -177,6 +185,7 @@ export default function PRegister() {
                 setForm({ ...form, sec_emergency_contact: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={50}
             />
 
             <label className="text-xl mr-4 text-gray-500">
@@ -188,6 +197,7 @@ export default function PRegister() {
               value={form.sec_ec_cell}
               onChange={(e) => setForm({ ...form, sec_ec_cell: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={11}
             />
 
             <label className="text-xl mr-4 text-gray-500">
@@ -199,6 +209,7 @@ export default function PRegister() {
               value={form.sec_ec_work}
               onChange={(e) => setForm({ ...form, sec_ec_work: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={11}
             />
 
             <label className="text-xl mr-4 text-gray-500">
@@ -212,6 +223,7 @@ export default function PRegister() {
                 setForm({ ...form, sec_ec_relationship: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={50}
             />
 
             <label className="text-xl mr-4 text-gray-500">Provider Email</label>
@@ -223,6 +235,7 @@ export default function PRegister() {
                 setForm({ ...form, provider_email: e.target.value })
               }
               className="border-2 border-gray-500 px-4 py-2 w-full"
+              maxLength={30}
             />
 
             <button type="submit" className="p-2 bg-sky-300 m-8">
