@@ -87,7 +87,7 @@ const PatientProfile = () => {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}> 
-              <div className=' text-sky-800' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => setEditMode(true)}>
+              <div className=' text-ffff' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => setEditMode(true)}>
                 <MdHistoryEdu className="text-4x1 h-6 w-6"/> 
                 <span>Edit Profile</span>
               </div>

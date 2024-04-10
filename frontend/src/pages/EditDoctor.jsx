@@ -48,7 +48,12 @@ export default ({ changeToFalse }) => {
       window.location.reload();
       changeToFalse();
     } catch (error) {
-      toast.error('Error saving doctor info:', error);
+      if (error.response && error.response.status >= 400 && error.response.status < 600) {
+        toast.error(error.response.data.error);
+      } else {
+        toast.error('An error occurred. Please try again later.');
+      }
+      setLoading(false);
     }
   };
 
@@ -57,13 +62,13 @@ export default ({ changeToFalse }) => {
   return (
     <div>
 
-      <div className=' text-sky-800' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => changeToFalse()}>
+      <div className=' text-ffff' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => changeToFalse()}>
         Cancel
       </div>
 
       <div className='flex flex-wrap flex-col border border-sky-400 rounded-xl w-fit p-4'>
         <div className='my-4'>
-          <span className='text-xl mr-4 text-gray-500'>Doctor Name: </span>
+          <span className='text-xl mr-4 text-gray-500'>Doctor Name:</span>
             <input 
               type="text"
               placeholder="Enter name"
@@ -96,7 +101,7 @@ export default ({ changeToFalse }) => {
         </div>
         
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}> 
-          <div className=' text-sky-800' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={saveDoctor}>
+          <div className=' text-ffff' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={saveDoctor}>
             Save
           </div>
         </div>

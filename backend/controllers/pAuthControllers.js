@@ -529,6 +529,9 @@ export const loginPatient = async (request, response) => {
 };
 
 export const editPatient = async (request, response) => {
+  const containsNumberRegex = /\d/;
+  const containsCapitalRegex = /[A-Z]/;
+  const containsEmojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
   try {
     const {
       name,
@@ -564,12 +567,87 @@ export const editPatient = async (request, response) => {
       });
     }
 
+    // Check names
+    if (containsNumberRegex.test(name) || containsEmojiRegex.test(name)) {
+      return response.status(400).json({
+        error: 'Name may only include letters.'
+      })
+    }
+
+    if (containsNumberRegex.test(prim_emergency_contact) || containsEmojiRegex.test(prim_emergency_contact)) {
+      return response.status(400).json({
+        error: 'Name may only include letters.'
+      })
+    }
+
+    if (containsNumberRegex.test(sec_emergency_contact) || containsEmojiRegex.test(sec_emergency_contact)) {
+      return response.status(400).json({
+        error: 'Name may only include letters.'
+      })
+    }
+
+    // Check age
+    const isValidAge = /[a-zA-Z]/;
+    if (age < 8 || age > 10 || isValidAge.test(age)) {
+      return response.status(400).json({
+          error: 'Age must be between 8 and 10 and only contain numbers.'
+      });
+    } 
+
     // Find patient by email
     const existingPatient = await Patient.findOne({ email });
     if (!existingPatient) {
       return response.status(404).json({
         error: "Patient not found.",
       });
+    }
+
+    // Check peak flow
+    const isValidPF = /[a-zA-Z]/;
+    if (isValidPF.test(pr_peak_flow)) {
+      return response.status(400).json({
+          error: 'Invalid peak flow'
+      });
+    } 
+
+    // Check phone numbers
+    const isValidPhone = /^\d{10}$/;
+
+    if (!isValidPhone.test(prim_ec_cell)) {
+      return response.status(400).json({
+        error: 'Invalid phone number'
+      });
+    }
+
+    if (!isValidPhone.test(prim_ec_work)) {
+      return response.status(400).json({
+        error: 'Invalid phone number'
+      });
+    }
+
+    if (!isValidPhone.test(sec_ec_cell)) {
+      return response.status(400).json({
+        error: 'Invalid phone number'
+      });
+    }
+
+    if (!isValidPhone.test(sec_ec_work)) {
+      return response.status(400).json({
+        error: 'Invalid phone number'
+      });
+    }
+
+    // Check relationships
+    if (containsNumberRegex.test(prim_ec_relationship) || containsEmojiRegex.test(prim_ec_relationship)) {
+      return response.status(400).json({
+        error: 'Relationship may only include letters.'
+      })
+    }
+
+    if (containsNumberRegex.test(sec_ec_relationship) || containsEmojiRegex.test(sec_ec_relationship)) {
+      return response.status(400).json({
+        error: 'Relationship may only include letters.'
+      })
     }
 
     // Update patient fields
@@ -622,10 +700,8 @@ export const editPatient = async (request, response) => {
 
     return response.cookie("token", token).json(updatedPatient);
   } catch (error) {
-    console.error(error.message);
-    return response.status(500).json({
-      error: "Server Error",
-    });
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
   }
 };
 

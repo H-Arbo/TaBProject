@@ -189,6 +189,9 @@ export const loginDoc = async (request, response) => {
 };
 
 export const editDoc = async (request, response) => {
+  const containsNumberRegex = /\d/;
+  const containsCapitalRegex = /[A-Z]/;
+  const containsEmojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
   try {
     const {
       name,
@@ -196,10 +199,18 @@ export const editDoc = async (request, response) => {
       phone,
     } = request.body;
 
+    // Check fields 
     if (!name || !email || !phone) {
       return response.status(400).json({
         error: 'Please provide all required fields.'
       });
+    }
+
+    // Check name
+    if (containsNumberRegex.test(name) || containsEmojiRegex.test(name)) {
+      return response.status(400).json({
+        error: 'Name may only include letters.'
+      })
     }
 
     // Find doctor by email
@@ -207,6 +218,14 @@ export const editDoc = async (request, response) => {
     if (!existingDoctor) {
       return response.status(404).json({
         error: 'Doctor not found.'
+      });
+    }
+
+    const isValidPhone = /^\d{10}$/;
+
+    if (!isValidPhone.test(phone)) {
+      return response.status(400).json({
+        error: 'Invalid phone number'
       });
     }
 
@@ -230,10 +249,8 @@ export const editDoc = async (request, response) => {
 
     return response.cookie("token", token).json(updatedDoctor);
   } catch (error) {
-    console.error(error.message);
-    return response.status(500).json({
-      error: 'Server Error'
-    });
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
   }
 };
 

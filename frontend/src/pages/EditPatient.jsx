@@ -65,7 +65,12 @@ export default ({ changeToFalse }) => {
       window.location.reload();
       changeToFalse();
     } catch (error) {
-      toast.error('Error saving patient info:', error);
+      if (error.response && error.response.status >= 400 && error.response.status < 600) {
+        toast.error(error.response.data.error);
+      } else {
+        toast.error('An error occurred. Please try again later.');
+      }
+      setLoading(false);    
     }
   };
 
@@ -76,7 +81,7 @@ export default ({ changeToFalse }) => {
 
       <div className='pb-4'>
 
-        <div className=' text-sky-800' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => changeToFalse()}>
+        <div className=' text-ffff' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => changeToFalse()}>
           Cancel
         </div>
 
@@ -165,7 +170,7 @@ export default ({ changeToFalse }) => {
                   placeholder="Enter name"
                   value={patientInfo.sec_emergency_contact}
                   onChange={handleInputChange}
-                  name="sec_emergency_contract"
+                  name="sec_emergency_contact"
                 /> 
               </p>
               <p><span className='font-semibold'>Cell Phone:</span> <input 
@@ -198,7 +203,7 @@ export default ({ changeToFalse }) => {
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}> 
-        <div className=' text-sky-800' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={savePatient}>
+        <div className=' text-ffff' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={savePatient}>
           Save
         </div>
       </div>
