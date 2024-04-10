@@ -11,16 +11,17 @@ export default function DRegister() {
     name: '',
     email: '',
     password: '',
+    phone: '',
   })
 
   const docRegister = async (e) => {
     e.preventDefault();
 
-    const { name, email, password } = form;
+    const { name, email, password, phone} = form;
 
     try {
       const { data } = await axios.post('/doctor/register', {
-        name, email, password
+        name, email, password, phone
       })
 
       if (data.error) {
@@ -54,6 +55,7 @@ export default function DRegister() {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className='border-2 border-gray-500 px-4 py-2 w-full'
+              maxLength={50}
             />
 
             <label className='text-xl mr-4 text-gray-500'>Email</label>
@@ -63,6 +65,7 @@ export default function DRegister() {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value.toLowerCase() })}
               className='border-2 border-gray-500 px-4 py-2 w-full'
+              maxLength={30}
             />
 
             <label className='text-xl mr-4 text-gray-500'>Password</label>
@@ -72,6 +75,17 @@ export default function DRegister() {
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               className='border-2 border-gray-500 px-4 py-2 w-full'
+              maxLength={15}
+            />
+
+            <label className='text-xl mr-4 text-gray-500'>Phone</label>
+            <input
+              type='text'
+              placeholder='Enter phone number'
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              className='border-2 border-gray-500 px-4 py-2 w-full'
+              maxLength={11}
             />
             <button type='submit' className='p-2 bg-sky-300 m-8'>
               Submit

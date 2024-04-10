@@ -42,8 +42,6 @@ export const getDoc = async (request, response) => {
 }
 
 
-
-
 export const registerDoc = async (request, response) => {
   const containsNumberRegex = /\d/;
   const containsCapitalRegex = /[A-Z]/;
@@ -56,6 +54,12 @@ export const registerDoc = async (request, response) => {
         error: "name required",
       });
     }
+    if (containsNumberRegex.test(name) || containsEmojiRegex.test(name)) {
+      return response.json({
+        error: 'Name may only include letters.'
+      })
+    }
+
     //check password: no password or password length is < 8 characters
     if (!password) {
       return response.json({
@@ -91,6 +95,15 @@ export const registerDoc = async (request, response) => {
       });
     }
     const hashedPass = await hashPassword(password);
+
+    const isValidPhone = /^\d{10}$/;
+
+    if (!isValidPhone.test(phone)) {
+      return response.json({
+        error: 'Invalid phone number'
+      });
+    }
+
 
     const newDoctor = await Doctor.create({
       email,
@@ -177,50 +190,50 @@ export const loginDoc = async (request, response) => {
 
 export const editDoc = async (request, response) => {
   try {
-      const { 
-          name,  
-          email, 
-          phone,
-      } = request.body;
-      
-      if (!name || !email || !phone) {
-          return response.status(400).json({
-              error: 'Please provide all required fields.'
-          });
-      }
+    const {
+      name,
+      email,
+      phone,
+    } = request.body;
 
-      // Find doctor by email
-      const existingDoctor = await Doctor.findOne({ email });
-      if (!existingDoctor) {
-          return response.status(404).json({
-              error: 'Doctor not found.'
-          });
-      }
+    if (!name || !email || !phone) {
+      return response.status(400).json({
+        error: 'Please provide all required fields.'
+      });
+    }
 
-      // Update patient fields
-      existingDoctor.name = name;
-      existingDoctor.phone = phone;
+    // Find doctor by email
+    const existingDoctor = await Doctor.findOne({ email });
+    if (!existingDoctor) {
+      return response.status(404).json({
+        error: 'Doctor not found.'
+      });
+    }
 
-      // Save updated patient
-      const updatedDoctor = await existingDoctor.save();
+    // Update patient fields
+    existingDoctor.name = name;
+    existingDoctor.phone = phone;
 
-      const token = jwt.sign(
-        {
-            email: updatedDoctor.email, 
-            id: updatedDoctor._id, 
-            name: updatedDoctor.name, 
-            phone: updatedDoctor.phone
-        },
-        process.env.JWT_STRING,
-        {}
+    // Save updated patient
+    const updatedDoctor = await existingDoctor.save();
+
+    const token = jwt.sign(
+      {
+        email: updatedDoctor.email,
+        id: updatedDoctor._id,
+        name: updatedDoctor.name,
+        phone: updatedDoctor.phone
+      },
+      process.env.JWT_STRING,
+      {}
     );
-    
+
     return response.cookie("token", token).json(updatedDoctor);
   } catch (error) {
-      console.error(error.message);
-      return response.status(500).json({
-          error: 'Server Error'
-      });
+    console.error(error.message);
+    return response.status(500).json({
+      error: 'Server Error'
+    });
   }
 };
 
