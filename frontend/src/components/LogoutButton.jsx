@@ -5,15 +5,15 @@ import { MdLogout } from 'react-icons/md';
 const LogoutButton = () => {
     const { logout } = useContext(UserContext);
 
-    const handleLogout = () => {
-        document.cookie = "token=; path=/;"
+    // const handleLogout = () => {
+    //     document.cookie = "token=; path=/;"
         
-        window.location.href = '/';
-    }
+    //     window.location.href = '/';
+    // }
 
     return (
         <div className='flex'>
-            <MdLogout className='text-3xl text-sky-800 cursor-pointer' onClick={handleLogout}>
+            <MdLogout className='text-3xl text-sky-800 cursor-pointer' onClick={logout}>
                 Logout
             </MdLogout>
         </div>
