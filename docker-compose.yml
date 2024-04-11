@@ -3,17 +3,17 @@ services:
     build: ./backend
     ports:
       - "5555:8081"
-    develop:
-      watch:
-        - action: sync
-          path: ./backend
-          target: /TaBProject_backend
+    #develop:
+      #watch:
+        #- action: sync
+          #path: ./backend
+          #target: /TaBProject_backend
   web:
     build: ./frontend
     ports:
       - "5173:8080"
-    develop:
-      watch:
-        - action: sync
-          path: ./frontend
-          target: /TaBProject_frontend
+    #develop:
+      #watch:
+        #- action: sync
+         # path: ./frontend
+          #target: /TaBProject_frontend
