@@ -10,6 +10,6 @@ RUN npm install mongoose
 
 COPY . .
 
-EXPOSE 25432
+EXPOSE 5432
 
 CMD ["npm", "run", "dev"]
