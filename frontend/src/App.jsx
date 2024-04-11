@@ -31,7 +31,7 @@ import DAlerts from './pages/DAlerts';
 import { UserContextProvider } from '../context/userContext';
 import { ProtectedRoute } from './components/ProtectedRoutes';
 
-axios.defaults.baseURL = 'http://localhost:5555';
+axios.defaults.baseURL = 'http://localhost:5432';
 axios.defaults.withCredentials = true;
 const App = () => {
   return(
