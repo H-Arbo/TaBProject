@@ -2,7 +2,7 @@ services:
   db:
     build: ./backend
     ports:
-      - "5432:5555"
+      - "8081:5555"
     #develop:
       #watch:
         #- action: sync
