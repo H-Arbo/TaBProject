@@ -95,6 +95,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.name}
                   onChange={handleInputChange}
                   name="name"
+                  maxLength={50}
                 /> 
               </p>
               <p><span className='font-semibold'>Age:</span> <input
@@ -103,6 +104,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.age}
                   onChange={handleInputChange}
                   name="age"
+                  maxLength={2}
                 /> 
               </p>
               <p><span className='font-semibold'>Best Peak Flow:</span> <input
@@ -111,6 +113,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.pr_peak_flow}
                   onChange={handleInputChange}
                   name="pr_peak_flow"
+                  maxLength={4}
                 /> 
               </p>
             </div>
@@ -125,6 +128,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.prim_emergency_contact}
                   onChange={handleInputChange}
                   name="prim_emergency_contact"
+                  maxLength={50}
                 /> 
               </p>
               <p><span className='font-semibold'>Email:</span> <input 
@@ -133,6 +137,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.email}
                   onChange={handleInputChange}
                   name="email"
+                  maxLength={30}
                 />
               </p>
               <p><span className='font-semibold'>Cell Phone:</span> <input 
@@ -141,6 +146,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.prim_ec_cell}
                   onChange={handleInputChange}
                   name="prim_ec_cell"
+                  maxLength={11}
                 /> 
               </p>
               <p><span className='font-semibold'>Work Phone:</span> <input
@@ -149,6 +155,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.prim_ec_work}
                   onChange={handleInputChange}
                   name="prim_ec_work"
+                  maxLength={11}
                 /> 
               </p>
               <p><span className='font-semibold'>Relation:</span> <input 
@@ -157,6 +164,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.prim_ec_relationship}
                   onChange={handleInputChange}
                   name="prim_ec_relationship"
+                  maxLength={50}
                 /> 
               </p>
             </div>
@@ -171,6 +179,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.sec_emergency_contact}
                   onChange={handleInputChange}
                   name="sec_emergency_contact"
+                  maxLength={50}
                 /> 
               </p>
               <p><span className='font-semibold'>Cell Phone:</span> <input 
@@ -179,6 +188,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.sec_ec_cell}
                   onChange={handleInputChange}
                   name="sec_ec_cell"
+                  maxLength={11}
                 /> 
               </p>
               <p><span className='font-semibold'>Work Phone:</span> <input 
@@ -187,6 +197,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.sec_ec_work}
                   onChange={handleInputChange} 
                   name="sec_ec_work"
+                  maxLength={11}
                 /> 
               </p>
               <p><span className='font-semibold'>Relation:</span> <input 
@@ -195,6 +206,7 @@ export default ({ changeToFalse }) => {
                   value={patientInfo.sec_ec_relationship}
                   onChange={handleInputChange}
                   name="sec_ec_relationship"
+                  maxLength={50}
                 /> 
               </p>
             </div>

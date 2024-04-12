@@ -75,6 +75,7 @@ export default ({ changeToFalse }) => {
               value={doctorInfo.name}
               onChange={handleInputChange}
               name="name"
+              maxLength={50}
             /> 
         </div>
 
@@ -86,6 +87,7 @@ export default ({ changeToFalse }) => {
               value={doctorInfo.email}
               onChange={handleInputChange}
               name="email"
+              maxLength={30}
             />
         </div>
 
@@ -97,6 +99,7 @@ export default ({ changeToFalse }) => {
               value={doctorInfo.phone}
               onChange={handleInputChange}
               name="phone"
+              maxLength={11}
             /> 
         </div>
         
