@@ -1,8 +1,11 @@
 services:
   db:
     build: ./backend
+    env_file: ./backend/.env
     ports:
       - "25432:5432"
+    networks:
+    - web-app-network
     
     #develop:
       #watch:
@@ -15,6 +18,8 @@ services:
       - "8080:5173"
     depends_on:
       - db
+    networks:
+    - web-app-network
 
 networks:
   web-app-network:
