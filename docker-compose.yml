@@ -3,6 +3,7 @@ services:
     build: ./backend
     ports:
       - "25432:5432"
+    
     #develop:
       #watch:
         #- action: sync
@@ -12,6 +13,12 @@ services:
     build: ./frontend
     ports:
       - "8080:5173"
+    depends_on:
+      - db
+
+networks:
+  web-app-network:
+    driver: bridge
     #develop:
       #watch:
         #- action: sync

@@ -69,6 +69,5 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(process.env.MONGDB_URL)
     console.log(error);
   });
