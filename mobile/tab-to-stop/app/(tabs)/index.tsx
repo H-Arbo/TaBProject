@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, Image, ScrollView, Pressable} from "react-native";
+import { Dimensions, StyleSheet, Image, ScrollView, Pressable, Platform} from "react-native";
 import React, {useState} from 'react';
 import { Text, View } from "@/components/Themed";
 import Modal from 'react-native-modal';
@@ -6,6 +6,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { ImageBackground } from 'react-native';
+import { sortRoutesWithInitial } from "expo-router/build/sortRoutes";
 
 const dimensions = Dimensions.get("window");
 const imageWidth = dimensions.width * 0.5;
@@ -22,7 +23,19 @@ export default function App() {
     <ScrollView>
       <View style={styles.container}>
 
-        <View>
+        <View style={{ 
+          ...Platform.select({
+            ios: {
+              shadowColor: 'black',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.40,
+              shadowRadius: 4,
+            },
+            android: {
+              elevation: 4,
+            },
+          }),
+        }}>
           <View style={styles.centeredView}>
             <Modal
               isVisible={modalVisible}
@@ -45,6 +58,7 @@ export default function App() {
                 </View>
               </Pressable>
             </Modal>
+            
             <Pressable style={{
               paddingLeft: 1
             }}
@@ -53,33 +67,30 @@ export default function App() {
                   <FontAwesome
                     name="list"
                     size={40}
-                    color={Colors[colorScheme ?? "light"].text}
+                    color={'white'}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
             </Pressable>
-          </View>
 
-          <View style={{
-            flexDirection: 'row',
-            backgroundColor: '#38A3A5',
-            }}>
-            <Image
-            style={styles.characters}
-            resizeMode="contain"
-            source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Charlotte-Waving.png")}
-            />
-            <Image
-            style={styles.logo}
-            resizeMode="contain"
-            source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/tab.png")}
-            />
-            <Image
-            style={styles.characters}
-            resizeMode="contain"
-            source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Dr.Breeze-Confident.png")}
-            />
-          </View>          
+            <View style={styles.imageRow}>
+              <Image
+              style={styles.characters}
+              resizeMode="contain"
+              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Charlotte-Waving.png")}
+              />
+              <Image
+              style={styles.logo}
+              resizeMode="contain"
+              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/tab.png")}
+              />
+              <Image
+              style={styles.characters}
+              resizeMode="contain"
+              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Dr.Breeze-Confident.png")}
+              />
+            </View>
+          </View>        
           
           {/* <Text style={{
             textAlign: 'center',
@@ -92,23 +103,48 @@ export default function App() {
           
         </View>
 
-        <View>
-          <ImageBackground>
-
+        <View style={{ backgroundColor: '#D2EBDE'}}>    
+          <View style={{
+            ...Platform.select({
+              ios: {
+                shadowColor: 'black',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.40,
+                shadowRadius: 4,
+              },
+              android: {
+                elevation: 4,
+              },
+            }),
+            backgroundColor: '#fff',
+            borderRadius: 4,
+            borderWidth: 0.5,
+            borderColor: '#000',
+            padding: 10,
+            margin: 20,
+          }}>
             <View style={{
-            alignItems: 'center',
-            }}>
+              alignItems: 'center',
+              backgroundColor: 'transparent',
+              marginBottom: -50
+              }}>
               <Text style={styles.title}>Our Goal and Visions:</Text>
                 <View
                   style={styles.separator}
                   lightColor="#eee"
                   darkColor="rgba(255,255,255,0.1)"
                   />
-                </View>
+                <Image
+                resizeMode= 'contain'
+                source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Picture1.png")}
+                style={{ width: '85%'}}
+                />
+            </View>
 
             <View style={{
               alignItems: 'center',
-              padding: 20
+              padding: 20,
+              backgroundColor: 'transparent'
               }}>
               <Text style={{
                 textAlign: 'center',
@@ -119,15 +155,19 @@ export default function App() {
                 child participants.
               </Text>
             </View>
-        </ImageBackground>
-          
+          </View>
 
+          <View>
+            <Text style={{
+              textAlign: 'center',
+              fontSize: 20
+              }}>
+              The TaB (Take a Breath) to Stop series and mobile app aims to achieve clinical outcomes of better asthma control, better disease 
+              knowledge, improved quality of life, better adherence to follow-ups, fewer hospitalizations, and fewer emergency room visits among the 
+              child participants.
+            </Text>
+          </View>
         </View>
-        
-
-        
-
-        {/* <EditScreenInfo path="app/(tabs)/index.tsx" /> */}
       </View>
     </ScrollView>
   );
@@ -149,11 +189,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
+    backgroundColor: 'transparent'
   },
   separator: {
     marginVertical: 10,
-    height: 1,
-    width: "90%",
+    marginBottom: -20,
+    height: 2,
+    width: "95%",
   },
   logo: {
     height: imageHeight,
@@ -164,12 +206,23 @@ const styles = StyleSheet.create({
     height: characterHeight,
     width: characterWidth,
     alignSelf: "center",
+    marginHorizontal: 0,
+  },
+  imageRow: {
+    flexDirection: 'row',
+    height: characterHeight,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: '#38A3A5',
+    marginBottom: 40,
+    paddingTop: 20,
+
   },
   centeredView: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    paddingTop: 70,
+    paddingTop: 50,
     paddingLeft: 1,
     backgroundColor: '#38A3A5',
   },
