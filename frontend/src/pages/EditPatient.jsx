@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 
-export default function EditPatient({ changeToFalse }) => {
+export default function EditPatient({ changeToFalse }) {
   const [patientInfo, setPatientInfo] = useState({
     name: "",
     age: "",
