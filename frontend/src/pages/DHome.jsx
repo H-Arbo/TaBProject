@@ -15,12 +15,14 @@ const DHome = () => {
         setLoading(true);
 
         Promise.all([
-            axios.get('/patients'),
-            axios.get('/profile', { withCredentials: true })
+            axios.get('http://localhost:5432/patients'),
+            axios.get('http://localhost:5432/profile', { withCredentials: true })
         ])
             .then(([patientsResponse, profileResponse]) => {
                 setPatients(patientsResponse.data.data);
+                console.log(patients)
                 setDoctor(profileResponse.data);
+                console.log(doctor)
                 setLoading(false);
             })
             .catch((error) => {
