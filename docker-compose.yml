@@ -3,7 +3,7 @@ services:
     build: ./backend
     env_file: ./backend/.env
     ports:
-      - "25432:5432"
+      - "10.8.97.14:25432:5432"
     networks:
     - web-app-network
     
@@ -15,7 +15,7 @@ services:
   web:
     build: ./frontend
     ports:
-      - "8080:5173"
+      - "10.8.97.14:8080:5173"
     depends_on:
       - db
     networks:
@@ -23,7 +23,7 @@ services:
 
 networks:
   web-app-network:
-    driver: host
+    driver: bridge
     #develop:
       #watch:
         #- action: sync
