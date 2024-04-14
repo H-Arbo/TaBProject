@@ -4,8 +4,8 @@ services:
     env_file: ./backend/.env
     ports:
       - "10.8.97.14:25432:5432"
-    networks:
-    - web-app-network
+    #networks:
+    #- web-app-network
     
     #develop:
       #watch:
@@ -18,12 +18,12 @@ services:
       - "10.8.97.14:8080:5173"
     depends_on:
       - db
-    networks:
-    - web-app-network
+    #networks:
+    #- web-app-network
 
-networks:
-  web-app-network:
-    driver: bridge
+#networks:
+  #web-app-network:
+   # driver: bridge
     #develop:
       #watch:
         #- action: sync
