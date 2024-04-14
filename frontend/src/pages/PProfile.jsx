@@ -18,7 +18,7 @@ const PatientProfile = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/profile', { withCredentials: true })
+      .get('/profile', { withCredentials: true })
       .then((response) => {
         setPatient(response.data);
         setLoading(false);

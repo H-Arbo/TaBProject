@@ -18,8 +18,8 @@ const DeletePatient = () => {
         setLoading(true);
 
         Promise.all([
-            axios.get("http://localhost:5555/patients"),
-            axios.get("http://localhost:5555/profile", { withCredentials: true }),
+            axios.get("/patients"),
+            axios.get("/profile", { withCredentials: true }),
         ])
             .then(([patientsResponse, profileResponse]) => {
                 setPatients(patientsResponse.data.data);

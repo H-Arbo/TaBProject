@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 
-export default ({ changeToFalse }) => {
+export default EditDoctor({ changeToFalse }) => {
   const [doctorInfo, setDoctorInfo] = useState({
     name: "",
     email: "",
@@ -20,7 +20,7 @@ export default ({ changeToFalse }) => {
   const fetchDoctorInfo = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5555/profile', { withCredentials: true });
+      const response = await axios.get('/profile', { withCredentials: true });
       setDoctorInfo({
         name: response.data.name,
         email: response.data.email,
@@ -43,7 +43,7 @@ export default ({ changeToFalse }) => {
 
   const saveDoctor = async () => {
     try {
-      await axios.put('http://localhost:5555/doctor/dprofile/edit', doctorInfo);
+      await axios.put('/doctor/dprofile/edit', doctorInfo);
       toast.success('Doctor info saved successfully');
       window.location.reload();
       changeToFalse();

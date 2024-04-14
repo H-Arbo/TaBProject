@@ -122,4 +122,4 @@ export const patientSchema = mongoose.Schema(
 );
 
 
-export const Patient = mongoose.model('sample_patients', patientSchema);
+export const Patient = mongoose.model('patients', patientSchema);

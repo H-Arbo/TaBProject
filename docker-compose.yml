@@ -2,9 +2,10 @@ services:
   api:
     build: ./backend
     restart: unless-stopped
+    container_name: backend
     env_file: ./backend/.env
     ports:
-      - "10.8.97.14:8081:5432"
+      - "25432:5432"
     depends_on:
       - db
     #networks:
@@ -18,6 +19,7 @@ services:
   web:
     build: ./frontend
     restart: unless-stopped
+    container_name: frontend
     ports:
       - "10.8.97.14:8080:5173"
     depends_on:
@@ -31,7 +33,7 @@ services:
       - 27017:27017
     container_name: monogo-db
     volumes:
-      - 
+      - /home/htarbogast/mongo-backup:/data/db
 
 #networks:
   #web-app-network:

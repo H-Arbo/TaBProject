@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 
-export default ({ changeToFalse }) => {
+export default EditPatient({ changeToFalse }) => {
   const [patientInfo, setPatientInfo] = useState({
     name: "",
     age: "",
@@ -28,7 +28,7 @@ export default ({ changeToFalse }) => {
   const fetchPatientInfo = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5555/profile', { withCredentials: true });
+      const response = await axios.get('/profile', { withCredentials: true });
       setPatientInfo({
         name: response.data.name,
         age: response.data.age,
@@ -60,7 +60,7 @@ export default ({ changeToFalse }) => {
 
   const savePatient = async () => {
     try {
-      await axios.put('http://localhost:5555/patients/pprofile/edit', patientInfo);
+      await axios.put('/patients/pprofile/edit', patientInfo);
       toast.success('Patient info saved successfully');
       window.location.reload();
       changeToFalse();

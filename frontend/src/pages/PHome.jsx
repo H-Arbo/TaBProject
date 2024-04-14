@@ -13,7 +13,7 @@ const PHome = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get('http://localhost:5555/patients')
+            .get('/patients')
             .then((response) => {
                 setPatients(response.data.data);
                 setLoading(false);

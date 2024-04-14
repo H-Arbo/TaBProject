@@ -15,8 +15,8 @@ const DHome = () => {
         setLoading(true);
 
         Promise.all([
-            axios.get('http://localhost:5432/patients'),
-            axios.get('http://localhost:5432/profile', { withCredentials: true })
+            axios.get('/patients'),
+            axios.get('/profile', { withCredentials: true })
         ])
             .then(([patientsResponse, profileResponse]) => {
                 setPatients(patientsResponse.data.data);

@@ -1,6 +1,6 @@
 FROM node:20
 
-WORKDIR /TaBProject_backend
+WORKDIR /project
 
 COPY package*.json ./
 
