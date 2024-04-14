@@ -23,7 +23,7 @@ services:
 
 networks:
   web-app-network:
-    driver: bridge
+    driver: host
     #develop:
       #watch:
         #- action: sync
