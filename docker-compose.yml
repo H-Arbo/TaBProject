@@ -3,7 +3,7 @@ services:
     build: ./backend
     env_file: ./backend/.env
     ports:
-      - "10.8.97.14:25432:5432"
+      - "10.8.97.14:8081:5432"
     #networks:
     #- web-app-network
     
