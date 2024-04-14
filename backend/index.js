@@ -61,7 +61,7 @@ app.get("/", (request, response) => {
 
 //database connection
 mongoose
-  .connect(process.env.MONGODB_DOCKER)
+  .connect(process.env.MONGODB_URL)
   .then(() => {
     console.log("App connected to database");
     app.listen(PORT, () => {
