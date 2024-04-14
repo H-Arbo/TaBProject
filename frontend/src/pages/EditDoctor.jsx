@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 
-export default EditDoctor({ changeToFalse }) => {
+export default function EditDoctor({ changeToFalse }) {
   const [doctorInfo, setDoctorInfo] = useState({
     name: "",
     email: "",
