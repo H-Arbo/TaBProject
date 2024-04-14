@@ -5,6 +5,7 @@ import Dr_Navbar from '../components/Dr_Navbar';
 import { Link } from 'react-router-dom';
 import { MdOutlineDelete, MdOutlinePerson } from 'react-icons/md';
 
+ 
 const DHome = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -14,8 +15,8 @@ const DHome = () => {
         setLoading(true);
 
         Promise.all([
-            axios.get('http://localhost:5555/patients'),
-            axios.get('http://localhost:5555/profile', { withCredentials: true })
+            axios.get('http://localhost:5432/patients'),
+            axios.get('http://localhost:5432/profile', { withCredentials: true })
         ])
             .then(([patientsResponse, profileResponse]) => {
                 setPatients(patientsResponse.data.data);

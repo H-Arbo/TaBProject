@@ -47,7 +47,7 @@ const App = () => {
       <Route path = '/patients/register' element = {<PRegister />} />
       <Route path = '/doctor/register' element = {<DRegister />} />
       <Route path = '/patients/home' element = {<ProtectedRoute><PHome /></ProtectedRoute>} />
-      <Route path = '/doctor/home' element = {<ProtectedRoute><DHome/></ProtectedRoute>} />
+      <Route path = '/doctor/home' element = {<DHome/>} />
       <Route path = '/patients/delete' element = {<ProtectedRoute><DeletePatient/></ProtectedRoute>} />
       <Route path = '/patients/profile' element = {<ProtectedRoute><PProfile/></ProtectedRoute>} />
       <Route path = '/doctor/profile' element = {<ProtectedRoute><DProfile/></ProtectedRoute>} />

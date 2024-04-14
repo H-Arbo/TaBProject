@@ -1,9 +1,12 @@
 services:
-  db:
+  api:
     build: ./backend
+    restart: unless-stopped
     env_file: ./backend/.env
     ports:
       - "10.8.97.14:8081:5432"
+    depends_on:
+      - db
     #networks:
     #- web-app-network
     
@@ -14,12 +17,21 @@ services:
           #target: /TaBProject_backend
   web:
     build: ./frontend
+    restart: unless-stopped
     ports:
       - "10.8.97.14:8080:5173"
     depends_on:
-      - db
+      - api
     #networks:
     #- web-app-network
+
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+    container_name: monogo-db
+    volumes:
+      - 
 
 #networks:
   #web-app-network:
