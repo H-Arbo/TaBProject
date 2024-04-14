@@ -10,6 +10,6 @@ RUN npm install mongoose
 
 COPY . .
 
-EXPOSE 5432
+EXPOSE 8080
 
 CMD ["npm", "run", "dev"]
