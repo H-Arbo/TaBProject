@@ -18,6 +18,11 @@ function TabBarIcon(props: {
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  const textColors = {
+    light: Colors.light.text, 
+    dark: Colors.light.text,   
+  };
+
   return (
     <Tabs
       screenOptions={{
@@ -30,13 +35,16 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          
+          headerShown: false,
           //Change header style
-          title: "Home screen",
+          title: 'Home Screen',
           headerStyle: {
             backgroundColor: "#D2EBDE",
           },
           headerTitleStyle: {
             fontWeight: "bold",
+            color: textColors[colorScheme ?? "light"],
           },
 
           //Bottom tab bar and icon options
@@ -61,40 +69,6 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="login"
-        options={{
-          //Change header style
-          title: "Login",
-          headerStyle: {
-            backgroundColor: "#D2EBDE",
-          },
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-
-          //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="register"
-        options={{
-          //Change header style
-          title: "Register",
-          headerStyle: {
-            backgroundColor: "#D2EBDE",
-          },
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-
-          //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name="phome"
         options={{
           //Change header style
@@ -104,6 +78,7 @@ export default function TabLayout() {
           },
           headerTitleStyle: {
             fontWeight: "bold",
+            color: textColors[colorScheme ?? "light"],
           },
 
           //Bottom tab bar and icon options
@@ -125,83 +100,6 @@ export default function TabLayout() {
               </Pressable>
             </Link>
           ),
-        }}
-      />
-      <Tabs.Screen
-        name="dhome"
-        options={{
-          //Change header style
-          title: "Doctor Home",
-          headerStyle: {
-            backgroundColor: "#D2EBDE",
-          },
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-
-          //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-
-          //Modal: Info circle top left
-          headerRight: () => (
-            <Link href="/profile_menu" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? "light"].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="plogin"
-        options={{
-          //Change header style
-          headerShown: false,
-
-          //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="dlogin"
-        options={{
-          //Change header style
-          headerShown: false,
-
-          //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="pregister"
-        options={{
-          //Change header style
-          headerShown: false,
-
-          //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="dregister"
-        options={{
-          //Change header style
-          headerShown: false,
-
-          //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
     </Tabs>
