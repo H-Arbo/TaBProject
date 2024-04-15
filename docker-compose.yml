@@ -5,7 +5,7 @@ services:
     container_name: backend
     env_file: ./backend/.env
     ports:
-      - "10.8.97.14:5432:5432"
+      - "10.8.97.14:25432:5432"
     depends_on:
       - db
     #networks:

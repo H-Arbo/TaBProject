@@ -31,7 +31,7 @@ import DAlerts from './pages/DAlerts';
 import { UserContextProvider } from '../context/userContext';
 import { ProtectedRoute } from './components/ProtectedRoutes';
 
-axios.defaults.baseURL = 'http://10.8.97.14:5432';
+axios.defaults.baseURL = 'http://backend:5432';
 axios.defaults.withCredentials = true;
 const App = () => {
   return(
