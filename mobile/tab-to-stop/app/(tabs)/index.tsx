@@ -22,19 +22,21 @@ export default function App() {
     
     <ScrollView>
       <View style={styles.container}>
-
+        
+        {/* Top logo and modal */}
         <View style={{ 
           ...Platform.select({
             ios: {
               shadowColor: 'black',
               shadowOffset: { width: 0, height: 2 },
-              shadowOpacity: 0.40,
-              shadowRadius: 4,
+              shadowOpacity: 1,
+              shadowRadius: 0,
             },
             android: {
               elevation: 4,
             },
           }),
+          marginBottom: 2,
         }}>
           <View style={styles.centeredView}>
             <Modal
@@ -90,20 +92,14 @@ export default function App() {
               source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Dr.Breeze-Confident.png")}
               />
             </View>
-          </View>        
-          
-          {/* <Text style={{
-            textAlign: 'center',
-            fontSize: 20,
-            fontWeight: 'bold',
-            backgroundColor: '#38A3A5'
-          }}>
-            Welcome to TaB (Take a Breath) To Stop
-          </Text> */}
-          
+          </View>
         </View>
 
-        <View style={{ backgroundColor: '#D2EBDE'}}>    
+        {/* Information Content */}
+        <View style={{ 
+          backgroundColor: '#D2EBDE',
+          }}>
+          {/* Goal and visions */}
           <View style={{
             ...Platform.select({
               ios: {
@@ -128,17 +124,17 @@ export default function App() {
               backgroundColor: 'transparent',
               marginBottom: -50
               }}>
-              <Text style={styles.title}>Our Goal and Visions:</Text>
-                <View
-                  style={styles.separator}
-                  lightColor="#eee"
-                  darkColor="rgba(255,255,255,0.1)"
-                  />
-                <Image
-                resizeMode= 'contain'
-                source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Picture1.png")}
-                style={{ width: '85%'}}
-                />
+              <Text style={styles.title1}>Our Goal and Visions:</Text>
+              <View
+                style={styles.separator}
+                lightColor="#eee"
+                darkColor="rgba(255,255,255,0.1)"
+              />
+              <Image
+              resizeMode= 'contain'
+              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Picture1.png")}
+              style={{ width: '85%'}}
+              />
             </View>
 
             <View style={{
@@ -157,17 +153,112 @@ export default function App() {
             </View>
           </View>
 
-          <View>
-            <Text style={{
-              textAlign: 'center',
-              fontSize: 20
+          {/* What is asthma */}
+          <View style={{
+            ...Platform.select({
+              ios: {
+                shadowColor: 'black',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.40,
+                shadowRadius: 4,
+              },
+              android: {
+                elevation: 4,
+              },
+            }),
+            backgroundColor: '#fff',
+            borderRadius: 4,
+            borderWidth: 0.5,
+            borderColor: '#000',
+            marginTop: 25,
+            padding: 10,
+            margin: 20,
+            flexDirection: 'column'
+          }}>
+            <View style={{
+              alignItems: 'center',
+              backgroundColor: 'transparent',
+              marginBottom: -10
               }}>
-              The TaB (Take a Breath) to Stop series and mobile app aims to achieve clinical outcomes of better asthma control, better disease 
-              knowledge, improved quality of life, better adherence to follow-ups, fewer hospitalizations, and fewer emergency room visits among the 
-              child participants.
-            </Text>
+              <Text style={styles.title2}>What is Asthma?</Text>
+            </View>
           </View>
-        </View>
+          
+          {/* Ashtma information */}
+          <View style={{
+            backgroundColor: '#D2EBDE',
+          }}>
+            <View style={{
+              ...Platform.select({
+                ios: {
+                  shadowColor: 'black',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.40,
+                  shadowRadius: 4,
+                },
+                android: {
+                  elevation: 4,
+                },
+              }),
+              backgroundColor: '#fff',
+              borderRadius: 4,
+              borderWidth: 0.5,
+              borderColor: '#000',
+              padding: 10,
+              margin: 20,
+              flexDirection: 'column'
+              }}>
+              <View style={{
+                padding: 20,
+                backgroundColor: 'transparent'
+                }}>
+                <Text style={{
+                  textAlign: 'left',
+                  fontSize: 20,
+                  paddingBottom: 10
+                  }}>
+                  Asthma is a chronic condition that causes inflammation and swelling of the airways, leading to the narrowing of the air passages that transport air from the nose and mouth to the lungs.
+                </Text>
+                <Text style={{
+                  textAlign: 'left',
+                  fontSize: 20,
+                  paddingBottom: 10
+                  }}>
+                  Symptoms of asthma include difficulty breathing, wheezing, coughing, and pain or tightness in the chest.
+                </Text>
+                <Text style={{
+                  textAlign: 'left',
+                  fontSize: 20,
+                  paddingBottom: 10
+                  }}>
+                  Asthma attacks can be triggered by various factors, such as allergens like dust or pet dander, some foods, or physical activity. Asthma can be a fatal condition.
+                </Text>
+                <Text style={{
+                  textAlign: 'left',
+                  fontSize: 20,
+                  paddingBottom: 10
+                  }}>
+                  Unfortunately, there is no cure for asthma, but proper treatment can help prevent asthma attacks and improve your quality of life.
+                </Text>
+                <Text style={{
+                  textAlign: 'left',
+                  fontSize: 20,
+                  paddingBottom: 10
+                  }}>
+                  Asthma is among the most prevalent and costly diseases in the United States and most common chronic disease in children for all around the world.
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Asthma data */}
+          <View>
+
+
+
+
+          </View>
+        </View>  
       </View>
     </ScrollView>
   );
@@ -186,10 +277,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#ffffff",
   },
-  title: {
+  title1: {
     fontSize: 30,
     fontWeight: "bold",
     backgroundColor: 'transparent'
+  },
+  title2: {
+    fontSize: 30,
+    fontWeight: "bold",
+    backgroundColor: 'transparent',
+    paddingBottom: 10
   },
   separator: {
     marginVertical: 10,
