@@ -13,7 +13,7 @@ const app = express();
 app.disable("x-powered-by");
 //middleware for parsing request body
 app.use(express.json());
-var allowedOrigins = ["http://localhost:8080", "http://localhost:5173", "http://cs495-spring2024-01.ua.edu:8080"];
+var allowedOrigins = ["http://localhost:8080", "http://localhost:5173", "http://cs495-spring2024-01.ua.edu:8080", "http://10.8.97.14:25432"];
 //cors middleware
 app.use(
   cors({
