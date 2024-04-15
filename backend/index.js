@@ -1,5 +1,5 @@
 import express from "express";
-import { PORT, mongoDBURL } from "./config.js";
+import { PORT, mongoDBURL, mongodb_docker } from "./config.js";
 import mongoose from "mongoose";
 import patientsRoute from "./routes/patientsRoute.js";
 import dAuthRoutes from "./routes/dAuthRoutes.js";
@@ -63,7 +63,7 @@ app.get("/", (request, response) => {
 
 //database connection
 mongoose
-  .connect(process.env.MONGDB_DOCKER)
+  .connect(mongodb_docker)
   .then(() => {
     console.log("App connected to database");
     app.listen(PORT, () => {
