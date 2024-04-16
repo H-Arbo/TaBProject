@@ -27,7 +27,6 @@ import DPinfo from './pages/DPinfo';
 import {Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import Resources from './pages/Resources';
-import DAlerts from './pages/DAlerts';
 import { UserContextProvider } from '../context/userContext';
 import { ProtectedRoute } from './components/ProtectedRoutes';
 
@@ -63,7 +62,6 @@ const App = () => {
       <Route path = '/patients/actionSheet' element = {<ProtectedRoute><ActionSheet/></ProtectedRoute>} />
       <Route path = '/doctor/message' element = {<ProtectedRoute><MessagePatient/></ProtectedRoute>} />
       <Route path = '/resources' element = {<Resources/>} />
-      <Route path = '/doctor/alerts' element = {<ProtectedRoute><DAlerts/></ProtectedRoute>} />
     </Routes>
     </UserContextProvider>
   );

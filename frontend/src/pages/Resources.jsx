@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Resources = () => {
     return (
-        <div className='p-9'>
+        <div className='p-9 bg-white'>
             <BackButton />
 
             <h1 className="justify-center text-center text-2xl font-semibold mb-8 flex flex-wrap">Explore these resources!</h1>

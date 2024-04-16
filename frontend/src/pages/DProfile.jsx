@@ -32,7 +32,7 @@ const DProfile = () => {
   return (
     <>
       <Dr_Navbar />
-      <div className='p-9'>
+      <div className='p-9 bg-white'>
       <h1 className='flex flex-wrap text-3xl my-4 text-center'>Doctor Profile</h1>
         {loading ? (
           <Loading />

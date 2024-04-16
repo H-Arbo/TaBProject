@@ -30,9 +30,6 @@ export default function Dr_Navbar() {
           <Link to="/doctor/profile" className="text-sky-800">
             <MdOutlinePerson className="text-3xl" />
           </Link>
-          <Link to="/doctor/alerts" className="text-sky-800">
-            <FaBell className="text-3xl" />
-          </Link>
           
           <div
             className="menu"

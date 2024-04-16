@@ -30,7 +30,7 @@ const GreenZone = () => {
     return (
         <>
             <Pat_Navbar />
-            <div className='p-9'>
+            <div className='p-9 bg-white'>
                 {loading ? (
                     <Loading />
                 ) : patient ? (

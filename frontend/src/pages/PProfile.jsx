@@ -32,7 +32,7 @@ const PatientProfile = () => {
   return (
     <>
       <Pat_Navbar />
-      <div className='p-9'>
+      <div className='p-9 bg-white'>
 
         <h1 className='text-3xl my-4 text-center'>Patient Profile</h1>
 
@@ -44,8 +44,14 @@ const PatientProfile = () => {
           </div>
         ) : patient ? (
           <div>
+            <div classname = 'pb-2' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}> 
+              <div className=' text-ffff' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => setEditMode(true)}>
+                <MdHistoryEdu className="text-4x1 h-6 w-6"/> 
+                <span>Edit Profile</span>
+              </div>
+            </div>
                 
-            <div className='pb-4'>
+            <div className='pb-4 pt-2'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                 <div className='border border-sky-400 rounded-xl p-4'>
                   <h2 className='text-xl text-gray-700 mb-4'>Basic Information</h2>
@@ -86,12 +92,7 @@ const PatientProfile = () => {
               </div>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}> 
-              <div className=' text-ffff' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => setEditMode(true)}>
-                <MdHistoryEdu className="text-4x1 h-6 w-6"/> 
-                <span>Edit Profile</span>
-              </div>
-            </div>
+            
 
             <div>
               <div className='pt-4 flex justify-between items-start'>
