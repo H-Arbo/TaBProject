@@ -12,15 +12,12 @@ const characterHeight = imageHeight/2;
 const characterWidth = imageWidth/2;
 
 export default function App() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const colorScheme = useColorScheme();
-
   return (
     
     <ScrollView>
       <View style={styles.container}>
         
-        {/* Top logo and modal */}
+        {/* Top logo */}
         <View style={{ 
           ...Platform.select({
             ios: {
@@ -36,7 +33,7 @@ export default function App() {
           marginBottom: 2,
         }}>
           <View style={styles.centeredView}>
-            <Modal
+            {/* <Modal
               isVisible={modalVisible}
               animationIn="slideInLeft"
               animationOut="slideOutLeft"
@@ -79,7 +76,7 @@ export default function App() {
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
-            </Pressable>
+            </Pressable> */}
 
             <View style={styles.imageRow}>
               <Image
@@ -150,7 +147,8 @@ export default function App() {
               }}>
               <Text style={{
                 textAlign: 'center',
-                fontSize: 20
+                fontSize: 20,
+                fontFamily: 'Georgia',
                 }}>
                 The TaB (Take a Breath) to Stop series and mobile app aims to achieve clinical outcomes of better asthma control, better disease 
                 knowledge, improved quality of life, better adherence to follow-ups, fewer hospitalizations, and fewer emergency room visits among the 
@@ -246,43 +244,105 @@ export default function App() {
               }}>
               <View style={{
                 padding: 20,
-                backgroundColor: 'transparent'
+                flexDirection: 'row',
+                alignItems: 'flex-start'
                 }}>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                <View style={{ flex: 1 }}>
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Asthma is a chronic condition that causes inflammation and swelling of the airways, leading to the narrowing of the air passages that transport air from the nose and mouth to the lungs.
-                </Text>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Asthma is a chronic condition that causes inflammation and swelling of the airways, leading to the narrowing of the air passages that transport air from the nose and mouth to the lungs.
+                    </Text>
+                  </View>
+
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Symptoms of asthma include difficulty breathing, wheezing, coughing, and pain or tightness in the chest.
-                </Text>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Symptoms of asthma include difficulty breathing, wheezing, coughing, and pain or tightness in the chest.
+                    </Text>
+                  </View>
+
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Asthma attacks can be triggered by various factors, such as allergens like dust or pet dander, some foods, or physical activity. Asthma can be a fatal condition.
-                </Text>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Asthma attacks can be triggered by various factors, such as allergens like dust or pet dander, some foods, or physical activity. Asthma can be a fatal condition.
+                    </Text>
+                  </View>
+
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Unfortunately, there is no cure for asthma, but proper treatment can help prevent asthma attacks and improve your quality of life.
-                </Text>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Unfortunately, there is no cure for asthma, but proper treatment can help prevent asthma attacks and improve your quality of life.
+                    </Text>
+                  </View>
+
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Asthma is among the most prevalent and costly diseases in the United States and most common chronic disease in children for all around the world.
-                </Text>
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Asthma is among the most prevalent and costly diseases in the United States and most common chronic disease in children for all around the world.
+                    </Text>
+                  </View>
+                </View>                                  
               </View>
             </View>
           </View>
@@ -414,13 +474,15 @@ const styles = StyleSheet.create({
   title1: {
     fontSize: 30,
     fontWeight: "bold",
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    fontFamily: 'Georgia',
   },
   title2: {
     fontSize: 30,
     fontWeight: "bold",
     backgroundColor: 'transparent',
-    paddingBottom: 10
+    paddingBottom: 10,
+    fontFamily: 'Georgia',
   },
   title3: {
     fontSize: 30,
