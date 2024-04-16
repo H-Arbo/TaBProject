@@ -2,8 +2,9 @@ import BackButton from '../components/BackButton';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import toast from 'react-hot-toast'
-import './css/characters.css'
+import toast from 'react-hot-toast';
+import './css/characters.css';
+import React from 'react';
 
 
 export default function DLogin() {
