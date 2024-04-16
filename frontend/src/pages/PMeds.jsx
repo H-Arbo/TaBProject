@@ -166,7 +166,7 @@ const PMeds = () => {
                           >
                             <MdOutlineCreate
                               color="blue"
-                              onClick={() => getGreenDeleteRow(index, gRows)}
+                              onClick={() => getGreenDeleteRow(index)}
                             />
                           </button>
                           {modalOpen.editMeds == true && (
@@ -192,7 +192,7 @@ const PMeds = () => {
                           >
                             <MdDelete
                               color="red"
-                              onClick={() => getGreenDeleteRow(index, gRows)}
+                              onClick={() => getGreenDeleteRow(index)}
                             />
                           </button>
                           {modalOpen.deleteMeds == true && (
@@ -313,7 +313,7 @@ const PMeds = () => {
                           >
                             <MdOutlineCreate
                               color="blue"
-                              onClick={() => getYellowDeleteRow(index, yRows)}
+                              onClick={() => getYellowDeleteRow(index)}
                             />
                           </button>
                           {modalOpen.editMeds == true && (
@@ -339,7 +339,7 @@ const PMeds = () => {
                           >
                             <MdDelete
                               color="red"
-                              onClick={() => getYellowDeleteRow(index, yRows)}
+                              onClick={() => getYellowDeleteRow(index)}
                             />
                           </button>
                           {modalOpen.deleteMeds == true && (
@@ -486,7 +486,7 @@ const PMeds = () => {
                           >
                             <MdDelete
                               color="red"
-                              onClick={() => getRedDeleteRow(index, rRows)}
+                              onClick={() => getRedDeleteRow(index)}
                             />
                           </button>
                           {modalOpen.deleteMeds == true && (
