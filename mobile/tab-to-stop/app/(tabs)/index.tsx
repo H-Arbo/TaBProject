@@ -3,10 +3,7 @@ import React, {useState} from 'react';
 import { Text, View } from "@/components/Themed";
 import Modal from 'react-native-modal';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { ImageBackground } from 'react-native';
-import { sortRoutesWithInitial } from "expo-router/build/sortRoutes";
 
 const dimensions = Dimensions.get("window");
 const imageWidth = dimensions.width * 0.5;
@@ -55,6 +52,15 @@ export default function App() {
                       <Text style={styles.textStyle}>
                         Menu
                       </Text>
+                      <Text>
+                        Home
+                      </Text>
+                      <Text>
+                        About us
+                      </Text>
+                      <Text>
+                        Resources
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -62,7 +68,7 @@ export default function App() {
             </Modal>
             
             <Pressable style={{
-              paddingLeft: 1
+              paddingLeft: 10
             }}
               onPress={() => setModalVisible(true)}>
                 {({ pressed }) => (
@@ -151,6 +157,36 @@ export default function App() {
                 child participants.
               </Text>
             </View>
+          </View>
+
+          <View style={{
+            ...Platform.select({
+              ios: {
+                shadowColor: 'black',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.40,
+                shadowRadius: 4,
+              },
+              android: {
+                elevation: 4,
+              },
+            }),
+            backgroundColor: '#38A3A5',
+            borderRadius: 4,
+            borderWidth: 0.5,
+            borderColor: '#000',
+            padding: 10,
+            margin: 20,
+          }}>
+            <View style={{
+              alignItems: 'center',
+              backgroundColor: 'transparent',
+              marginBottom: 0
+              }}>
+              <Text style={styles.title4}>Link to account</Text>
+            </View>
+
+            
           </View>
 
           {/* What is asthma */}
@@ -252,10 +288,108 @@ export default function App() {
           </View>
 
           {/* Asthma data */}
+          <View style={{
+            backgroundColor: '#D2EBDE',
+          }}>
+            {/* Title */}
+            <Text style={styles.title3}>Asthma</Text>
+
+            {/* First bubble */}
+            <View style={{
+              alignItems: 'flex-start',
+              backgroundColor: '#D2EBDE',
+            }}>
+              <View style={{
+                marginLeft: 10,
+                width: 200,
+                height: 200,
+                borderRadius: 200 / 2,
+                backgroundColor: '#23577A',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+                <Text style={{ 
+                  textAlign: 'center', 
+                  fontSize: 13, 
+                  color: '#ffff', 
+                  fontFamily: 'Courier New',
+                  textShadowColor: 'black',
+                  textShadowOffset: { width: .5, height: 1 },
+                  textShadowRadius: 4,
+                  }}>
+                  In 2020,{' '}
+                  <Text style={{ fontWeight: 'bold', color: '#ffff' }}>42.7% of children</Text>{' '}
+                  who were 18 years old or younger and had asthma reported experiencing one or more asthma attacks in the preceding year.
+                </Text>
+              </View>
+            </View>
+            
+            {/* Second bubble */}
+            <View style={{
+              alignItems: 'flex-end',
+              backgroundColor: '#D2EBDE',
+            }}> 
+              <View style={{
+                marginRight: 10,
+                width: 200,
+                height: 200,
+                borderRadius: 200 / 2,
+                backgroundColor: '#63C196',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+                <Text style={{ 
+                  textAlign: 'center', 
+                  fontSize: 13, 
+                  color: '#ffff', 
+                  fontFamily: 'Courier New',
+                  textShadowColor: 'black',
+                  textShadowOffset: { width: .5, height: 1 },
+                  textShadowRadius: 4, 
+                  }}>
+                  Among children{' '}
+                  <Text style={{ fontWeight: 'bold', color: '#ffff' }}>under the age of 5 with asthma, this figure was about 52.9%.</Text>
+                  
+                </Text>
+                
+              </View>
+            </View>
+
+            {/* Third bubble */}
+            <View style={{
+              alignItems: 'flex-start',
+              backgroundColor: '#D2EBDE',
+            }}>
+              <View style={{
+                marginLeft: 10,
+                width: 200,
+                height: 200,
+                borderRadius: 200 / 2,
+                backgroundColor: '#91CD91',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+                <Text style={{ 
+                  textAlign: 'center', 
+                  fontSize: 13, 
+                  color: '#ffff', 
+                  fontFamily: 'Courier New',
+                  textShadowColor: 'black',
+                  textShadowOffset: { width: .5, height: 1 },
+                  textShadowRadius: 4,
+                  }}>
+                  It is estimated that{' '}
+                  <Text style={{ fontWeight: 'bold', color: '#ffff' }}>50% of children</Text>{' '}
+                  with asthma have uncontrolled asthma despite it being a manageable condition.
+                </Text>
+                
+              </View>
+            </View>
+
+          </View>
+
+          {/* Go to website */}
           <View>
-
-
-
 
           </View>
         </View>  
@@ -287,6 +421,20 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     backgroundColor: 'transparent',
     paddingBottom: 10
+  },
+  title3: {
+    fontSize: 30,
+    fontWeight: "bold",
+    backgroundColor: 'transparent',
+    paddingBottom: 10,
+    textAlign: 'center'
+  },
+  title4: {
+    fontSize: 30,
+    fontWeight: "bold",
+    backgroundColor: 'transparent',
+    paddingBottom: 10,
+    textAlign: 'center'
   },
   separator: {
     marginVertical: 10,
