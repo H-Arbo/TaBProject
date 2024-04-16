@@ -65,19 +65,21 @@ const PMeds = () => {
 
   const location = useLocation();
   const { pInfo } = location.state;
-  const [rows, setRows] = useState(pInfo.at(0).gz_meds);
+  const [gRows, setgRows] = useState(pInfo.at(0).gz_meds);
+  const [yRows, setyRows] = useState(pInfo.at(0).yz_meds);
+  const [rRows, setrRows] = useState(pInfo.at(0).rz_meds);
   const [medToDelete, setMedToDelete] = useState(null);
   
 
   console.log(rows);
   console.log(pInfo);
-  const getDeleteRow = (targetIndex) => {
-    setMedToDelete(rows.filter((_, idx) => idx === targetIndex));
+  const getDeleteRow = (targetIndex, selRows) => {
+    setMedToDelete(selRows.filter((_, idx) => idx === targetIndex));
   };
-  const removeRow = (targetIndex) => {
-    console.log(targetIndex);
-    setRows(rows.filter((_, idx) => idx != targetIndex));
-  };
+  // const removeRow = (targetIndex) => {
+  //   console.log(targetIndex);
+  //   setRows(rows.filter((_, idx) => idx != targetIndex));
+  // };
   return (
     <>
       <Dr_Navbar />
@@ -135,7 +137,7 @@ const PMeds = () => {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row, index) => {
+                {gRows.map((row, index) => {
                   return (
                     <tr key={index}>
                       <td className="p-3 border-r border-t border-green-600">
@@ -156,7 +158,7 @@ const PMeds = () => {
                           >
                             <MdOutlineCreate
                               color="blue"
-                              onClick={() => getDeleteRow(index)}
+                              onClick={() => getDeleteRow(index, gRows)}
                             />
                           </button>
                           {modalOpen.editMeds == true && (
@@ -170,7 +172,7 @@ const PMeds = () => {
                               _id={pInfo.at(0)._id}
                               inputZone="green"
                               rerenderRow={(newTable) => {
-                                setRows(newTable);
+                                setgRows(newTable);
                               }}
                               oldMed={medToDelete}
                             />
@@ -182,7 +184,7 @@ const PMeds = () => {
                           >
                             <MdDelete
                               color="red"
-                              onClick={() => getDeleteRow(index)}
+                              onClick={() => getDeleteRow(index, gRows)}
                             />
                           </button>
                           {modalOpen.deleteMeds == true && (
@@ -197,7 +199,7 @@ const PMeds = () => {
                               zone="green"
                               med={medToDelete}
                               removeRow={(newRows) => {
-                                setRows(newRows);
+                                setgRows(newRows);
                               }}
                             />
                           )}
@@ -225,7 +227,7 @@ const PMeds = () => {
               _id={pInfo.at(0)._id}
               zone="green"
               addRow={(newTable) => {
-                setRows(newTable);
+                setgRows(newTable);
               }}
             />
           )}
@@ -282,7 +284,7 @@ const PMeds = () => {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row, index) => {
+                {yRows.map((row, index) => {
                   return (
                     <tr key={index}>
                       <td className="p-3 border-r border-t border-yellow-600">
@@ -303,7 +305,7 @@ const PMeds = () => {
                           >
                             <MdOutlineCreate
                               color="blue"
-                              onClick={() => getDeleteRow(index)}
+                              onClick={() => getDeleteRow(index, yRows)}
                             />
                           </button>
                           {modalOpen.editMeds == true && (
@@ -317,7 +319,7 @@ const PMeds = () => {
                               _id={pInfo.at(0)._id}
                               inputZone="yellow"
                               rerenderRow={(newTable) => {
-                                setRows(newTable);
+                                setyRows(newTable);
                               }}
                               oldMed={medToDelete}
                             />
@@ -329,7 +331,7 @@ const PMeds = () => {
                           >
                             <MdDelete
                               color="red"
-                              onClick={() => getDeleteRow(index)}
+                              onClick={() => getDeleteRow(index, yRows)}
                             />
                           </button>
                           {modalOpen.deleteMeds == true && (
@@ -344,7 +346,7 @@ const PMeds = () => {
                               zone="yellow"
                               med={medToDelete}
                               removeRow={(newRows) => {
-                                setRows(newRows);
+                                setyRows(newRows);
                               }}
                             />
                           )}
@@ -372,7 +374,7 @@ const PMeds = () => {
               _id={pInfo.at(0)._id}
               zone="yellow"
               addRow={(newTable) => {
-                setRows(newTable);
+                setyRows(newTable);
               }}
             />
           )}
@@ -429,7 +431,7 @@ const PMeds = () => {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row, index) => {
+                {rRows.map((row, index) => {
                   return (
                     <tr key={index}>
                       <td className="p-3 border-r border-t border-red-600">
@@ -450,7 +452,7 @@ const PMeds = () => {
                           >
                             <MdOutlineCreate
                               color="blue"
-                              onClick={() => getDeleteRow(index)}
+                              onClick={() => getDeleteRow(index, rRows)}
                             />
                           </button>
                           {modalOpen.editMeds == true && (
@@ -464,7 +466,7 @@ const PMeds = () => {
                               _id={pInfo.at(0)._id}
                               inputZone="red"
                               rerenderRow={(newTable) => {
-                                setRows(newTable);
+                                setrRows(newTable);
                               }}
                               oldMed={medToDelete}
                             />
@@ -476,7 +478,7 @@ const PMeds = () => {
                           >
                             <MdDelete
                               color="red"
-                              onClick={() => getDeleteRow(index)}
+                              onClick={() => getDeleteRow(index, rRows)}
                             />
                           </button>
                           {modalOpen.deleteMeds == true && (
@@ -491,7 +493,7 @@ const PMeds = () => {
                               zone="red"
                               med={medToDelete}
                               removeRow={(newRows) => {
-                                setRows(newRows);
+                                setrRows(newRows);
                               }}
                             />
                           )}
@@ -519,7 +521,7 @@ const PMeds = () => {
               _id={pInfo.at(0)._id}
               zone="red"
               addRow={(newTable) => {
-                setRows(newTable);
+                setrRows(newTable);
               }}
             />
           )}
