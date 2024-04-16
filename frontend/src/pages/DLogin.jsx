@@ -28,7 +28,7 @@ export default function DLogin() {
         setData({ ...data, password: '' });
       } else {
         setData({})
-        nav('/doctor/home');
+        nav('/doctor/home', { state: { doctor_email: email } });
       }
     } catch (error) {
       console.log(error)

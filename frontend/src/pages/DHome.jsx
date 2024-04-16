@@ -3,26 +3,26 @@ import axios from 'axios';
 import Loading from '../components/Loading';
 import Dr_Navbar from '../components/Dr_Navbar';
 import { Link } from 'react-router-dom';
-import { MdOutlineDelete, MdOutlinePerson } from 'react-icons/md';
+import { useLocation } from "react-router-dom";
+import { MdOutlineDelete } from 'react-icons/md';
 
  
 const DHome = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [doctor, setDoctor] = useState(null);
+    //const [doctor, setDoctor] = useState(null);
+    const location = useLocation();
+    const { doctor_email } = location.state;
 
     useEffect(() => {
         setLoading(true);
 
         Promise.all([
-            axios.get('/patients'),
-            axios.get('/profile', { withCredentials: true })
+            axios.get('/patients')
         ])
-            .then(([patientsResponse, profileResponse]) => {
+            .then(([patientsResponse]) => {
                 setPatients(patientsResponse.data.data);
                 console.log(patients)
-                setDoctor(profileResponse.data);
-                console.log(doctor)
                 setLoading(false);
             })
             .catch((error) => {
@@ -34,7 +34,7 @@ const DHome = () => {
     const filteredPatients = patients.filter(patient => {
         if (patient.provider_email && typeof patient.provider_email === 'string') {
 
-            const targetEmail = doctor.email;
+            const targetEmail = doctor_email;
             return patient.provider_email.includes(targetEmail);
         }
         return false;
