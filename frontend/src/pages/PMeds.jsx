@@ -73,8 +73,16 @@ const PMeds = () => {
 
   //console.log(rows);
   console.log(pInfo);
-  const getDeleteRow = (targetIndex, selRows) => {
-    setMedToDelete(selRows.filter((_, idx) => idx === targetIndex));
+  const getGreenDeleteRow = (targetIndex) => {
+    setMedToDelete(gRows.filter((_, idx) => idx === targetIndex));
+  };
+
+  const getYellowDeleteRow = (targetIndex) => {
+    setMedToDelete(yRows.filter((_, idx) => idx === targetIndex));
+  };
+
+  const getRedDeleteRow = (targetIndex) => {
+    setMedToDelete(rRows.filter((_, idx) => idx === targetIndex));
   };
   // const removeRow = (targetIndex) => {
   //   console.log(targetIndex);
@@ -158,7 +166,7 @@ const PMeds = () => {
                           >
                             <MdOutlineCreate
                               color="blue"
-                              onClick={() => getDeleteRow(index, gRows)}
+                              onClick={() => getGreenDeleteRow(index, gRows)}
                             />
                           </button>
                           {modalOpen.editMeds == true && (
@@ -184,7 +192,7 @@ const PMeds = () => {
                           >
                             <MdDelete
                               color="red"
-                              onClick={() => getDeleteRow(index, gRows)}
+                              onClick={() => getGreenDeleteRow(index, gRows)}
                             />
                           </button>
                           {modalOpen.deleteMeds == true && (
@@ -305,7 +313,7 @@ const PMeds = () => {
                           >
                             <MdOutlineCreate
                               color="blue"
-                              onClick={() => getDeleteRow(index, yRows)}
+                              onClick={() => getYellowDeleteRow(index, yRows)}
                             />
                           </button>
                           {modalOpen.editMeds == true && (
@@ -331,7 +339,7 @@ const PMeds = () => {
                           >
                             <MdDelete
                               color="red"
-                              onClick={() => getDeleteRow(index, yRows)}
+                              onClick={() => getYellowDeleteRow(index, yRows)}
                             />
                           </button>
                           {modalOpen.deleteMeds == true && (
@@ -452,7 +460,7 @@ const PMeds = () => {
                           >
                             <MdOutlineCreate
                               color="blue"
-                              onClick={() => getDeleteRow(index, rRows)}
+                              onClick={() => getRedDeleteRow(index, rRows)}
                             />
                           </button>
                           {modalOpen.editMeds == true && (
@@ -478,7 +486,7 @@ const PMeds = () => {
                           >
                             <MdDelete
                               color="red"
-                              onClick={() => getDeleteRow(index, rRows)}
+                              onClick={() => getRedDeleteRow(index, rRows)}
                             />
                           </button>
                           {modalOpen.deleteMeds == true && (
