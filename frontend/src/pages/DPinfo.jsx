@@ -8,7 +8,7 @@ import Button from "../components/Button";
 
 function DPinfo() {
   const [patients, setPatients] = useState([]);
-  const [doctor, setDoctor] = useState(null);
+  //const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
   const handleClick = () => {
     null;
@@ -18,12 +18,10 @@ function DPinfo() {
     setLoading(true);
 
     Promise.all([
-      axios.get("/patients"),
-      axios.get("/profile", { withCredentials: true }),
+      axios.get("/patients")
     ])
-      .then(([patientsResponse, profileResponse]) => {
+      .then(([patientsResponse]) => {
         setPatients(patientsResponse.data.data);
-        setDoctor(profileResponse.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -36,7 +34,7 @@ function DPinfo() {
 
   const filteredPatients = patients.filter((patient) => {
     if (patient.provider_email && typeof patient.provider_email === "string") {
-      const targetEmail = doctor.email;
+      const targetEmail = location.state.doctor_email;
       return (
         patient.provider_email.includes(targetEmail) &&
         patient.email.includes(location.state.email)
