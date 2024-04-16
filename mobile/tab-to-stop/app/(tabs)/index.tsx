@@ -3,10 +3,7 @@ import React, {useState} from 'react';
 import { Text, View } from "@/components/Themed";
 import Modal from 'react-native-modal';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { ImageBackground } from 'react-native';
-import { sortRoutesWithInitial } from "expo-router/build/sortRoutes";
 
 const dimensions = Dimensions.get("window");
 const imageWidth = dimensions.width * 0.5;
@@ -15,15 +12,12 @@ const characterHeight = imageHeight/2;
 const characterWidth = imageWidth/2;
 
 export default function App() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const colorScheme = useColorScheme();
-
   return (
     
     <ScrollView>
       <View style={styles.container}>
         
-        {/* Top logo and modal */}
+        {/* Top logo */}
         <View style={{ 
           ...Platform.select({
             ios: {
@@ -39,7 +33,7 @@ export default function App() {
           marginBottom: 2,
         }}>
           <View style={styles.centeredView}>
-            <Modal
+            {/* <Modal
               isVisible={modalVisible}
               animationIn="slideInLeft"
               animationOut="slideOutLeft"
@@ -55,6 +49,15 @@ export default function App() {
                       <Text style={styles.textStyle}>
                         Menu
                       </Text>
+                      <Text>
+                        Home
+                      </Text>
+                      <Text>
+                        About us
+                      </Text>
+                      <Text>
+                        Resources
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -62,7 +65,7 @@ export default function App() {
             </Modal>
             
             <Pressable style={{
-              paddingLeft: 1
+              paddingLeft: 10
             }}
               onPress={() => setModalVisible(true)}>
                 {({ pressed }) => (
@@ -73,7 +76,7 @@ export default function App() {
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
-            </Pressable>
+            </Pressable> */}
 
             <View style={styles.imageRow}>
               <Image
@@ -144,13 +147,44 @@ export default function App() {
               }}>
               <Text style={{
                 textAlign: 'center',
-                fontSize: 20
+                fontSize: 20,
+                fontFamily: 'Georgia',
                 }}>
                 The TaB (Take a Breath) to Stop series and mobile app aims to achieve clinical outcomes of better asthma control, better disease 
                 knowledge, improved quality of life, better adherence to follow-ups, fewer hospitalizations, and fewer emergency room visits among the 
                 child participants.
               </Text>
             </View>
+          </View>
+
+          <View style={{
+            ...Platform.select({
+              ios: {
+                shadowColor: 'black',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.40,
+                shadowRadius: 4,
+              },
+              android: {
+                elevation: 4,
+              },
+            }),
+            backgroundColor: '#38A3A5',
+            borderRadius: 4,
+            borderWidth: 0.5,
+            borderColor: '#000',
+            padding: 10,
+            margin: 20,
+          }}>
+            <View style={{
+              alignItems: 'center',
+              backgroundColor: 'transparent',
+              marginBottom: 0
+              }}>
+              <Text style={styles.title4}>Link to account</Text>
+            </View>
+
+            
           </View>
 
           {/* What is asthma */}
@@ -210,52 +244,212 @@ export default function App() {
               }}>
               <View style={{
                 padding: 20,
-                backgroundColor: 'transparent'
+                flexDirection: 'row',
+                alignItems: 'flex-start'
                 }}>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                <View style={{ flex: 1 }}>
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Asthma is a chronic condition that causes inflammation and swelling of the airways, leading to the narrowing of the air passages that transport air from the nose and mouth to the lungs.
-                </Text>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Asthma is a chronic condition that causes inflammation and swelling of the airways, leading to the narrowing of the air passages that transport air from the nose and mouth to the lungs.
+                    </Text>
+                  </View>
+
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Symptoms of asthma include difficulty breathing, wheezing, coughing, and pain or tightness in the chest.
-                </Text>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Symptoms of asthma include difficulty breathing, wheezing, coughing, and pain or tightness in the chest.
+                    </Text>
+                  </View>
+
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Asthma attacks can be triggered by various factors, such as allergens like dust or pet dander, some foods, or physical activity. Asthma can be a fatal condition.
-                </Text>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Asthma attacks can be triggered by various factors, such as allergens like dust or pet dander, some foods, or physical activity. Asthma can be a fatal condition.
+                    </Text>
+                  </View>
+
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Unfortunately, there is no cure for asthma, but proper treatment can help prevent asthma attacks and improve your quality of life.
-                </Text>
-                <Text style={{
-                  textAlign: 'left',
-                  fontSize: 20,
-                  paddingBottom: 10
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Unfortunately, there is no cure for asthma, but proper treatment can help prevent asthma attacks and improve your quality of life.
+                    </Text>
+                  </View>
+
+                  <View style={{
+                    flexDirection: 'row',
+                    marginBottom: 10,
                   }}>
-                  Asthma is among the most prevalent and costly diseases in the United States and most common chronic disease in children for all around the world.
-                </Text>
+                    <Text style={{
+                      fontSize: 20,
+                      marginRight: 5
+                    }}>
+                      &#8226;
+                    </Text>
+                    <Text style={{
+                      textAlign: 'left',
+                      fontSize: 20,
+                      paddingBottom: 10
+                      }}>
+                      Asthma is among the most prevalent and costly diseases in the United States and most common chronic disease in children for all around the world.
+                    </Text>
+                  </View>
+                </View>                                  
               </View>
             </View>
           </View>
 
           {/* Asthma data */}
+          <View style={{
+            backgroundColor: '#D2EBDE',
+          }}>
+            {/* Title */}
+            <Text style={styles.title3}>Asthma</Text>
+
+            {/* First bubble */}
+            <View style={{
+              alignItems: 'flex-start',
+              backgroundColor: '#D2EBDE',
+            }}>
+              <View style={{
+                marginLeft: 10,
+                width: 200,
+                height: 200,
+                borderRadius: 200 / 2,
+                backgroundColor: '#23577A',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+                <Text style={{ 
+                  textAlign: 'center', 
+                  fontSize: 13, 
+                  color: '#ffff', 
+                  fontFamily: 'Courier New',
+                  textShadowColor: 'black',
+                  textShadowOffset: { width: .5, height: 1 },
+                  textShadowRadius: 4,
+                  }}>
+                  In 2020,{' '}
+                  <Text style={{ fontWeight: 'bold', color: '#ffff' }}>42.7% of children</Text>{' '}
+                  who were 18 years old or younger and had asthma reported experiencing one or more asthma attacks in the preceding year.
+                </Text>
+              </View>
+            </View>
+            
+            {/* Second bubble */}
+            <View style={{
+              alignItems: 'flex-end',
+              backgroundColor: '#D2EBDE',
+            }}> 
+              <View style={{
+                marginRight: 10,
+                width: 200,
+                height: 200,
+                borderRadius: 200 / 2,
+                backgroundColor: '#63C196',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+                <Text style={{ 
+                  textAlign: 'center', 
+                  fontSize: 13, 
+                  color: '#ffff', 
+                  fontFamily: 'Courier New',
+                  textShadowColor: 'black',
+                  textShadowOffset: { width: .5, height: 1 },
+                  textShadowRadius: 4, 
+                  }}>
+                  Among children{' '}
+                  <Text style={{ fontWeight: 'bold', color: '#ffff' }}>under the age of 5 with asthma, this figure was about 52.9%.</Text>
+                  
+                </Text>
+                
+              </View>
+            </View>
+
+            {/* Third bubble */}
+            <View style={{
+              alignItems: 'flex-start',
+              backgroundColor: '#D2EBDE',
+            }}>
+              <View style={{
+                marginLeft: 10,
+                width: 200,
+                height: 200,
+                borderRadius: 200 / 2,
+                backgroundColor: '#91CD91',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+                <Text style={{ 
+                  textAlign: 'center', 
+                  fontSize: 13, 
+                  color: '#ffff', 
+                  fontFamily: 'Courier New',
+                  textShadowColor: 'black',
+                  textShadowOffset: { width: .5, height: 1 },
+                  textShadowRadius: 4,
+                  }}>
+                  It is estimated that{' '}
+                  <Text style={{ fontWeight: 'bold', color: '#ffff' }}>50% of children</Text>{' '}
+                  with asthma have uncontrolled asthma despite it being a manageable condition.
+                </Text>
+                
+              </View>
+            </View>
+
+          </View>
+
+          {/* Go to website */}
           <View>
-
-
-
 
           </View>
         </View>  
@@ -280,13 +474,29 @@ const styles = StyleSheet.create({
   title1: {
     fontSize: 30,
     fontWeight: "bold",
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    fontFamily: 'Georgia',
   },
   title2: {
     fontSize: 30,
     fontWeight: "bold",
     backgroundColor: 'transparent',
-    paddingBottom: 10
+    paddingBottom: 10,
+    fontFamily: 'Georgia',
+  },
+  title3: {
+    fontSize: 30,
+    fontWeight: "bold",
+    backgroundColor: 'transparent',
+    paddingBottom: 10,
+    textAlign: 'center'
+  },
+  title4: {
+    fontSize: 30,
+    fontWeight: "bold",
+    backgroundColor: 'transparent',
+    paddingBottom: 10,
+    textAlign: 'center'
   },
   separator: {
     marginVertical: 10,
