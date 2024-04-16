@@ -71,7 +71,7 @@ const PMeds = () => {
   const [medToDelete, setMedToDelete] = useState(null);
   
 
-  console.log(rows);
+  //console.log(rows);
   console.log(pInfo);
   const getDeleteRow = (targetIndex, selRows) => {
     setMedToDelete(selRows.filter((_, idx) => idx === targetIndex));
