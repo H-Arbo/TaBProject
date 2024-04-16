@@ -421,7 +421,7 @@ const PMeds = () => {
             </table>
             <table className="w-full">
               <thead>
-                <tr className="bg-green-200">
+                <tr className="bg-red-200">
                   <th className="p-3 border-r border-red-600">Medication</th>
                   <th className="p-3 border-r border-red-600">Amount</th>
                   <th className="p-3 border-r border-red-600">Frequency</th>
