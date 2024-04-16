@@ -233,12 +233,12 @@ const PMeds = () => {
 
         <h1 className="text-3xl my-4">Yellow Zone</h1>
         <div className="flex flex-wrap justify-between items-start">
-          <div className="border border-green-600 rounded-md">
+          <div className="border border-yellow-600 rounded-md">
             <table className="w-full">
               <tbody>
                 {pInfo.map((patient, index) => (
                   <tr key={patient._id}>
-                    <td className="p-3 border-t border-r border-b border-green-600 text-center">
+                    <td className="p-3 border-t border-r border-b border-yellow-600 text-center">
                       {" "}
                       <EasyEdit
                         type={Types.TEXT}
@@ -253,7 +253,7 @@ const PMeds = () => {
                         attributes={{ name: "awesome-input", id: 1 }}
                       />
                     </td>
-                    <td className="p-3 border-t border-b border-green-600 text-center">
+                    <td className="p-3 border-t border-b border-yellow-600 text-center">
                       {" "}
                       <EasyEdit
                         type={Types.TEXT}
@@ -275,9 +275,9 @@ const PMeds = () => {
             <table className="w-full">
               <thead>
                 <tr className="bg-green-200">
-                  <th className="p-3 border-r border-green-600">Medication</th>
-                  <th className="p-3 border-r border-green-600">Amount</th>
-                  <th className="p-3 border-r border-green-600">Frequency</th>
+                  <th className="p-3 border-r border-yellow-600">Medication</th>
+                  <th className="p-3 border-r border-yellow-600">Amount</th>
+                  <th className="p-3 border-r border-yellow-600">Frequency</th>
                   <th className="p-3">Operations</th>
                 </tr>
               </thead>
@@ -285,16 +285,16 @@ const PMeds = () => {
                 {rows.map((row, index) => {
                   return (
                     <tr key={index}>
-                      <td className="p-3 border-r border-t border-green-600">
+                      <td className="p-3 border-r border-t border-yellow-600">
                         {row.med}
                       </td>
-                      <td className="p-3 border-r border-t border-green-600">
+                      <td className="p-3 border-r border-t border-yellow-600">
                         {row.amount}
                       </td>
-                      <td className="p-3 border-r border-t border-green-600">
+                      <td className="p-3 border-r border-t border-yellow-600">
                         {row.when_freq}
                       </td>
-                      <td className="p-3 border-r border-t border-green-600">
+                      <td className="p-3 border-r border-t border-yellow-600">
                         <div className="flex justify-center items-center gap-x-4">
                           <button
                             onClick={() =>
@@ -380,12 +380,12 @@ const PMeds = () => {
 
         <h1 className="text-3xl my-4">Red Zone</h1>
         <div className="flex flex-wrap justify-between items-start">
-          <div className="border border-green-600 rounded-md">
+          <div className="border border-red-600 rounded-md">
             <table className="w-full">
               <tbody>
                 {pInfo.map((patient, index) => (
                   <tr key={patient._id}>
-                    <td className="p-3 border-t border-r border-b border-green-600 text-center">
+                    <td className="p-3 border-t border-r border-b border-red-600 text-center">
                       {" "}
                       <EasyEdit
                         type={Types.TEXT}
@@ -400,7 +400,7 @@ const PMeds = () => {
                         attributes={{ name: "awesome-input", id: 1 }}
                       />
                     </td>
-                    <td className="p-3 border-t border-b border-green-600 text-center">
+                    <td className="p-3 border-t border-b border-red-600 text-center">
                       {" "}
                       <EasyEdit
                         type={Types.TEXT}
@@ -422,9 +422,9 @@ const PMeds = () => {
             <table className="w-full">
               <thead>
                 <tr className="bg-green-200">
-                  <th className="p-3 border-r border-green-600">Medication</th>
-                  <th className="p-3 border-r border-green-600">Amount</th>
-                  <th className="p-3 border-r border-green-600">Frequency</th>
+                  <th className="p-3 border-r border-red-600">Medication</th>
+                  <th className="p-3 border-r border-red-600">Amount</th>
+                  <th className="p-3 border-r border-red-600">Frequency</th>
                   <th className="p-3">Operations</th>
                 </tr>
               </thead>
@@ -432,16 +432,16 @@ const PMeds = () => {
                 {rows.map((row, index) => {
                   return (
                     <tr key={index}>
-                      <td className="p-3 border-r border-t border-green-600">
+                      <td className="p-3 border-r border-t border-red-600">
                         {row.med}
                       </td>
-                      <td className="p-3 border-r border-t border-green-600">
+                      <td className="p-3 border-r border-t border-red-600">
                         {row.amount}
                       </td>
-                      <td className="p-3 border-r border-t border-green-600">
+                      <td className="p-3 border-r border-t border-red-600">
                         {row.when_freq}
                       </td>
-                      <td className="p-3 border-r border-t border-green-600">
+                      <td className="p-3 border-r border-t border-red-600">
                         <div className="flex justify-center items-center gap-x-4">
                           <button
                             onClick={() =>
