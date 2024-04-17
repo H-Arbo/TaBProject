@@ -17,8 +17,6 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-  const [modalVisible, setModalVisible] = useState(false);
 
   const textColors = {
     light: Colors.light.text, 
@@ -70,13 +68,13 @@ export default function TabLayout() {
         name="aboutus"
         options={{
           //Change header style
-          title: "About us",
+          title: "About Us",
           headerStyle: {
             backgroundColor: "#38A3A5",
           },
           headerTitleStyle: {
             fontWeight: "bold",
-            color: '#ffff',
+            color: '#38A3A5',
           },
 
           //Bottom tab bar and icon options
@@ -95,7 +93,7 @@ export default function TabLayout() {
           },
           headerTitleStyle: {
             fontWeight: "bold",
-            color: '#ffff',
+            color: '#38A3A5',
           },
           tabBarStyle: { 
             backgroundColor: "#38A3A5",
@@ -119,62 +117,5 @@ export default function TabLayout() {
 }
 
 const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    paddingTop: 50,
-    paddingLeft: 1,
-    backgroundColor: '#38A3A5',
-  },
-  modalBackground: {
-    top: 51.4,
-    left: -22,
-    width: '50%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    borderRadius: 3,
-  },
-  modalView: {
-    width: '100%',
-    backgroundColor: 'transparent',
-    borderRadius: 20,
-    padding: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 5,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 20
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  exit: {
-    position: 'absolute',
-    alignItems: 'center',
-    backgroundColor: 'transparent'
-  }
+
 });

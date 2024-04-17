@@ -13,8 +13,6 @@ const characterHeight = imageHeight/2;
 const characterWidth = imageWidth/2;
 
 export default function App() {
-  const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
 
   return (
     
@@ -516,60 +514,5 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingLeft: 1,
     backgroundColor: '#38A3A5',
-  },
-  modalBackground: {
-    top: 51.4,
-    left: -22,
-    width: '50%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    borderRadius: 3,
-  },
-  modalView: {
-    width: '100%',
-    backgroundColor: 'transparent',
-    borderRadius: 20,
-    padding: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 5,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 20
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  exit: {
-    position: 'absolute',
-    alignItems: 'center',
-    backgroundColor: 'transparent'
-  },
-  video: {
-    alignSelf: 'center',
-    width: 320,
-    height: 200,
   },
 });
