@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
     container_name: frontend
     ports:
-      - "10.8.97.14:8080:5173"
+      -  5173:5173 #"10.8.97.14:8080:5173"
     depends_on:
       - api
     #networks:
