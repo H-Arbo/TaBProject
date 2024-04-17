@@ -6,7 +6,7 @@ import "./ChangeMeds.css";
 import { toast } from "react-hot-toast";
 import Button from "./Button";
 
-export const DeleteMeds = ({ closeModal, _id, zone, med, removeRow }) => {
+export const DeleteMeds = ({ closeModal, _id, inputZone, med, removeRow }) => {
   const row_id = med.at(0)._id;
   console.log(row_id);
   const deleteMedication = async (e) => {
@@ -14,10 +14,10 @@ export const DeleteMeds = ({ closeModal, _id, zone, med, removeRow }) => {
     console.log("entered deleteMedication");
 
     try {
-      console.log(med.at(0)._id, _id,zone )
+      console.log(med.at(0)._id, _id, inputZone )
       const {data } = await axios.delete("/patients/deleteMed", {data: {
         _id: _id,
-        zone: "green",
+        zone: inputZone,
         med_id: med.at(0)._id,
   
       }});

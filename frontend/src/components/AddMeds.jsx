@@ -5,14 +5,14 @@ import axios from "axios";
 import "./ChangeMeds.css";
 import { toast } from "react-hot-toast";
 
-export const AddMeds = ({ closeModal , _id, zone, addRow}) => {
+export const AddMeds = ({ closeModal , _id, inputZone, addRow}) => {
   const [data, setData] = useState({
     medication: "",
     amount: "",
     when_freq: "",
   });
   console.log(_id);
-  console.log(zone);
+  console.log(inputZone);
   const addMedication = async (e) => {
     e.preventDefault();
     console.log("entered addMedication");
@@ -27,7 +27,7 @@ export const AddMeds = ({ closeModal , _id, zone, addRow}) => {
       
       const {data } = await axios.patch("/patients/addMed", {
         _id: _id,
-        zone: zone,
+        zone: inputZone,
         med,
         amount,
         when_freq,
