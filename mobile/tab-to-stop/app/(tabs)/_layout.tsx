@@ -28,7 +28,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveTintColor: '#ffff',
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
@@ -40,18 +40,28 @@ export default function TabLayout() {
           
           headerShown: false,
           //Change header style
-          title: 'Home Screen',
+          title: 'Home',
           headerStyle: {
-            backgroundColor: "#D2EBDE",
+            backgroundColor: "#38A3A5",
           },
           headerTitleStyle: {
             fontWeight: "bold",
-            color: textColors[colorScheme ?? "light"],
+            color: '#ffff'
+          },
+          tabBarStyle: { 
+            backgroundColor: "#38A3A5",
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 1,
+            shadowRadius: 4,
+            elevation: 5,
           },
 
           //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
 
           //Modal: info circle top right
         }}
@@ -66,53 +76,13 @@ export default function TabLayout() {
           },
           headerTitleStyle: {
             fontWeight: "bold",
-            color: textColors[colorScheme ?? "light"],
+            color: '#ffff',
           },
 
           //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarStyle: { backgroundColor: "#38A3A5" },
+          tabBarIcon: ({ color }) => <TabBarIcon name="group" color={color} />,
 
-          //Modal: Info circle top left
-          headerLeft: () => (
-            <View style={{paddingLeft: 10}}>
-              <Modal
-                isVisible={modalVisible}
-                animationIn="slideInLeft"
-                animationOut="slideOutLeft"
-                hasBackdrop={false}
-                onBackdropPress={() => setModalVisible(false)}
-              >
-                <Pressable
-                  onPress={() => setModalVisible(false)}
-                >
-                  <View style={styles.modalBackground}>
-                    <View style={styles.modalView}>
-                      <View style={styles.exit}>
-                        <Text style={styles.textStyle}>
-                          Menu
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </Pressable>
-              </Modal>
-            
-              <Pressable style={{
-                paddingLeft: 1
-              }}
-                onPress={() => setModalVisible(true)}>
-                  {({ pressed }) => (
-                    <FontAwesome
-                      name="list"
-                      size={40}
-                      color={'white'}
-                      style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                    />
-                  )}
-              </Pressable>
-            </View>
-          ),
         }}
       />
       <Tabs.Screen
@@ -125,53 +95,23 @@ export default function TabLayout() {
           },
           headerTitleStyle: {
             fontWeight: "bold",
-            color: textColors[colorScheme ?? "light"],
+            color: '#ffff',
+          },
+          tabBarStyle: { 
+            backgroundColor: "#38A3A5",
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 1,
+            shadowRadius: 4,
+            elevation: 5,
           },
 
           //Bottom tab bar and icon options
-          tabBarStyle: { backgroundColor: "#D2EBDE" },
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
 
-          //Modal: Info circle top left
-          headerLeft: () => (
-            <View style={{paddingLeft: 10}}>
-              <Modal
-                isVisible={modalVisible}
-                animationIn="slideInLeft"
-                animationOut="slideOutLeft"
-                hasBackdrop={false}
-                onBackdropPress={() => setModalVisible(false)}
-              >
-                <Pressable
-                  onPress={() => setModalVisible(false)}
-                >
-                  <View style={styles.modalBackground}>
-                    <View style={styles.modalView}>
-                      <View style={styles.exit}>
-                        <Text style={styles.textStyle}>
-                          Menu
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </Pressable>
-              </Modal>
-            
-              <Pressable style={{
-                paddingLeft: 1
-              }}
-                onPress={() => setModalVisible(true)}>
-                  {({ pressed }) => (
-                    <FontAwesome
-                      name="list"
-                      size={40}
-                      color={'white'}
-                      style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                    />
-                  )}
-              </Pressable>
-            </View>
-          ),
         }}
       />
     </Tabs>

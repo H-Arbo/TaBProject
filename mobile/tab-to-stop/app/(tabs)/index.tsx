@@ -1,9 +1,10 @@
-import { Dimensions, StyleSheet, Image, ScrollView, Pressable, Platform} from "react-native";
+import { Dimensions, StyleSheet, Image, ScrollView, Pressable, Platform, TouchableOpacity} from "react-native";
 import React, {useState} from 'react';
 import { Text, View } from "@/components/Themed";
 import Modal from 'react-native-modal';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useColorScheme } from "@/components/useColorScheme";
+import {ExternalLink} from '@/components/ExternalLink';
 
 const dimensions = Dimensions.get("window");
 const imageWidth = dimensions.width * 0.5;
@@ -12,6 +13,9 @@ const characterHeight = imageHeight/2;
 const characterWidth = imageWidth/2;
 
 export default function App() {
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
+
   return (
     
     <ScrollView>
@@ -33,62 +37,30 @@ export default function App() {
           marginBottom: 2,
         }}>
           <View style={styles.centeredView}>
-            {/* <Modal
-              isVisible={modalVisible}
-              animationIn="slideInLeft"
-              animationOut="slideOutLeft"
-              hasBackdrop={false}
-              onBackdropPress={() => setModalVisible(false)}
-            >
-              <Pressable
-                onPress={() => setModalVisible(false)}
-              >
-                <View style={styles.modalBackground}>
-                  <View style={styles.modalView}>
-                    <View style={styles.exit}>
-                      <Text style={styles.textStyle}>
-                        Menu
-                      </Text>
-                      <Text>
-                        Home
-                      </Text>
-                      <Text>
-                        About us
-                      </Text>
-                      <Text>
-                        Resources
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </Pressable>
-            </Modal>
-            
-            <Pressable style={{
-              paddingLeft: 10
-            }}
-              onPress={() => setModalVisible(true)}>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="list"
-                    size={40}
-                    color={'white'}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-            </Pressable> */}
-
             <View style={styles.imageRow}>
               <Image
               style={styles.characters}
               resizeMode="contain"
               source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Charlotte-Waving.png")}
               />
-              <Image
-              style={styles.logo}
-              resizeMode="contain"
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/tab.png")}
-              />
+              <View style={{
+                alignItems: 'center',
+                backgroundColor: 'transparent',
+                marginTop: -80
+                }}>
+                <TouchableOpacity 
+                  activeOpacity={ 0.75 }
+                >
+                  <ExternalLink
+                    href="http://cs495-spring2024-01.ua.edu:8080">
+                    <Image
+                    style={styles.logo}
+                    resizeMode='center'
+                    source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/tab.png")}
+                    />
+                  </ExternalLink>
+                </TouchableOpacity>
+              </View>
               <Image
               style={styles.characters}
               resizeMode="contain"
@@ -158,33 +130,26 @@ export default function App() {
           </View>
 
           <View style={{
-            ...Platform.select({
-              ios: {
-                shadowColor: 'black',
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.40,
-                shadowRadius: 4,
-              },
-              android: {
-                elevation: 4,
-              },
-            }),
-            backgroundColor: '#38A3A5',
-            borderRadius: 4,
-            borderWidth: 0.5,
-            borderColor: '#000',
+            backgroundColor: '#D2EBDE',
             padding: 10,
             margin: 20,
           }}>
             <View style={{
               alignItems: 'center',
               backgroundColor: 'transparent',
-              marginBottom: 0
+              marginBottom: 0,
+              flexDirection: 'row', justifyContent: 'center'
               }}>
-              <Text style={styles.title4}>Link to account</Text>
+              <TouchableOpacity 
+                activeOpacity={ 0.75 }
+              >
+                <ExternalLink
+                  href="http://cs495-spring2024-01.ua.edu:8080">
+                  <Text style={styles.title4}>Link to account</Text>
+                  <FontAwesome name="arrow-right" size={24} color="#38A3A5" style={{ textDecorationLine: 'underline' }} />                
+                </ExternalLink>
+              </TouchableOpacity>
             </View>
-
-            
           </View>
 
           {/* What is asthma */}
@@ -261,7 +226,8 @@ export default function App() {
                     <Text style={{
                       textAlign: 'left',
                       fontSize: 20,
-                      paddingBottom: 10
+                      paddingBottom: 10,
+                      fontFamily: 'Georgia',
                       }}>
                       Asthma is a chronic condition that causes inflammation and swelling of the airways, leading to the narrowing of the air passages that transport air from the nose and mouth to the lungs.
                     </Text>
@@ -280,7 +246,8 @@ export default function App() {
                     <Text style={{
                       textAlign: 'left',
                       fontSize: 20,
-                      paddingBottom: 10
+                      paddingBottom: 10,
+                      fontFamily: 'Georgia',
                       }}>
                       Symptoms of asthma include difficulty breathing, wheezing, coughing, and pain or tightness in the chest.
                     </Text>
@@ -299,7 +266,8 @@ export default function App() {
                     <Text style={{
                       textAlign: 'left',
                       fontSize: 20,
-                      paddingBottom: 10
+                      paddingBottom: 10,
+                      fontFamily: 'Georgia',
                       }}>
                       Asthma attacks can be triggered by various factors, such as allergens like dust or pet dander, some foods, or physical activity. Asthma can be a fatal condition.
                     </Text>
@@ -318,7 +286,8 @@ export default function App() {
                     <Text style={{
                       textAlign: 'left',
                       fontSize: 20,
-                      paddingBottom: 10
+                      paddingBottom: 10,
+                      fontFamily: 'Georgia',
                       }}>
                       Unfortunately, there is no cure for asthma, but proper treatment can help prevent asthma attacks and improve your quality of life.
                     </Text>
@@ -337,7 +306,8 @@ export default function App() {
                     <Text style={{
                       textAlign: 'left',
                       fontSize: 20,
-                      paddingBottom: 10
+                      paddingBottom: 10,
+                      fontFamily: 'Georgia',
                       }}>
                       Asthma is among the most prevalent and costly diseases in the United States and most common chronic disease in children for all around the world.
                     </Text>
@@ -350,14 +320,17 @@ export default function App() {
           {/* Asthma data */}
           <View style={{
             backgroundColor: '#D2EBDE',
+            paddingTop: 50
           }}>
             {/* Title */}
-            <Text style={styles.title3}>Asthma</Text>
+            <Text style={styles.title3}>Asthma Facts</Text>
 
             {/* First bubble */}
             <View style={{
               alignItems: 'flex-start',
               backgroundColor: '#D2EBDE',
+              paddingLeft: 30,
+              marginBottom: -20,
             }}>
               <View style={{
                 marginLeft: 10,
@@ -374,8 +347,8 @@ export default function App() {
                   color: '#ffff', 
                   fontFamily: 'Courier New',
                   textShadowColor: 'black',
-                  textShadowOffset: { width: .5, height: 1 },
-                  textShadowRadius: 4,
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
                   }}>
                   In 2020,{' '}
                   <Text style={{ fontWeight: 'bold', color: '#ffff' }}>42.7% of children</Text>{' '}
@@ -387,7 +360,8 @@ export default function App() {
             {/* Second bubble */}
             <View style={{
               alignItems: 'flex-end',
-              backgroundColor: '#D2EBDE',
+              backgroundColor: 'transparent',
+              paddingRight: 30
             }}> 
               <View style={{
                 marginRight: 10,
@@ -404,8 +378,8 @@ export default function App() {
                   color: '#ffff', 
                   fontFamily: 'Courier New',
                   textShadowColor: 'black',
-                  textShadowOffset: { width: .5, height: 1 },
-                  textShadowRadius: 4, 
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1, 
                   }}>
                   Among children{' '}
                   <Text style={{ fontWeight: 'bold', color: '#ffff' }}>under the age of 5 with asthma, this figure was about 52.9%.</Text>
@@ -418,7 +392,10 @@ export default function App() {
             {/* Third bubble */}
             <View style={{
               alignItems: 'flex-start',
-              backgroundColor: '#D2EBDE',
+              backgroundColor: 'transparent',
+              paddingBottom: 10,
+              paddingLeft: 30,
+              marginTop: -20
             }}>
               <View style={{
                 marginLeft: 10,
@@ -427,7 +404,7 @@ export default function App() {
                 borderRadius: 200 / 2,
                 backgroundColor: '#91CD91',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
               }}>
                 <Text style={{ 
                   textAlign: 'center', 
@@ -435,8 +412,8 @@ export default function App() {
                   color: '#ffff', 
                   fontFamily: 'Courier New',
                   textShadowColor: 'black',
-                  textShadowOffset: { width: .5, height: 1 },
-                  textShadowRadius: 4,
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
                   }}>
                   It is estimated that{' '}
                   <Text style={{ fontWeight: 'bold', color: '#ffff' }}>50% of children</Text>{' '}
@@ -445,12 +422,6 @@ export default function App() {
                 
               </View>
             </View>
-
-          </View>
-
-          {/* Go to website */}
-          <View>
-
           </View>
         </View>  
       </View>
@@ -488,15 +459,28 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     backgroundColor: 'transparent',
-    paddingBottom: 10,
-    textAlign: 'center'
+    paddingBottom: 20,
+    fontFamily: 'Georgia',
+    color: '#38A3A5',
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    textShadowColor: 'black',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 1,
   },
   title4: {
     fontSize: 30,
     fontWeight: "bold",
     backgroundColor: 'transparent',
     paddingBottom: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Georgia',
+    color: '#38A3A5',
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.40,
+    shadowRadius: 4,
+    textDecorationLine: 'underline'
   },
   separator: {
     marginVertical: 10,
@@ -582,5 +566,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     backgroundColor: 'transparent'
-  }
+  },
+  video: {
+    alignSelf: 'center',
+    width: 320,
+    height: 200,
+  },
 });
