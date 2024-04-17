@@ -32,7 +32,7 @@ import Resources from './pages/Resources';
 import { UserContextProvider } from '../context/userContext';
 import { ProtectedRoute } from './components/ProtectedRoutes';
 
-axios.defaults.baseURL = 'http://http://cs495-spring2024-01.ua.edu:25432';
+axios.defaults.baseURL = 'http://cs495-spring2024-01.ua.edu:25432';
 axios.defaults.withCredentials = true;
 const App = () => {
   return(
