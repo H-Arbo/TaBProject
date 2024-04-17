@@ -8,7 +8,7 @@ import Button from "../components/Button";
 
 function DPinfo() {
   const [patients, setPatients] = useState([]);
-  //const [doctor, setDoctor] = useState(null);
+  const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
   const handleClick = () => {
     null;
@@ -18,10 +18,12 @@ function DPinfo() {
     setLoading(true);
 
     Promise.all([
-      axios.get("/patients")
+      axios.get("/patients"),
+      axios.get("/profile", { withCredentials: true }),
     ])
-      .then(([patientsResponse]) => {
+      .then(([patientsResponse, profileResponse]) => {
         setPatients(patientsResponse.data.data);
+        setDoctor(profileResponse.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -34,7 +36,7 @@ function DPinfo() {
 
   const filteredPatients = patients.filter((patient) => {
     if (patient.provider_email && typeof patient.provider_email === "string") {
-      const targetEmail = location.state.doctor_email;
+      const targetEmail = doctor.email;
       return (
         patient.provider_email.includes(targetEmail) &&
         patient.email.includes(location.state.email)
@@ -46,7 +48,7 @@ function DPinfo() {
   return (
     <>
       <Dr_Navbar />
-      <div className="p-9">
+      <div className="p-9 bg-white">
         <h1 className="flex flex-wrap text-3xl my-4 text-center">
           Patient Info
         </h1>
@@ -64,7 +66,6 @@ function DPinfo() {
                       {" "}
                       Best Peak Flow{" "}
                     </th>
-                    <th className="p-3 border border-gray-300"> Operations </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -79,15 +80,6 @@ function DPinfo() {
                       <td className="p-3 border border-gray-300 text-center">
                         {patient.gz_peak_flow_max}
                       </td>
-                      <td className="p-3 border border-gray-300 text-center">
-                        <Link
-                          to= "/doctor/patientInfo/changeMedication/"
-                          state= {{pInfo: filteredPatients}}>
-                          <Button onClick={handleClick} color="darkblue">
-                            Change Medication
-                          </Button>
-                        </Link>
-                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -100,6 +92,16 @@ function DPinfo() {
               <div className="border border-green-600 rounded-md">
                 <h2 className="flex justify-center items-center bg-green-200 h-10">
                   <b className="text-center">Green Zone</b>
+                  <div className="p-6">
+                    <Link
+                      to="/doctor/patientInfo/changeGreenMeds/"
+                      state={{ pInfo: filteredPatients }}
+                    >
+                      <button onClick={handleClick} color="darkblue">
+                        (Change Green Zone)
+                      </button>
+                    </Link>
+                  </div>
                 </h2>
 
                 <table className="w-full">
@@ -153,6 +155,16 @@ function DPinfo() {
               <div className="border border-yellow-600 rounded-md">
                 <h2 className="flex justify-center items-center bg-yellow-200 h-10">
                   <b className="text-center">Yellow Zone</b>
+                  <div className="p-6">
+                    <Link
+                      to="/doctor/patientInfo/changeYellowMeds/"
+                      state={{ pInfo: filteredPatients }}
+                    >
+                      <button onClick={handleClick} color="darkblue">
+                        (Change Yellow Zone)
+                      </button>
+                    </Link>
+                  </div>
                 </h2>
 
                 <table className="w-full">
@@ -206,6 +218,16 @@ function DPinfo() {
               <div className="border border-red-600 rounded-md">
                 <h2 className="flex justify-center items-center bg-red-200 h-10">
                   <b className="text-center">Red Zone</b>
+                  <div className="p-6">
+                    <Link
+                      to="/doctor/patientInfo/changeRedMeds/"
+                      state={{ pInfo: filteredPatients }}
+                    >
+                      <button onClick={handleClick} color="darkblue">
+                        (Change Red Zone)
+                      </button>
+                    </Link>
+                  </div>
                 </h2>
 
                 <table className="w-full">
@@ -215,10 +237,6 @@ function DPinfo() {
                         <td className="p-3 border-t border-r border-b border-red-600 text-center">
                           {" "}
                           Peak Flow Max: {patient.rz_peak_flow_max}
-                        </td>
-                        <td className="p-3 border-t border-b border-red-600 text-center">
-                          {" "}
-                          Peak Flow Min: {patient.rz_peak_flow_min}
                         </td>
                       </tr>
                     ))}

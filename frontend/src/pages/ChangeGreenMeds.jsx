@@ -11,7 +11,7 @@ import "../components/ChangeMeds.css";
 import { EditMeds } from "../components/EditMeds";
 import { toast } from "react-hot-toast";
 
-const PMeds = () => {
+const ChangeGreenMeds = () => {
   const saveMin = async (value, zone) => {
     console.log(zone);
     //alert(pInfo.at(0)._id + value);
@@ -66,7 +66,6 @@ const PMeds = () => {
   const location = useLocation();
   const { pInfo } = location.state;
   const [gRows, setgRows] = useState(pInfo.at(0).gz_meds);
-  const [yRows, setyRows] = useState(pInfo.at(0).yz_meds);
   const [medToDelete, setMedToDelete] = useState(null);
   
 
@@ -74,9 +73,6 @@ const PMeds = () => {
   console.log(pInfo);
   const getGreenDeleteRow = (targetIndex) => {
     setMedToDelete(gRows.filter((_, idx) => idx === targetIndex));
-  };
-  const getYellowDeleteRow = (targetIndex) => {
-    setMedToDelete(yRows.filter((_, idx) => idx === targetIndex));
   };
   const removeRow = (targetIndex) => {
     console.log(targetIndex);
@@ -198,7 +194,7 @@ const PMeds = () => {
                                 });
                               }}
                               _id={pInfo.at(0)._id}
-                              zone="green"
+                              inputZone="green"
                               med={medToDelete}
                               removeRow={(newRows) => {
                                 setgRows(newRows);
@@ -227,7 +223,7 @@ const PMeds = () => {
                 setModalOpen({ ...modalOpen, changeMeds: false });
               }}
               _id={pInfo.at(0)._id}
-              zone="green"
+              inputZone="green"
               addRow={(newTable) => {
                 setgRows(newTable);
               }}
@@ -235,157 +231,8 @@ const PMeds = () => {
           )}
         </div>
       </div>
-      <div className="p-4">
-        <h1 className="text-3xl my-4">Yellow Zone</h1>
-        <div className="flex flex-wrap justify-between items-start">
-          <div className="border border-yellow-600 rounded-md">
-            <table className="w-full">
-              <tbody>
-                {pInfo.map((patient, index) => (
-                  <tr key={patient._id}>
-                    <td className="p-3 border-t border-r border-b border-yellow-600 text-center">
-                      {" "}
-                      <EasyEdit
-                        type={Types.TEXT}
-                        onSave={(value) => {
-                          console.log("onSave");
-                          saveMax(value, "yellow");
-                        }}
-            
-                        placeholder="Change Peak Flow Max"
-                        saveButtonLabel="Save"
-                        cancelButtonLabel="Cancel"
-                        attributes={{ name: "awesome-input", id: 1 }}
-                      />
-                    </td>
-                    <td className="p-3 border-t border-b border-yellow-600 text-center">
-                      {" "}
-                      <EasyEdit
-                        type={Types.TEXT}
-                        onSave={(value) => {
-                          console.log("onSave");
-                          saveMin(value, "yellow");
-                        }}
-                        onCancel={cancel}
-                        placeholder="Change Peak Flow Min"
-                        saveButtonLabel="Save"
-                        cancelButtonLabel="Cancel"
-                        attributes={{ name: "awesome-input", id: 1 }}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <table className="w-full">
-              <thead>
-                <tr className="bg-yellow-200">
-                  <th className="p-3 border-r border-yellow-600">Medication</th>
-                  <th className="p-3 border-r border-yellow-600">Amount</th>
-                  <th className="p-3 border-r border-yellow-600">Frequency</th>
-                  <th className="p-3">Operations</th>
-                </tr>
-              </thead>
-              <tbody>
-                {yRows.map((row, index) => {
-                  return (
-                    <tr key={index}>
-                      <td className="p-3 border-r border-t border-yellow-600">
-                        {row.med}
-                      </td>
-                      <td className="p-3 border-r border-t border-yellow-600">
-                        {row.amount}
-                      </td>
-                      <td className="p-3 border-r border-t border-yellow-600">
-                        {row.when_freq}
-                      </td>
-                      <td className="p-3 border-r border-t border-yellow-600">
-                        <div className="flex justify-center items-center gap-x-4">
-                          <button
-                            onClick={() =>
-                              setModalOpen({ ...modalOpen, editMeds: true })
-                            }
-                          >
-                            <MdOutlineCreate
-                              color="blue"
-                              onClick={() => getYellowDeleteRow(index)}
-                            />
-                          </button>
-                          {modalOpen.editMeds == true && (
-                            <EditMeds
-                              closeModal={() => {
-                                setModalOpen({
-                                  ...modalOpen,
-                                  editMeds: false,
-                                });
-                              }}
-                              _id={pInfo.at(0)._id}
-                              inputZone="yellow"
-                              rerenderRow={(newTable) => {
-                                setyRows(newTable);
-                              }}
-                              oldMed={medToDelete}
-                            />
-                          )}
-                          <button //onClick={() => getDeleteRow(index)}
-                            onClick={() =>
-                              setModalOpen({ ...modalOpen, deleteMeds: true })
-                            }
-                          >
-                            <MdDelete
-                              color="red"
-                              onClick={() => getYellowDeleteRow(index)}
-                            />
-                          </button>
-                          {modalOpen.deleteMeds == true && (
-                            <DeleteMeds
-                              closeModal={() => {
-                                setModalOpen({
-                                  ...modalOpen,
-                                  deleteMeds: false,
-                                });
-                              }}
-                              _id={pInfo.at(0)._id}
-                              zone="yellow"
-                              med={medToDelete}
-                              removeRow={(newRows) => {
-                                setyRows(newRows);
-                              }}
-                            />
-                          )}
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div className="p-3 text-left darkblue">
-          <Button
-            color="darkblue"
-            onClick={() => setModalOpen({ ...modalOpen, changeMeds: true })}
-          >
-            <MdAdd />
-          </Button>
-          {modalOpen.changeMeds == true && (
-            <AddMeds
-              closeModal={() => {
-                setModalOpen({ ...modalOpen, changeMeds: false });
-              }}
-              _id={pInfo.at(0)._id}
-              zone="yellow"
-              addRow={(newTable) => {
-                setyRows(newTable);
-              }}
-            />
-          )}
-        </div>
-        <h1 className="text-3xl my-4">Red Zone</h1>
-      </div>
     </>
   );
 };
 
-export default PMeds;
+export default ChangeGreenMeds;

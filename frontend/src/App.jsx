@@ -15,7 +15,9 @@ import EditPatient from './pages/EditPatient';
 import EditDoctor from './pages/EditDoctor';
 import DProfile from './pages/DProfile';
 import PProfile from './pages/PProfile';
-import PMeds from './pages/PMeds'
+import ChangeGreenMeds from './pages/ChangeGreenMeds'
+import ChangeYellowMeds from './pages/ChangeYellowMeds'
+import ChangeRedMeds from './pages/ChangeRedMeds'
 import GreenZone from './pages/GreenZone';
 import YellowZone from './pages/YellowZone';
 import RedZone from './pages/RedZone';
@@ -27,11 +29,10 @@ import DPinfo from './pages/DPinfo';
 import {Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import Resources from './pages/Resources';
-import DAlerts from './pages/DAlerts';
 import { UserContextProvider } from '../context/userContext';
 import { ProtectedRoute } from './components/ProtectedRoutes';
 
-axios.defaults.baseURL = 'http://10.8.97.14:25432';
+axios.defaults.baseURL = 'http://localhost:5432';
 axios.defaults.withCredentials = true;
 const App = () => {
   return(
@@ -52,7 +53,9 @@ const App = () => {
       <Route path = '/patients/profile' element = {<ProtectedRoute><PProfile/></ProtectedRoute>} />
       <Route path = '/doctor/profile' element = {<ProtectedRoute><DProfile/></ProtectedRoute>} />
       <Route path = "/doctor/patientInfo" element={<ProtectedRoute><DPinfo /></ProtectedRoute>} />
-      <Route path = '/doctor/patientInfo/changeMedication' element = {<ProtectedRoute><PMeds/></ProtectedRoute>} />
+      <Route path = '/doctor/patientInfo/changeGreenMeds' element = {<ProtectedRoute><ChangeGreenMeds/></ProtectedRoute>} />
+      <Route path = '/doctor/patientInfo/changeYellowMeds' element = {<ProtectedRoute><ChangeYellowMeds/></ProtectedRoute>} />
+      <Route path = '/doctor/patientInfo/changeRedMeds' element = {<ProtectedRoute><ChangeRedMeds/></ProtectedRoute>} />
       <Route path = '/patients/profile' element = {<ProtectedRoute><EditPatient/></ProtectedRoute>} />
       <Route path = '/doctor/edit' element = {<ProtectedRoute><EditDoctor/></ProtectedRoute>} />
       <Route path = '/patients/green' element = {<ProtectedRoute><GreenZone/></ProtectedRoute>} />
@@ -63,7 +66,6 @@ const App = () => {
       <Route path = '/patients/actionSheet' element = {<ProtectedRoute><ActionSheet/></ProtectedRoute>} />
       <Route path = '/doctor/message' element = {<ProtectedRoute><MessagePatient/></ProtectedRoute>} />
       <Route path = '/resources' element = {<Resources/>} />
-      <Route path = '/doctor/alerts' element = {<ProtectedRoute><DAlerts/></ProtectedRoute>} />
     </Routes>
     </UserContextProvider>
   );
