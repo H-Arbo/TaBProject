@@ -28,7 +28,7 @@ export const getDoc = async (request, response) => {
     const {email} = request.body;
     console.log(email);
     const doc = await Doctor.findOne({email});
-    console.log(doc);
+    //console.log(doc);
     // have reponse be a json object with each document
     //return response.status(200).json(patients);
 

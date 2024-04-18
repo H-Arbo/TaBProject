@@ -18,7 +18,7 @@ const PatientProfile = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('/profile', { withCredentials: true })
+      .post('/patients/info', { email: pat_email })
       .then((response) => {
         setPatient(response.data);
         setLoading(false);

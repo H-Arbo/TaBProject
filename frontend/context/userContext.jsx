@@ -13,6 +13,7 @@ export function UserContextProvider({ children }) {
                 setUser(data)
             })
         }
+        console.log(user);
     })
 
     const logout = () => {

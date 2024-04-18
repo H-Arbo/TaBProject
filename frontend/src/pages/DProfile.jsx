@@ -24,10 +24,11 @@ const DProfile = () => {
     setLoading(true);
     
     Promise.all([
-      axios.get('/doctor/info',{ params: {email: location.state.doctor_email} } )//TODO: doctor_email seen as undefined
+      axios.post('/doctor/info',{email: location.state.doctor_email} )//TODO: doctor_email seen as undefined
   ])
       .then(([doctorResponse]) => {
-        setDoctor(doctorResponse.data);
+        console.log(doctorResponse);
+        setDoctor(doctorResponse.data.data);
         setLoading(false);
       })
       .catch((error) => {

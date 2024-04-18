@@ -24,10 +24,10 @@ export default function PLogin() {
 
       if (data.error) {
         toast.error(data.error);
-        setData({ ...data, password: '' });
+        setData({ email: "", password: '' });
       } else {
         setData({});
-        nav("/patients/home");
+        nav("/patients/home" , { state: { pat_email: email } });
       }
     } catch (error) {
       console.log(error);

@@ -10,13 +10,15 @@ import {
   deleteMedication,
   editMinFlow,
   editMaxFlow, 
-  archivePatient
+  archivePatient,
+  getPatientInfo
 } from "../controllers/pAuthControllers.js";
 import cors from "cors";
 
 const router = express.Router();
 
 router.get("/", getPatients);
+router.post("/info", getPatientInfo);
 router.post("/register", registerPatient);
 router.post("/login", loginPatient);
 router.patch("/addMed", addMedication);

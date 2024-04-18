@@ -19,6 +19,22 @@ export const getPatients = async (request, response) => {
     response.status(500).send({ message: error.message });
   }
 };
+export const getPatientInfo = async (request, response) => {
+  try {
+    const { email } = request.body;
+    const patient = await Patient.find({ email });
+    // have reponse be a json object with each document
+    //return response.status(200).json(patients);
+
+    //incoporate different object
+    return response.status(200).json({
+      data: patient
+    });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+};
 
 export const editMinFlow = async (request, response) => {
   try {

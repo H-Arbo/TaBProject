@@ -6,17 +6,20 @@ import BackButton from '../components/BackButton';
 import Pat_Navbar from '../components/Pat_Navbar';
 import Loading from '../components/Loading';
 import asthma_logo from '/images/AAAAI_logo.png';
+import { Link, useLocation } from 'react-router-dom';
 
 const ActionSheet = () => {
   const [patient, setPatient] = useState(null);
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const { pat_email } = location.state;
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get('/profile', { withCredentials: true })
+      .post('/patients/info', {email: pat_email})
       .then((response) => {
-        setPatient(response.data);
+        setPatient(response.data.data.at(0));
         setLoading(false);
       })
       .catch((error) => {

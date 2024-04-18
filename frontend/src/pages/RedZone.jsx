@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from '../components/Loading';
 import Pat_Navbar from '../components/Pat_Navbar';
+import { Link, useLocation } from 'react-router-dom';
 
 
 const RedZone = () => {
     const [patient, setPatient] = useState(null);
     const [loading, setLoading] = useState(false);
     const [editMode, setEditMode] = useState(false);
-
+    const location = useLocation();
+    const { pat_email } = location.state;
     const changeToFalse = () => {
         setEditMode(false);
     }
@@ -16,16 +18,16 @@ const RedZone = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get('/profile', { withCredentials: true })
-            .then((response) => {
-                setPatient(response.data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error('Error fetching patient profile:', error);
-                setLoading(false);
-            });
-    }, []);
+          .post("/patients/info", { email: pat_email })
+          .then((response) => {
+            setPatient(response.data.data.at(0));
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching patient profile:", error);
+            setLoading(false);
+          });
+      }, []);
 
     return (
         <>
