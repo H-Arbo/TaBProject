@@ -26,10 +26,10 @@ export default function DLogin() {
 
       if (data.error) {
         toast.error(data.error);
-        setData({ ...data, password: '' });
+        setData({email: "", password: ""});
       } else {
         setData({})
-        nav('/doctor/home');
+        nav('/doctor/home', { state: { doctor_email: email } });
       }
     } catch (error) {
       console.log(error)

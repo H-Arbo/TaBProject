@@ -25,14 +25,16 @@ export const getPatients = async (request, response) => {
 
 export const getDoc = async (request, response) => {
   try {
-    const doc = await Doctor.find({});
+    const {email} = request.body;
+    console.log(email);
+    const doc = await Doctor.findOne({email});
+    console.log(doc);
     // have reponse be a json object with each document
     //return response.status(200).json(patients);
 
     //incoporate different object
     return response.status(200).json({
-      count: doc.length,
-      data: doc,
+      data: doc
     });
 
   } catch (error) {

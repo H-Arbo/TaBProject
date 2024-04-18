@@ -79,7 +79,7 @@ export default function EditDoctor({ changeToFalse }) {
             /> 
         </div>
 
-        <div className='my-4'>
+        {/* <div className='my-4'>
           <span className='text-xl mr-4 text-gray-500'>Email: <u></u></span> 
             <input 
               type="text"
@@ -89,7 +89,7 @@ export default function EditDoctor({ changeToFalse }) {
               name="email"
               maxLength={30}
             />
-        </div>
+        </div> */}
 
         <div className='my-4'>
           <span className='text-xl mr-4 text-gray-500'>Phone Number: <u></u></span> 

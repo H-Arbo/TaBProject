@@ -13,17 +13,16 @@ const DeletePatient = () => {
     const [loading, setLoading] = useState(true);
     const nav = useNavigate();
     const location = useLocation();
+    const { doctor_email } = location.state;
 
     useEffect(() => {
         setLoading(true);
 
         Promise.all([
-            axios.get("/patients"),
-            axios.get("/profile", { withCredentials: true }),
+            axios.get("/patients")
         ])
-            .then(([patientsResponse, profileResponse]) => {
+            .then(([patientsResponse]) => {
                 setPatients(patientsResponse.data.data);
-                setDoctor(profileResponse.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -34,7 +33,7 @@ const DeletePatient = () => {
 
     const filteredPatients = patients.filter((patient) => {
         if (patient.provider_email && typeof patient.provider_email === "string") {
-            const targetEmail = doctor.email;
+            const targetEmail = doctor_email;
             return (
                 patient.provider_email.includes(targetEmail) &&
                 patient.email.includes(location.state.email)
@@ -55,7 +54,7 @@ const DeletePatient = () => {
                 toast.error(data.error);
             } else {
                 toast.success("Patient Archived");
-                nav("/doctor/home");
+                nav('/doctor/home', { state: { doctor_email: doctor_email } });
             }
         } catch (error) {
             console.error("Error:", error);
@@ -65,7 +64,7 @@ const DeletePatient = () => {
 
     const cancel = () => {
         toast.success("Cancelled");
-        nav("/doctor/home");
+        nav("/doctor/home", { state: { doctor_email: doctor_email } });
     };
 
     return (

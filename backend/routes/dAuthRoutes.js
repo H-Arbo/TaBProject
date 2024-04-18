@@ -12,7 +12,7 @@ router.use(cors({
 router.get("/", getPatients);
 router.post("/register", registerDoc);
 router.post("/login", loginDoc);
-router.get("/", getDoc);
+router.get("/info", getDoc);
 router.put("/dprofile/edit", editDoc);
 
 

@@ -1,8 +1,7 @@
-import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "../components/Loading";
-import { Link } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import Dr_Navbar from "../components/Dr_Navbar";
 import Button from "../components/Button";
 
@@ -10,6 +9,8 @@ function DPinfo() {
   const [patients, setPatients] = useState([]);
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const { doctor_email } = location.state;
   const handleClick = () => {
     null;
   };
@@ -18,12 +19,10 @@ function DPinfo() {
     setLoading(true);
 
     Promise.all([
-      axios.get("/patients"),
-      axios.get("/profile", { withCredentials: true }),
+      axios.get("/patients")
     ])
-      .then(([patientsResponse, profileResponse]) => {
+      .then(([patientsResponse]) => {
         setPatients(patientsResponse.data.data);
-        setDoctor(profileResponse.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -32,11 +31,10 @@ function DPinfo() {
       });
   }, []);
 
-  const location = useLocation();
 
   const filteredPatients = patients.filter((patient) => {
     if (patient.provider_email && typeof patient.provider_email === "string") {
-      const targetEmail = doctor.email;
+      const targetEmail = doctor_email;
       return (
         patient.provider_email.includes(targetEmail) &&
         patient.email.includes(location.state.email)
