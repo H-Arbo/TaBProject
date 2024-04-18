@@ -1,3 +1,4 @@
+import React from 'react';
 import BackButton from '../components/BackButton';
 import { useState } from 'react';
 import axios from 'axios';
@@ -88,7 +89,7 @@ export default function DRegister() {
               maxLength={11}
             />
             <button type='submit' className='p-2 bg-sky-300 m-8'>
-              Submit
+              Register
             </button>
           </form>
         </div>

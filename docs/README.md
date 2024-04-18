@@ -23,4 +23,4 @@
 
 [Our Github](https://github.com/H-Arbo/TaBProject)
 
-[Documentation](documetation.html)
+[Documentation](documentation.html)
