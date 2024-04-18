@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", getPatients);
 router.post("/register", registerDoc);
 router.post("/login", loginDoc);
-router.get("/info", getDoc);
+router.post("/info", getDoc);
 router.put("/dprofile/edit", editDoc);
 
 
