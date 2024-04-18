@@ -45,7 +45,7 @@ function DPinfo() {
 
   return (
     <>
-      <Dr_Navbar />
+      <Dr_Navbar email ={doctor_email}/>
       <div className="p-9 bg-white">
         <h1 className="flex flex-wrap text-3xl my-4 text-center">
           Patient Info

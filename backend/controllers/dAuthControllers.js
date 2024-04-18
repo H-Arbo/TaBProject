@@ -25,7 +25,7 @@ export const getPatients = async (request, response) => {
 
 export const getDoc = async (request, response) => {
   try {
-    const {email} = request.body;
+    const {email} = request.params;
     console.log(email);
     const doc = await Doctor.findOne({email});
     console.log(doc);
