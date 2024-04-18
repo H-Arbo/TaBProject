@@ -2,19 +2,390 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation</title>
 
-    <style>
-      </style>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    section h2 {
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
 
 </head>
 
-  <body>
-    <h1>Documentation</h1>
+<body>
+  <header>
+    <h1>TAB to Stop Development Documentation</h1>
+    <p>Project Name: <strong>TAB to Stop</strong></p>
+    <p>Version: <strong>1.0</strong></p>
+    <p>Date: <strong>April 17, 2024</strong></p>
+    <hr>
+  </header>
 
-    
-  </body>
+  <section id="overview">
+    <h2>Overview</h2>
+    <ul>
+      <li>Educate pediatric asthmatic patients and their caregivers about how to manage asthma and identify severity of
+        asthma attacks​</li>
+      <li>Goal of bettering knowledge, control, quality of life, fewer hospitalization, etc.​</li>
+    </ul>
+  </section>
+
+  <section id="install">
+    <h2>Installation</h2>
+    <ol>
+      <li>Clone GitHub <a href="https://github.com/H-Arbo/TaBProject">Here</a></li>
+      <li>Use OIT Server to run*</li>
+      <li>Use text editor of choice to modify code and test</li>
+      <ol>
+        <h3>To run in VS Code</h3>
+        <li>cd TaBProject/</li>
+        <li>run npm i</li>
+        <h3>To run website</h3>
+        <ol>
+          <li>cd TaBProject/frontend</li>
+          <li>run npm i</li>
+        </ol>
+        <h3>To run on OIT server</h3>
+        <ol>
+          <li>execute docker compose up</li>
+          <li>If changes to source code occur, run docker compose up -build</li>
+        </ol>
+        <h3>To run mobile app</h3>
+        <ol>
+          <li>cd TaBProject/mobile/tab-to-stop</li>
+          <li>run npm install expo</li>
+          <li>execute npx start -tunnel, press y</li>
+        </ol>
+      </ol>
+    </ol>
+  </section>
+
+  <section id="technologies">
+    <h2>Software Needed</h2>
+    <ul>
+      <li>Docker</li>
+      <li>MongoDB</li>
+      <li>Express</li>
+      <li>React</li>
+      <li>Node.js</li>
+    </ul>
+  </section>
+
+  <secton id="general-features">
+    <h2>General Features</h2>
+    <ul>
+      <li>
+        <strong>Resources</strong>
+        <ol>
+          <li>Click "Resources" button on Front Page before loggin in or registering</li>
+        </ol>
+        <p>Results: Can view and click on links to various resources.</p>
+      </li>
+      <li>
+        <strong>About Us</strong>
+        <ol>
+          <li>Click "About Us" button on Front Page before logging in or registering</li>
+        </ol>
+        <p>Results: Can view information about project sponsor and other owners.</p>
+      </li>
+    </ul>
+  </secton>
+
+  <section id="doctor-features">
+    <h2>Doctor Features</h2>
+    <ul>
+      <li>
+        <strong>Doctor Login</strong>
+        <ol>
+          <li>Navigate to the front page</li>
+          <li>Click "Login"</li>
+          <li>Click "Doctor"</li>
+          <li>Enter correct email and password</li>
+          <li>Click "Submit"</li>
+        </ol>
+        <p>Results: Doctor is logged in and routed to the Doctor home page. Here they can see a list of assigned
+          patients.</p>
+      </li>
+      <li>
+        <strong>Doctor Registration</strong>
+        <ol>
+          <li>Navigate to the front page</li>
+          <li>Click "Register"</li>
+          <li>Click "Doctor"</li>
+          <li>Enter requested information</li>
+          <li>Click "Submit"</li>
+        </ol>
+        <p>Results: Doctor is regitered and routed to the Doctor login page. Here they can login.</p>
+      </li>
+      <li>
+        <strong>Doctor View Profile</strong>
+        <ol>
+          <li>Doctor login</li>
+          <li>Click profile icon on navigation bar</li>
+        </ol>
+        <p>Results: Doctor can view their profile with their information.</p>
+      </li>
+      <li>
+        <strong>Doctor Edit Profile</strong>
+        <ol>
+          <li>Navigate to Doctor Profile</li>
+          <li>Click "Edit Profile"</li>
+          <li>Enter new information</li>
+          <li>Click "Save"</li>
+        </ol>
+        <p>Results: Doctor can alter profile information as needed.</p>
+      </li>
+      <li>
+        <strong>See Assigned Patients</strong>
+        <ol>
+          <li>Doctor login</li>
+          <li>View assigned patient list on home page</li>
+        </ol>
+        <p>Results:Doctor can only see those patients that have registered with corresponding doctor email.</p>
+      </li>
+      <li>
+        <strong>View Individual Patient Info</strong>
+        <ol>
+          <li>Doctor login</li>
+          <li>Click "Patient Info" next to desired patient</li>
+        </ol>
+        <p>Results: Doctor can see patient action sheet</p>
+      </li>
+      <li>
+        <strong>Change Patient Medication</strong>
+        <ol>
+          <li>Doctor login</li>
+          <li>Click "Change Medication" next to desired patient</li>
+        </ol>
+        <p>Results: Doctor can edit patient medication which is reflected on patient action sheet.</p>
+      </li>
+      <li>
+        <strong>Archive Patient</strong>
+        <ol>
+          <li>Doctor login</li>
+          <li>Click trash can icon next to desired patient</li>
+        </ol>
+        <p>Doctor can remove patient from assigned patient list without deleting patient account.</p>
+      </li>
+      <li>
+        <strong>Doctor Logout</strong>
+        <ol>
+          <li>Doctor login</li>
+          <li>Click logout icon in navigation bar</li>
+        </ol>
+        <p>Results: Doctor is returned to Home Page</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="patient-features">
+    <h2>Patient Features</h2>
+    <ul>
+      <li>
+        <strong>Patient Registration</strong>
+        <ol>
+          <li>Click "Register"</li>
+          <li>Enter required information</li>
+          <li>Click "Submit"</li>
+        </ol>
+        <p>Results: Patient is logged in and routed to the Patient home page.</p>
+      </li>
+      <li>
+        <strong>Patient Login</strong>
+        <ol>
+          <li>Click "Login"</li>
+          <li>Click "Patient"</li>
+          <li>Enter correct email and password</li>
+          <li>Click "Submit"</li>
+        </ol>
+        <p>Results: Patient is logged in and can see patient home page.</p>
+      </li>
+      <li>
+        <strong>Patient Profile</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>Click profile icon in navigation bar</li>
+        </ol>
+        <p>Results: Patient can view their profile with their information including emergency contacts.</p>
+      </li>
+      <li>
+        <strong>Patient Edit Profile</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>Click profile icon in navigation bar</li>
+          <li>Click "Edit Profile" icon</li>
+        </ol>
+        <p>Patients can alter profile information including emergency contact information.</p>
+      </li>
+      <li>
+        <strong>Patient Green Zone</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>Click "Green Zone"</li>
+        </ol>
+        <p>Results: Patient can view their Green Zone medication and information</p>
+      </li>
+      <li>
+        <strong>Patient Yellow Zone</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>Click "Yellow Zone"</li>
+        </ol>
+        <p>Results: Patient can view their Yellow Zone medication and information</p>
+      </li>
+      <li>
+        <strong>Patient Red Zone</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>Click "Red Zone"</li>
+        </ol>
+        <p>Results: Patient can view their Red Zone medication and information</p>
+      </li>
+      <li>
+        <strong>Patient Action Sheet</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>click "Action Sheet"</li>
+        </ol>
+        <p>Results: Patient can view their Acion Sheet and see Green, Yellow, and Red zones.</p>
+      </li>
+      <li>
+        <strong>Patient Download Action Sheet</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>Click "Action Sheet"</li>
+          <li>Click "Download"</li>
+        </ol>
+        <p>Results: Patient can download their Action Sheet as a PDF.</p>
+      </li>
+      <li>
+        <strong>Patient Animations</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>Click "Animations"</li>
+        </ol>
+        <p>Results: Patient can view Animation series videos</p>
+      </li>
+      <li>
+        <strong>Patient Surveys</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>Click "Surveys"</li>
+        </ol>
+        <p>Results: Patient can view and click on Qualtrics surveys links.</p>
+      </li>
+      <li>
+        <strong>Patient Logout</strong>
+        <ol>
+          <li>Login patient</li>
+          <li>Click logout icon in navigation bar</li>
+        </ol>
+        <p>Results: Patient is logged out and redirected to the Home Page.</p>
+      </li>
+
+
+
+
+    </ul>
+  </section>
+
+
+  <section id="modification">
+    <h2>How to Modify Software</h2>
+    <p>To modify codebase, change in text editor, save, then run.</p>
+  </section>
+
+  <section id="languages">
+    <h2>Languages, Building, and Dependencies</h2>
+    <ul>
+      <li>Languages: React JS, React Native</li>
+      <li>Dependencies are listed in package.json and package-lock.json</li>
+      <li>Compiler: npm</li>
+      <li>Builds management: dockerfiles</li>
+      <li>Automated Buildings: docker compose, yaml file</li>
+    </ul>
+  </section>
+
+  <section id="backlog">
+    <h2>Backlog, Major Issues, and Style Expectations</h2>
+    <ul>
+      <li>Backlog and bug list is on Jira</li>
+      <li>Major Issues: migrating to docker container</li>
+      <li>Style Expectations: Default VS Code formatting</li>
+    </ul>
+  </section>
+
+  <section id="testing">
+    <h2>Test Cases</h2>
+    <ul>
+      <p>Test cases are located in TaBProject/frontend/tests</p>
+      <p>To Run:</p>
+      <li>cd TaBProject/frontend</li>
+      <li>Run npm i</li>
+      <li>Run npm run test</li>
+    </ul>
+  </section>
+
+  <section id="problems">
+    <h2>Problems We Encountered</h2>
+    <ul>
+      <li>Putting in on Docker</li>
+      <li>The TaBProject/frontend runs version 18.0.0 of react</li>
+      <li>Main TaBProject runs 16.14 version of react</li>
+      <li>Hosting on OIT server does not allow APIs or JSON web tokens</li>
+    </ul>
+  </section>
+
+
+  <section id="faq">
+    <h2>FAQs</h2>
+    <ul>
+      <li>Q: How do I download my Action Sheet?</li>
+      <p>A: Login to patient account, click "Action Sheet", click "Download"</p>
+      <li>Q: How do I access the Animations?</li>
+      <p>A: Login to patient account, click "Animations", select animation to watch</p>
+      <li>Q: How do I change my patient's medication?</li>
+      <p>A: Login to Doctor account, click "Patient Info" next to desired patient, click "Change Medication". From here
+        you can add, edit, and delete patient medication.</p>
+      <li>Q: How do I edit my profile?</li>
+      <p>A: Login to Doctor or Patient account, click profile icon in navigation bar, click "Edit Profile". From here
+        you can edit any profile field and save the changes.</p>
+    </ul>
+  </section>
+
+  <footer>
+    <hr>
+    <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+  </footer>
+
+</body>
 
 </html>
