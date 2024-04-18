@@ -17,8 +17,9 @@ const Animations = () => {
         <h2>Animation 5</h2>
         <iframe src="https://drive.google.com/file/d/1dwJ3rt5Dkd0WQxIU5W4CtkPewPobrQ3O/preview" width="640" height="480"></iframe>
 
-
-      </div>
+        <h2>Animation 7</h2>
+        <iframe src="https://drive.google.com/file/d/1TNGO4FU7mmg_BY7pH47I5fcK1cdOwXmz/preview" width="640" height="480"></iframe>
+      </div >
     </>
   );
 };
