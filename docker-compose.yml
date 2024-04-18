@@ -6,8 +6,8 @@ services:
     env_file: ./backend/.env
     ports:
       - "5432:5432"
-    depends_on:
-      - db
+    #depends_on:
+    # - db
     #networks:
     #- web-app-network
     
@@ -27,13 +27,13 @@ services:
     #networks:
     #- web-app-network
 
-  db:
-    image: mongo
-    ports:
-      - 27017:27017
-    container_name: monogo-db
-    volumes:
-      - /home/htarbogast/mongo-backup:/data/db
+  #db:
+  #  image: mongo
+  #  ports:
+  #    - 27017:27017
+  #  container_name: monogo-db
+  #  volumes:
+   #   - /home/htarbogast/mongo-backup:/data/db
 
 #networks:
   #web-app-network:
