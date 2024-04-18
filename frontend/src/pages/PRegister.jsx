@@ -1,3 +1,4 @@
+import React from 'react';
 import BackButton from "../components/BackButton";
 import { useState } from "react";
 import axios from "axios";
@@ -83,7 +84,7 @@ export default function PRegister() {
             <label className="text-xl mr-4 text-gray-500">Patient Name</label>
             <input
               type="text"
-              placeholder="Enter Name"
+              placeholder="Enter Patient Name"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
@@ -93,7 +94,7 @@ export default function PRegister() {
             <label className="text-xl mr-4 text-gray-500">Patient Age</label>
             <input
               type="text"
-              placeholder="Enter Age"
+              placeholder="Enter Patient Age"
               value={form.age}
               onChange={(e) => setForm({ ...form, age: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
@@ -105,7 +106,7 @@ export default function PRegister() {
             </label>
             <input
               type="email"
-              placeholder="Enter email"
+              placeholder="Enter Primary Caregiver email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value.toLowerCase() })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
@@ -115,7 +116,7 @@ export default function PRegister() {
             <label className="text-xl mr-4 text-gray-500">Password</label>
             <input
               type="password"
-              placeholder="Enter password"
+              placeholder="Enter Password"
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
@@ -127,7 +128,7 @@ export default function PRegister() {
             </label>
             <input
               type="text"
-              placeholder="Enter name"
+              placeholder="Enter Primary Caregiver Name"
               value={form.prim_emergency_contact}
               onChange={(e) =>
                 setForm({ ...form, prim_emergency_contact: e.target.value })
@@ -141,7 +142,7 @@ export default function PRegister() {
             </label>
             <input
               type="text"
-              placeholder="Enter Phone Number"
+              placeholder="Enter Primary Caregiver Cell Phone Number"
               value={form.prim_ec_cell}
               onChange={(e) => setForm({ ...form, prim_ec_cell: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
@@ -153,7 +154,7 @@ export default function PRegister() {
             </label>
             <input
               type="text"
-              placeholder="Enter Phone Number"
+              placeholder="Enter Primary Caregiver Work Phone Number"
               value={form.prim_ec_work}
               onChange={(e) => setForm({ ...form, prim_ec_work: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
@@ -165,7 +166,7 @@ export default function PRegister() {
             </label>
             <input
               type="text"
-              placeholder="Enter Relation"
+              placeholder="Enter Primary Caregiver Relation to Patient"
               value={form.prim_ec_relationship}
               onChange={(e) =>
                 setForm({ ...form, prim_ec_relationship: e.target.value })
@@ -179,7 +180,7 @@ export default function PRegister() {
             </label>
             <input
               type="text"
-              placeholder="Enter Name"
+              placeholder="Enter Secondary Caregiver Name"
               value={form.sec_emergency_contact}
               onChange={(e) =>
                 setForm({ ...form, sec_emergency_contact: e.target.value })
@@ -193,7 +194,7 @@ export default function PRegister() {
             </label>
             <input
               type="text"
-              placeholder="Enter Phone Number"
+              placeholder="Enter Secondary Caregiver Cell Phone Number"
               value={form.sec_ec_cell}
               onChange={(e) => setForm({ ...form, sec_ec_cell: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
@@ -205,7 +206,7 @@ export default function PRegister() {
             </label>
             <input
               type="text"
-              placeholder="Enter Phone Number"
+              placeholder="Enter Secondary Caregiver Work Phone Number"
               value={form.sec_ec_work}
               onChange={(e) => setForm({ ...form, sec_ec_work: e.target.value })}
               className="border-2 border-gray-500 px-4 py-2 w-full"
@@ -217,7 +218,7 @@ export default function PRegister() {
             </label>
             <input
               type="text"
-              placeholder="Enter Relation"
+              placeholder="Enter Secondary Caregiver Relation to Patient"
               value={form.sec_ec_relationship}
               onChange={(e) =>
                 setForm({ ...form, sec_ec_relationship: e.target.value })
@@ -229,7 +230,7 @@ export default function PRegister() {
             <label className="text-xl mr-4 text-gray-500">Provider Email</label>
             <input
               type="email"
-              placeholder="Enter email"
+              placeholder="Enter Provider Email"
               value={form.provider_email}
               onChange={(e) =>
                 setForm({ ...form, provider_email: e.target.value })
@@ -239,7 +240,7 @@ export default function PRegister() {
             />
 
             <button type="submit" className="p-2 bg-sky-300 m-8">
-              Submit
+              Register
             </button>
           </form>
         </div>

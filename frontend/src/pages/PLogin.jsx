@@ -1,3 +1,4 @@
+import React from 'react';
 import BackButton from "../components/BackButton";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +63,7 @@ export default function PLogin() {
             />
 
             <button type="submit" className="p-2 bg-sky-300 m-8">
-              Submit
+              Login
             </button>
 
           </form>
