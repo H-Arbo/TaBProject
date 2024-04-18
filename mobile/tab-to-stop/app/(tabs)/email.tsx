@@ -4,7 +4,7 @@ import email from 'react-native-email';
 
 const Email = () => {
     const handleEmail = () => {
-        const to = ['shuuullltz@gmail.com'];
+        const to = ['aakcasumengen@ua.edu'];
         email(to, {
             checkCanOpen: false
         }).catch(console.error);
