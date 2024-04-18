@@ -341,12 +341,12 @@ export default function App() {
               }}>
                 <Text style={{ 
                   textAlign: 'center', 
-                  fontSize: 13, 
+                  fontSize: 14, 
                   color: '#ffff', 
                   fontFamily: 'Courier New',
                   textShadowColor: 'black',
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
+                  textShadowOffset: { width: 0, height: 0 },
+                  textShadowRadius: 4,
                   }}>
                   In 2020,{' '}
                   <Text style={{ fontWeight: 'bold', color: '#ffff' }}>42.7% of children</Text>{' '}
@@ -372,12 +372,12 @@ export default function App() {
               }}>
                 <Text style={{ 
                   textAlign: 'center', 
-                  fontSize: 13, 
+                  fontSize: 14, 
                   color: '#ffff', 
                   fontFamily: 'Courier New',
                   textShadowColor: 'black',
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1, 
+                  textShadowOffset: { width: 0, height: 0 },
+                  textShadowRadius: 4, 
                   }}>
                   Among children{' '}
                   <Text style={{ fontWeight: 'bold', color: '#ffff' }}>under the age of 5 with asthma, this figure was about 52.9%.</Text>
@@ -406,12 +406,12 @@ export default function App() {
               }}>
                 <Text style={{ 
                   textAlign: 'center', 
-                  fontSize: 13, 
+                  fontSize: 14, 
                   color: '#ffff', 
                   fontFamily: 'Courier New',
                   textShadowColor: 'black',
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
+                  textShadowOffset: { width: 0, height: 0 },
+                  textShadowRadius: 4,
                   }}>
                   It is estimated that{' '}
                   <Text style={{ fontWeight: 'bold', color: '#ffff' }}>50% of children</Text>{' '}

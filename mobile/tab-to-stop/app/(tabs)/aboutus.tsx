@@ -1,6 +1,4 @@
 import { StyleSheet, Platform, ScrollView, Image } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
 export default function TabAboutusScreen() {
