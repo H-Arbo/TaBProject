@@ -93,7 +93,7 @@ function DPinfo() {
                   <div className="p-6">
                     <Link
                       to="/doctor/patientInfo/changeGreenMeds/"
-                      state={{ pInfo: filteredPatients }}
+                      state={{ pInfo: filteredPatients, doctor_email: doctor_email }}
                     >
                       <button onClick={handleClick} color="darkblue">
                         (Change Green Zone)
@@ -156,7 +156,7 @@ function DPinfo() {
                   <div className="p-6">
                     <Link
                       to="/doctor/patientInfo/changeYellowMeds/"
-                      state={{ pInfo: filteredPatients }}
+                      state={{ pInfo: filteredPatients, doctor_email: doctor_email }}
                     >
                       <button onClick={handleClick} color="darkblue">
                         (Change Yellow Zone)
@@ -219,7 +219,7 @@ function DPinfo() {
                   <div className="p-6">
                     <Link
                       to="/doctor/patientInfo/changeRedMeds/"
-                      state={{ pInfo: filteredPatients }}
+                      state={{ pInfo: filteredPatients, doctor_email: doctor_email }}
                     >
                       <button onClick={handleClick} color="darkblue">
                         (Change Red Zone)

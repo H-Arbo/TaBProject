@@ -64,7 +64,7 @@ const ChangeGreenMeds = () => {
   });
 
   const location = useLocation();
-  const { pInfo } = location.state;
+  const { pInfo, doctor_email } = location.state;
   const [gRows, setgRows] = useState(pInfo.at(0).gz_meds);
   const [medToDelete, setMedToDelete] = useState(null);
   
@@ -80,7 +80,7 @@ const ChangeGreenMeds = () => {
   };
   return (
     <>
-      <Dr_Navbar />
+      <Dr_Navbar email ={doctor_email}/>
       <div className="p-4">
         <h1 className="text-3xl my-4">Change Patient Medications</h1>
         <h1 className="text-3xl my-4">Green Zone</h1>

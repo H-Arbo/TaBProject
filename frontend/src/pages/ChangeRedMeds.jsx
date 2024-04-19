@@ -64,7 +64,7 @@ const ChangeRedMeds = () => {
   });
 
   const location = useLocation();
-  const { pInfo } = location.state;
+  const { pInfo, doctor_email } = location.state;
   const [rRows, setrRows] = useState(pInfo.at(0).rz_meds);
   const [medToDelete, setMedToDelete] = useState(null);
   
@@ -80,7 +80,7 @@ const ChangeRedMeds = () => {
   };
   return (
     <>
-      <Dr_Navbar />
+      <Dr_Navbar email= {doctor_email} />
       <div className="p-4">
         <h1 className="text-3xl my-4">Change Patient Medications</h1>
         <h1 className="text-3xl my-4">Red Zone</h1>

@@ -69,7 +69,7 @@ const DeletePatient = () => {
 
     return (
         <>
-            <Dr_Navbar />
+            <Dr_Navbar email = {doctor_email}/>
             <div className='p-4'>
                 {loading ? <Loading /> : ''}
                 <div className='flex flex-col items-center border-2 border-red-400 rounded-x1 w-[600px] p-8 mx-auto'>
