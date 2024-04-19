@@ -106,7 +106,7 @@ router.get('/:id', async (request, response) => {
 //Route to update patient
 router.put('/pprofile/edit', async (request, response) => {
     try {
-        const requiredFields = ['name', 'age', 'email', 'pr_peak_flow', 'prim_emergency_contact', 'prim_ec_cell', 'prim_ec_relationship', 'prim_ec_work', 'sec_emergency_contact', 'sec_ec_cell', 'sec_ec_relationship', 'sec_ec_work'];
+        const requiredFields = ['name', 'age', 'email', 'pr_peak_flow', 'prim_emergency_contact', 'prim_ec_cell', 'prim_ec_relationship', 'prim_ec_work', 'sec_emergency_contact', 'sec_ec_cell', 'sec_ec_relationship', 'sec_ec_work', 'provider_email'];
         for (const field of requiredFields) {
             if (!request.body[field]) {
                 return response.status(400).json({ message: `Missing required field: ${field}` });

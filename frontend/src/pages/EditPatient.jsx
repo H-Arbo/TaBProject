@@ -17,6 +17,7 @@ export default function EditPatient({ changeToFalse }) {
     sec_ec_cell: "",
     sec_ec_relationship: "",
     sec_ec_work: "",
+    provider_email: ""
   });
 
   const [loading, setLoading] = useState(true);
@@ -42,6 +43,7 @@ export default function EditPatient({ changeToFalse }) {
         sec_ec_cell: response.data.sec_ec_cell,
         sec_ec_relationship: response.data.sec_ec_relationship,
         sec_ec_work: response.data.sec_ec_work,
+        provider_email: response.data.provider_email
       });
       setLoading(false);
     } catch (error) {
@@ -206,6 +208,21 @@ export default function EditPatient({ changeToFalse }) {
                   value={patientInfo.sec_ec_relationship}
                   onChange={handleInputChange}
                   name="sec_ec_relationship"
+                  maxLength={50}
+                /> 
+              </p>
+            </div>
+          </div>
+
+          <div className='border border-sky-400 rounded-xl p-4'>
+            <h2 className='text-xl text-gray-700 mb-4'>Provider Info</h2>
+            <div className='space-y-2'>
+              <p><span className='font-semibold'>Provider Email:</span> <input 
+                  type="text"
+                  placeholder="Enter email"
+                  value={patientInfo.provider_email}
+                  onChange={handleInputChange}
+                  name="provider_email"
                   maxLength={50}
                 /> 
               </p>

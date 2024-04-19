@@ -562,6 +562,7 @@ export const editPatient = async (request, response) => {
       sec_ec_cell,
       sec_ec_relationship,
       sec_ec_work,
+      provider_email
     } = request.body;
 
     if (
@@ -576,7 +577,8 @@ export const editPatient = async (request, response) => {
       !sec_emergency_contact ||
       !sec_ec_cell ||
       !sec_ec_relationship ||
-      !sec_ec_work
+      !sec_ec_work ||
+      !provider_email
     ) {
       return response.status(400).json({
         error: "Please provide all required fields.",
@@ -678,6 +680,7 @@ export const editPatient = async (request, response) => {
     existingPatient.sec_ec_cell = sec_ec_cell;
     existingPatient.sec_ec_relationship = sec_ec_relationship;
     existingPatient.sec_ec_work = sec_ec_work;
+    existingPatient.provider_email = provider_email;
 
     // Save updated patient
     const updatedPatient = await existingPatient.save();
