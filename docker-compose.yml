@@ -5,11 +5,11 @@ services:
     container_name: backend
     env_file: ./backend/.env
     ports:
-      - "5432:5432"
-    #depends_on:
-    # - db
-    #networks:
-    #- web-app-network
+      - "10.8.97.14:25432:5432"
+    depends_on:
+      - db
+    networks:
+      - web-app-network
     
     #develop:
       #watch:
@@ -21,23 +21,25 @@ services:
     restart: unless-stopped
     container_name: frontend
     ports:
-      -  5173:5173 #"10.8.97.14:8080:5173"
+      - "10.8.97.14:8080:5173"
     depends_on:
       - api
-    #networks:
-    #- web-app-network
+    networks:
+      - web-app-network
 
-  #db:
-  #  image: mongo
-  #  ports:
-  #    - 27017:27017
-  #  container_name: monogo-db
-  #  volumes:
-   #   - /home/htarbogast/mongo-backup:/data/db
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+    container_name: monogo-db
+    networks:
+      - web-app-network
+    volumes:
+     - /home/htarbogast/mongo-backup:/data/db
 
-#networks:
-  #web-app-network:
-   # driver: bridge
+networks:
+  web-app-network:
+    driver: bridge
     #develop:
       #watch:
         #- action: sync

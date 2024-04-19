@@ -1,5 +1,5 @@
 import express from "express";
-import { PORT, mongoDBURL } from "./config.js";
+import { PORT, mongoDBURL, mongodb_docker } from "./config.js";
 import mongoose from "mongoose";
 import patientsRoute from "./routes/patientsRoute.js";
 import dAuthRoutes from "./routes/dAuthRoutes.js";
@@ -13,7 +13,7 @@ const app = express();
 app.disable("x-powered-by");
 //middleware for parsing request body
 app.use(express.json());
-var allowedOrigins = ["http://localhost:8080", "http://localhost:5173"];
+var allowedOrigins = ["http://localhost:8080", "http://localhost:5173", "http://cs495-spring2024-01.ua.edu:8080", "http://10.8.97.14:25432"];
 //cors middleware
 app.use(
   cors({
@@ -25,7 +25,7 @@ app.use(
       if (allowedOrigins.indexOf(origin) === -1) {
         var msg =
           "The CORS policy for this site does not " +
-          "allow access from the specified Origin.";
+          "allow access from the specified Origin."+ origin;
         return callback(new Error(msg), false);
       }
       return callback(null, true);
@@ -63,7 +63,7 @@ app.get("/", (request, response) => {
 
 //database connection
 mongoose
-  .connect(process.env.MONGDB_URL)
+  .connect(mongodb_docker)
   .then(() => {
     console.log("App connected to database");
     app.listen(PORT, () => {
