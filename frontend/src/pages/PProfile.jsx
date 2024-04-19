@@ -43,7 +43,7 @@ const PatientProfile = () => {
           <Loading />
         ) : editMode ? (
           <div>
-            <EditPatient changeToFalse={changeToFalse} />
+            <EditPatient pat_email= {pat_email} changeToFalse={changeToFalse} />
           </div>
         ) : patient ? (
           <div>
