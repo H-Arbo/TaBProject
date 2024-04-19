@@ -4,11 +4,14 @@ import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Loading from "../components/Loading";
 import Pat_Navbar from "../components/Pat_Navbar";
+import { Link, useLocation } from 'react-router-dom';
 
 const Animations = () => {
+  const location = useLocation();
+  const { pat_email } = location.state;
   return (
     <>
-      <Pat_Navbar />
+      <Pat_Navbar email= {pat_email}/>
       <div className="p-4">
         <h1 className="text-3xl my-4">Animations!</h1>
         <h2>Animation 4</h2>

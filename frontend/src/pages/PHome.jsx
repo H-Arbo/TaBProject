@@ -28,7 +28,7 @@ const PHome = () => {
 
     return (
         <>
-            <Pat_Navbar />
+            <Pat_Navbar email ={pat_email}/>
             <div className='p-8'>
 
                 <div className='p-4'>

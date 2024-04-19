@@ -52,7 +52,7 @@ const ActionSheet = () => {
 
   return (
     <>
-      <Pat_Navbar />
+      <Pat_Navbar email={pat_email}/>
       <div className='p-4 items-center justify-center'>
         <div className="flex justify-end">
           <button style={{ border: '1px solid #ccc', padding: '8px 16px', borderRadius: '8px' }} onClick={downloadPDF}>

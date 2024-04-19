@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import Pat_Navbar from '../components/Pat_Navbar';
 import { MdHistoryEdu } from "react-icons/md";
 import EditPatient from './EditPatient';
+import { Link, useLocation } from 'react-router-dom';
 
 const PatientProfile = () => {
   const [patient, setPatient] = useState(null);
@@ -14,13 +15,15 @@ const PatientProfile = () => {
   const changeToFalse = () => {
     setEditMode(false);
   }
+  const location = useLocation();
+  const { pat_email } = location.state;
 
   useEffect(() => {
     setLoading(true);
     axios
       .post('/patients/info', { email: pat_email })
       .then((response) => {
-        setPatient(response.data);
+        setPatient(response.data.data.at(0));
         setLoading(false);
       })
       .catch((error) => {
@@ -31,7 +34,7 @@ const PatientProfile = () => {
 
   return (
     <>
-      <Pat_Navbar />
+      <Pat_Navbar email={pat_email}/>
       <div className='p-9 bg-white'>
 
         <h1 className='text-3xl my-4 text-center'>Patient Profile</h1>

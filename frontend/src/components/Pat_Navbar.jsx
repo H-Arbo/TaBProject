@@ -5,7 +5,7 @@ import LogoutButton from '../components/LogoutButton';
 import BackButton from '../components/BackButton';
 import Info from '../components/Info';
 
-const Pat_Navbar = () => {
+const Pat_Navbar = ({email}) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const handleMouseEnter = () => {
@@ -23,10 +23,10 @@ const Pat_Navbar = () => {
         <h1 className="text-2xl font-semibold">Patient Portal</h1>
         <div className="flex items-center space-x-2">
           
-          <Link to="/patients/home" className="text-sky-800">
+          <Link to="/patients/home" state={{ pat_email: email }} className="text-sky-800">
             <MdHome className="text-3xl" />
           </Link>
-          <Link to={`/patients/profile`} className="text-sky-800 mr-4">
+          <Link to={`/patients/profile`}  state={{ pat_email: email }} className="text-sky-800 mr-4">
             <MdOutlinePerson className='text-3xl' />
           </Link>
           <div

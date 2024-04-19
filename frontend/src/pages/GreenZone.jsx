@@ -30,7 +30,7 @@ const GreenZone = () => {
 
   return (
     <>
-      <Pat_Navbar />
+      <Pat_Navbar email={pat_email}/>
       <div className="p-9 bg-white">
         {loading ? (
           <Loading />

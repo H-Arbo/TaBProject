@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
 import axios from 'axios';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams, Link, useLocation  } from 'react-router-dom';
 import Pat_Navbar from '../components/Pat_Navbar';
 import Button from '../components/Button';
 
+
 const Surveys = () => {
-  
+  const location = useLocation();
+  const { pat_email } = location.state;
 
   return (
     <>
-      <Pat_Navbar />
+      <Pat_Navbar email={pat_email}/>
       <div className='p-4'>
 
 
