@@ -143,7 +143,7 @@ export default function App() {
               >
                 <ExternalLink
                   href="http://cs495-spring2024-01.ua.edu:8080">
-                  <Text style={styles.title4}>Link to account</Text>
+                  <Text style={styles.title4}>Access Website</Text>
                   <FontAwesome name="arrow-right" size={24} color="#38A3A5" style={{ textDecorationLine: 'underline' }} />                
                 </ExternalLink>
               </TouchableOpacity>
