@@ -9,11 +9,11 @@ import Button from '../components/Button';
 
 const Surveys = () => {
   const location = useLocation();
-  const { pat_email } = location.state;
+  const { pat_email, doctor_email  } = location.state;
 
   return (
     <>
-      <Pat_Navbar email={pat_email}/>
+      <Pat_Navbar email={pat_email} doctor_email ={ doctor_email}/>
       <div className='p-4'>
 
 

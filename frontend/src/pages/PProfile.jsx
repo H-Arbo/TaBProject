@@ -50,7 +50,7 @@ const PatientProfile = () => {
 
   return (
     <>
-      <Pat_Navbar email={pat_email} doctor_email ={ patients.provider_email}/>
+      <Pat_Navbar email={pat_email} doctor_email ={ doctor_email}/>
       <div className='p-9 bg-white'>
 
         <h1 className='text-3xl my-4 text-center'>Patient Profile</h1>

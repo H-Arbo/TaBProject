@@ -8,10 +8,10 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Animations = () => {
   const location = useLocation();
-  const { pat_email } = location.state;
+  const { pat_email, doctor_email} = location.state;
   return (
     <>
-      <Pat_Navbar email= {pat_email}/>
+      <Pat_Navbar email= {pat_email} doctor_email ={ doctor_email}/>
       <div className="p-4">
         <h1 className="text-3xl my-4">Animations!</h1>
         <h2>Animation 4</h2>

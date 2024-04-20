@@ -10,7 +10,7 @@ const RedZone = () => {
     const [loading, setLoading] = useState(false);
     const [editMode, setEditMode] = useState(false);
     const location = useLocation();
-    const { pat_email } = location.state;
+    const { pat_email , doctor_email } = location.state;
     const changeToFalse = () => {
         setEditMode(false);
     }
@@ -31,7 +31,7 @@ const RedZone = () => {
 
     return (
         <>
-            <Pat_Navbar email={pat_email}/>
+            <Pat_Navbar email={pat_email} doctor_email ={ doctor_email}/>
             <div className='p-9 bg-white'>
                 {loading ? (
                     <Loading />
