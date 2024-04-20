@@ -96,7 +96,7 @@ const ActionSheet = () => {
                             <div className="flex">
                               <p className="mr-4"><span className='font-semibold'>Patient Name: </span> <u>{patient.name}</u></p>
                               <p className="mr-4"><span className='font-semibold'>Age: </span> <u>{patient.age}</u></p>
-                              <p><span className='font-semibold'>Personal Best Peak Flow: </span> <u>{patient.pr_peak_flow}</u></p>
+                              <p><span className='font-semibold'>Personal Best Peak Flow: </span> <u>{patient.gz_peak_flow_max}</u></p>
                             </div>
                             <div className="flex">
                               <p className="mr-4"><span className='font-semibold'>Primary Emergency Contact: </span> <u>{patient.prim_emergency_contact}</u></p>

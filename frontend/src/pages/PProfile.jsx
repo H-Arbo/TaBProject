@@ -77,7 +77,7 @@ const PatientProfile = () => {
                   <div className='space-y-2'>
                     <p><span className='font-semibold'>Patient Name:</span> {patient.name}</p>
                     <p><span className='font-semibold'>Age:</span> {patient.age}</p>
-                    <p><span className='font-semibold'>Best Peak Flow:</span> {patient.pr_peak_flow}</p>
+                    <p><span className='font-semibold'>Best Peak Flow:</span> {patient.gz_peak_flow_max}</p>
                   </div>
                 </div>
 
