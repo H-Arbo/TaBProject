@@ -1,9 +1,9 @@
-import { Dimensions, StyleSheet, Image, ScrollView, Pressable, Platform, TouchableOpacity} from "react-native";
-import React, {useState} from 'react';
+import { Dimensions, StyleSheet, Image, ScrollView, Button, Platform, TouchableOpacity} from "react-native";
+import React from 'react';
 import { Text, View } from "@/components/Themed";
-import Modal from 'react-native-modal';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useColorScheme } from "@/components/useColorScheme";
+import email from 'react-native-email';
+
 import {ExternalLink} from '@/components/ExternalLink';
 
 const dimensions = Dimensions.get("window");
@@ -13,6 +13,12 @@ const characterHeight = imageHeight/2;
 const characterWidth = imageWidth/2;
 
 export default function App() {
+  const handleEmail = () => {
+    const to = ['aakcasumengen@ua.edu'];
+    email(to, {
+        checkCanOpen: false
+    }).catch(console.error);
+  };
 
   return (
     
@@ -421,6 +427,27 @@ export default function App() {
               </View>
             </View>
           </View>
+
+          {/* Contact us */}
+          <View style={styles.emailcontainer}>
+            <View
+              style={styles.separator2}
+                lightColor="black"
+                darkColor="black"
+            />
+            <Text style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                marginTop: 30
+                }}>
+                Have any questions? </Text>
+            <Text style={{
+                fontSize: 10
+            }}>Send us an email with your name and any questions you have!</Text>
+            <View style={{ backgroundColor: 'transparent', paddingTop: 10}}> 
+                <Button title="Contact Us" onPress={handleEmail} />
+            </View>
+          </View>
         </View>  
       </View>
     </ScrollView>
@@ -434,6 +461,13 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+  },
+  emailcontainer: {
+    flex: 1,
+    backgroundColor: '#D2EBDE',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50
   },
   text: {
     alignItems: "center",
@@ -485,6 +519,13 @@ const styles = StyleSheet.create({
     marginBottom: -20,
     height: 2,
     width: "95%",
+  },
+  separator2: {
+    marginVertical: 10,
+    marginBottom: -20,
+    height: 2,
+    width: "95%",
+    opacity: 26
   },
   logo: {
     height: imageHeight,
