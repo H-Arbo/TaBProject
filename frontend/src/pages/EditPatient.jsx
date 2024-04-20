@@ -137,7 +137,7 @@ export default function EditPatient({ pat_email, changeToFalse }) {
                 <input
                   type="text"
                   placeholder="Enter peak flow"
-                  value={patientInfo.pr_peak_flow}
+                  value={patientInfo.gz_peak_flow_max}
                   onChange={handleInputChange}
                   name="pr_peak_flow"
                   maxLength={4}
