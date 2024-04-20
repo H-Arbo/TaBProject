@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 
-export default function EditDoctor({ changeToFalse }) {
+export default function EditDoctor({ changeToFalse, doctor_info }) {
   const [doctorInfo, setDoctorInfo] = useState({
     name: "",
     email: "",
@@ -14,24 +14,26 @@ export default function EditDoctor({ changeToFalse }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchDoctorInfo();
+    setLoading(true);
+    setDoctorInfo(doctor_info);
+    setLoading(false);
   }, []);
 
-  const fetchDoctorInfo = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get('/profile', { withCredentials: true });
-      setDoctorInfo({
-        name: response.data.name,
-        email: response.data.email,
-        phone: response.data.phone,
-      });
-      setLoading(false);
-    } catch (error) {
-      toast.error('Error fetching doctor profile:', error);
-      setLoading(false);
-    }
-  };
+  // const fetchDoctorInfo = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await axios.get('/profile', { withCredentials: true });
+  //     setDoctorInfo({
+  //       name: response.data.name,
+  //       email: response.data.email,
+  //       phone: response.data.phone,
+  //     });
+  //     setLoading(false);
+  //   } catch (error) {
+  //     toast.error('Error fetching doctor profile:', error);
+  //     setLoading(false);
+  //   }
+  // };
 
   const handleInputChange = async (e) => {
     const { name, value } = e.target;

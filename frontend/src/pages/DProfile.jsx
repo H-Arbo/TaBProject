@@ -46,7 +46,7 @@ const DProfile = () => {
           <Loading />
         ) : editMode ? (
           <div>
-            <EditDoctor changeToFalse={changeToFalse} />
+            <EditDoctor changeToFalse={changeToFalse} doctor_info = {doctor}/>
           </div>
         ) : doctor ? (
           <div className='flex flex-wrap flex-col border border-sky-400 rounded-xl w-fit p-4'>
