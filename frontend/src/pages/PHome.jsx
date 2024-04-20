@@ -15,27 +15,27 @@ const PHome = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get('/patients')
-            .then((response) => {
-                setPatients(response.data.data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.log(error);
-                setLoading(false);
-            });
+      .post('/patients/info', {email: pat_email})
+      .then((response) => {
+        setPatients(response.data.data.at(0));
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching patient profile:', error);
+        setLoading(false);
+      });
     }, []);
 
     return (
         <>
-            <Pat_Navbar email ={pat_email}/>
+            <Pat_Navbar email ={pat_email} doctor_email ={ patients.provider_email}/>
             <div className='p-8'>
 
                 <div className='p-4'>
                     <h1 className='text-3xl font-bold my-4 text-center'>Patient Home</h1>
 
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-                        <Link to='/patients/green' state={{ id: 1, pat_email: pat_email }}>
+                        <Link to='/patients/green' state={{ id: 1, pat_email: pat_email, doctor_email: patients.provider_email}}>
                             <Button color="green">
                                 Green Zone - Doing Well
                                 No coughing, wheezing, chest tightness, or difficulty breathing.
@@ -44,7 +44,7 @@ const PHome = () => {
                                 Peak flow x to y (80% to 100% of personal best).
                             </Button>
                         </Link>
-                        <Link to='/patients/yellow' state={{ id: 1, pat_email: pat_email }}>
+                        <Link to='/patients/yellow' state={{ id: 1, pat_email: pat_email, doctor_email: patients.provider_email }}>
                             <Button color="yellow">
                                 Yellow Zone - Caution/Getting Worse
                                 Coughing, wheezing, chest tightness, or difficulty breathing.
@@ -54,7 +54,7 @@ const PHome = () => {
                                 Peak flow x to y (50% to 80% of personal best).
                             </Button>
                         </Link>
-                        <Link to='/patients/red' state={{ id: 1, pat_email: pat_email }}>
+                        <Link to='/patients/red' state={{ id: 1, pat_email: pat_email, doctor_email: patients.provider_email}}>
                             <Button color="red">
                                 Red Zone - Alert
                                 Difficulty with breathing, coughing, wheezing, not helping with medications.
@@ -66,13 +66,13 @@ const PHome = () => {
                         </Link>
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-8'>
-                        <Link to='/patients/ActionSheet' state={{ id: 1, pat_email: pat_email }}>
+                        <Link to='/patients/ActionSheet' state={{ id: 1, pat_email: pat_email, doctor_email: patients.provider_email }}>
                             <Button color="blue">Action Sheet</Button>
                         </Link>
-                        <Link to='/patients/animations' state={{ id: 1, pat_email: pat_email }}>
+                        <Link to='/patients/animations' state={{ id: 1, pat_email: pat_email, doctor_email: patients.provider_email }}>
                             <Button color="blue">Animations</Button>
                         </Link>
-                        <Link to='/patients/surveys' state={{ id: 1, pat_email: pat_email }}>
+                        <Link to='/patients/surveys' state={{ id: 1, pat_email: pat_email, doctor_email: patients.provider_email }}>
                             <Button color="blue">Surveys</Button>
                         </Link>
                     </div>

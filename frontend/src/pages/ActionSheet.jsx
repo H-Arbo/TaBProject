@@ -10,22 +10,39 @@ import { Link, useLocation } from 'react-router-dom';
 
 const ActionSheet = () => {
   const [patient, setPatient] = useState(null);
+  const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const { pat_email } = location.state;
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .post('/patients/info', {email: pat_email})
-      .then((response) => {
-        setPatient(response.data.data.at(0));
+
+    Promise.all([
+      axios
+      .post('/patients/info', {email: pat_email}),
+      axios.post('/doctor/info',{email: location.state.doctor_email} )
+  ])
+      .then(([patientInfo, doctorInfo]) => {
+        setPatient(patientInfo.data.data.at(0));
+        setDoctor(doctorInfo.data.data);
+
         setLoading(false);
       })
       .catch((error) => {
-        console.error('Error fetching patient profile:', error);
-        setLoading(false);
+          console.error('Error:', error);
+          setLoading(false);
       });
+    // axios
+    //   .post('/patients/info', {email: pat_email})
+    //   .then((response) => {
+    //     setPatient(response.data.data.at(0));
+    //     setLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error fetching patient profile:', error);
+    //     setLoading(false);
+    //   });
   }, []);
 
   const pdfRef = useRef();
@@ -90,8 +107,8 @@ const ActionSheet = () => {
                               <p><span className='font-semibold'>Work Phone: </span> <u>{patient.prim_ec_work}</u></p>
                             </div>
                             <div className="flex">
-                              <p className="mr-4"><span className='font-semibold'>Health Care Provider: </span> <u>{patient.provider}</u></p>
-                              <p><span className='font-semibold'>Phone: </span> <u>{patient.provider_phone}</u></p>
+                              <p className="mr-4"><span className='font-semibold'>Health Care Provider: </span> <u>{doctor.name}</u></p>
+                              <p><span className='font-semibold'>Phone: </span> <u>{doctor.phone}</u></p>
                             </div>
                           </div>
                         </div>

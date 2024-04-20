@@ -9,6 +9,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const PatientProfile = () => {
   const [patient, setPatient] = useState(null);
+  const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(false);
   const [editMode, setEditMode] = useState(false);
 
@@ -16,25 +17,40 @@ const PatientProfile = () => {
     setEditMode(false);
   }
   const location = useLocation();
-  const { pat_email } = location.state;
+  const { pat_email, doctor_email } = location.state;
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .post('/patients/info', { email: pat_email })
-      .then((response) => {
-        setPatient(response.data.data.at(0));
+    Promise.all([
+      axios
+      .post('/patients/info', {email: pat_email}),
+      axios.post('/doctor/info',{email: doctor_email} )
+  ])
+      .then(([patientInfo, doctorInfo]) => {
+        setPatient(patientInfo.data.data.at(0));
+        setDoctor(doctorInfo.data.data);
+
         setLoading(false);
       })
       .catch((error) => {
-        console.error('Error fetching patient profile:', error);
-        setLoading(false);
+          console.error('Error:', error);
+          setLoading(false);
       });
+    // axios
+    //   .post('/patients/info', { email: pat_email })
+    //   .then((response) => {
+    //     setPatient(response.data.data.at(0));
+    //     setLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error fetching patient profile:', error);
+    //     setLoading(false);
+    //   });
   }, []);
 
   return (
     <>
-      <Pat_Navbar email={pat_email}/>
+      <Pat_Navbar email={pat_email} doctor_email ={ patients.provider_email}/>
       <div className='p-9 bg-white'>
 
         <h1 className='text-3xl my-4 text-center'>Patient Profile</h1>
@@ -88,9 +104,9 @@ const PatientProfile = () => {
 
                 <div className='border border-sky-400 rounded-xl p-4'>
                   <h2 className='text-xl text-gray-700 mb-4'>Provider Info</h2>
-                  <p><span className='font-semibold'>Provider:</span> {patient.provider}</p>
-                  <p><span className='font-semibold'>Email:</span> {patient.provider_email}</p>
-                  <p><span className='font-semibold'>Phone:</span> {patient.provider_phone}</p>
+                  <p><span className='font-semibold'>Provider:</span> {doctor.name}</p>
+                  <p><span className='font-semibold'>Email:</span> {doctor.email}</p>
+                  <p><span className='font-semibold'>Phone:</span> {doctor.phone}</p>
                 </div>
               </div>
             </div>
