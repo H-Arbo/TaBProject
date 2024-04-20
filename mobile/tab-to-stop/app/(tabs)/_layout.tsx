@@ -112,35 +112,6 @@ export default function TabLayout() {
 
         }}
       />
-      <Tabs.Screen
-        name="email"
-        options={{
-          //Change header style
-          title: "Contact Us",
-          headerStyle: {
-            backgroundColor: "#38A3A5",
-          },
-          headerTitleStyle: {
-            fontWeight: "bold",
-            color: '#38A3A5',
-          },
-          tabBarStyle: { 
-            backgroundColor: "#38A3A5",
-            shadowColor: '#000',
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 1,
-            shadowRadius: 4,
-            elevation: 5,
-          },
-
-          //Bottom tab bar and icon options
-          tabBarIcon: ({ color }) => <TabBarIcon name="envelope" color={color} />,
-
-        }}
-      />
     </Tabs>
   );
 }
