@@ -22,7 +22,7 @@ const doctorSchema = mongoose.Schema(
         },
         patient_list:  {
             type: [patientSchema],
-            required: true,
+            //required: true,
         }
     }
 );
