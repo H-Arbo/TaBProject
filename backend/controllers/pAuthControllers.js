@@ -502,7 +502,7 @@ export const loginPatient = async (request, response) => {
           provider: patient.provider,
           provider_phone: patient.provider_phone,
           provider_email: patient.provider_email,
-          pr_peak_flow: patient.pr_peak_flow,
+          gz_peak_flow_max: patient.gz_peak_flow_max,
           gz_peak_flow_max: patient.gz_peak_flow_max,
           gz_peak_flow_min: patient.gz_peak_flow_min,
           rz_peak_flow_max: patient.rz_peak_flow_max,
@@ -623,7 +623,7 @@ export const editPatient = async (request, response) => {
 
     // Check peak flow
     const isValidPF = /[a-zA-Z]/;
-    if (isValidPF.test(pr_peak_flow)) {
+    if (isValidPF.test(gz_peak_flow_max)) {
       return response.status(400).json({
           error: 'Invalid peak flow'
       });
@@ -672,7 +672,7 @@ export const editPatient = async (request, response) => {
     // Update patient fields
     existingPatient.name = name;
     existingPatient.age = age;
-    existingPatient.pr_peak_flow = pr_peak_flow;
+    existingPatient.gz_peak_flow_max = gz_peak_flow_max;
     existingPatient.prim_emergency_contact = prim_emergency_contact;
     existingPatient.prim_ec_cell = prim_ec_cell;
     existingPatient.prim_ec_relationship = prim_ec_relationship;
@@ -703,7 +703,7 @@ export const editPatient = async (request, response) => {
         provider: updatedPatient.provider,
         provider_phone: updatedPatient.provider_phone,
         provider_email: updatedPatient.provider_email,
-        pr_peak_flow: updatedPatient.pr_peak_flow,
+        gz_peak_flow_max: updatedPatient.gz_peak_flow_max,
         gz_peak_flow_max: updatedPatient.gz_peak_flow_max,
         gz_peak_flow_min: updatedPatient.gz_peak_flow_min,
         rz_peak_flow_max: updatedPatient.rz_peak_flow_max,
