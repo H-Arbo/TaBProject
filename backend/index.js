@@ -8,6 +8,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv/config.js";
 import jwt from "jsonwebtoken";
+import { Patient } from "../models/patientModel.js";
+import { Doctor } from "../models/doctorModel.js";
 
 const app = express();
 app.disable("x-powered-by");
@@ -41,19 +43,39 @@ app.use("/doctor/", dAuthRoutes);
 app.use("/patients/", pAuthRoutes);
 
 //app.use("/patients", patientsRoute);
-app.get("/profile", (request, response) => {
-  const { token } = request.cookies;
+app.post("/profile", async (request, response) => {
+  try {
+    const {email} = request.body;
+
+  const doc = await Doctor.findOne({email});
+  if(!doc){
+    const patient = await Patient.findOne({email});
+    if(!patient){
+      response.json("no user");
+    }else{
+      response.json("user");
+    }
+  }else{
+    response.json("user");
+  }
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+  
+
+  //const { token } = request.cookies;
 
   //console.log("token in index.js:" + token);
 
-  if (token) {
-    jwt.verify(token, process.env.JWT_STRING, {}, (error, user) => {
-      if (error) throw error;
-      response.json(user);
-    });
-  } else {
-    response.json("no token");
-  }
+  // if (token) {
+  //   jwt.verify(token, process.env.JWT_STRING, {}, (error, user) => {
+  //     if (error) throw error;
+  //     response.json(user);
+  //   });
+  // } else {
+  //   response.json("no token");
+  // }
 });
 
 app.get("/", (request, response) => {

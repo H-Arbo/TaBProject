@@ -5,7 +5,7 @@ import { useContext } from 'react';
 export const ProtectedRoute = ({ children }) => {
   const { user } = useContext(UserContext);
   console.log(user);
-  if (user == "logged out") {
+  if (user == "no user") {
     // user is not authenticated
     return <Navigate to="/" />;
   }
