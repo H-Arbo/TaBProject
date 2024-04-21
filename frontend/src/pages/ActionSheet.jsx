@@ -462,10 +462,10 @@ const ActionSheet = () => {
                           </p>
                         </div>
                       )}
-                      <h1 className="flex items-center justify-center">
+                      <h1 className="flex items-center justify-center p-2">
                         <strong>CALL your doctor NOW.</strong>
                       </h1>
-                      <h1 className="flex items-center justify-center">
+                      <h1 className="flex items-center justify-center p-2">
                         <strong>
                           GO to the hospital/emergency department or CALL for an
                           ambulance NOW!
