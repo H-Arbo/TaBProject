@@ -52,7 +52,7 @@ app.get("/profile", (request, response) => {
       response.json(user);
     });
   } else {
-    response.json("no no token");
+    response.json(null);
   }
 });
 
