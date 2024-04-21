@@ -51,12 +51,12 @@ app.post("/profile", async (request, response) => {
   if(!doc){
     const patient = await Patient.findOne({email});
     if(!patient){
-      response.json("no user");
+      response.json(null);
     }else{
-      response.json("user");
+      response.json(patient);
     }
   }else{
-    response.json("user");
+    response.json(doc);
   }
   } catch (error) {
     console.log(error.message);

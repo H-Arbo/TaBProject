@@ -9,7 +9,7 @@ export function UserContextProvider({ children }) {
     const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
-        if (user == "no user") {
+        if (!user) {
             axios.post('/profile', {email: location.state.doctor_email }).then(({ data }) => {
                 setUser(data)
             })
@@ -18,7 +18,7 @@ export function UserContextProvider({ children }) {
     })
 
     const logout = () => {
-        setUser("no user");
+        setUser(null);
         document.cookie = "token=; path=/;"
         //navigate("/", { replace: true });
         redirect("/")
