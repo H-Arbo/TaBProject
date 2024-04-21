@@ -71,7 +71,7 @@ const PatientProfile = () => {
           </div>
         ) : patient ? (
           <div>
-            <div classname = 'pb-2' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}> 
+            <div className = 'pb-2' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}> 
               <div className=' text-ffff' style={{ display: 'inline-flex', cursor: "pointer" }} onClick={() => setEditMode(true)}>
                 <MdHistoryEdu className="text-4x1 h-6 w-6"/> 
                 <span>Edit Profile</span>
