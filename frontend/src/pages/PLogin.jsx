@@ -1,13 +1,15 @@
-import React from 'react';
+import {React, useContext} from 'react';
 import BackButton from "../components/BackButton";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import './css/characters.css'
+import { UserContext } from "../../context/userContext";
 
 export default function PLogin() {
   const nav = useNavigate();
+  const { user, setUser } = useContext(UserContext);
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -27,6 +29,7 @@ export default function PLogin() {
         setData({ email: "", password: '' });
       } else {
         setData({});
+        setUser(data);
         nav("/patients/home" , { state: { pat_email: email } });
       }
     } catch (error) {
