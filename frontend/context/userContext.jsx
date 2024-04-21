@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useMemo } from 'react';
 import { useLocalStorage } from "../src/hooks/useLocalStorage";
 import { useNavigate } from "react-router-dom";
 export const UserContext = createContext({});
@@ -21,9 +21,16 @@ export function UserContextProvider({ children }) {
         document.cookie = "token=; path=/;"
         navigate("/", { replace: true });
     }
-
+    const value = useMemo(
+        () => ({
+          user,
+          login,
+          logout,
+        }),
+        [user]
+      );
     return (
-        <UserContext.Provider value={{ user, setUser, logout }}>
+        <UserContext.Provider value={value}>
             {children}
         </UserContext.Provider>
     )
