@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createContext, useState, useEffect } from 'react';
 import { useLocalStorage } from "../src/hooks/useLocalStorage";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, redirect  } from "react-router-dom";
 export const UserContext = createContext({});
 
 export function UserContextProvider({ children }) {
@@ -19,7 +19,8 @@ export function UserContextProvider({ children }) {
     const logout = () => {
         setUser(null);
         document.cookie = "token=; path=/;"
-        navigate("/", { replace: true });
+        //navigate("/", { replace: true });
+        redirect("/")
     }
 
     return (
