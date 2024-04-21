@@ -24,7 +24,6 @@ export function UserContextProvider({ children }) {
     const value = useMemo(
         () => ({
           user,
-          login,
           logout,
         }),
         [user]
