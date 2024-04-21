@@ -453,7 +453,7 @@ const ActionSheet = () => {
                           </table>
                         </div>
                       ): (
-                        <div>
+                        <div className="p-2">
                           <h2 className="text-center ">
                             <strong>No Red Zone Medication</strong>
                           </h2>
