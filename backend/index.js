@@ -44,14 +44,16 @@ app.use("/patients/", pAuthRoutes);
 app.get("/profile", (request, response) => {
   const { token } = request.cookies;
 
-  console.log("token in index.js: " + token);
+  
 
   if (token) {
     jwt.verify(token, process.env.JWT_STRING, {}, (error, user) => {
       if (error) throw error;
+      console.log("token exists");
       response.json(user);
     });
   } else {
+    console.log("token does not exist");
     response.json(null);
   }
 });
