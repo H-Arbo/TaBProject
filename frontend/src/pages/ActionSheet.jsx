@@ -261,9 +261,11 @@ const ActionSheet = () => {
                           </table>
                         </div>
                       ) : (
-                        <p className="text-center text-gray-600">
-                          No Green Zone Medication
-                        </p>
+                        <h2>
+                          <strong className="text-center text-gray-600">
+                            No Green Zone Medication
+                          </strong>
+                        </h2>
                       )}
                     </div>
                   </div>
