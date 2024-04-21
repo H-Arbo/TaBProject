@@ -58,8 +58,12 @@ const PatientProfile = () => {
       <div className='p-9 bg-white'>
 
         <h1 className='text-3xl my-4 text-center'>Patient Profile</h1>
+        { doctor_email == "Yes" ?(
+          <p className="text-center text-gray-600">
+          This patient has been archived
+        </p>
 
-        { loading ? (
+        ) : loading ? (
           <Loading />
         ) : editMode ? (
           <div>
