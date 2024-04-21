@@ -554,7 +554,7 @@ export const editPatient = async (request, response) => {
       name,
       age,
       email,
-      gz_peak_flow,
+      gz_peak_flow_max,
       prim_emergency_contact,
       prim_ec_cell,
       prim_ec_relationship,
@@ -570,7 +570,7 @@ export const editPatient = async (request, response) => {
       !name ||
       !age ||
       !email ||
-      !gz_peak_flow ||
+      !gz_peak_flow_max ||
       !prim_emergency_contact ||
       !prim_ec_cell ||
       !prim_ec_relationship ||

@@ -140,7 +140,7 @@ export default function EditPatient({ pat_email, changeToFalse }) {
                   placeholder="Enter peak flow"
                   value={patientInfo.gz_peak_flow_max}
                   onChange={handleInputChange}
-                  name="gz_peak_flow"
+                  name="gz_peak_flow_max"
                   maxLength={4}
                 />
               </p>
