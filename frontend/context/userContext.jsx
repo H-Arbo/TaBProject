@@ -9,7 +9,7 @@ export function UserContextProvider({ children }) {
     const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
-        if (!user && (location.state.doctor_email || location.state.doctor_email)) {
+        if (!user && (location.state)) {
             axios.post('/profile', {email: location.state.doctor_email }).then(({ data }) => {
                 setUser(data)
             })
