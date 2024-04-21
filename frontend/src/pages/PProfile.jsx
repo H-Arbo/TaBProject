@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {React, useContext} from 'react';
+import { useContext} from 'react';
 import axios from 'axios';
 import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
