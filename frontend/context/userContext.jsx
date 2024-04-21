@@ -8,7 +8,7 @@ export function UserContextProvider({ children }) {
     const [user, setUser] = useLocalStorage("user", null);
     const navigate = useNavigate();
     useEffect(() => {
-        if (!user) {
+        if (user == "logged out") {
             axios.get('/profile').then(({ data }) => {
                 setUser(data)
             })
