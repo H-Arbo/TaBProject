@@ -361,7 +361,7 @@ const ActionSheet = () => {
                           </div>
                         </div>
                       ) : (
-                        <div className="p-3">
+                        <div>
                           <h2 className="text-center ">
                             <strong>No Yellow Zone Medication</strong>
                           </h2>
@@ -419,7 +419,7 @@ const ActionSheet = () => {
                       <h1 className="p-2">
                         Take these quick relief medications:
                       </h1>
-                      {patient.rz_meds && patient.rz_meds.length > 0 && (
+                      {patient.rz_meds && patient.rz_meds.length > 0 ? (
                         <div className="border border-red-600 overflow-x-auto">
                           <table className="w-full">
                             <thead>
@@ -451,6 +451,15 @@ const ActionSheet = () => {
                               ))}
                             </tbody>
                           </table>
+                        </div>
+                      ): (
+                        <div>
+                          <h2 className="text-center ">
+                            <strong>No Red Zone Medication</strong>
+                          </h2>
+                          <p className="text-center text-gray-600">
+                            If this is a mistake, contact your care provider.
+                          </p>
                         </div>
                       )}
                       <h1 className="flex items-center justify-center">
