@@ -17,7 +17,7 @@ export function UserContextProvider({ children }) {
     })
 
     const logout = () => {
-        setUser(null);
+        setUser("logged out");
         document.cookie = "token=; path=/;"
         //navigate("/", { replace: true });
         redirect("/")
