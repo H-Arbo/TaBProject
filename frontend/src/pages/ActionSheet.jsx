@@ -316,40 +316,52 @@ const ActionSheet = () => {
                         quick relief medications:
                       </h1>
                       {patient.yz_meds && patient.yz_meds.length > 0 ? (
-                        <div className="border border-yellow-600 overflow-x-auto">
-                          <table className="w-full">
-                            <thead>
-                              <tr className="bg-yellow-300">
-                                <th className="p-3 border-r border-b border-yellow-600">
-                                  Medicine
-                                </th>
-                                <th className="p-3 border-r border-b border-yellow-600">
-                                  How much to take
-                                </th>
-                                <th className="p-3 border-b border-yellow-600">
-                                  When and how often
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody className="bg-white">
-                              {patient.yz_meds.map((medication, index) => (
-                                <tr key={index}>
-                                  <td className="p-3 border-r border-b border-yellow-600">
-                                    {medication.med}
-                                  </td>
-                                  <td className="p-3 border-r border-b border-yellow-600">
-                                    {medication.amount}
-                                  </td>
-                                  <td className="p-3 border-b border-yellow-600">
-                                    {medication.when_freq}
-                                  </td>
+                        <div className="p-3">
+                          <div className="border border-yellow-600 overflow-x-auto">
+                            <table className="w-full">
+                              <thead>
+                                <tr className="bg-yellow-300">
+                                  <th className="p-3 border-r border-b border-yellow-600">
+                                    Medicine
+                                  </th>
+                                  <th className="p-3 border-r border-b border-yellow-600">
+                                    How much to take
+                                  </th>
+                                  <th className="p-3 border-b border-yellow-600">
+                                    When and how often
+                                  </th>
                                 </tr>
-                              ))}
-                            </tbody>
-                          </table>
+                              </thead>
+                              <tbody className="bg-white">
+                                {patient.yz_meds.map((medication, index) => (
+                                  <tr key={index}>
+                                    <td className="p-3 border-r border-b border-yellow-600">
+                                      {medication.med}
+                                    </td>
+                                    <td className="p-3 border-r border-b border-yellow-600">
+                                      {medication.amount}
+                                    </td>
+                                    <td className="p-3 border-b border-yellow-600">
+                                      {medication.when_freq}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                          <h2>
+                            <strong>
+                              Call your doctor if you have been in the yellow
+                              zone for more than 24 hours.
+                            </strong>
+                          </h2>
+                          <div>
+                            Also call your doctor if:{" "}
+                            <u>{patient.yz_comment}</u>
+                          </div>
                         </div>
                       ) : (
-                        <div className= "p-3">
+                        <div className="p-3">
                           <h2 className="text-center ">
                             <strong>No Yellow Zone Medication</strong>
                           </h2>
@@ -358,15 +370,6 @@ const ActionSheet = () => {
                           </p>
                         </div>
                       )}
-                      <h2>
-                        <strong>
-                          Call your doctor if you have been in the yellow zone
-                          for more than 24 hours.
-                        </strong>
-                      </h2>
-                      <div>
-                        Also call your doctor if: <u>{patient.yz_comment}</u>
-                      </div>
                     </div>
                   </div>
 
