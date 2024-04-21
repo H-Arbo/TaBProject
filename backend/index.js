@@ -47,9 +47,10 @@ app.get("/profile", (request, response) => {
   
 
   if (token) {
+    console.log("token exists");
     jwt.verify(token, process.env.JWT_STRING, {}, (error, user) => {
       if (error) throw error;
-      console.log("token exists");
+      
       response.json(user);
     });
   } else {
