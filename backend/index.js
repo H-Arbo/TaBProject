@@ -8,8 +8,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv/config.js";
 import jwt from "jsonwebtoken";
-import { Patient } from "/models/patientModel.js";
-import { Doctor } from "/models/doctorModel.js";
+import { Patient } from "./models/patientModel.js";
+import { Doctor } from "./models/doctorModel.js";
 
 const app = express();
 app.disable("x-powered-by");
