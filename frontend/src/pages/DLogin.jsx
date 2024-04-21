@@ -4,11 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import './css/characters.css';
-import React from 'react';
+import {React, useContext} from 'react';
+import { UserContext } from "../../context/userContext";
 
 
 export default function DLogin() {
   const nav = useNavigate();
+  const { user, setUser } = useContext(UserContext);
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -28,7 +30,8 @@ export default function DLogin() {
         toast.error(data.error);
         setData({email: "", password: ""});
       } else {
-        setData({})
+        setData({});
+        setUser(data);
         nav('/doctor/home', { state: { doctor_email: email } });
       }
     } catch (error) {
