@@ -1,12 +1,11 @@
-import { Navigate, useLocation} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 import { useContext } from 'react';
 
 export const ProtectedRoute = ({ children }) => {
   const { user } = useContext(UserContext);
-  const location = useLocation();
   console.log(user);
-  if (!user && location.state) {
+  if (!user) {
     // user is not authenticated
     return <Navigate to="/" />;
   }

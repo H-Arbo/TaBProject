@@ -1,16 +1,15 @@
 import axios from 'axios';
 import { createContext, useState, useEffect } from 'react';
 import { useLocalStorage } from "../src/hooks/useLocalStorage";
-import { useNavigate, redirect, useLocation  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export const UserContext = createContext({});
 
 export function UserContextProvider({ children }) {
     const [user, setUser] = useLocalStorage("user", null);
     const navigate = useNavigate();
-    const location = useLocation();
     useEffect(() => {
-        if (!user && (location.state)) {
-            axios.post('/profile', {email: location.state.doctor_email }).then(({ data }) => {
+        if (!user) {
+            axios.get('/profile').then(({ data }) => {
                 setUser(data)
             })
         }
@@ -21,7 +20,6 @@ export function UserContextProvider({ children }) {
         setUser(null);
         document.cookie = "token=; path=/;"
         navigate("/", { replace: true });
-        //redirect("/")
     }
 
     return (
