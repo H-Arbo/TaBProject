@@ -9,7 +9,7 @@ export function UserContextProvider({ children }) {
     const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
-        if (!user) {
+        if (user == "no user") {
             axios.post('/profile', {email: location.state.doctor_email }).then(({ data }) => {
                 setUser(data)
             })
