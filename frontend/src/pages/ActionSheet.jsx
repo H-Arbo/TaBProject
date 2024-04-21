@@ -261,11 +261,14 @@ const ActionSheet = () => {
                           </table>
                         </div>
                       ) : (
-                        <h2 className="text-center ">
-                          <strong>
-                            No Green Zone Medication
-                          </strong>
-                        </h2>
+                        <div>
+                          <h2 className="text-center ">
+                            <strong>No Green Zone Medication</strong>
+                          </h2>
+                          <p className="text-center text-gray-600">
+                            If this is a mistake, contact your care provider.
+                          </p>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -312,7 +315,7 @@ const ActionSheet = () => {
                         CONTINUE your Green Zone medications PLUS take these
                         quick relief medications:
                       </h1>
-                      {patient.yz_meds && patient.yz_meds.length > 0 && (
+                      {patient.yz_meds && patient.yz_meds.length > 0 ? (
                         <div className="border border-yellow-600 overflow-x-auto">
                           <table className="w-full">
                             <thead>
@@ -344,6 +347,15 @@ const ActionSheet = () => {
                               ))}
                             </tbody>
                           </table>
+                        </div>
+                      ) : (
+                        <div>
+                          <h2 className="text-center ">
+                            <strong>No Yellow Zone Medication</strong>
+                          </h2>
+                          <p className="text-center text-gray-600">
+                            If this is a mistake, contact your care provider.
+                          </p>
                         </div>
                       )}
                       <h2>
