@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {React, useContext} from 'react';
 import axios from 'axios';
 import BackButton from '../components/BackButton';
 import Loading from '../components/Loading';
@@ -6,12 +7,15 @@ import Pat_Navbar from '../components/Pat_Navbar';
 import { MdHistoryEdu } from "react-icons/md";
 import EditPatient from './EditPatient';
 import { Link, useLocation } from 'react-router-dom';
+import { UserContext } from "../../context/userContext";
 
 const PatientProfile = () => {
   const [patient, setPatient] = useState(null);
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(false);
   const [editMode, setEditMode] = useState(false);
+
+  const { user, setUser } = useContext(UserContext);
 
   const changeToFalse = () => {
     setEditMode(false);
