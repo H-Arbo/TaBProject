@@ -31,6 +31,7 @@ export default function EditPatient({ pat_email, changeToFalse }) {
       .post("/patients/info", { email: pat_email })
       .then((response) => {
         setPatientInfo(response.data.data.at(0));
+        console.log(response.data.data.at(0));
         setLoading(false);
       })
       .catch((error) => {
