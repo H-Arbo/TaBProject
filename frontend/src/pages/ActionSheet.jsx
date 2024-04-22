@@ -173,11 +173,25 @@ const ActionSheet = () => {
                                 <span className="font-semibold">
                                   Health Care Provider:{" "}
                                 </span>{" "}
-                                <u>{doctor.name}</u>
+                                {doctor_email == "Yes" ? (
+                                  <u>This patient has been archived</u>
+                                ) : (
+                                  <u>{doctor.name}</u>
+                                )
+                                
+                                
+                                }
+                                
                               </p>
                               <p>
                                 <span className="font-semibold">Phone: </span>{" "}
-                                <u>{doctor.phone}</u>
+                                {doctor_email == "Yes" ? (
+                                  <u>This patient has been archived</u>
+                                ) : (
+                                  <u>{doctor.phone}</u>
+                                )                            
+                                }
+                                
                               </p>
                             </div>
                           </div>

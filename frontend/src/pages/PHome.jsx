@@ -31,7 +31,7 @@ const PHome = () => {
       <div className="p-8">
         <div className="p-4">
           <h1 className="text-3xl font-bold my-4 text-center">Patient Home</h1>
-          {patients.provider_email == "Yes" ? (
+          {/* {patients.provider_email == "Yes" ? (
             <p className="text-center text-gray-600">
               This patient has been archived
             </p>
@@ -119,8 +119,8 @@ const PHome = () => {
                 </Link>
               </div>
             </div>
-          )}
-          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          )} */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link
               to="/patients/green"
               state={{
@@ -198,7 +198,7 @@ const PHome = () => {
             >
               <Button color="blue">Surveys</Button>
             </Link>
-          </div> */}
+          </div>
         </div>
       </div>
     </>

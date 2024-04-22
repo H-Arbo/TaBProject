@@ -265,17 +265,24 @@ export default function EditPatient({ pat_email, changeToFalse }) {
           <div className="border border-sky-400 rounded-xl p-4">
             <h2 className="text-xl text-gray-700 mb-4">Provider Info</h2>
             <div className="space-y-2">
-              <p>
-                <span className="font-semibold">Provider Email:</span>{" "}
-                <input
-                  type="text"
-                  placeholder="Enter email"
-                  value={patientInfo.provider_email}
-                  onChange={handleInputChange}
-                  name="provider_email"
-                  maxLength={50}
-                />
-              </p>
+              {provider_email == "Yes" ? (
+                <p className="text-center text-gray-600">
+                  This patient has been archived. Provider information is no
+                  longer available.
+                </p>
+              ) : (
+                <p>
+                  <span className="font-semibold">Provider Email:</span>{" "}
+                  <input
+                    type="text"
+                    placeholder="Enter email"
+                    value={patientInfo.provider_email}
+                    onChange={handleInputChange}
+                    name="provider_email"
+                    maxLength={50}
+                  />
+                </p>
+              )}
             </div>
           </div>
         </div>
