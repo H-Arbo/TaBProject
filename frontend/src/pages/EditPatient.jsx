@@ -3,7 +3,7 @@ import Loading from "../components/Loading";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-export default function EditPatient({ pat_email, changeToFalse }) {
+export default function EditPatient({ pat_email, doctor_email, changeToFalse }) {
   const [patientInfo, setPatientInfo] = useState({
     name: "",
     age: "",
@@ -265,7 +265,7 @@ export default function EditPatient({ pat_email, changeToFalse }) {
           <div className="border border-sky-400 rounded-xl p-4">
             <h2 className="text-xl text-gray-700 mb-4">Provider Info</h2>
             <div className="space-y-2">
-              {provider_email == "Yes" ? (
+              {doctor_email == "Yes" ? (
                 <p className="text-center text-gray-600">
                   This patient has been archived. Provider information is no
                   longer available.
