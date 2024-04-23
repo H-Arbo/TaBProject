@@ -62,27 +62,59 @@
     <h2>Installation</h2>
     <ol>
       <li>Clone GitHub <a href="https://github.com/H-Arbo/TaBProject">Here</a></li>
-      <li>Use OIT Server to run*</li>
-      <li>Use text editor of choice to modify code and test</li>
+      <li>Access OIT server*</li>
+      <ul>
+        <li>* If access to OIT server is not available, one would have to create their own database</li>
+      </ul>
+      <li>Use text editor of choice to modify code and test (we used GitPod which is connected to GitHub)</li>
+      <li>To run code, we used VS code</li>
       <ol>
-        <h3>To run in VS Code</h3>
+        <h3>Set-up to Launch Website:</h3>
+        <li>clone GitHub repository and open project root directory</li>
+        <li>Run npm i</li>
+        <li>In backend directory: run npm i nodemon</li>
+        <li>In frontend directory: run npm i vite</li>
+        <h3>From OIT Server:</h3>
+        <li>Clone GitHub repository and open project root directory</li>
+        <li>In docker-compose.yml:</li>
+        <ul>
+          <li>Change volume to personal user account</li>
+        </ul>
+        <h3>Directions to Launch Website</h3>
+        <h3>From Local Machine:</h3>
+        <li>Open terminal</li>
         <li>cd TaBProject/</li>
         <li>run npm i</li>
         <h3>To run website</h3>
         <ol>
           <li>cd TaBProject/frontend</li>
           <li>run npm i</li>
+          <li>execute npm run dev</li>
+          <li>In new terminal:</li>
+          <li>cd TaBProject/backend</li>
+          <li>execute npm run dev</li>
         </ol>
         <h3>To run on OIT server</h3>
         <ol>
-          <li>execute docker compose up</li>
+          <li>From project root directory execute docker compose up</li>
           <li>If changes to source code occur, run docker compose up -build</li>
         </ol>
-        <h3>To run mobile app</h3>
+        <h3>To run mobile app*</h3>
+        <ul>
+          <li>*Mobile app is not in production and only available on local machine</li>
+        </ul>
         <ol>
           <li>cd TaBProject/mobile/tab-to-stop</li>
           <li>run npm install expo</li>
-          <li>execute npx start -tunnel, press y</li>
+          <li>execute npx start -tunnel</li>
+          <ul>
+            <li>It may print out the first time executing:</li>
+            <li>"“The package @expo/ngrok@^4.1.0 is required to use tunnels, would you like to install it globally?”
+            </li>
+            <li>Press y to install it globally (this is required for it to function)</li>
+          </ul>
+          <li>To view from mobile device, download Expo Go</li>
+          <li>Scan QE code with either Camera app (IOS) or Expo Go app (Android)</li>
         </ol>
       </ol>
     </ol>
@@ -104,6 +136,7 @@
       <li>Express</li>
       <li>React</li>
       <li>Node.js</li>
+      <li>Expo</li>
     </ul>
   </section>
 
@@ -114,6 +147,7 @@
       <ul>
         <li>*For development purposes only</li>
       </ul>
+      <li>Gitpod (free)</li>
     </ul>
   </section>
 
@@ -432,6 +466,18 @@
       <li>MongoDB Atlas was not compatible with OIT servers</li>
       <ul>
         <li>Switched to localized MongoDB in Docker container for production</li>
+      </ul>
+    </ul>
+  </section>
+
+  <section id="extProblems">
+    <h2>Possible Issues with External Resources</h2>
+    <ul>
+      <li>The local MongoDB container persists data to a path that will not be available in the future</li>
+      <ul>
+        <h3>Solutions</h3>
+        <li>Change path of volume and start with clean DB (currently stored info is not necessary)</li>
+        <li>Change path of volumen and manually move DB data from its current directory to the new directory</li>
       </ul>
     </ul>
   </section>
