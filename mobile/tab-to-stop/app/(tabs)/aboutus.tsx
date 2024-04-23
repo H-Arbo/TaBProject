@@ -49,7 +49,7 @@ export default function TabAboutusScreen() {
               <Image
               style={{ width: '85%', marginTop: -160 }}
               resizeMode="contain"
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/aylin.jpg")}
+              source={require("../../assets/images/aylin.jpg")}
               />
             </View>
 
@@ -99,7 +99,7 @@ export default function TabAboutusScreen() {
               <Image
               style={{ width: '85%', marginTop: -160 }}
               resizeMode="contain"
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/jessica.jpg")}
+              source={require("../../assets/images/jessica.jpg")}
               />
             </View>
 
@@ -148,7 +148,7 @@ export default function TabAboutusScreen() {
               <Image
               style={{ width: '85%', marginTop: -160 }}
               resizeMode="contain"
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/mark.jpg")}
+              source={require("../../assets/images/mark.jpg")}
               />
             </View>
 
@@ -198,7 +198,7 @@ export default function TabAboutusScreen() {
               <Image
               style={{ width: '85%', marginTop: -160 }}
               resizeMode="contain"
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/sara.jpg")}
+              source={require("../../assets/images/sara.jpg")}
               />
             </View>
 

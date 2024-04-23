@@ -29,7 +29,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
                 <Image 
                   style={styles.image}
                   resizeMode='contain'
-                  source={require('/workspace/TaBProject/mobile/tab-to-stop/assets/images/nursing_logo.jpg')}
+                  source={require('../assets/images/nursing_logo.jpg')}
                 />
               </ExternalLink>
             </TouchableOpacity>
@@ -51,7 +51,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
               href="https://nursing.ua.edu/">
               <Image style={ styles.image } 
                 resizeMode='contain'
-                source={require('/workspace/TaBProject/mobile/tab-to-stop/assets/images/nursing_logo.jpg')}
+                source={require('../assets/images/nursing_logo.jpg')}
               />
             </ExternalLink>
           

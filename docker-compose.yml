@@ -35,7 +35,7 @@ services:
     networks:
       - web-app-network
     volumes:
-     - /home/htarbogast/mongo-backup:/data/db
+     - /home/htarbogast/mongo-backup:/data/db # current data stored at /home/htarbogast/mongo-backup, need to change and move data to another path
 
 networks:
   web-app-network:

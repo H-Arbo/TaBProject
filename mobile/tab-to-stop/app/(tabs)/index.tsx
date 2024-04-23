@@ -45,7 +45,7 @@ export default function App() {
               <Image
               style={styles.characters}
               resizeMode="contain"
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Charlotte-Waving.png")}
+              source={require("../../assets/images/Charlotte-Waving.png")}
               />
               <View style={{
                 alignItems: 'center',
@@ -60,7 +60,7 @@ export default function App() {
                     <Image
                     style={styles.logo}
                     resizeMode='center'
-                    source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/tab.png")}
+                    source={require("../../assets/images/tab.png")}
                     />
                   </ExternalLink>
                 </TouchableOpacity>
@@ -68,7 +68,7 @@ export default function App() {
               <Image
               style={styles.characters}
               resizeMode="contain"
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Dr.Breeze-Confident.png")}
+              source={require("../../assets/images/Dr.Breeze-Confident.png")}
               />
             </View>
           </View>
@@ -111,7 +111,7 @@ export default function App() {
               />
               <Image
               resizeMode= 'contain'
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/Picture1.png")}
+              source={require("../../assets/images/Picture1.png")}
               style={{ width: '85%'}}
               />
             </View>

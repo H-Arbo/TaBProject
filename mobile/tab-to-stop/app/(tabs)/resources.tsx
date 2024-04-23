@@ -51,7 +51,7 @@ export default function TabPHomeScreen() {
               />
               <Image
               resizeMode= 'contain'
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/nursing_logo.jpg")}
+              source={require("../../assets/images/nursing_logo.jpg")}
               style={{ width: '85%'}}
               />
             </View>
@@ -133,7 +133,7 @@ export default function TabPHomeScreen() {
               />
               <Image
               resizeMode= 'contain'
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/AAAAI_logo.png")}
+              source={require("../../assets/images/AAAAI_logo.png")}
               style={{ width: '85%'}}
               />
             </View>
@@ -215,7 +215,7 @@ export default function TabPHomeScreen() {
               />
               <Image
               resizeMode= 'contain'
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/AAFA_logo.png")}
+              source={require("../../assets/images/AAFA_logo.png")}
               style={{ width: '85%' }}
               />
             </View>
@@ -298,7 +298,7 @@ export default function TabPHomeScreen() {
               />
               <Image
               resizeMode= 'contain'
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/mayo_logo.png")}
+              source={require("../../assets/images/mayo_logo.png")}
               style={{ width: '85%'}}
               />
             </View>
@@ -380,7 +380,7 @@ export default function TabPHomeScreen() {
               />
               <Image
               resizeMode= 'contain'
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/ACAAI_logo.png")}
+              source={require("../../assets/images/ACAAI_logo.png")}
               style={{ width: '85%' }}
               />
             </View>
@@ -462,7 +462,7 @@ export default function TabPHomeScreen() {
               />
               <Image
               resizeMode= 'contain'
-              source={require("/workspace/TaBProject/mobile/tab-to-stop/assets/images/GIA_Logo.png")}
+              source={require("../../assets/images/GIA_Logo.png")}
               style={{ width: '85%' }}
               />
             </View>
