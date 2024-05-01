@@ -14,17 +14,17 @@ const Animations = () => {
       <Pat_Navbar email= {pat_email} doctor_email ={ doctor_email}/>
       <div className="p-4">
         <h1 className="text-3xl my-4">Animations!</h1>
-        <h2>Animation 4</h2>
-        <iframe src="https://drive.google.com/file/d/1IBHCtlmqgmgj4ZW3g-eo_2u-P8ugPk11/preview" width="640" height="480"></iframe>
+        <h2>Inhaler Mastery</h2>
+        <iframe src="https://drive.google.com/file/d/1qqNby18z6HbMUOcg-5ZOQWVZvPCm1D-m/preview" width="640" height="480"></iframe>
 
-        <h2>Animation 5</h2>
-        <iframe src="https://drive.google.com/file/d/1dwJ3rt5Dkd0WQxIU5W4CtkPewPobrQ3O/preview" width="640" height="480"></iframe>
+        <h2>The Asthma Action Plan</h2>
+        <iframe src="https://drive.google.com/file/d/1ksvge35VmHSljlTDvLbLiwfeB11_t6Z0/preview" width="640" height="480"></iframe>
 
-        <h2>Animation 6</h2>
-        <iframe src="https://drive.google.com/file/d/1JoRnS-ftWSnfLHgGOrULS25LJgcBvd6h/preview" width="640" height="480"></iframe>
+        <h2>Navigating Asthma at School</h2>
+        <iframe src="https://drive.google.com/file/d/1OHFaDBrxsO4a5gjN8R5pRNLL0iK-5gFY/preview" width="640" height="480"></iframe>
 
-        <h2>Animation 7</h2>
-        <iframe src="https://drive.google.com/file/d/1TNGO4FU7mmg_BY7pH47I5fcK1cdOwXmz/preview" width="640" height="480"></iframe>
+        <h2>Healthy Living with Asthma</h2>
+        <iframe src="https://drive.google.com/file/d/13IARRVAYMF_PINXUFeN-A3eYT6uWrN7x/preview" width="640" height="480"></iframe>
       </div >
     </>
   );
