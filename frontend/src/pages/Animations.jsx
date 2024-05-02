@@ -14,6 +14,9 @@ const Animations = () => {
       <Pat_Navbar email= {pat_email} doctor_email ={ doctor_email}/>
       <div className="p-4">
         <h1 className="text-3xl my-4">Animations!</h1>
+        <h2>What is Asthma?</h2>
+        <iframe src="https://drive.google.com/file/d/1lKXF7XgJuhUoJtfkz4rj4GH5NnP-MNAV/preview" width="640" height="480"></iframe>
+
         <h2>Asthma Facts and Myths</h2>
         <iframe src="https://drive.google.com/file/d/1d0kPrLbq5uFSk7ryRFjhm848mDpgT-6O/preview" width="640" height="480"></iframe>
 
