@@ -20,6 +20,9 @@ const Animations = () => {
         <h2>Asthma Facts and Myths</h2>
         <iframe src="https://drive.google.com/file/d/1d0kPrLbq5uFSk7ryRFjhm848mDpgT-6O/preview" width="640" height="480"></iframe>
 
+        <h2>Handling Asthma Triggers</h2>
+        <iframe src="https://drive.google.com/file/d/1Z3RhlqdpTtICkH0bHy3P0eo18hQ3LbjK/preview" width="640" height="480"></iframe>
+
         <h2>Inhaler Mastery</h2>
         <iframe src="https://drive.google.com/file/d/1qqNby18z6HbMUOcg-5ZOQWVZvPCm1D-m/preview" width="640" height="480"></iframe>
 
